@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+body {
+  background-color: #f5f5f5;
+}
 
 .App-logo {
   height: 40vmin;
@@ -35,4 +38,71 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+
+/* Bootstrap Overrides */
+.navbar-collapse {
+  justify-content: flex-end;
+}
+
+.list-group {
+  font-size: 12px;
+}
+
+.progress {
+  --bs-progress-height: 0.4rem !important;
+}
+
+.carousel-indicators button {
+  border-top: unset !important;
+  border-bottom: unset !important;
+  border: 1px solid transparent !important;
+  border-radius: 100% !important;
+  /* background-color: #ffffff !important; */
+  height: 7px !important;
+  width: 7px !important;
+}
+
+.carousel-indicators .active {
+  border-top: unset !important;
+  border-bottom: unset !important;
+  border: 1px solid transparent !important;
+  border-radius: 100% !important;
+  background-color: #616161b5 !important;
+  height: 7px !important;
+  width: 7px !important;
+}
+
+.carousel-control-prev-icon {
+  opacity: 0;
+}
+
+.carousel-control-prev-icon:hover {
+  opacity: 1;
+}
+
+.carousel-control-next-icon {
+  opacity: 0;
+}
+
+.carousel-control-next-icon:hover {
+  opacity: 1;
+}
+
+
+.navbar-toggler {
+  border: none !important;
+}
+
+.navbar-toggler:focus {
+  text-decoration: none;
+  outline: 0;
+  box-shadow: none !important;
+}
+
+
+.card:hover {
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
 }

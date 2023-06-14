@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./style.css";
+import "./App.css";
+import "./product.css";
+// import "./products.css";
+import CollectionList from "./components/collectionList";
+import About from "./components/about";
+import Home from "./components/home";
+import Navbar from "./components/navbar";
+import TopBanner from "./components/topBanner";
+import HeroSection from "./components/heroSection";
+import Footer from "./components/footer";
+import Product from "./components/product";
+import Products from "./components/products";
 
 function App() {
+  const [currentUrl, setCurrentUrl] = useState("");
+
+  useEffect(() => {
+    setCurrentUrl(window.location.pathname);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <TopBanner />
+        <Navbar currentUrl={currentUrl} />
+        <Switch>
+          {/* <Route exact path="/products/" */}
+          <Route exact path="/" component={Home} />
+          <Route exact path="/product/:id" component={Product} />
+          <Route exact path="/products/:collectionName" component={Products} />
+        </Switch>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
