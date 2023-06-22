@@ -31,14 +31,17 @@ const ProductCollection = ({
 
   return (
     <div className="products">
-      <div className="products__header">
+      <div className="products__header p-2">
         <h4 className="products__text--title">{collectionName}</h4>
-        <Link to={`products/${collectionName}`} className="products__all-link">
+        <Link to={`products/${collectionName}/`} className="products__all-link">
           <h5 className="products__text--option">SEE ALL</h5>
         </Link>
       </div>
 
-      <div className="products__body" ref={containerRef}>
+      <div
+        className="flex overflow-x-auto bg-white p-3 scroll-smooth products__body gap-1"
+        ref={containerRef}
+      >
         {products.slice(0, 12).map((deal, index) => {
           return <ProductCard key={index} {...deal} />;
         })}

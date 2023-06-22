@@ -1,15 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
-// import { Carousel } from "react-responsive-carousel";
 import Carousel from "react-multi-carousel";
 import { Carousel as LaptopCarousel } from "react-responsive-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { productData } from "../mockData/products";
-import ProductCollection from "./productCollection";
-import Footer from "./footer";
+import { productData } from "../mockData/product";
+import ProductCollection from "../components/productCollection";
+import Footer from "../components/footer";
 import { useMediaQuery } from "react-responsive";
-// import { useState } from "react";
-import { Select } from "antd";
+import Dropdown from "../components/Dropdown";
 
 import {
   FaHeart,
@@ -18,7 +16,12 @@ import {
   FaUpload,
 } from "react-icons/fa";
 
-const { Option } = Select;
+// const { Option } = Select;
+const options = [
+  { value: "option1", label: "1" },
+  { value: "option2", label: "2" },
+  { value: "option3", label: "3" },
+];
 
 const productAttributesDatabase = {
   model: "Model Name",
@@ -36,8 +39,9 @@ const Product = ({ match }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const isMobile = useMediaQuery({ maxWidth: 1200 });
-  const isLaptop = useMediaQuery({ minWidth: 1200 });
+
+  const isMobile = useMediaQuery({ maxWidth: 1024 });
+  const isLaptop = useMediaQuery({ minWidth: 1024 });
   const productId = parseInt(match.params.id);
   const product = productData.find((p) => p.id === productId);
   const attributes = Object.entries(product.attributes);
@@ -156,7 +160,6 @@ const Product = ({ match }) => {
   }
 
   return (
-    
     <div>
       {/* <div>productId</div> */}
 
@@ -177,13 +180,13 @@ const Product = ({ match }) => {
               <Carousel
                 responsive={{
                   desktop: {
-                    breakpoint: { max: 3000, min: 1200 },
+                    breakpoint: { max: 3000, min: 1024 },
                     items: 1,
                     slidesToSlide: 1, // optional
                     showThumbs: true,
                   },
                   tablet: {
-                    breakpoint: { max: 1200, min: 767 },
+                    breakpoint: { max: 1024, min: 767 },
                     items: 2,
                     slidesToSlide: 2, // optional
                     showThumbs: true,
@@ -223,10 +226,11 @@ const Product = ({ match }) => {
                     <p className="product-det__importlink">
                       Visit the Renewed Store
                     </p>
-                    <div><p></p></div>
+                    <div>
+                      <p></p>
+                    </div>
                   </div>
                   <div>
-                 
                     <div className="product-det__price-terms-container">
                       <p className="product-det__price-terms--other">
                         Available at a lower price from other sellers that may
@@ -236,21 +240,21 @@ const Product = ({ match }) => {
                   </div>
                 </div>
               )}
-                <div className="product-det__price-terms-container">
-                      <p className="product-det__price-terms product-det__price-terms--notnes">
-                        <p className="product-det__price-label">
-                          Was: {product.prevPrice}
-                        </p>
-                      </p>
-                      <p className="product-det__price-terms">
-                        <p className="product-det__price-label">Price: </p>
-                        <h3 className="product-det__price">{product.price}</h3>
-                      </p>
-                      <p className="product-det__price-terms product-det__price-terms--notnes">
-                        <p className="product-det__price-label">You save:</p>{" "}
-                        {parseInt(product.prevPrice) - parseInt(product.price)}{" "}
-                      </p>
-                    </div>
+              <div className="product-det__price-terms-container">
+                <p className="product-det__price-terms product-det__price-terms--notnes">
+                  <p className="product-det__price-label">
+                    Was: {product.prevPrice}
+                  </p>
+                </p>
+                <p className="product-det__price-terms">
+                  <p className="product-det__price-label">Price: </p>
+                  <h3 className="product-det__price">{product.price}</h3>
+                </p>
+                <p className="product-det__price-terms product-det__price-terms--notnes">
+                  <p className="product-det__price-label">You save:</p>{" "}
+                  {parseInt(product.prevPrice) - parseInt(product.price)}{" "}
+                </p>
+              </div>
               <p className="product-det__shipping">
                 Shipping & Import Fees deposit to Nigeria.
               </p>
@@ -258,8 +262,12 @@ const Product = ({ match }) => {
             </div>
             <div className="product-det__right-div--mobile">
               <div className="product-det__btn-div">
-                <button className="product-det__cart-btn">Add to Cart</button>
-                <button className="product-det__buy-btn">Buy Now</button>
+                <button className="product-det__cart-btn font-medium">
+                  Add to Cart
+                </button>
+                <button className="product-det__buy-btn font-medium">
+                  Buy Now
+                </button>
 
                 <button className="product-det__save-btn--tablet">
                   Save Item
@@ -298,7 +306,10 @@ const Product = ({ match }) => {
                   showMore2 ? "product-det__about--show-more" : ""
                 }`}
               >
-                <h3>About this Item</h3>
+                <hr className="my-2" />
+                <h3 className="text-black text-lg font-semibold my-3">
+                  About this Item
+                </h3>
                 <p className="product-det__about-content">
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                   Laborum necessitatibus neque eaque, distinctio quas eveniet
@@ -377,36 +388,37 @@ const Product = ({ match }) => {
             </div>
             <div className="product-det__btn-div">
               <div className="product-det__quantity">
-                <p>Qty: </p>
-                <select className="product-det__quantity-btn"
-                  value={`qty: ${selectedNumber}`}
-                  onChange={handleChange}
-                >
-                  <option value={1}>1</option>
-                  <option value={2}>2</option>
-                  <option value={3}>3</option>
-                  <option value={4}>4</option>
-                  <option value={5}>5</option>
-                </select>
+                <p className="mr-2">Qty: </p>
+                <Dropdown options={options} />
               </div>
-              <button className="product-det__cart-btn">Add to Cart</button>
-              <button className="product-det__buy-btn">Buy Now</button>
+              <button className="product-det__cart-btn font-medium">
+                Add to Cart
+              </button>
+              <button className="product-det__buy-btn font-medium">
+                Buy Now
+              </button>
             </div>
             <div className="product-det__transaction-details">
               <div className="product-det__transaction-details-grid">
                 <div className="product-det__transaction-detail">
-                  <p>Payment</p> <p>Secure transaction</p>
+                  <p className="font-poppins font-medium">Payment</p>
+                  <p className="text-gray-500 font-semibold">
+                    Secure transaction
+                  </p>
+                </div>
+
+                <div className="product-det__transaction-detail">
+                  <p className="font-medium">Ships from</p>{" "}
+                  <p className="text-gray-500 font-semibold">Amazon</p>
                 </div>
                 <div className="product-det__transaction-detail">
-                  <p>Ships from</p> <p>Amazon</p>
+                  <p className="font-medium">Sold by</p>
+                  <p className="text-gray-500 font-semibold">Amazon</p>
                 </div>
+                <hr className="my-1" />
                 <div className="product-det__transaction-detail">
-                  <p>Sold by</p>
-                  <p>Amazon</p>
-                </div>
-                <div className="product-det__transaction-detail">
-                  <p>Return</p>
-                  <p>
+                  <p className="font-medium">Return</p>
+                  <p className="text-gray-500 font-semibold">
                     Eligible for Return, Refund or Replacement withing 30 days
                     of receipt.
                   </p>
@@ -414,7 +426,9 @@ const Product = ({ match }) => {
               </div>
 
               <div className="product-det__transaction-details-flex">
-                <button className="product-det__save-btn">Save Item</button>
+                <button className="product-det__save-btn font-medium ">
+                  Save Item
+                </button>
               </div>
             </div>
           </div>

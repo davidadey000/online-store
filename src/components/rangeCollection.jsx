@@ -14,7 +14,7 @@ const RangeCollection = ({
 
   useEffect(() => {
     const handleResize = () => {
-      setNumCols(window.innerWidth >= 768 && window.innerWidth <= 1200 ? 5 : 6);
+      setNumCols(window.innerWidth >= 768 && window.innerWidth < 1024 ? 5 : 6);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -23,7 +23,7 @@ const RangeCollection = ({
 
   return (
     <div className="ranges">
-      <div className="ranges__header">
+      <div className="ranges__header p-2">
         <h4 className="ranges__text">{collectionName}</h4>
       </div>
       <div className="ranges__body">

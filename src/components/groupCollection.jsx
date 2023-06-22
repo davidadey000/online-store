@@ -26,7 +26,7 @@ const CategoryCollection = ({
 
   useEffect(() => {
     function handleResize() {
-      if (window.innerWidth >= 768 && window.innerWidth <= 1200) {
+      if (window.innerWidth >= 768 && window.innerWidth < 1024) {
         setNumCols(5);
       } else {
         setNumCols(6);
@@ -40,30 +40,10 @@ const CategoryCollection = ({
   return (
     <>
       {groupsArr.map((group, index) => (
-        // <Card key={index} className="collection">
-        //   {index === 0 && (
-        //     <Card.Header
-        //       as="h5"
-        //       className="collection__h--center"
-        //       style={{ backgroundColor: headerColor, color: textColor }}
-        //     >
-        //       {collectionName}
-        //     </Card.Header>
-        //   )}
-        //   <Card.Body className="collection__body">
-        //     <CardGroup>
-        //       <Row xs={2} md={numCols} className="g-2">
-        //         {group.slice(0, numCols*2).map((deal, index) => {
-        //           return <GroupCard key={index} {...deal} />;
-        //         })}
-        //       </Row>
-        //     </CardGroup>
-        //   </Card.Body>
-        // </Card>
 
         <div key={index} className="groups">
           {index === 0 && (
-            <div className="groups__header">
+            <div className="groups__header p-2">
               <h4 className="groups__text">{collectionName}</h4>
             </div>
           )}

@@ -3,16 +3,18 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./style.css";
 import "./App.css";
 import "./product.css";
+// import "tailwindcss/tailwind.css";
+
 // import "./products.css";
-import CollectionList from "./components/collectionList";
+import CollectionList from "./components/CollectionList";
 import About from "./components/about";
-import Home from "./components/home";
+import Home from "./pages/Home";
 import Navbar from "./components/navbar";
 import TopBanner from "./components/topBanner";
 import HeroSection from "./components/heroSection";
 import Footer from "./components/footer";
-import Product from "./components/product";
-import Products from "./components/products";
+import ProductDetail from "./pages/ProductDetail";
+import Products from "./pages/ProductList";
 
 function App() {
   const [currentUrl, setCurrentUrl] = useState("");
@@ -29,7 +31,7 @@ function App() {
         <Switch>
           {/* <Route exact path="/products/" */}
           <Route exact path="/" component={Home} />
-          <Route exact path="/product/:id" component={Product} />
+          <Route exact path="/product/:id" component={ProductDetail} />
           <Route exact path="/products/:collectionName" component={Products} />
         </Switch>
         <Footer />

@@ -1,14 +1,13 @@
-import HeroSection from "./heroSection";
-import CollectionList from "./collectionList";
-import About from "./about";
-import Footer from "./footer";
+import HeroSection from "../components/heroSection";
+import CollectionList from "../components/CollectionList";
+import About from "../components/about";
+import Footer from "../components/footer";
 
 const Home = () => {
   return (
     <div>
       <HeroSection />
       <CollectionList />
-
       <div style={{ height: "30vh", backgroundColor: "tomato" }}></div>
       <About />
     </div>

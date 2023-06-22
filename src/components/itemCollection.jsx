@@ -31,7 +31,7 @@ const ItemCollection = ({
 
   return (
     <div className="items">
-      <div className="items__header">
+      <div className="items__header p-2">
         <h4 className="items__text--title">{collectionName}</h4>
       </div>
       <div className="items__body" ref={containerRef}>

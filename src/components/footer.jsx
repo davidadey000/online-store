@@ -3,7 +3,7 @@ import { FaArrowUp } from "react-icons/fa";
 import { useMediaQuery } from "react-responsive";
 
 const Footer = () => {
-  const isMobile = useMediaQuery({ maxWidth: 1024 });
+  const isMobile = useMediaQuery({ maxWidth: 1023 });
 
   return (
     <>
@@ -68,14 +68,14 @@ const Footer = () => {
                 Get access to exclusive offers.
               </p>
               <div className="lg-footer__top-middle-form">
-                <button className="lg-footer__top-right__btn">Male</button>
-                <button className="lg-footer__top-right__btn">female</button>
+                <button className="lg-footer__top-right__btn text-white">Male</button>
+                <button className="lg-footer__top-right__btn text-white">female</button>
               </div>
             </div>
           </div>
           <div className="lg-footer__bottom">
             <div className="lg-footer__bottom__card">
-              <h5 className="lg-footer__bottom__title">LET US HELP YOU</h5>
+              <h5 className="lg-footer__bottom__title text-sm font-semibold">LET US HELP YOU</h5>
               <a href="" className="lg-footer__bottom__link">
                 Help Center
               </a>
@@ -109,7 +109,7 @@ const Footer = () => {
             </div>
 
             <div className="lg-footer__bottom__card">
-              <h5 className="lg-footer__bottom__title">ABOUT STORE</h5>
+              <h5 className="lg-footer__bottom__title text-sm font-semibold">ABOUT STORE</h5>
               <a href="" className="lg-footer__bottom__link">
                 About us
               </a>
@@ -140,7 +140,7 @@ const Footer = () => {
             </div>
 
             <div className="lg-footer__bottom__card">
-              <h5 className="lg-footer__bottom__title">
+              <h5 className="lg-footer__bottom__title text-sm font-semibold">
                 MAKE MONEY WITH STORE
               </h5>
               <a href="" className="lg-footer__bottom__link">
@@ -161,7 +161,7 @@ const Footer = () => {
             </div>
 
             <div className="lg-footer__bottom__card">
-              <h5 className="lg-footer__bottom__title">STORE INTERNATIONAL</h5>
+              <h5 className="lg-footer__bottom__title text-sm font-semibold">STORE INTERNATIONAL</h5>
               <a
                 href="https://www.store.dz/"
                 className="lg-footer__bottom__link"
@@ -225,7 +225,7 @@ const Footer = () => {
             </div>
 
             <div className="lg-footer__bottom__card">
-              <h5 className="lg-footer__bottom__title">JOIN US ON</h5>
+              <h5 className="lg-footer__bottom__title text-sm font-semibold">JOIN US ON</h5>
               {/* <a href="" className="lg-footer__bottom__link">
                 item link
               </a>
@@ -252,7 +252,7 @@ const Footer = () => {
               </a> */}
             </div>
             <div className="lg-footer__bottom__card">
-              <h5 className="lg-footer__bottom__title">
+              <h5 className="lg-footer__bottom__title text-sm font-semibold">
                 PAYMENT METHODS & DELIVERY PARTNERS
               </h5>
               {/* <a href="" className="lg-footer__bottom__link">

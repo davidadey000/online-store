@@ -1,30 +1,40 @@
 import { useState, useEffect } from "react";
-import ItemCollection from "./itemCollection";
-import GroupCollection from "./groupCollection";
+import ItemCollection from "../components/itemCollection";
+import GroupCollection from "../components/groupCollection";
 import { useMediaQuery } from "react-responsive";
-import { categoriesData } from "../mockData/categories";
+import { categoriesData } from "../mockData/category";
+import { collectionData } from "../mockData/collection";
 import { Link } from "react-router-dom";
+import React from "react";
+import {
+  FaAngleDoubleLeft,
+  FaAngleDoubleRight,
+  FaChevronRight,
+  FaChevronLeft,
+} from "react-icons/fa";
 
 import "../products.css";
-import Categories from "./categories";
+import Categories from "../components/categories";
+import ProductFilter from "../components/ProductFilter";
 
 const Products = ({ match }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  const isLaptop = useMediaQuery({ minWidth: 1200 });
+  const isLaptop = useMediaQuery({ minWidth: 1024 });
 
   const productCollectionName = match.params.collectionName;
   const products = categoriesData.find(
     (p) => p.collectionName === productCollectionName
   );
 
-  const categories = categoriesData[1];
+  const categories = collectionData[10];
+  console.log(categories);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = isMobile | isLaptop ? 12 : 9;
-
+  const productsPerPage = isMobile | isLaptop ? 3 : 9;
   const totalPages = Math.ceil(products.products.length / productsPerPage);
 
   const handleClickPrev = () => {
@@ -39,9 +49,61 @@ const Products = ({ match }) => {
     }
   };
 
+  const handleClickPage = (page) => {
+    setCurrentPage(page);
+  };
+
+  const handleClickFirst = () => {
+    setCurrentPage(1);
+  };
+
+  const handleClickLast = () => {
+    setCurrentPage(totalPages);
+  };
+
   const startIndex = (currentPage - 1) * productsPerPage;
-  const endIndex = startIndex + productsPerPage;
-  const productsOnPage = products.products.slice(startIndex, endIndex);
+  const productsOnPage = products.products.slice(
+    startIndex,
+    startIndex + productsPerPage
+  );
+
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+    const maxPageNumbers = 3; // Maximum number of page numbers to display
+    const range = Math.floor(maxPageNumbers / 2); // Number of page numbers on each side of the current page
+
+    let startPage = currentPage - range;
+    let endPage = currentPage + range;
+
+    if (startPage <= 0) {
+      startPage = 1;
+      endPage = startPage + maxPageNumbers - 1;
+    }
+
+    if (endPage > totalPages) {
+      endPage = totalPages;
+      startPage = endPage - maxPageNumbers + 1;
+      if (startPage <= 0) {
+        startPage = 1;
+      }
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      pageNumbers.push(
+        <button
+          key={i}
+          onClick={() => handleClickPage(i)}
+          className={`text-sm ${
+            i === currentPage ? "text-blue-600 font-semibold" : "text-gray-600"
+          }`}
+        >
+          {i}
+        </button>
+      );
+    }
+
+    return pageNumbers;
+  };
 
   return (
     <div className="x">
@@ -50,7 +112,7 @@ const Products = ({ match }) => {
       <div className="products__collection-list">
         <div className="products__sidebar">
           <div className="products__sidebar-categories">
-            <h5 className="products__sidebar-title--category">CATEGORIES</h5>
+            <h5 className="ml-4 font-semibold">CATEGORIES</h5>
             <div>
               <Link to="products/computing">
                 <p className="products__sidebar-category">Computing</p>
@@ -84,6 +146,7 @@ const Products = ({ match }) => {
               </Link>
             </div>
           </div>
+          <ProductFilter />
         </div>
         <div className="products__items-col">
           <ItemCollection
@@ -93,21 +156,28 @@ const Products = ({ match }) => {
             headerColor={products.headerColor}
             products={productsOnPage}
           />
-          <div>
-            <button
-              className="products__prev"
-              onClick={handleClickPrev}
-              disabled={currentPage === 1}
-            >
-              Prev
-            </button>
-            <button
-              className="products__next"
-              onClick={handleClickNext}
-              disabled={currentPage === totalPages}
-            >
-              Next
-            </button>
+          <div className="flex flex-row gap-3">
+            {currentPage !== 1 && (
+              <>
+                <button className="text-xl" onClick={handleClickFirst}>
+                  <FaAngleDoubleLeft className="text-md text-gray-600" />
+                </button>
+                <button onClick={handleClickPrev}>
+                  <FaChevronLeft className="text-sm text-gray-600" />
+                </button>
+              </>
+            )}
+            {renderPageNumbers()}
+            {currentPage !== totalPages && (
+              <>
+                <button onClick={handleClickNext}>
+                  <FaChevronRight className="text-sm text-gray-600" />
+                </button>
+                <button className="text-xl" onClick={handleClickLast}>
+                  <FaAngleDoubleRight className="text-md text-gray-600" />
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>
