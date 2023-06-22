@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 const ProductCollection = ({
   type,
   slideImages,
+  use,
   collectionName,
   products,
   groups,
@@ -31,11 +32,16 @@ const ProductCollection = ({
 
   return (
     <div className="products">
-      <div className="products__header p-2">
+      <div
+        className={`products__header ${
+          use === "detail" ? "bg-white text-black" : "rounded-t-md bg-gray-800 text-white"
+        } px-3 py-2`}
+      >
         <h4 className="products__text--title">{collectionName}</h4>
-        <Link to={`products/${collectionName}/`} className="products__all-link">
+        {use === "detail" ? " ":  <Link to={`products/${collectionName}/`} className="products__all-link">
           <h5 className="products__text--option">SEE ALL</h5>
-        </Link>
+        </Link> }
+      
       </div>
 
       <div

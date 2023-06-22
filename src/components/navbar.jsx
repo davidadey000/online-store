@@ -74,9 +74,9 @@ function Navbar() {
             Help
           </button>
           <div className=" navbar__dropdown-content bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col lg:absolute lg:top-full lg:left-0 lg:z-1 lg:shadow-lg lg:h-0">
-            <a href="#" className="navbar__dropdown-link">
+            <Link to="/help/" className="navbar__dropdown-link">
               Help Center
-            </a>
+            </Link>
             <a href="#" className="navbar__dropdown-link">
               Place & Track Order
             </a>
@@ -91,7 +91,7 @@ function Navbar() {
               Payment & Jumia account
             </a>
             <hr className="navbar__dropdown-divider" />
-            <button className="navbar__dropdown-link--btn">LIVE CHAT</button>
+            <Link to="/chat/" className="navbar__dropdown-link--btn"><button className="uppercase" >LIVE CHAT</button></Link>
           </div>
         </div>
         <Link

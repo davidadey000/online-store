@@ -276,9 +276,6 @@ color: grey;
 }
 
 .products__header {
-  border-radius: 4px 4px 0px 0px;
-  background-color: var(--secondaryColor);
-  color: var(--textColorLight);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -622,8 +619,6 @@ color: grey;
   }
 
   .products__header {
-    border-radius: 5px 5px 0px 0px;
-    padding: 1% 2%;
   }
 
   .products__body::-webkit-scrollbar {
@@ -1056,7 +1051,6 @@ color: black;
   }
 
   .products__header {
-    border-radius: 7px 7px 0px 0px;
   }
 
   .products__body {

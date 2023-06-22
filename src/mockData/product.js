@@ -169,4 +169,6 @@ export const productData = [
     imgUrl:
       "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
   },
+
+  
 ];
