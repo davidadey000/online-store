@@ -81,7 +81,6 @@
 .product-det__save-btn {
   width: 93vw;
   padding: 3% 0;
-  border-radius: 20px;
   font-size: 1rem;
 }
 .product-det__cart-btn {
@@ -247,7 +246,6 @@
     font-size: 1.05rem;
     padding: 1.05% 0;
     width: 20vw;
-    border-radius: 17.5px;
   }
   .product-det__save-btn--tablet {
     display: block;
@@ -392,7 +390,6 @@
   .product-det__cart-btn,
   .product-det__save-btn {
     width: 90%;
-    border-radius: 20px;
     padding: 10px 0;
     font-size: 0.8rem;
   }

@@ -5,7 +5,7 @@ const CategoriesBannerdiv = ({ title, items }) => {
       <hr />
       <div className="banner-card__body">
         {items.map((item, index) => (
-          <a className="banner-card__link" key={index} href={`/${item}`}>
+          <a className="banner-card__link hover:font-semibold" key={index} href={`/${item}`}>
             {item}
           </a>
         ))}

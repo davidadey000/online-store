@@ -262,32 +262,33 @@ const Product = ({ match }) => {
             </div>
             <div className="product-det__right-div--mobile">
               <div className="product-det__btn-div">
-                <button className="product-det__cart-btn font-medium">
+                <button className="product-det__cart-btn rounded-full font-medium">
                   Add to Cart
                 </button>
-                <button className="product-det__buy-btn font-medium">
+                <button className="product-det__buy-btn  rounded-full font-medium">
                   Buy Now
                 </button>
 
-                <button className="product-det__save-btn--tablet">
+                <button className="product-det__save-btn--tablet rounded-full">
                   Save Item
                 </button>
               </div>
               <div className="product-det__transaction-details">
-                <div className="product-det__transaction-details-grid">
+                <div className="product-det__transaction-details-grid w-[70%]">
                   <div className="product-det__transaction-detail">
-                    <p>Payment</p> <p>Secure transaction</p>
+                    <p className="font-semibold">Payment</p>
+                    <p>Secure transaction</p>
                   </div>
                   <div className="product-det__transaction-detail">
-                    <p>Ships from</p> <p>Amazon</p>
+                    <p className="font-semibold">Ships from</p> <p>Amazon</p>
                   </div>
                   <div className="product-det__transaction-detail">
-                    <p>Sold by</p>
+                    <p className="font-semibold">Sold by</p>
                     <p>Amazon</p>
                   </div>
 
                   <div className="product-det__transaction-detail">
-                    <p>Return</p>
+                    <p className="font-semibold">Return</p>
                     <p>
                       Eligible for Return, Refund or Replacement withing 30 days
                       of receipt.
@@ -391,10 +392,10 @@ const Product = ({ match }) => {
                 <p className="mr-2">Qty: </p>
                 <Dropdown options={options} />
               </div>
-              <button className="product-det__cart-btn font-medium">
+              <button className="product-det__cart-btn  rounded-full font-medium">
                 Add to Cart
               </button>
-              <button className="product-det__buy-btn font-medium">
+              <button className="product-det__buy-btn rounded-full font-medium">
                 Buy Now
               </button>
             </div>
@@ -426,7 +427,7 @@ const Product = ({ match }) => {
               </div>
 
               <div className="product-det__transaction-details-flex">
-                <button className="product-det__save-btn font-medium ">
+                <button className="product-det__save-btn rounded-full font-medium ">
                   Save Item
                 </button>
               </div>

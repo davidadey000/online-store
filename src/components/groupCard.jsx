@@ -12,7 +12,7 @@ const GroupCard = ({ price, description, imgUrl }) => {
   };
 
   return (
-    <Link  className="group" to={`products/${description}/`}>
+    <Link className="group" to={`/products/${description}/`}>
       <div >
         <img
           src={imageSrc}

@@ -134,7 +134,7 @@ const Categories = ({ onCategoryHover }) => {
         {categories.map((category, index) => (
           <li
             key={index}
-            className="category"
+            className="category font-poppins"
             onMouseEnter={() => handleCategoryHover(category)}
           >
             {category}

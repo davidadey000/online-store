@@ -30,7 +30,7 @@ const ItemCollection = ({
   };
 
   return (
-    <div className="items">
+    <div className="items md:w-[90%] lg:w-full">
       <div className="items__header p-2">
         <h4 className="items__text--title">{collectionName}</h4>
       </div>

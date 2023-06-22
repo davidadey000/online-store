@@ -332,12 +332,12 @@ const CategoriesBanner = ({ category }) => {
 
   return (
     <div className="categories-banner">
-      <div className="categories-banner__body">
+      <div className="categories-banner__body scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300">
         {selectedCategory?.subcategories?.map((subcategory, index) => (
           <CategoriesBannerCard
             key={index}
             title={subcategory.title}
-            items={subcategory.items}
+          items={subcategory.items}
           />
         ))}
       </div>

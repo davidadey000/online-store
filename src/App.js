@@ -3,18 +3,19 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./style.css";
 import "./App.css";
 import "./product.css";
-// import "tailwindcss/tailwind.css";
-
-// import "./products.css";
-import CollectionList from "./components/CollectionList";
-import About from "./components/about";
-import Home from "./pages/Home";
 import Navbar from "./components/navbar";
 import TopBanner from "./components/topBanner";
-import HeroSection from "./components/heroSection";
 import Footer from "./components/footer";
+import Home from "./pages/Home";
 import ProductDetail from "./pages/ProductDetail";
 import Products from "./pages/ProductList";
+import Help from "./pages/Help";
+import Cart from "./pages/Cart";
+import Saved from "./pages/Saved";
+import Signin from "./pages/Signin";
+import Signup from "./pages/Signup";
+import Orders from './pages/Orders';
+import Account from './pages/Account';
 
 function App() {
   const [currentUrl, setCurrentUrl] = useState("");
@@ -31,8 +32,15 @@ function App() {
         <Switch>
           {/* <Route exact path="/products/" */}
           <Route exact path="/" component={Home} />
-          <Route exact path="/product/:id" component={ProductDetail} />
-          <Route exact path="/products/:collectionName" component={Products} />
+          <Route exact path="/product/:id/" component={ProductDetail} />
+          <Route exact path="/products/:collectionName/" component={Products} />
+          <Route exact path="/cart/" component={Cart} />
+          <Route exact path="/orders/" component={Orders} />
+          <Route exact path="/help/" component={Help} />
+          <Route exact path="/saved/" component={Saved} />
+          <Route exact path="/signin/" component={Signin} />
+          <Route exact path="/signup/" component={Signup} />
+          <Route exact path="/account/" component={Account} />
         </Switch>
         <Footer />
       </div>

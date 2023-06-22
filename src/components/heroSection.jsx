@@ -1,9 +1,9 @@
 import Categories from "./categories";
 import HeroSlideShow from "./heroSlideShow";
-import { Container, Row, Col } from "react-bootstrap";
 import HeroCard from "./heroCard";
 import CategoriesBanner from "./categoriesBanner";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   const [hoveredCategory, setHoveredCategory] = useState(null);
@@ -22,34 +22,6 @@ const HeroSection = () => {
   ];
 
   return (
-    // <Container
-    //   onMouseLeave={handleMouseLeave}
-    //   className="my-hero-section"
-    //   as="section"
-    //   fluid
-    // >
-    //   <Row className="my-row">
-    //     <Col className="my-category-col">
-    //       <Categories onCategoryHover={handleMouseEnter} />
-    //     </Col>
-
-    //     {hoveredCategory !== null ? (
-    //       <Col   className="my-slide-col px-0"  >
-    //         <CategoriesBanner  category={hoveredCategory} />
-    //       </Col>
-    //     ) : (
-    //       <Col className="my-slide-col px-0" md={7}>
-    //         <HeroSlideShow />
-    //       </Col>
-    //     )}
-
-    //     <Col className="my-card-col ">
-    //       {images.map((image, index) => {
-    //         return <HeroCard key={index} image={image} />;
-    //       })}
-    //     </Col>
-    //   </Row>
-    // </Container>
     <div onMouseLeave={handleMouseLeave}>
       <Categories onCategoryHover={handleMouseEnter} />
       <div className="hero-section--bottom">
@@ -57,7 +29,9 @@ const HeroSection = () => {
           <CategoriesBanner category={hoveredCategory} />
         ) : (
           <div className="hero-section__slide">
-            <HeroSlideShow />
+            <Link className="h-full" to="/products/special">
+              <HeroSlideShow />
+            </Link>
           </div>
         )}
 

@@ -5,7 +5,7 @@ const About = () => {
   const toggleShowMore = () => setShowMore(!showMore);
 
   return (
-    <div className="my-3 px-6 bg-gray-100 ">
+    <div className="sm:my-3 sm:px-6 bg-gray-100 ">
       <div className={`description__body ${showMore ? "description__body--show-more" : ""}`}>
       <h3>
           <strong className="text-xl">Store Nigeria – Biggest Online Shopping Website</strong>

@@ -34,7 +34,7 @@ const Products = ({ match }) => {
   console.log(categories);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = isMobile | isLaptop ? 3 : 9;
+  const productsPerPage = isMobile | isLaptop ? 12 : 9;
   const totalPages = Math.ceil(products.products.length / productsPerPage);
 
   const handleClickPrev = () => {
@@ -93,7 +93,7 @@ const Products = ({ match }) => {
         <button
           key={i}
           onClick={() => handleClickPage(i)}
-          className={`text-sm ${
+          className={`text-xl sm:text-lg lg:text-sm ${
             i === currentPage ? "text-blue-600 font-semibold" : "text-gray-600"
           }`}
         >
@@ -148,7 +148,7 @@ const Products = ({ match }) => {
           </div>
           <ProductFilter />
         </div>
-        <div className="products__items-col">
+        <div className="products__items-col flex flex-col items-center">
           <ItemCollection
             key={products.collectionName + currentPage}
             type={products.type}
@@ -156,14 +156,14 @@ const Products = ({ match }) => {
             headerColor={products.headerColor}
             products={productsOnPage}
           />
-          <div className="flex flex-row gap-3">
+          <div className="flex flex-row gap-3 justify-center sm:justify-start sm:ml-7">
             {currentPage !== 1 && (
               <>
                 <button className="text-xl" onClick={handleClickFirst}>
-                  <FaAngleDoubleLeft className="text-md text-gray-600" />
+                  <FaAngleDoubleLeft className="text-md lg:text-md sm:text-xl text-gray-600" />
                 </button>
                 <button onClick={handleClickPrev}>
-                  <FaChevronLeft className="text-sm text-gray-600" />
+                  <FaChevronLeft className="text-sm lg:text-sm sm:text-md text-gray-600" />
                 </button>
               </>
             )}
@@ -171,10 +171,10 @@ const Products = ({ match }) => {
             {currentPage !== totalPages && (
               <>
                 <button onClick={handleClickNext}>
-                  <FaChevronRight className="text-sm text-gray-600" />
+                  <FaChevronRight className="text-sm lg:text-sm sm:text-md text-gray-600" />
                 </button>
                 <button className="text-xl" onClick={handleClickLast}>
-                  <FaAngleDoubleRight className="text-md text-gray-600" />
+                  <FaAngleDoubleRight className="text-md sm:text-xl lg:text-md text-gray-600" />
                 </button>
               </>
             )}

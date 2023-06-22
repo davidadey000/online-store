@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const ProductCard = ({ id, price, description, imgUrl }) => {
   return (
-    <div className="flex-shrink-0 flex-grow-0 flex-basis-[220px] w-[220px] rounded-sm hover:shadow-lg hover:translate-y-2 transition-all duration-300">
+    <div className="flex-shrink-0 flex-grow-0 flex-basis-[200px] w-[200px] rounded-md hover:shadow-lg hover:translate-y-2 transition-all duration-700">
       <Link to={`/product/${id}`} className="w-full block">
         <img src={imgUrl} alt="" className="w-full rounded-sm" />
         <div className="product__body ">
