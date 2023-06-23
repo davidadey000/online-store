@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 import "./style.css";
 import "./App.css";
 import "./product.css";
@@ -32,6 +34,7 @@ function App() {
       <div>
         <TopBanner />
         <Navbar currentUrl={currentUrl} />
+        <ToastContainer/>
        <CartProvider>
         <SavedProvider>
           <Switch>

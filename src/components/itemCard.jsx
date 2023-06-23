@@ -10,7 +10,7 @@ const ItemCard = ({ id, price, description, imgUrl }) => {
         <img src={imgUrl} alt="" className="item__image" />
         <div className="item__body">
           <h6 className="item__text--description">{description}</h6>
-          <h4 className="item__text--price font-semibold">{price}</h4>
+          <h4 className="item__text--price font-semibold">₦{price}</h4>
           <small className="item__text--prev-price">#7,000</small>
 
           <small className="">-50%</small>

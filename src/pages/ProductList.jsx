@@ -14,8 +14,9 @@ import {
 } from "react-icons/fa";
 
 import "../products.css";
-import Categories from "../components/categories";
 import ProductFilter from "../components/ProductFilter";
+import Category from "../components/Category";
+import { categoryListData } from "../mockData/categoryList";
 
 const Products = ({ match }) => {
   useEffect(() => {
@@ -36,6 +37,18 @@ const Products = ({ match }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = isMobile | isLaptop ? 12 : 9;
   const totalPages = Math.ceil(products.products.length / productsPerPage);
+
+  const [filters, setFilters] = useState({
+    priceRange: "",
+    color: "",
+    size: "",
+    brand: "",
+  });
+
+  const handleFilterChange = (newFilters) => {
+    setCurrentPage(1);
+    setFilters(newFilters);
+  };
 
   const handleClickPrev = () => {
     if (currentPage > 1) {
@@ -108,45 +121,17 @@ const Products = ({ match }) => {
   return (
     <div className="x">
       <GroupCollection key={categories.collectionName} {...categories} />
-
       <div className="products__collection-list">
         <div className="products__sidebar">
-          <div className="products__sidebar-categories">
+          <div className="products__sidebar-categories sticky top-[60px]">
+            <ProductFilter filters={filters} onFilterChange={handleFilterChange} />
             <h5 className="ml-4 font-semibold">CATEGORIES</h5>
             <div>
-              <Link to="products/computing">
-                <p className="products__sidebar-category">Computing</p>
-              </Link>
-              <Link to="products/electronics">
-                <p className="products__sidebar-category">Electronics</p>
-              </Link>
-              <Link to="products/sporting-goods">
-                <p className="products__sidebar-category">Sporting Goods</p>
-              </Link>
-              <Link to="products/phonesandtablets">
-                <p className="products__sidebar-category">Phones & Tablets</p>
-              </Link>
-              <Link to="products/pet-supplies">
-                <p className="products__sidebar-category">Pet Supplies</p>
-              </Link>
-              <Link to="products/homeandoffice">
-                <p className="products__sidebar-category">Home & Office</p>
-              </Link>
-              <Link to="products/gaming">
-                <p className="products__sidebar-category">Gaming</p>
-              </Link>
-              <Link to="products/fashion">
-                <p className="products__sidebar-category">Fashion</p>
-              </Link>
-              <Link to="products/toysandgames">
-                <p className="products__sidebar-category">Toys & Games</p>
-              </Link>
-              <Link to="products/automobiles">
-                <p className="products__sidebar-category">Automobiles</p>
-              </Link>
+              {categoryListData.map((title) => (
+                <Category title={title} key={title} />
+              ))}
             </div>
           </div>
-          <ProductFilter />
         </div>
         <div className="products__items-col flex flex-col items-center">
           <ItemCollection
@@ -155,6 +140,7 @@ const Products = ({ match }) => {
             collectionName={products.collectionName}
             headerColor={products.headerColor}
             products={productsOnPage}
+            filters={filters}
           />
           <div className="flex flex-row gap-3 justify-center sm:justify-start sm:ml-7">
             {currentPage !== 1 && (
@@ -182,7 +168,10 @@ const Products = ({ match }) => {
         </div>
       </div>
       <div className="sticky bottom-0 left-0 h-[6.5%] sm:h-[5%] lg:hidden bg-gray-300">
-        <small className="leading-3 text-black">This website uses cookies. For further information on how we use cookies you can read our <a href="">Privacy and Cookie notice.</a></small>
+        <small className="leading-3 text-black">
+          This website uses cookies. For further information on how we use
+          cookies you can read our <a href="">Privacy and Cookie notice.</a>
+        </small>
       </div>
     </div>
   );

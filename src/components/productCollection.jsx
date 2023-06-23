@@ -41,7 +41,6 @@ const ProductCollection = ({
         {use === "detail" ? " ":  <Link to={`products/${collectionName}/`} className="products__all-link">
           <h5 className="products__text--option">SEE ALL</h5>
         </Link> }
-      
       </div>
 
       <div

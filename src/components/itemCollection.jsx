@@ -1,4 +1,5 @@
 import Button from "react-bootstrap/Button";
+import { toast } from "react-toastify";
 import Card from "react-bootstrap/Card";
 import { Row, CardGroup } from "react-bootstrap";
 import ItemCard from "./itemCard";
@@ -17,6 +18,7 @@ const ItemCollection = ({
   groups,
   headerColor,
   textColor,
+  filters,
 }) => {
   const [value, setValue] = useState(0);
   const containerRef = useRef(null);
@@ -29,15 +31,53 @@ const ItemCollection = ({
     containerRef.current.scrollLeft += 600;
   };
 
+  // Apply filters on products
+  const filteredProducts = products
+    .filter((product) => {
+      if (filters.priceRange !== "") {
+        // Apply price range filter
+        const [minPrice, maxPrice] = filters.priceRange.split("-");
+        const productPrice = product.price;
+        return (
+          productPrice >= parseFloat(minPrice) &&
+          productPrice <= parseFloat(maxPrice)
+        );
+      }
+      return true;
+    })
+    .filter((product) => {
+      if (filters.color !== "") {
+        // Apply color filter
+        return product.color === filters.color;
+      }
+      return true;
+    })
+    .filter((product) => {
+      if (filters.size !== "") {
+        // Apply size filter
+        return product.size === filters.size;
+      }
+      return true;
+    })
+    .filter((product) => {
+      if (filters.brand !== "") {
+        // Apply brand filter
+        return product.brand === filters.brand;
+      }
+      return true;
+    });
+
   return (
     <div className="items md:w-[90%] lg:w-full">
       <div className="items__header p-2">
         <h4 className="items__text--title">{collectionName}</h4>
       </div>
       <div className="items__body" ref={containerRef}>
-        {products.slice(0, 12).map((deal, index) => {
-          return <ItemCard key={index} {...deal} />;
-        })}
+        {filteredProducts.length != 0
+          ? filteredProducts.slice(0, 12).map((deal, index) => {
+              return <ItemCard key={index} {...deal} />;
+            })
+          : toast.error("No Products Found")}
       </div>
 
       <div
