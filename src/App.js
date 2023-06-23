@@ -17,6 +17,7 @@ import Signup from "./pages/Signup";
 import Orders from './pages/Orders';
 import Account from './pages/Account';
 import Chat from "./pages/Chat";
+import CartProvider from './services/CartProvider';
 
 function App() {
   const [currentUrl, setCurrentUrl] = useState("");
@@ -30,6 +31,7 @@ function App() {
       <div>
         <TopBanner />
         <Navbar currentUrl={currentUrl} />
+       <CartProvider>
         <Switch>
           {/* <Route exact path="/products/" */}
           <Route exact path="/" component={Home} />
@@ -44,6 +46,7 @@ function App() {
           <Route exact path="/account/" component={Account} />
           <Route exact path="/chat/" component={Chat} />
         </Switch>
+        </CartProvider>
         <Footer />
       </div>
     </Router>
