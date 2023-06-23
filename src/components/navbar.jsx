@@ -37,7 +37,7 @@ function Navbar() {
         <FaBars />
       </button>
       <nav
-        className="items-center z-20  fixed top-[-100vh] left-0 h-screen w-screen text-center flex flex-col justify-center gap-6 bg-white transition duration-1000 lg:static lg:top-auto lg:left-auto lg:h-auto lg:w-auto lg:text-left lg:flex lg:flex-row lg:items-center lg:justify-start lg:gap-0 lg:bg-transparent"
+        className="items-center z-20  fixed top-[-100vh] left-0 h-screen w-screen text-center flex flex-col justify-center gap-6 bg-white transition duration-350 lg:static lg:top-auto lg:left-auto lg:h-auto lg:w-auto lg:text-left lg:flex lg:flex-row lg:items-center lg:justify-start lg:gap-0 lg:bg-transparent"
         ref={navRef}
       >
         <button
@@ -55,17 +55,17 @@ function Navbar() {
             Account
           </button>
           <div className="navbar__dropdown-content bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col lg:absolute lg:top-full lg:left-0 lg:z-1 lg:shadow-lg lg:h-0">
-            <Link to="/account/" className="navbar__dropdown-link">
+            <Link onClick={showNavbar} to="/account/" className="navbar__dropdown-link">
               My Account
             </Link>
-            <Link to="/orders/" className="navbar__dropdown-link">
+            <Link onClick={showNavbar} to="/orders/" className="navbar__dropdown-link">
               Orders
             </Link>
-            <Link to="/saved/" className="navbar__dropdown-link">
+            <Link onClick={showNavbar} to="/saved/" className="navbar__dropdown-link">
               Saved Items
             </Link>
             <hr className="navbar__dropdown-divider" />
-            <Link to="/signin/"  className="navbar__dropdown-link--btn"><button className="uppercase" >sign in</button></Link>
+            <Link onClick={showNavbar} to="/signin/"  className="navbar__dropdown-link--btn"><button className="uppercase" >sign in</button></Link>
           </div>
         </div>
         <div className="navbar__dropdown  relative mx-4 text-black">
@@ -74,7 +74,7 @@ function Navbar() {
             Help
           </button>
           <div className=" navbar__dropdown-content bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col lg:absolute lg:top-full lg:left-0 lg:z-1 lg:shadow-lg lg:h-0">
-            <Link to="/help/" className="navbar__dropdown-link">
+            <Link onClick={showNavbar} to="/help/" className="navbar__dropdown-link">
               Help Center
             </Link>
             <a href="#" className="navbar__dropdown-link">
@@ -91,11 +91,14 @@ function Navbar() {
               Payment & Jumia account
             </a>
             <hr className="navbar__dropdown-divider" />
-            <Link to="/chat/" className="navbar__dropdown-link--btn"><button className="uppercase" >LIVE CHAT</button></Link>
+            <Link onClick={showNavbar} to="/chat/" className="navbar__dropdown-link--btn"><button className="uppercase" >LIVE CHAT</button></Link>
           </div>
         </div>
-        <Link
+        <Link onClick={showNavbar}
           to="/cart/"
+          
+        onClick={showNavbar}
+
           className="navbar__nav-link flex flex-row items-center"
         >
           <FaShoppingCart className="navbar__nav-icon" />

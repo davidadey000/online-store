@@ -181,7 +181,9 @@ const Products = ({ match }) => {
           </div>
         </div>
       </div>
-      <div className="x-footer"></div>
+      <div className="sticky bottom-0 left-0 h-[6.5%] sm:h-[5%] lg:hidden bg-gray-300">
+        <small className="leading-3 text-black">This website uses cookies. For further information on how we use cookies you can read our <a href="">Privacy and Cookie notice.</a></small>
+      </div>
     </div>
   );
 };
