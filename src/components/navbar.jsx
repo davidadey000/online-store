@@ -10,20 +10,29 @@ import {
 } from "react-icons/fa";
 import { useMediaQuery } from "react-responsive";
 import SearchResults from "./SearchResults";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const navRef = useRef();
 
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
-  const [isChangeed, setIsChangeed] = useState(false);
+  const [IsSearchActive, setIsSearchActive] = useState(false);
 
-  const handleChange = () => {
-    setIsChangeed(true);
+  const handleChange = (e) => {
+    const value = e.currentTarget.value;
+    value ? setIsSearchActive(true) : setIsSearchActive(false);
+  };
+
+  const handleBlur = () => {
+    setIsSearchActive(false);
   };
 
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
+  };
+
+  const hideNavbar = () => {
+    navRef.current.classList.remove("responsive_nav");
   };
 
   function handleSearchChange() {}
@@ -37,7 +46,7 @@ function Navbar() {
         <FaBars />
       </button>
       <nav
-        className="items-center z-20  fixed top-[-100vh] left-0 h-screen w-screen text-center flex flex-col justify-center gap-6 bg-white transition duration-350 lg:static lg:top-auto lg:left-auto lg:h-auto lg:w-auto lg:text-left lg:flex lg:flex-row lg:items-center lg:justify-start lg:gap-0 lg:bg-transparent"
+        className="items-center z-20  fixed top-[-100vh] left-0 h-screen w-screen text-center flex flex-col justify-center gap-6 bg-white transition duration-400 lg:static lg:top-auto lg:left-auto lg:h-auto lg:w-auto lg:text-left lg:flex lg:flex-row lg:items-center lg:justify-start lg:gap-0 lg:bg-transparent"
         ref={navRef}
       >
         <button
@@ -55,17 +64,35 @@ function Navbar() {
             Account
           </button>
           <div className="navbar__dropdown-content bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col lg:absolute lg:top-full lg:left-0 lg:z-1 lg:shadow-lg lg:h-0">
-            <Link onClick={showNavbar} to="/account/" className="navbar__dropdown-link">
+            <Link
+              onClick={hideNavbar}
+              to="/account/"
+              className="navbar__dropdown-link"
+            >
               My Account
             </Link>
-            <Link onClick={showNavbar} to="/orders/" className="navbar__dropdown-link">
+            <Link
+              onClick={hideNavbar}
+              to="/orders/"
+              className="navbar__dropdown-link"
+            >
               Orders
             </Link>
-            <Link onClick={showNavbar} to="/saved/" className="navbar__dropdown-link">
+            <Link
+              onClick={hideNavbar}
+              to="/saved/"
+              className="navbar__dropdown-link"
+            >
               Saved Items
             </Link>
             <hr className="navbar__dropdown-divider" />
-            <Link onClick={showNavbar} to="/signin/"  className="navbar__dropdown-link--btn"><button className="uppercase" >sign in</button></Link>
+            <Link
+              onClick={hideNavbar}
+              to="/signin/"
+              className="px-2 w-full"
+            >
+              <button className="uppercase w-full  inline-block my-2 py-3 border-none bg-red-500 text-white text-xs font-bold text-center tracking-wide rounded-md shadow-md transition-all duration-300 lg:hover:bg-black">sign in</button>
+            </Link>
           </div>
         </div>
         <div className="navbar__dropdown  relative mx-4 text-black">
@@ -74,7 +101,11 @@ function Navbar() {
             Help
           </button>
           <div className=" navbar__dropdown-content bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col lg:absolute lg:top-full lg:left-0 lg:z-1 lg:shadow-lg lg:h-0">
-            <Link onClick={showNavbar} to="/help/" className="navbar__dropdown-link">
+            <Link
+              onClick={hideNavbar}
+              to="/help/"
+              className="navbar__dropdown-link"
+            >
               Help Center
             </Link>
             <a href="#" className="navbar__dropdown-link">
@@ -91,15 +122,19 @@ function Navbar() {
               Payment & Jumia account
             </a>
             <hr className="navbar__dropdown-divider" />
-            <Link onClick={showNavbar} to="/chat/" className="navbar__dropdown-link--btn"><button className="uppercase" >LIVE CHAT</button></Link>
+            <Link
+              onClick={hideNavbar}
+              to="/chat/"
+              className="px-2 w-full"
+            >
+              <button className="uppercase w-full  inline-block my-2 py-3 border-none bg-red-500 text-white text-xs font-bold text-center tracking-wide rounded-md shadow-md transition-all duration-300 hover:bg-black">LIVE CHAT</button>
+            </Link>
           </div>
         </div>
-        <Link onClick={showNavbar}
+        <Link
           to="/cart/"
-          
-        onClick={showNavbar}
-
-          className="navbar__nav-link flex flex-row items-center"
+          className="navbar__nav-link flex flex-row items-center mx-4"
+          onClick={hideNavbar}
         >
           <FaShoppingCart className="navbar__nav-icon" />
           Cart
@@ -111,15 +146,13 @@ function Navbar() {
           type="text"
           placeholder="Search Products, Brands and Categories"
           onChange={handleChange}
+          onBlur={handleBlur}
         />
         <button className="navbar__search-btn" type="submit">
           {isMobile === true ? <FaSearch /> : "search"}
         </button>
       </form>{" "}
-      {isChangeed && (
-        // Render the search result component here when the input field is focused
-        <SearchResults />
-      )}
+      {IsSearchActive && <SearchResults />}
     </header>
   );
 }

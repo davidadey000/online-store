@@ -29,9 +29,7 @@ const HeroSection = () => {
           <CategoriesBanner category={hoveredCategory} />
         ) : (
           <div className="hero-section__slide">
-            <Link className="h-full" to="/products/special">
               <HeroSlideShow />
-            </Link>
           </div>
         )}
 
