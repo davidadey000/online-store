@@ -34,13 +34,23 @@ const ProductCollection = ({
     <div className="products">
       <div
         className={`products__header ${
-          use === "detail" ? "bg-white text-black" : "rounded-t-md bg-gray-800 text-white"
+          use === "detail"
+            ? "bg-white text-black"
+            : "rounded-t-md bg-gray-800 text-white"
         } px-3 py-2`}
       >
         <h4 className="products__text--title">{collectionName}</h4>
-        {use === "detail" ? " ":  <Link to={`products/${collectionName}/`} className="products__all-link">
-          <h5 className="products__text--option">SEE ALL</h5>
-        </Link> }
+        {use === "detail" ? (
+          " "
+        ) : (
+          <Link
+            className="block"
+            to={`products/${collectionName}/`}
+            className="products__all-link"
+          >
+            <h5 className="products__text--option">SEE ALL</h5>
+          </Link>
+        )}
       </div>
 
       <div

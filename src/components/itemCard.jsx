@@ -1,11 +1,11 @@
 import Card from "react-bootstrap/Card";
-import {Link} from  "react-router-dom";
+import { Link } from "react-router-dom";
 import { Col, Row, ProgressBar, Button } from "react-bootstrap";
 
 const ItemCard = ({ id, price, description, imgUrl }) => {
   const now = 60;
   return (
-    <Link to={`/product/${id}`} className="item__link">
+    <Link className="block" to={`/product/${id}`} className="item__link">
       <div className="item">
         <img src={imgUrl} alt="" className="item__image" />
         <div className="item__body">

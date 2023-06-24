@@ -38,7 +38,7 @@ function Navbar() {
   function handleSearchChange() {}
 
   return (
-    <header className="navbar sticky top-0 left-0 flex items-center justify-between h-[60px] px-3 py-2 z-10 bg-white text-black md:p-4 lg:p-7">
+    <header className="navbar sticky top-0 left-0 flex items-center justify-between h-[60px] px-3 py-2 z-10 bg-white text-black md:py-4 md:px-[2.5%] lg:py-7 lg:px-[4%]">
       <button
         className="visible flex opacity-100 cursor-pointer bg-transparent border-none outline-none text-black  text-3xl lg:hidden"
         onClick={showNavbar}
@@ -46,7 +46,7 @@ function Navbar() {
         <FaBars />
       </button>
       <nav
-        className="items-center z-20 overflow-auto fixed top-[-100vh] left-0 h-screen w-screen text-center flex flex-col justify-center gap-6 bg-white transition duration-400 lg:static lg:top-auto lg:left-auto lg:h-auto lg:w-auto lg:text-left lg:flex lg:flex-row lg:items-center lg:justify-start lg:gap-0 lg:bg-transparent"
+        className="items-center z-20 overflow-y-hidden lg:overflow-y-visible fixed top-[-100vh] left-0 h-screen w-screen text-center flex flex-col justify-center gap-6 bg-white transition duration-500 lg:static lg:top-auto lg:left-auto lg:h-auto lg:w-auto lg:text-left lg:flex lg:flex-row lg:items-center lg:justify-start lg:gap-0 lg:bg-transparent"
         ref={navRef}
       >
         <button
@@ -58,6 +58,9 @@ function Navbar() {
     absolute top-[0.2rem] left-1"
           />
         </button>
+        <Link to="/">
+          <button className="text-2xl lg:mr-10 uppercase">jumia</button>
+        </Link>
         <div className="navbar__dropdown relative mx-4 text-black">
           <button className="navbar__dropdown-btn hidden lg:flex flex-row items-center text-gray-700 border-none">
             <FaUser className="mx-1 mb-[-2px]" />
@@ -86,12 +89,10 @@ function Navbar() {
               Saved Items
             </Link>
             <hr className="navbar__dropdown-divider" />
-            <Link
-              onClick={hideNavbar}
-              to="/signin/"
-              className="px-2 w-full"
-            >
-              <button className="uppercase w-full  inline-block my-2 py-3 border-none bg-red-500 text-white text-xs font-bold text-center tracking-wide rounded-md shadow-md transition-all duration-300 lg:hover:bg-black">sign in</button>
+            <Link onClick={hideNavbar} to="/signin/" className="px-2 w-full">
+              <button className="uppercase w-full  inline-block my-2 p-3  border-none bg-red-400 text-white text-xs font-bold text-center tracking-wide rounded-md shadow-md transition-all duration-300 lg:hover:bg-black">
+                sign in
+              </button>
             </Link>
           </div>
         </div>
@@ -122,12 +123,10 @@ function Navbar() {
               Payment & Jumia account
             </a>
             <hr className="navbar__dropdown-divider" />
-            <Link
-              onClick={hideNavbar}
-              to="/chat/"
-              className="px-2 w-full"
-            >
-              <button className="uppercase w-full  inline-block my-2 py-3 border-none bg-red-500 text-white text-xs font-bold text-center tracking-wide rounded-md shadow-md transition-all duration-300 hover:bg-black">LIVE CHAT</button>
+            <Link onClick={hideNavbar} to="/chat/" className="px-2 w-full">
+              <button className="uppercase w-full  inline-block my-2 p-3 border-none bg-red-400 text-white text-xs font-bold text-center tracking-wide rounded-md shadow-md transition-all duration-300 hover:bg-black">
+                LIVE CHAT
+              </button>
             </Link>
           </div>
         </div>
@@ -140,9 +139,9 @@ function Navbar() {
           Cart
         </Link>
       </nav>
-      <form className="navbar__search-bar">
+      <form className="w-[85%] sm:w-[65%] lg:w-[40%] flex justify-end items-center relative">
         <input
-          className="navbar__search-box relative z-10"
+          className="p-[10px] z-10 w-full h-full border border-transparent border-b-black focus:outline-none"
           type="text"
           placeholder="Search Products, Brands and Categories"
           onChange={handleChange}
@@ -151,8 +150,8 @@ function Navbar() {
         <button className="navbar__search-btn" type="submit">
           {isMobile === true ? <FaSearch /> : "search"}
         </button>
-      </form>{" "}
-      {IsSearchActive && <SearchResults />}
+        {IsSearchActive && <SearchResults />}
+      </form>
     </header>
   );
 }

@@ -24,7 +24,7 @@ const Item = ({
     >
       <div className="rounded-sm flex gap-2">
         <div className={`max-w-[31%] relative w-full  h-100`}>
-          <small className="absolute right-0 bg-orange-50 text-orange-400 px-2">
+          <small className="absolute right-0 bg-red-50 text-red-400 px-2">
             -70%
           </small>
           <img src={image} alt="Product Image" className="h-full"></img>
@@ -58,8 +58,8 @@ const Item = ({
           className="flex items-center"
           onClick={() => handleRemoveFromCart(id)}
         >
-          <FaTrash className="text-orange-400" />
-          <p className="ml-3 text-orange-400">REMOVE</p>
+          <FaTrash className="text-red-400" />
+          <p className="ml-3 text-red-400">REMOVE</p>
         </button>
         <div className="flex items-center">
           {type === "cart" ? (
@@ -67,7 +67,7 @@ const Item = ({
               <button
                 onClick={() => handleDecrement(id)}
                 className={`p-2 rounded-md text-white ${
-                  quantity ? "bg-orange-400" : "bg-orange-300"
+                  quantity ? "bg-red-400" : "bg-red-300"
                 }`}
               >
                 <FaMinus />
@@ -75,14 +75,14 @@ const Item = ({
               <p className="w-20 flex justify-center">{quantity}</p>
               <button
                 onClick={() => handleIncrement(id)}
-                className="p-2 rounded-md text-white bg-orange-400"
+                className="p-2 rounded-md text-white bg-red-400"
               >
                 <FaPlus />
               </button>
             </>
           ) : (
             <button
-              className="bg-orange-400 text-white text-xs py-2 px-3 rounded-sm shadow-xl font-semibold"
+              className="bg-red-400 text-white text-xs py-2 px-3 rounded-sm shadow-xl font-semibold"
               onClick={handleAddToCart}
             >
               BUY NOW
