@@ -2,23 +2,25 @@ import React from "react";
 import { FaTrash } from "react-icons/fa";
 import Title from "./../components/Title";
 import ListItem from "./../components/ListItem";
+import { Link } from 'react-router-dom';
 
 const Account = () => {
   const name = "David";
   const email = "davidadey000@gmail.com";
   const amount = "0.00";
   const options1 = [
-    { icon: <FaTrash />, title: "Orders" },
-    { icon: <FaTrash />, title: "Inbox" },
-    { icon: <FaTrash />, title: "Pending Reviews" },
-    { icon: <FaTrash />, title: "Vouchers" },
-    { icon: <FaTrash />, title: "Saved Items" },
-    { icon: <FaTrash />, title: "Recently Viewed" },
+    { icon: <FaTrash />, link: "orders", title: "Orders" },
+    { icon: <FaTrash />, link: "inbox", title: "Inbox" },
+    { icon: <FaTrash />, link: "pending reviews", title: "Pending Reviews" },
+    { icon: <FaTrash />, link: "voucher", title: "Vouchers" },
+    { icon: <FaTrash />, link: "saved", title: "Saved Items" },
+    { icon: <FaTrash />, link: "recently viewed", title: "Recently Viewed" },
   ];
   const options2 = [
     { title: "Account Management" },
     { title: "Address Book" },
-    { title: "Lorem Ipsum" },
+    {title: "Newsletter"},
+    { title: "Close Account" },
   ];
   return (
     <>
@@ -33,8 +35,8 @@ const Account = () => {
       <Title title="my jumia account" />
       <div className="bg-white rounded-sm m-2">
         <ul className="w-full h-full  p-2">
-          {options1.map(({ icon, title }) => (
-            <ListItem key={title} icon={icon} title={title} />
+          {options1.map(({ icon, title, link }) => (
+            <ListItem key={title} link={link} icon={icon} title={title} />
           ))}
         </ul>
       </div>
@@ -46,6 +48,9 @@ const Account = () => {
           ))}
         </ul>
       </div>
+      <Link to="/logout/">
+        <p className="py-3 uppercase text-red-400 text-center">LOGOUT</p>
+      </Link>
     </>
   );
 };

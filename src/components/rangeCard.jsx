@@ -19,7 +19,7 @@ const RangeCard = ({ slug, description, imgUrl }) => {
         {isLoading ? (
           <TextContentLoader width="100%" height="100%"></TextContentLoader>
         ) : (
-          <img src={imgUrl} alt="" className="range__image" />
+          <img src={imgUrl} alt="" className="w-full h-full" />
         )}
       </div>
       <div className="range__footer">

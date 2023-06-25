@@ -1,13 +1,14 @@
 import { useRef, useState } from "react";
+
 import {
-  FaBars,
-  FaTimes,
-  FaSearch,
-  FaCaretDown,
-  FaUser,
-  FaQuestionCircle,
-  FaShoppingCart,
-} from "react-icons/fa";
+  HiMenu,
+  HiX,
+  HiSearch,
+  HiUserCircle,
+  HiQuestionMarkCircle,
+  HiShoppingCart,
+} from "react-icons/hi";
+
 import { useMediaQuery } from "react-responsive";
 import SearchResults from "./SearchResults";
 import { Link } from "react-router-dom";
@@ -43,7 +44,7 @@ function Navbar() {
         className="visible flex opacity-100 cursor-pointer bg-transparent border-none outline-none text-black  text-3xl lg:hidden"
         onClick={showNavbar}
       >
-        <FaBars />
+        <HiMenu />
       </button>
       <nav
         className="items-center z-20 overflow-y-hidden lg:overflow-y-visible fixed top-[-100vh] left-0 h-screen w-screen text-center flex flex-col justify-center gap-6 bg-white transition duration-500 lg:static lg:top-auto lg:left-auto lg:h-auto lg:w-auto lg:text-left lg:flex lg:flex-row lg:items-center lg:justify-start lg:gap-0 lg:bg-transparent"
@@ -53,7 +54,7 @@ function Navbar() {
           className="visible flex opacity-100 cursor-pointer bg-transparent border-none outline-none text-black  text-3xl  lg:hidden absolute top-4 left-2"
           onClick={showNavbar}
         >
-          <FaTimes
+          <HiX
             className="
     absolute top-[0.2rem] left-1"
           />
@@ -63,7 +64,7 @@ function Navbar() {
         </Link>
         <div className="navbar__dropdown relative mx-4 text-black">
           <button className="navbar__dropdown-btn hidden lg:flex flex-row items-center text-gray-700 border-none">
-            <FaUser className="mx-1 mb-[-2px]" />
+            <HiUserCircle className="mx-1 mb-[-2px]" />
             Account
           </button>
           <div className="navbar__dropdown-content bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col lg:absolute lg:top-full lg:left-0 lg:z-1 lg:shadow-lg lg:h-0">
@@ -98,7 +99,7 @@ function Navbar() {
         </div>
         <div className="navbar__dropdown  relative mx-4 text-black">
           <button className="navbar__dropdown-btn hidden lg:flex flex-row items-center text-gray-700 border-none">
-            <FaQuestionCircle className="mx-1 mb-[-2px]" />
+            <HiQuestionMarkCircle className="mx-1 mb-[-2px]" />
             Help
           </button>
           <div className=" navbar__dropdown-content bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col lg:absolute lg:top-full lg:left-0 lg:z-1 lg:shadow-lg lg:h-0">
@@ -135,7 +136,7 @@ function Navbar() {
           className="navbar__nav-link flex flex-row items-center mx-4"
           onClick={hideNavbar}
         >
-          <FaShoppingCart className="navbar__nav-icon" />
+          <HiShoppingCart className="navbar__nav-icon" />
           Cart
         </Link>
       </nav>
@@ -148,7 +149,7 @@ function Navbar() {
           onBlur={handleBlur}
         />
         <button className="navbar__search-btn" type="submit">
-          {isMobile === true ? <FaSearch /> : "search"}
+          {isMobile === true ? <HiSearch /> : "search"}
         </button>
         {IsSearchActive && <SearchResults />}
       </form>

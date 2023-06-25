@@ -20,7 +20,7 @@ const GroupCard = ({ price, description, imgUrl }) => {
         {isLoading ? (
           <TextContentLoader width="100%" height="100%"></TextContentLoader>
         ) : (
-          <img src={imgUrl} alt="" className="group__image" />
+          <img src={imgUrl} alt="" className="w-full h-full" />
         )}
       </div>
       <div className="group__footer">

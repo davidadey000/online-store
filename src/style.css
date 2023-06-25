@@ -21,11 +21,6 @@
   background-color: var(--secondaryColor);
 }
 
-.navbar .navbar__nav-btn {
-  /* visibility: visible;
-  display: flex;
-  opacity: 1; */
-}
 
 .navbar__nav-icon {
  
@@ -85,15 +80,6 @@ nav a:hover {
   color: var(--mainColor);
 }
 
-.navbar__dropdown {
-  /* position: relative;
-  margin: 0 1rem;
-  color: var(--textColor); */
-}
-
-.navbar__dropdown-btn {
-
-}
 
 .navbar__dropdown-caret {
   display: none;
@@ -101,7 +87,6 @@ nav a:hover {
 
 .navbar__dropdown:hover .navbar__dropdown-content {
   height: auto;
-  /* or any other height you want */
 }
 
 .navbar__dropdown-divider {
@@ -139,9 +124,6 @@ nav a:hover {
   font-size: 0.9rem;
   text-decoration: none;
   white-space: nowrap;
-}
-
-.navbar__dropdown-btn, .navbar__nav-link{
 }
 
 .navbar__dropdown-link:hover {
@@ -525,9 +507,7 @@ nav a:hover {
   .navbar__nav-btn {
     font-size: 2.15rem;
 }
- .navbar__nav, .navbar__dropdown-link--btn, .navbar__dropdown-link ,.navbar__dropdown-btn {
-    /* font-size: 1.5rem; */
-  }
+ 
   .categories {
     padding: 5px 2.5%;
   }
@@ -833,47 +813,22 @@ nav a:hover {
     height: 10vh;
   }
   
-.navbar__dropdown-btn, .navbar__nav-link{
-}
   .navbar .navbar__nav-btn {
     display: none;
     opacity: 1;
   }
 
-  .navbar nav {
-    /* position: static;
-    top: auto;
-    left: auto;
-    height: auto;
-    width: auto;
-    text-align: left;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;navbar__search-box
-    gap: 0rem;
-    background-color: transparent; */
-  }
 
-  .navbar {
-    /* padding: 1.5rem; */
-  }
 
   .navbar__search-box {
     width: 60%;
   }
 
-  .navbar__dropdown {
-    /* position: relative;
-    margin: 0 1rem;
-    color: var(--textColor); */
-  }
 
   .navbar__nav,  .navbar__dropdown-btn {
     background-color: transparent;
     color: var(--secondaryColor);
     font-size: 1rem;
-    /* or whatever font-size is used for the other links */
     border: none;
     cursor: pointer;
   }
@@ -882,23 +837,10 @@ nav a:hover {
     display: inline;
   }
 
-  .navbar__dropdown-content {
-    /* position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1;
-    border-radius: 4px;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    height: 0;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    flex-direction: column; */
-  }
+
 
   .navbar__dropdown:hover .navbar__dropdown-content {
     height: auto;
-    /* or any other height you want */
   }
 
   .navbar__dropdown-divider {
@@ -944,9 +886,6 @@ nav a:hover {
   }
 
 
-  .navbar {
-    /* padding: 1.75rem; */
-  }
 
   .navbar__search-box {
     padding-left: 20px;
