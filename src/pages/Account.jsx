@@ -2,24 +2,37 @@ import React from "react";
 import { FaTrash } from "react-icons/fa";
 import Title from "./../components/Title";
 import ListItem from "./../components/ListItem";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import {
+  HiShoppingCart,
+  HiInboxIn,
+  HiStar,
+  HiTicket,
+  HiHeart,
+  HiEye,
+} from "react-icons/hi";
 
 const Account = () => {
   const name = "David";
   const email = "davidadey000@gmail.com";
   const amount = "0.00";
+
+
   const options1 = [
-    { icon: <FaTrash />, link: "orders", title: "Orders" },
-    { icon: <FaTrash />, link: "inbox", title: "Inbox" },
-    { icon: <FaTrash />, link: "pending reviews", title: "Pending Reviews" },
-    { icon: <FaTrash />, link: "voucher", title: "Vouchers" },
-    { icon: <FaTrash />, link: "saved", title: "Saved Items" },
-    { icon: <FaTrash />, link: "recently viewed", title: "Recently Viewed" },
+    { icon: <HiShoppingCart />, link: "orders", title: "Orders" },
+    { icon: <HiInboxIn />, link: "inbox", title: "Inbox" },
+    { icon: <HiStar />, link: "pending reviews", title: "Pending Reviews" },
+    { icon: <HiTicket />, link: "voucher", title: "Vouchers" },
+    { icon: <HiHeart />, link: "saved", title: "Saved Items" },
+    { icon: <HiEye />, link: "recently viewed", title: "Recently Viewed" },
   ];
+
+  // ...
+
   const options2 = [
     { title: "Account Management" },
     { title: "Address Book" },
-    {title: "Newsletter"},
+    { title: "Newsletter" },
     { title: "Close Account" },
   ];
   return (

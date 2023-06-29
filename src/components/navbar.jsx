@@ -1,23 +1,20 @@
-import { useRef, useState } from "react";
-
-import {
-  HiMenu,
-  HiX,
-  HiSearch,
-  HiUserCircle,
-  HiQuestionMarkCircle,
-  HiShoppingCart,
-} from "react-icons/hi";
-
+import React, { useRef, useState } from "react";
+import { HiMenu, HiX, HiSearch } from "react-icons/hi";
 import { useMediaQuery } from "react-responsive";
 import SearchResults from "./SearchResults";
 import { Link } from "react-router-dom";
+import { navbuttonData } from "../mockData/navButtons";
+import NavButton from "./navBarComponents/NavButton";
 
 function Navbar() {
   const navRef = useRef();
+  const isMobile = useMediaQuery({ query: "(max-width: 1023px)" });
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchActive, setIsSearchActive] = useState(false);
 
-  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
-  const [IsSearchActive, setIsSearchActive] = useState(false);
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   const handleChange = (e) => {
     const value = e.currentTarget.value;
@@ -28,131 +25,133 @@ function Navbar() {
     setIsSearchActive(false);
   };
 
-  const showNavbar = () => {
-    navRef.current.classList.toggle("responsive_nav");
-  };
-
-  const hideNavbar = () => {
-    navRef.current.classList.remove("responsive_nav");
-  };
-
-  function handleSearchChange() {}
-
   return (
-    <header className="navbar sticky top-0 left-0 flex items-center justify-between h-[60px] px-3 py-2 z-10 bg-white text-black md:py-4 md:px-[2.5%] lg:py-7 lg:px-[4%]">
-      <button
-        className="visible flex opacity-100 cursor-pointer bg-transparent border-none outline-none text-black  text-3xl lg:hidden"
-        onClick={showNavbar}
-      >
-        <HiMenu />
-      </button>
-      <nav
-        className="items-center z-20 overflow-y-hidden lg:overflow-y-visible fixed top-[-100vh] left-0 h-screen w-screen text-center flex flex-col justify-center gap-6 bg-white transition duration-500 lg:static lg:top-auto lg:left-auto lg:h-auto lg:w-auto lg:text-left lg:flex lg:flex-row lg:items-center lg:justify-start lg:gap-0 lg:bg-transparent"
-        ref={navRef}
-      >
-        <button
-          className="visible flex opacity-100 cursor-pointer bg-transparent border-none outline-none text-black  text-3xl  lg:hidden absolute top-4 left-2"
-          onClick={showNavbar}
-        >
-          <HiX
-            className="
-    absolute top-[0.2rem] left-1"
-          />
-        </button>
-        <Link to="/">
-          <button className="text-2xl lg:mr-10 uppercase">jumia</button>
-        </Link>
-        <div className="navbar__dropdown relative mx-4 text-black">
-          <button className="navbar__dropdown-btn hidden lg:flex flex-row items-center text-gray-700 border-none">
-            <HiUserCircle className="mx-1 mb-[-2px]" />
-            Account
-          </button>
-          <div className="navbar__dropdown-content bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col lg:absolute lg:top-full lg:left-0 lg:z-1 lg:shadow-lg lg:h-0">
-            <Link
-              onClick={hideNavbar}
-              to="/account/"
-              className="navbar__dropdown-link"
+    <header className="sticky top-0 left-0 flex items-center justify-between px-3 pt-4 py-2 z-10 bg-white text-black md:px-[2.5%] lg:pt-2 lg:px-[4%]">
+      {isMobile && (
+        <div className="flex flex-col w-full gap-2">
+          <div className="flex items-center justify-between w-full">
+            <button
+              className="visible flex opacity-100 cursor-pointer bg-transparent border-none outline-none text-black text-3xl lg:hidden"
+              onClick={handleMenuToggle}
             >
-              My Account
-            </Link>
-            <Link
-              onClick={hideNavbar}
-              to="/orders/"
-              className="navbar__dropdown-link"
-            >
-              Orders
-            </Link>
-            <Link
-              onClick={hideNavbar}
-              to="/saved/"
-              className="navbar__dropdown-link"
-            >
-              Saved Items
-            </Link>
-            <hr className="navbar__dropdown-divider" />
-            <Link onClick={hideNavbar} to="/signin/" className="px-2 w-full">
-              <button className="uppercase w-full  inline-block my-2 p-3  border-none bg-red-400 text-white text-xs font-bold text-center tracking-wide rounded-md shadow-md transition-all duration-300 lg:hover:bg-black">
-                sign in
-              </button>
+              <HiMenu />
+            </button>
+            <Link to="/">
+              <button className="text-2xl lg:mr-10 uppercase">jumia</button>
             </Link>
           </div>
-        </div>
-        <div className="navbar__dropdown  relative mx-4 text-black">
-          <button className="navbar__dropdown-btn hidden lg:flex flex-row items-center text-gray-700 border-none">
-            <HiQuestionMarkCircle className="mx-1 mb-[-2px]" />
-            Help
-          </button>
-          <div className=" navbar__dropdown-content bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col lg:absolute lg:top-full lg:left-0 lg:z-1 lg:shadow-lg lg:h-0">
-            <Link
-              onClick={hideNavbar}
-              to="/help/"
-              className="navbar__dropdown-link"
+          <div className="lg:relative w-full lg:w-[400px]">
+            <div className="relative">
+              <input
+                type="text"
+                className="py-2 px-3 w-full text-sm bg-transparent border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-red-300 focus:border-transparent"
+                placeholder="Search for products"
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              <HiSearch className="absolute top-3 right-3 text-lg text-gray-500" />
+            </div>
+            {isSearchActive && <SearchResults />}
+          </div>
+          <nav
+            className={`fixed top-0 left-0 h-screen w-[80%] pt-20 flex flex-col z-20 gap-6 bg-white transition duration-500 transform ${
+              isMenuOpen ? "translate-x-0" : "-translate-x-full"
+            }`}
+            ref={navRef}
+          >
+            <button
+              className="visible flex opacity-100 cursor-pointer bg-transparent border-none outline-none text-black text-3xl lg:hidden absolute top-3 left-2"
+              onClick={handleMenuToggle}
             >
-              Help Center
-            </Link>
-            <a href="#" className="navbar__dropdown-link">
-              Place & Track Order
-            </a>
-            <a href="#" className="navbar__dropdown-link">
-              Order Cancellation
-            </a>
-            <a href="#" className="navbar__dropdown-link">
-              Return & Refunds
-            </a>
+              <HiX className="absolute top-[0.2rem] left-1" />
+            </button>
 
-            <a href="#" className="navbar__dropdown-link">
-              Payment & Jumia account
-            </a>
-            <hr className="navbar__dropdown-divider" />
-            <Link onClick={hideNavbar} to="/chat/" className="px-2 w-full">
-              <button className="uppercase w-full  inline-block my-2 p-3 border-none bg-red-400 text-white text-xs font-bold text-center tracking-wide rounded-md shadow-md transition-all duration-300 hover:bg-black">
-                LIVE CHAT
-              </button>
-            </Link>
-          </div>
+            <div className="relative text-black">
+              <NavButton handleMenuToggle={handleMenuToggle} {...navbuttonData[0]} />
+              <div className={`bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col lg:absolute lg:top-12 lg:right-0 lg:left-auto lg:w-[180px] lg:shadow-lg ${isMenuOpen ? "h-auto" : "h-0"}`}>
+                <Link onClick={handleMenuToggle} to="/account/" className=" mx-4">
+                  My Account
+                </Link>
+                <Link onClick={handleMenuToggle} to="/orders/" className=" mx-4">
+                  Orders
+                </Link>
+                <Link onClick={handleMenuToggle} to="/saved/" className=" mx-4">
+                  Saved Items
+                </Link>
+                <Link onClick={handleMenuToggle} to="/signin/" className=" mx-4">
+                  Sign In
+                </Link>
+                <Link onClick={handleMenuToggle} to="/signup/" className=" mx-4">
+                  Sign Up
+                </Link>
+              </div>
+            </div>
+            <div className="relative text-black">
+              <NavButton handleMenuToggle={handleMenuToggle} {...navbuttonData[1]} />
+              <div className={`bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col lg:absolute lg:top-12 lg:right-0 lg:left-auto lg:w-[120px] lg:shadow-lg ${isMenuOpen ? "h-auto" : "h-0"}`}>
+                <Link onClick={handleMenuToggle} to="/faq/" className=" mx-4">
+                  FAQ
+                </Link>
+                <Link onClick={handleMenuToggle} to="/contact/" className=" mx-4">
+                  Contact Us
+                </Link>
+              </div>
+            </div>
+            <div className="relative text-black">
+              <NavButton handleMenuToggle={handleMenuToggle} {...navbuttonData[2]} />
+            </div>
+          </nav>
+          {isMenuOpen && (
+            <div
+              className="fixed top-0 left-0 h-screen w-screen bg-black bg-opacity-50 z-10"
+              onClick={handleMenuToggle}
+            ></div>
+          )}
         </div>
-        <Link
-          to="/cart/"
-          className="navbar__nav-link flex flex-row items-center mx-4"
-          onClick={hideNavbar}
-        >
-          <HiShoppingCart className="navbar__nav-icon" />
-          Cart
-        </Link>
-      </nav>
-      <form className="w-[85%] sm:w-[65%] lg:w-[40%] flex justify-end items-center relative">
-        <input
-          className="p-[10px] z-10 w-full h-full border border-transparent border-b-black focus:outline-none"
-          type="text"
-          placeholder="Search Products, Brands and Categories"
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-        <button className="navbar__search-btn" type="submit">
-          {isMobile === true ? <HiSearch /> : "search"}
-        </button>
-        {IsSearchActive && <SearchResults />}
-      </form>
+      )}
+
+      {!isMobile && (
+        <>
+          <div className="flex gap-10 items-center">
+            <Link to="/">
+              <button className="text-2xl uppercase">jumia</button>
+            </Link>
+            <div className="relative text-black">
+              <NavButton handleMenuToggle={handleMenuToggle} {...navbuttonData[0]} />
+              <div className={`dropdown-menu bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col absolute top-full right-0 shadow-lg ${isMenuOpen ? "h-auto" : "h-0"}`}>
+                <Link to="/account/">My Account</Link>
+                <Link to="/orders/">Orders</Link>
+                <Link to="/saved/">Saved Items</Link>
+                <Link to="/signin/">Sign In</Link>
+                <Link to="/signup/">Sign Up</Link>
+              </div>
+            </div>
+            <div className="relative text-black">
+              <NavButton handleMenuToggle={handleMenuToggle} {...navbuttonData[1]} />
+              <div className={`dropdown-menu bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col absolute top-full right-0 shadow-lg ${isMenuOpen ? "h-auto" : "h-0"}`}>
+                <Link to="/faq/">FAQ</Link>
+                <Link to="/contact/">Contact Us</Link>
+              </div>
+            </div>
+            <div className="relative  text-black">
+              <NavButton handleMenuToggle={handleMenuToggle} {...navbuttonData[2]} />
+            </div>
+          </div>
+          <div className="relative w-full lg:w-[400px]">
+            <div className="relative">
+              <input
+                type="text"
+                className="py-2 px-3 w-full text-sm bg-transparent border border-gray-300 rounded-full focus:outline-none focus:ring-2  focus:ring-red-300 focus:border-transparent"
+                placeholder="Search for products"
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              <HiSearch className="absolute top-3 right-3 text-lg text-gray-500" />
+            </div>
+            {isSearchActive && <SearchResults />}
+          </div>
+        </>
+      )}
     </header>
   );
 }

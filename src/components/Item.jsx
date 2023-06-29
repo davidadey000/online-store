@@ -40,13 +40,13 @@ const Item = ({
               type === "cart" ? "gap-1 items-center" : "flex-col"
             } flex`}
           >
-            <p className="text-lg">{price}</p>
+            <p className="text-lg">₦{price}</p>
             <p
               className={`${
                 type === "cart" ? "text-xs" : "text-md"
               } text-gray-600 line-through`}
             >
-              {prevPrice}
+              ₦{prevPrice}
             </p>
           </div>
           <p className="text-xs text-gray-600">{status}</p>

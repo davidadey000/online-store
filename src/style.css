@@ -152,9 +152,9 @@ nav a:hover {
 .category {
   display: inline-block;
   margin-right: 10px;
-  padding: 7px;
+  /* padding: 7px; */
   background-color: #ddd;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   flex: 0 0 auto;
   transition: 1s;
 }
@@ -897,8 +897,8 @@ nav a:hover {
   }
 
   .category {
-    padding: 8px;
-    border-radius: 5px;
+    /* padding: 8px; */
+    /* border-radius: 5px; */
     font-size: 0.85rem;
     font-weight: bold;
   }

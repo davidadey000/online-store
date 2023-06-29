@@ -47,7 +47,7 @@ const Cart = () => {
     <div>
       <Title title="cart summary" />
       <div className="px-3 py-2 flex justify-between bg-white">
-        <p>Subtotal</p> <p className="font-bold">${totalPrice}</p>
+        <p>Subtotal</p> <p className="font-bold">₦{totalPrice}</p>
       </div>
       <Title title={`cart(${total})`} />
       {cartItems.map((item) => (
@@ -65,7 +65,7 @@ const Cart = () => {
           <FaPhone className="transform -scale-x-100" />
         </button>
         <button className="w-80 bg-red-400 text-white rounded-sm py-3">
-          CHECKOUT (${totalPrice})
+          CHECKOUT (₦{totalPrice})
         </button>
       </div>
 

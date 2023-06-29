@@ -123,9 +123,7 @@ const Categories = ({ onCategoryHover }) => {
   ]);
 
   const handleCategoryHover = (category) => {
-    // if (onCategoryHover) {
     onCategoryHover(category);
-    // }
   };
 
   return (
@@ -134,7 +132,7 @@ const Categories = ({ onCategoryHover }) => {
         {categories.map((category, index) => (
           <li
             key={index}
-            className="category font-poppins"
+            className="bg-gray-400 font-semibold text-white lg:text-[13px] text-sm mr-2 px-5 py-2 rounded-2xl"
             onMouseEnter={() => handleCategoryHover(category)}
           >
             {category}

@@ -7,7 +7,7 @@ const SavedProvider = ({ children }) => {
 
   const total = savedItems.length
   const totalPrice = savedItems.reduce((total, item) => {
-    const itemPrice = parseFloat(item.price.replace('$', ''));
+    const itemPrice = parseFloat(item.price.replace('₦', ''));
     return total + itemPrice * item.quantity;
   }, 0);
   

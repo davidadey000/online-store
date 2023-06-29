@@ -24,8 +24,8 @@ const Saved = () => {
       id: 3,
       image: image3,
       title: "EILIFINTE B05 Casual Crossbody Shoulder Chest Bag-Grey",
-      price: "$10",
-      prevPrice: "$15",
+      price: "10",
+      prevPrice: "15",
       status: "In Stock",
       quantity: 1,
     };
