@@ -297,7 +297,7 @@ const Product = ({ match }) => {
                 </div>
 
                 <div className="product-det__transaction-details-flex">
-                  <button className="product-det__save-btn">Save Item</button>
+                  <button className="product-det__save-btn rounded-full">Save Item</button>
                 </div>
               </div>
             </div>
@@ -356,10 +356,10 @@ const Product = ({ match }) => {
                     showMore ? "product-det__details-list--show-more" : ""
                   }`}
                 >
-                  <h3 className="product-det__detail-title">Details</h3>
+                  <h3 className="product-det__detail-title font-bold">Details</h3>
                   <hr className="product-det__detail-line" />
                   {attributes.map(([key, value]) => (
-                    <div className="product-det__detail" key={key}>
+                    <div className="product-det__detail sm:w-[70%]" key={key}>
                       <h4 className="product-det__detail-name">
                         {productAttributesDatabase[key]}
                       </h4>
@@ -427,7 +427,7 @@ const Product = ({ match }) => {
               </div>
 
               <div className="product-det__transaction-details-flex">
-                <button className="product-det__save-btn rounded-full font-medium ">
+                <button className="product-det__save-btn rounded-full font-medium">
                   Save Item
                 </button>
               </div>

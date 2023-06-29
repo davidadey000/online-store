@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import { FaArrowLeft } from 'react-icons/fa';
 
-const AlternativeNavbar = () => {
+const AlternativeNavbar = ({ handleGoBack }) => {
   return (
-    <div>AlternativeNavbar</div>
-  )
-}
+    <div className="p-3">
+      <button className="" onClick={handleGoBack}>
+        <FaArrowLeft />
+      </button>
+    </div>
+  );
+};
 
-export default AlternativeNavbar
+export default AlternativeNavbar;

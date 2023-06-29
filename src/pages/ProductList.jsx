@@ -71,7 +71,7 @@ const Products = ({ match }) => {
   };
 
   const handleClickLast = () => {
-    setCurrentPage(totalPages);
+  setCurrentPage(totalPages);
   };
 
   const startIndex = (currentPage - 1) * productsPerPage;

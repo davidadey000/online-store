@@ -67,38 +67,75 @@ function Navbar() {
             </button>
 
             <div className="relative text-black">
-              <NavButton handleMenuToggle={handleMenuToggle} {...navbuttonData[0]} />
-              <div className={`bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col lg:absolute lg:top-12 lg:right-0 lg:left-auto lg:w-[180px] lg:shadow-lg ${isMenuOpen ? "h-auto" : "h-0"}`}>
-                <Link onClick={handleMenuToggle} to="/account/" className=" mx-4">
+              <NavButton
+                handleMenuToggle={handleMenuToggle}
+                {...navbuttonData[0]}
+              />
+              <div
+                className={`bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col lg:absolute lg:top-12 lg:right-0 lg:left-auto lg:w-[180px] lg:shadow-lg ${
+                  isMenuOpen ? "h-auto" : "h-0"
+                }`}
+              >
+                <Link
+                  onClick={handleMenuToggle}
+                  to="/account/"
+                  className=" mx-4"
+                >
                   My Account
                 </Link>
-                <Link onClick={handleMenuToggle} to="/orders/" className=" mx-4">
+                <Link
+                  onClick={handleMenuToggle}
+                  to="/orders/"
+                  className=" mx-4"
+                >
                   Orders
                 </Link>
                 <Link onClick={handleMenuToggle} to="/saved/" className=" mx-4">
                   Saved Items
                 </Link>
-                <Link onClick={handleMenuToggle} to="/signin/" className=" mx-4">
+                <Link
+                  onClick={handleMenuToggle}
+                  to="/signin/"
+                  className=" mx-4"
+                >
                   Sign In
                 </Link>
-                <Link onClick={handleMenuToggle} to="/signup/" className=" mx-4">
+                <Link
+                  onClick={handleMenuToggle}
+                  to="/signup/"
+                  className=" mx-4"
+                >
                   Sign Up
                 </Link>
               </div>
             </div>
             <div className="relative text-black">
-              <NavButton handleMenuToggle={handleMenuToggle} {...navbuttonData[1]} />
-              <div className={`bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col lg:absolute lg:top-12 lg:right-0 lg:left-auto lg:w-[120px] lg:shadow-lg ${isMenuOpen ? "h-auto" : "h-0"}`}>
+              <NavButton
+                handleMenuToggle={handleMenuToggle}
+                {...navbuttonData[1]}
+              />
+              <div
+                className={`bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col lg:absolute lg:top-12 lg:right-0 lg:left-auto lg:w-[120px] lg:shadow-lg ${
+                  isMenuOpen ? "h-auto" : "h-0"
+                }`}
+              >
                 <Link onClick={handleMenuToggle} to="/faq/" className=" mx-4">
                   FAQ
                 </Link>
-                <Link onClick={handleMenuToggle} to="/contact/" className=" mx-4">
+                <Link
+                  onClick={handleMenuToggle}
+                  to="/contact/"
+                  className=" mx-4"
+                >
                   Contact Us
                 </Link>
               </div>
             </div>
             <div className="relative text-black">
-              <NavButton handleMenuToggle={handleMenuToggle} {...navbuttonData[2]} />
+              <NavButton
+                handleMenuToggle={handleMenuToggle}
+                {...navbuttonData[2]}
+              />
             </div>
           </nav>
           {isMenuOpen && (
@@ -117,8 +154,15 @@ function Navbar() {
               <button className="text-2xl uppercase">jumia</button>
             </Link>
             <div className="relative text-black">
-              <NavButton handleMenuToggle={handleMenuToggle} {...navbuttonData[0]} />
-              <div className={`dropdown-menu bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col absolute top-full right-0 shadow-lg ${isMenuOpen ? "h-auto" : "h-0"}`}>
+              <NavButton
+                handleMenuToggle={handleMenuToggle}
+                {...navbuttonData[0]}
+              />
+              <div
+                className={`dropdown-menu bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col absolute top-full right-0 shadow-lg ${
+                  isMenuOpen ? "h-auto" : "h-0"
+                }`}
+              >
                 <Link to="/account/">My Account</Link>
                 <Link to="/orders/">Orders</Link>
                 <Link to="/saved/">Saved Items</Link>
@@ -127,14 +171,24 @@ function Navbar() {
               </div>
             </div>
             <div className="relative text-black">
-              <NavButton handleMenuToggle={handleMenuToggle} {...navbuttonData[1]} />
-              <div className={`dropdown-menu bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col absolute top-full right-0 shadow-lg ${isMenuOpen ? "h-auto" : "h-0"}`}>
+              <NavButton
+                handleMenuToggle={handleMenuToggle}
+                {...navbuttonData[1]}
+              />
+              <div
+                className={`dropdown-menu bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col absolute top-full right-0 shadow-lg ${
+                  isMenuOpen ? "h-auto" : "h-0"
+                }`}
+              >
                 <Link to="/faq/">FAQ</Link>
                 <Link to="/contact/">Contact Us</Link>
               </div>
             </div>
             <div className="relative  text-black">
-              <NavButton handleMenuToggle={handleMenuToggle} {...navbuttonData[2]} />
+              <NavButton
+                handleMenuToggle={handleMenuToggle}
+                {...navbuttonData[2]}
+              />
             </div>
           </div>
           <div className="relative w-full lg:w-[400px]">

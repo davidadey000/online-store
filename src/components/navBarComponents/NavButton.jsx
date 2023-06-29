@@ -6,7 +6,7 @@ const NavButton = ({ link, icon, name, handleMenuToggle }) => {
     <Link
       to={`/${link}/`}
       onClick={handleMenuToggle}
-      className="flex lg:flex mx-4 lg:mx-0 flex-row items-center text-gray-700 border-none capitalize "
+      className="flex lg:flex mx-4 lg:mx-0 flex-row items-center text-gray-700 border-none capitalize lg:font-semibold"
     >
       {icon}
       {name}
