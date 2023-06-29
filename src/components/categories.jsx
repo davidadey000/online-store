@@ -107,6 +107,9 @@
 // export default Categories;
 
 import { useState, useEffect } from "react";
+import { useRef } from 'react';
+import { FaChevronLeft } from 'react-icons/fa';
+import { FaChevronRight } from 'react-icons/fa';
 
 const Categories = ({ onCategoryHover }) => {
   const [categories, setCategories] = useState([
@@ -126,19 +129,41 @@ const Categories = ({ onCategoryHover }) => {
     onCategoryHover(category);
   };
 
+  const containerRef = useRef(null);
+
+  const handleScrollLeft = () => {
+    containerRef.current.scrollLeft -= 600;
+  };
+
+  const handleScrollRight = () => {
+    containerRef.current.scrollLeft += 600;
+  };
+
   return (
-    <div className="categories" id="categories">
-      <ul>
+    <div className="categories relative" id="categories">
+      <ul className="scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-300 scroll-smooth" ref={containerRef}>
         {categories.map((category, index) => (
           <li
             key={index}
-            className="bg-gray-400 font-semibold text-white lg:text-[13px] text-sm mr-1 px-5 py-2 rounded-2xl"
+            className="bg-gray-400 font-semibold text-white lg:text-[13px] text-sm mr-1 px-5 py-2 rounded-full"
             onMouseEnter={() => handleCategoryHover(category)}
           >
             {category}
           </li>
         ))}
       </ul>
+      <div
+        className="top-[35%] absolute scroll-arrow-left"
+        onClick={handleScrollLeft}
+      >
+        <FaChevronLeft />
+      </div>
+      <div
+        className="top-[35%] absolute scroll-arrow-right"
+        onClick={handleScrollRight}
+      >
+        <FaChevronRight />
+      </div>
     </div>
   );
 };

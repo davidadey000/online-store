@@ -15,7 +15,6 @@ import Help from "./pages/Help";
 import Cart from "./pages/Cart";
 import Saved from "./pages/Saved";
 import Signin from "./pages/Signin";
-import Signup from "./pages/Signup";
 import Orders from "./pages/Orders";
 import Account from "./pages/Account";
 import Chat from "./pages/Chat";
@@ -51,7 +50,7 @@ function App() {
               <Route exact path="/help/" component={Help} />
               <Route exact path="/saved/" component={Saved} />
               <Route exact path="/signin/" component={Signin} />
-              <Route exact path="/signup/" component={Signup} />
+
               <Route exact path="/account/" component={Account} />
               <Route exact path="/chat/" component={Chat} />
             </Switch>

@@ -28,7 +28,8 @@ const HeroCard = ({ image, onHeroCardEnter }) => {
     //   onMouseEnter={handleMouseEnter}
     // >
     <div className="sm:w-full sm:h-[48%]">
-      <img src={image} alt="" className="w-full h-full" />
+      <img src={image} alt="" className="w-full h-full" 
+      onMouseEnter={handleMouseEnter}/>
       {/* <TextContentLoader width="100%" height="100%" /> */}
     </div>
     // </Link>

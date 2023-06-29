@@ -27,7 +27,7 @@ const Item = ({
           <small className="absolute right-0 bg-red-50 text-red-400 px-2">
             -70%
           </small>
-          <img src={image} alt="Product Image" className="h-full"></img>
+          <img src={image} alt="Product Image" className="h-full rounded-sm"></img>
         </div>
         <div className="w-70 flex flex-col gap-[1px]">
           <p
