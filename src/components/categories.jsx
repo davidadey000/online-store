@@ -153,13 +153,13 @@ const Categories = ({ onCategoryHover }) => {
         ))}
       </ul>
       <div
-        className="top-[35%] absolute scroll-arrow-left"
+        className="hidden lg:block bg-white rounded-full p-1 top-[25%] absolute  left-1"
         onClick={handleScrollLeft}
       >
         <FaChevronLeft />
       </div>
       <div
-        className="top-[35%] absolute scroll-arrow-right"
+        className="hidden lg:block bg-white rounded-full p-1 top-[25%] absolute right-1"
         onClick={handleScrollRight}
       >
         <FaChevronRight />

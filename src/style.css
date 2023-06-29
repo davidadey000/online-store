@@ -131,7 +131,7 @@ nav a:hover {
 }
 
 .categories {
-  padding: 0 2%;
+ margin: 0 2%;
   /* overflow-x: auto; */
   /* white-space: nowrap;   */
 }
@@ -509,7 +509,7 @@ nav a:hover {
 }
  
   .categories {
-    padding: 5px 2.5%;
+  margin: 5px 2.5%;
   }
   .category {
     font-size: 0.9rem;
@@ -893,7 +893,7 @@ nav a:hover {
   }
 
   .categories {
-    padding: 5px 4%;
+  margin: 5px 4%;
   }
 
   .category {

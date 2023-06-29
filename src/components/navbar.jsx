@@ -188,14 +188,22 @@ function Navbar() {
                 {...navbuttonData[0]}
               />
               <div
-                className={`dropdown-menu bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col absolute top-full right-0 shadow-lg ${
+                className={`dropdown-menu bg-white z-1 rounded-b-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col absolute top-full left-0 shadow-lg ${
                   isAccountOpen ? "h-auto" : "h-0"
                 }`}
               >
-                <Link to="/account/">My Account</Link>
-                <Link to="/orders/">Orders</Link>
-                <Link to="/saved/">Saved Items</Link>
-                <Link to="/signin/">Sign In</Link>
+                <Link to="/account/" className="py-2 px-5 hover:bg-red-200 whitespace-nowrap">
+                  My Account
+                </Link>
+                <Link to="/orders/" className="py-2 px-5 hover:bg-red-200">
+                  Orders
+                </Link>
+                <Link to="/saved/" className="py-2 px-5 hover:bg-red-200  whitespace-nowrap">
+                  Saved Items
+                </Link>
+                <Link to="/signin/" className="py-2 px-5 hover:bg-red-200">
+                  Sign In
+                </Link>
               </div>
             </div>
             <div className="relative text-black">
@@ -204,12 +212,12 @@ function Navbar() {
                 {...navbuttonData[1]}
               />
               <div
-                className={`dropdown-menu bg-white z-1 rounded-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col absolute top-full right-0 shadow-lg ${
+                className={`dropdown-menu bg-white z-1 rounded-b-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col absolute top-full left-0 shadow-lg ${
                   isHelpOpen ? "h-auto" : "h-0"
                 }`}
               >
-                <Link to="/faq/">FAQ</Link>
-                <Link to="/contact/">Contact Us</Link>
+                <Link to="/chat/" className="py-2 px-5 whitespace-nowrap hover:bg-red-200">FAQ</Link>
+                <Link to="/contact/" className="py-2 px-5 whitespace-nowrap hover:bg-red-200">Contact Us</Link>
               </div>
             </div>
             <div className="relative  text-black">
