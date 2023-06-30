@@ -21,10 +21,11 @@ import Account from "./pages/Account";
 import Chat from "./pages/Chat";
 import CartProvider from "./services/CartProvider";
 import SavedProvider from "./services/SavedProvider";
+import NotFound from "./pages/NotFound";
 
 function Layout({ children }) {
   const location = useLocation();
-  const hideFooterRoutes = ["/signin"]; // Add the routes where you want to hide the footer
+  const hideFooterRoutes = ["/signin", "/404"]; // Add the routes where you want to hide the footer
   const alternativeNavbarRoutes = ["/saved", "/signin", "/cart"]; // Add the routes where you want to use the alternative Navbar
 
   useEffect(() => {
@@ -66,6 +67,7 @@ function App() {
               <Route path="/cart" element={<Cart />} />
               <Route path="/orders" element={<Orders />} />
               <Route path="/help" element={<Help />} />
+              <Route path="/404" element={<NotFound />} />
               <Route path="/saved" element={<Saved />} />
               <Route path="/signin" element={<Signin />} />
               <Route path="/account" element={<Account />} />

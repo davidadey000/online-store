@@ -29,7 +29,7 @@ const Products = ({ match }) => {
 
   const params = useParams();
   const productCollectionName = params.collectionName;
-  
+
   const products = categoriesData.find(
     (p) => p.collectionName === productCollectionName
   );
@@ -170,11 +170,11 @@ const Products = ({ match }) => {
           </div>
         </div>
       </div>
-      <div className="sticky bottom-0 left-0 h-[6.5%] sm:h-[5%] lg:hidden bg-gray-300">
-        <small className="leading-3 text-black">
+      <div className="sticky bottom-0 left-0 p px-3 sm:h-[5%] lg:hidden bg-gray-300">
+        <p className="text-xs leading-xs text-black">
           This website uses cookies. For further information on how we use
           cookies you can read our <a href="">Privacy and Cookie notice.</a>
-        </small>
+        </p>
       </div>
     </div>
   );
