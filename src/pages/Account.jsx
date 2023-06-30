@@ -1,5 +1,5 @@
 import React from "react";
-import { FaTrash } from "react-icons/fa";
+import { HiCreditCard } from "react-icons/hi";
 import Title from "./../components/Title";
 import ListItem from "./../components/ListItem";
 import { Link } from "react-router-dom";
@@ -42,7 +42,7 @@ const Account = () => {
         <p className="text-white text-xs">{email}</p>
       </div>
       <div className="px-3 py-2  bg-white text-blue-900 flex items-center">
-        <FaTrash />
+        <HiCreditCard />
         <p className="ml-3 font-semibold">₦{amount}</p>
       </div>
       <Title title="my jumia account" />

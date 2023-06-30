@@ -16,7 +16,7 @@
   height: inherit;
 }
 .react-multiple-carousel__arrow {
-  z-index: 0;
+  z-index: 0 !important;
 }
 .product-details__carousel-div img {
   height: 100%;

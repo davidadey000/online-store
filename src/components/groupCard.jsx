@@ -16,7 +16,7 @@ const GroupCard = ({ price, description, imgUrl }) => {
 
   return (
     <Link className="group" to={`/products/${description}/`}>
-      <div className="w-full h-[100px] lg:h-[130px]">
+      <div className="w-full h-[90px] lg:h-[130px]">
         {isLoading ? (
           <TextContentLoader width="100%" height="100%"></TextContentLoader>
         ) : (

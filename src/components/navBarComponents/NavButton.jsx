@@ -13,9 +13,7 @@ const NavButton = ({ link, icon, name, handleMenuToggle }) => {
       {name}
     </Link>
   ) : (
-    <div
-
-    
+    <div    
       onClick={handleMenuToggle}
       className={className}
     >

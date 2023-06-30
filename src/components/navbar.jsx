@@ -16,6 +16,8 @@ import SearchResults from "./SearchResults";
 import { Link } from "react-router-dom";
 import { navbuttonData } from "../mockData/navButtons";
 import NavButton from "./navBarComponents/NavButton";
+import { productData } from "../mockData/product";
+import { categoriesData } from "../mockData/category";
 
 function Navbar() {
   const navRef = useRef();
@@ -25,6 +27,8 @@ function Navbar() {
   const [isHelpOpen, setIsHelpOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
 
+  const [searchResults, setSearchResults] = useState([]);
+
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -33,6 +37,7 @@ function Navbar() {
     setIsAccountOpen(!isAccountOpen);
     setIsHelpOpen(false);
   };
+
   const handleHelpToggle = () => {
     setIsHelpOpen(!isHelpOpen);
     setIsAccountOpen(false);
@@ -40,12 +45,55 @@ function Navbar() {
 
   const handleChange = (e) => {
     const value = e.currentTarget.value;
-    value ? setIsSearchActive(true) : setIsSearchActive(false);
+    if (value) {
+      setIsSearchActive(true);
+      let results = productData.filter((product) =>
+        product.title.toLowerCase().includes(value.toLowerCase())
+      );
+  
+      const categoryResults = categoriesData
+        .filter((category) =>
+          category.collectionName.toLowerCase().includes(value.toLowerCase())
+        )
+        .flatMap((category) => category.products);
+  
+      // console.log(categoryResults);
+  
+      results = [...results, ...categoryResults];
+  
+      // Remove duplicates based on the "id" property
+      const uniqueResults = Object.values(
+        results.reduce((acc, obj) => {
+          acc[obj.id] = obj;
+          return acc;
+        }, {})
+      );
+  
+      setSearchResults(uniqueResults);
+    } else {
+      setIsSearchActive(false);
+      setSearchResults([]);
+    }
+  };
+  
+  
+
+  const handleProductClick = () => {
+    setIsSearchActive(false);
+    setSearchResults([]);
   };
 
   const handleBlur = () => {
-    setIsSearchActive(false);
+    // setIsSearchActive(false);
+    // setSearchResults([]);
   };
+
+  const searchResultComponent = isSearchActive && (
+    <SearchResults
+      searchResults={searchResults}
+      handleProductClick={handleProductClick}
+    />
+  );
 
   return (
     <header className="sticky top-0 left-0 flex items-center justify-between px-3 pt-4 py-2 z-10 bg-white text-black md:px-[2.5%] lg:pt-2 lg:px-[4%]">
@@ -73,7 +121,8 @@ function Navbar() {
               />
               <HiSearch className="absolute top-3 right-3 text-lg text-gray-500" />
             </div>
-            {isSearchActive && <SearchResults />}
+
+            {searchResultComponent}
           </div>
           <nav
             className={`fixed top-0 left-0 h-screen w-[80%] pt-20 flex flex-col z-20 gap-6 bg-white transition duration-200 transform ${
@@ -192,13 +241,19 @@ function Navbar() {
                   isAccountOpen ? "h-auto" : "h-0"
                 }`}
               >
-                <Link to="/account/" className="py-2 px-5 hover:bg-red-200 whitespace-nowrap">
+                <Link
+                  to="/account/"
+                  className="py-2 px-5 hover:bg-red-200 whitespace-nowrap"
+                >
                   My Account
                 </Link>
                 <Link to="/orders/" className="py-2 px-5 hover:bg-red-200">
                   Orders
                 </Link>
-                <Link to="/saved/" className="py-2 px-5 hover:bg-red-200  whitespace-nowrap">
+                <Link
+                  to="/saved/"
+                  className="py-2 px-5 hover:bg-red-200  whitespace-nowrap"
+                >
                   Saved Items
                 </Link>
                 <Link to="/signin/" className="py-2 px-5 hover:bg-red-200">
@@ -216,8 +271,18 @@ function Navbar() {
                   isHelpOpen ? "h-auto" : "h-0"
                 }`}
               >
-                <Link to="/chat/" className="py-2 px-5 whitespace-nowrap hover:bg-red-200">FAQ</Link>
-                <Link to="/contact/" className="py-2 px-5 whitespace-nowrap hover:bg-red-200">Contact Us</Link>
+                <Link
+                  to="/chat/"
+                  className="py-2 px-5 whitespace-nowrap hover:bg-red-200"
+                >
+                  FAQ
+                </Link>
+                <Link
+                  to="/contact/"
+                  className="py-2 px-5 whitespace-nowrap hover:bg-red-200"
+                >
+                  Contact Us
+                </Link>
               </div>
             </div>
             <div className="relative  text-black">
@@ -238,7 +303,7 @@ function Navbar() {
               />
               <HiSearch className="absolute top-3 right-3 text-lg text-gray-500" />
             </div>
-            {isSearchActive && <SearchResults />}
+            {searchResultComponent}
           </div>
         </>
       )}

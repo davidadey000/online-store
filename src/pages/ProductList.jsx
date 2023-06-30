@@ -142,7 +142,7 @@ const Products = ({ match }) => {
             products={productsOnPage}
             filters={filters}
           />
-          <div className="flex flex-row gap-3 justify-center sm:justify-start sm:ml-7">
+          <div className="flex flex-row gap-3 justify-center items-center sm:justify-start sm:ml-7">
             {currentPage !== 1 && (
               <>
                 <button className="text-xl" onClick={handleClickFirst}>
