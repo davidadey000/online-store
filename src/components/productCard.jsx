@@ -23,7 +23,10 @@ const ProductCard = ({ id, price, description, imgUrl }) => {
           <img src={imgUrl} alt="" className="w-full h-[200px] rounded-sm" />
         )}
         <div className="product__body ">
-          <h6 className="product__text--description  ">{description}</h6><h4 className="product__text--price font-semibold">₦{price.toLocaleString('en-US')}</h4>
+          <h6 className="product__text--description  ">{description}</h6>
+          <h4 className="product__text--price font-semibold">
+            ₦{price.toLocaleString("en-US")}
+          </h4>
 
           <small className="product__text--prev-price">#7,000</small>
         </div>

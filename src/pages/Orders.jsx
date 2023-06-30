@@ -16,14 +16,14 @@ const Orders = () => {
     {
       title: "Man Slim Fit Tricot Pullover -Beige",
       image: projectImg1,
-      id: 1234560,
+      id: 1234561,
       status: "Delivered",
       date: date,
     },
     {
       title: "Man Slim Fit Tricot Pullover -Beige",
       image: projectImg1,
-      id: 1234560,
+      id: 1234562,
       status: "Delivered",
       date: date,
     },

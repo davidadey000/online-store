@@ -17,6 +17,7 @@ import "../products.css";
 import ProductFilter from "../components/ProductFilter";
 import Category from "../components/Category";
 import { categoryListData } from "../mockData/categoryList";
+import { useParams } from "react-router-dom";
 
 const Products = ({ match }) => {
   useEffect(() => {
@@ -26,7 +27,9 @@ const Products = ({ match }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const isLaptop = useMediaQuery({ minWidth: 1024 });
 
-  const productCollectionName = match.params.collectionName;
+  const params = useParams();
+  const productCollectionName = params.collectionName;
+  
   const products = categoriesData.find(
     (p) => p.collectionName === productCollectionName
   );

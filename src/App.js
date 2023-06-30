@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./style.css";
 import "./App.css";
 import "./product.css";
 import Navbar from "./components/navbar";
+import AlternativeNavbar from "./components/AlternativeNavbar"; // Import the alternative Navbar component
 import TopBanner from "./components/topBanner";
 import Footer from "./components/footer";
 import Home from "./pages/Home";
@@ -21,6 +22,31 @@ import Chat from "./pages/Chat";
 import CartProvider from "./services/CartProvider";
 import SavedProvider from "./services/SavedProvider";
 
+function Layout({ children }) {
+  const location = useLocation();
+  const hideFooterRoutes = ["/signin"]; // Add the routes where you want to hide the footer
+  const alternativeNavbarRoutes = ["/saved", "/signin", "/cart"]; // Add the routes where you want to use the alternative Navbar
+
+  useEffect(() => {
+    // Scroll to the top of the page when the route changes
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  return (
+    <>
+      <TopBanner />
+      {alternativeNavbarRoutes.includes(location.pathname) ? (
+        <AlternativeNavbar currentUrl={location.pathname} />
+      ) : (
+        <Navbar currentUrl={location.pathname} />
+      )}
+      <ToastContainer />
+      {children}
+      {!hideFooterRoutes.includes(location.pathname) && <Footer />}
+    </>
+  );
+}
+
 function App() {
   const [currentUrl, setCurrentUrl] = useState("");
 
@@ -30,34 +56,24 @@ function App() {
 
   return (
     <Router>
-      <div>
-        <TopBanner />
-        <Navbar currentUrl={currentUrl} />
-        <ToastContainer />
-        <CartProvider>
-          <SavedProvider>
-            <Switch>
-              {/* <Route exact path="/products/" */}
-              <Route exact path="/" component={Home} />
-              <Route exact path="/product/:id/" component={ProductDetail} />
-              <Route
-                exact
-                path="/products/:collectionName/"
-                component={Products}
-              />
-              <Route exact path="/cart/" component={Cart} />
-              <Route exact path="/orders/" component={Orders} />
-              <Route exact path="/help/" component={Help} />
-              <Route exact path="/saved/" component={Saved} />
-              <Route exact path="/signin/" component={Signin} />
-
-              <Route exact path="/account/" component={Account} />
-              <Route exact path="/chat/" component={Chat} />
-            </Switch>
-          </SavedProvider>
-        </CartProvider>
-        <Footer />
-      </div>
+      <CartProvider>
+        <SavedProvider>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/product/:id" element={<ProductDetail />} />
+              <Route path="/products/:collectionName" element={<Products />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/orders" element={<Orders />} />
+              <Route path="/help" element={<Help />} />
+              <Route path="/saved" element={<Saved />} />
+              <Route path="/signin" element={<Signin />} />
+              <Route path="/account" element={<Account />} />
+              <Route path="/chat" element={<Chat />} />
+            </Routes>
+          </Layout>
+        </SavedProvider>
+      </CartProvider>
     </Router>
   );
 }

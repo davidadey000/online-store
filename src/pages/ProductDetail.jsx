@@ -8,6 +8,7 @@ import ProductCollection from "../components/productCollection";
 import Footer from "../components/footer";
 import { useMediaQuery } from "react-responsive";
 import Dropdown from "../components/Dropdown";
+import { useParams } from "react-router-dom";
 
 import {
   FaHeart,
@@ -42,7 +43,8 @@ const Product = ({ match }) => {
 
   const isMobile = useMediaQuery({ maxWidth: 1024 });
   const isLaptop = useMediaQuery({ minWidth: 1024 });
-  const productId = parseInt(match.params.id);
+  const params = useParams();
+  const productId = parseInt(params.id);
   const product = productData.find((p) => p.id === productId);
   const attributes = Object.entries(product.attributes);
   const slideImages = product.imgUrl;
@@ -241,19 +243,19 @@ const Product = ({ match }) => {
                 </div>
               )}
               <div className="product-det__price-terms-container">
-                <p className="product-det__price-terms product-det__price-terms--notnes">
+                <span className="product-det__price-terms product-det__price-terms--notnes">
                   <p className="product-det__price-label">
                     Was: {product.prevPrice}
                   </p>
-                </p>
-                <p className="product-det__price-terms">
+                </span>
+                <span className="product-det__price-terms">
                   <p className="product-det__price-label">Price: </p>
                   <h3 className="product-det__price">{product.price}</h3>
-                </p>
-                <p className="product-det__price-terms product-det__price-terms--notnes">
-                  <p className="product-det__price-label">You save:</p>{" "}
-                  {parseInt(product.prevPrice) - parseInt(product.price)}{" "}
-                </p>
+                </span>
+                <span className="product-det__price-terms product-det__price-terms--notnes">
+                  <p className="product-det__price-label">You save:</p>
+                  {parseInt(product.prevPrice) - parseInt(product.price)}
+                </span>
               </div>
               <p className="product-det__shipping">
                 Shipping & Import Fees deposit to Nigeria.

@@ -83,10 +83,14 @@ function Navbar() {
     setSearchResults([]);
   };
 
-  const handleBlur = () => {
-    // setIsSearchActive(false);
-    // setSearchResults([]);
+  const handleBlur = (e) => {
+    const relatedTarget = e.relatedTarget;
+    if (!relatedTarget || relatedTarget.id !== "search-result-link") {
+      setIsSearchActive(false);
+      setSearchResults([]);
+    }
   };
+  
 
   const searchResultComponent = isSearchActive && (
     <SearchResults
@@ -125,7 +129,7 @@ function Navbar() {
             {searchResultComponent}
           </div>
           <nav
-            className={`fixed top-0 left-0 h-screen w-[80%] pt-20 flex flex-col z-20 gap-6 bg-white transition duration-200 transform ${
+            className={`fixed top-0 left-0 h-screen w-[80%] pt-20 flex flex-col z-50 gap-6 bg-white transition duration-200 transform ${
               isMenuOpen ? "translate-x-0" : "-translate-x-full"
             }`}
             ref={navRef}
@@ -147,7 +151,7 @@ function Navbar() {
               >
                 <Link
                   onClick={handleMenuToggle}
-                  to="/account/"
+                  to="/account"
                   className=" mx-4 flex items-center gap-1"
                 >
                   {" "}
@@ -156,7 +160,7 @@ function Navbar() {
                 </Link>
                 <Link
                   onClick={handleMenuToggle}
-                  to="/orders/"
+                  to="/orders"
                   className=" mx-4 flex items-center gap-1"
                 >
                   <HiCollection />
@@ -164,21 +168,21 @@ function Navbar() {
                 </Link>
                 <Link
                   onClick={handleMenuToggle}
-                  to="/saved/"
+                  to="/saved"
                   className=" mx-4  flex items-center gap-1"
                 >
                   <HiHeart /> Saved Items
                 </Link>
                 <Link
                   onClick={handleMenuToggle}
-                  to="/signin/"
+                  to="/signin"
                   className=" mx-4  flex items-center gap-1"
                 >
                   <HiKey /> Sign In
                 </Link>
                 <Link
                   onClick={handleMenuToggle}
-                  to="/cart/"
+                  to="/cart"
                   className=" mx-4  flex items-center gap-1"
                 >
                   <HiShoppingCart /> Cart
@@ -195,14 +199,14 @@ function Navbar() {
               >
                 <Link
                   onClick={handleMenuToggle}
-                  to="/chat/"
+                  to="/chat"
                   className="mx-4  flex items-center gap-1"
                 >
                   <HiChat /> FAQ
                 </Link>
                 <Link
                   onClick={handleMenuToggle}
-                  to="/contact/"
+                  to="/contact"
                   className=" mx-4  flex items-center gap-1"
                 >
                   <HiPhone /> Contact Us
@@ -218,7 +222,7 @@ function Navbar() {
           </nav>
           {isMenuOpen && (
             <div
-              className="fixed top-0 left-0 h-screen w-screen bg-black bg-opacity-50 z-10"
+              className="fixed top-0 left-0 h-screen w-screen bg-black bg-opacity-50 z-40"
               onClick={handleMenuToggle}
             ></div>
           )}
@@ -242,21 +246,21 @@ function Navbar() {
                 }`}
               >
                 <Link
-                  to="/account/"
+                  to="/account"
                   className="py-2 px-5 hover:bg-red-200 whitespace-nowrap"
                 >
                   My Account
                 </Link>
-                <Link to="/orders/" className="py-2 px-5 hover:bg-red-200">
+                <Link to="/orders" className="py-2 px-5 hover:bg-red-200">
                   Orders
                 </Link>
                 <Link
-                  to="/saved/"
+                  to="/saved"
                   className="py-2 px-5 hover:bg-red-200  whitespace-nowrap"
                 >
                   Saved Items
                 </Link>
-                <Link to="/signin/" className="py-2 px-5 hover:bg-red-200">
+                <Link to="/signin" className="py-2 px-5 hover:bg-red-200">
                   Sign In
                 </Link>
               </div>
@@ -272,13 +276,13 @@ function Navbar() {
                 }`}
               >
                 <Link
-                  to="/chat/"
+                  to="/chat"
                   className="py-2 px-5 whitespace-nowrap hover:bg-red-200"
                 >
                   FAQ
                 </Link>
                 <Link
-                  to="/contact/"
+                  to="/contact"
                   className="py-2 px-5 whitespace-nowrap hover:bg-red-200"
                 >
                   Contact Us

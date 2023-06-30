@@ -10,7 +10,11 @@ const SignIn = () => {
   const [isValid, setIsValid] = useState(false);
 
   const buttonData = [
-    { title: isValid ? "Login" : "Continue", bgColor: "bg-red-400", icon: null },
+    {
+      title: isValid ? "Login" : "Continue",
+      bgColor: "bg-red-400",
+      icon: null,
+    },
     {
       title: "Log in with Google",
       bgColor: "bg-black",
@@ -43,7 +47,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="px-4 flex flex-col gap-4 bg-white">
+    <div className="px-4 flex flex-col gap-4 bg-white min-h-screen">
       <div>
         <div className="pt-5 flex justify-center text-6xl">
           <HiStar />
@@ -54,19 +58,28 @@ const SignIn = () => {
         Type your e-mail or phone number to log in or create a Jumia account.
       </p>
       <div>
-        <input
-          type="email"
-          className={`w-full text-md p-3 border-[1px] rounded-[4px] ${
-            !isValidEmail ? "border-red-500" : "border-gray-500 "
-          }`}
-          placeholder="Email or Mobile Number"
-          value={email}
-          onChange={handleEmailChange}
-        />
-        {!isValidEmail && (
-          <small className="text-red-600 block font-medium p-2 leading-tight">
-            Either the email or the phone number entered is not valid
-          </small>
+        {isValid ? (
+          <div className="flex items-center p-3 rounded-[4px] bg-gray-500 justify-between text-white">
+            <p>{email}</p>
+            <button onClick={() => setIsValid(false)}>Edit</button>
+          </div>
+        ) : (
+          <>
+            <input
+              type="email"
+              className={`w-full text-md p-3 border-[1px] rounded-[4px] ${
+                !isValidEmail ? "border-red-500" : "border-gray-500 "
+              }`}
+              placeholder="Email or Mobile Number"
+              value={email}
+              onChange={handleEmailChange}
+            />
+            {!isValidEmail && (
+              <small className="text-red-600 block font-medium p-2 leading-tight">
+                Either the email or the phone number entered is not valid
+              </small>
+            )}
+          </>
         )}
       </div>
       {isValid && (
@@ -106,13 +119,18 @@ const SignIn = () => {
             Forgot Password?
           </a>
         </div>
-      ): 
-      <Button {...buttonData[1]} />
-      }
-    <p className="text-center text-sm font-semibold text-gray-600 mb-4">For further support, you may visit the Help Center or contact our customer service team.</p>
+      ) : (
+        <Button {...buttonData[1]} />
+      )}
+      <p className="text-center text-sm font-semibold text-gray-600 mb-4">
+        For further support, you may visit the Help Center or contact our
+        customer service team.
+      </p>
     </div>
   );
 };
+
+export default SignIn;
 
 const Button = ({ title, icon, bgColor, classes, onClick }) => {
   return (
@@ -125,5 +143,3 @@ const Button = ({ title, icon, bgColor, classes, onClick }) => {
     </button>
   );
 };
-
-export default SignIn;

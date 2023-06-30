@@ -5,10 +5,11 @@ const SearchResults = ({ searchResults,  handleProductClick }) => {
  
   return (
     <div className="h-screen w-full rounded-b-md bg-white absolute top-full left-0 p-3 sm:px-5 lg:h-min lg:max-h-96 flex flex-col gap-3 overflow-y-scroll  scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300 shadow-md
-    // z-50
+    z-20
     " >
       {searchResults && searchResults.map((product) => (
-        <Link key={product.id} className="flex items-center gap-2" to={`/product/${product.id}`} onClick={handleProductClick} >
+        <Link key={product.id} 
+        id="search-result-link" className="flex items-center gap-2" to={`/product/${product.id}`} onClick={handleProductClick} >
           <img src={product.imgUrl} alt={product.title} className="w-12 text-xs"/>
           <div className="flex flex-col">
             <h3 className="text-sm">{product.title || product.description}</h3>
