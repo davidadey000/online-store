@@ -170,11 +170,13 @@ const Products = ({ match }) => {
           </div>
         </div>
       </div>
-      <div className="sticky bottom-0 left-0 p px-3 sm:h-[5%] lg:hidden bg-gray-300">
-        <p className="text-xs leading-xs text-black">
+      <div className="sticky bottom-0 left-0 p-3 sm:p-5 sm:h-[5%] lg:hidden bg-gray-300">
+        <p className="text-xs sm:text-[13px] sm:text-leading-sm leading-xs text-black">
           This website uses cookies. For further information on how we use
           cookies you can read our <a href="">Privacy and Cookie notice.</a>
         </p>
+                  {/* <ProductFilter filters={filters} onFilterChange={handleFilterChange} /> */}
+
       </div>
     </div>
   );
