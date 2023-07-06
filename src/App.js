@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./style.css";
@@ -42,7 +47,7 @@ function Layout({ children }) {
         <Navbar currentUrl={location.pathname} />
       )}
       <ToastContainer />
-      <div class="flex-grow">{children}</div>
+ {children}
       {!hideFooterRoutes.includes(location.pathname) && <Footer />}
     </div>
   );
@@ -67,7 +72,7 @@ function App() {
               <Route path="/cart" element={<Cart />} />
               <Route path="/orders" element={<Orders />} />
               <Route path="/help" element={<Help />} />
-              <Route path="/404" element={<NotFound />} />
+              <Route path="*" element={<NotFound />} />{" "}
               <Route path="/saved" element={<Saved />} />
               <Route path="/signin" element={<Signin />} />
               <Route path="/account" element={<Account />} />

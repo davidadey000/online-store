@@ -29,7 +29,7 @@ const Orders = () => {
     },
   ];
   return (
-    <div className="px-2 flex flex-col gap-2">
+    <div className="flex-grow px-2 flex flex-col gap-2">
       {orderData.map((item) => (
         <OrderItem key={item.id} {...item} />
       ))}{" "}
