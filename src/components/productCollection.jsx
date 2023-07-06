@@ -46,7 +46,6 @@ const ProductCollection = ({
           <Link
             className="block products__all-link"
             to={`products/${collectionName}/`}
-            
           >
             <h5 className="products__text--option">SEE ALL</h5>
           </Link>

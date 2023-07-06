@@ -7,91 +7,91 @@ export const collectionData = [
       {
         id: "1",
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/4243011/1.jpg?5748",
       },
 
       {
         id: "2",
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
         id: "3",
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
         id: "4",
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/59/114556/1.jpg?8547",
       },
 
       {
         id: "5",
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/74/523389/1.jpg?7424",
       },
 
       {
         id: "6",
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
       {
         id: "7",
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/4243011/1.jpg?5748",
       },
 
       {
         id: "8",
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
         id: "9",
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
         id: "10",
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/59/114556/1.jpg?8547",
       },
 
       {
         id: "11",
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/74/523389/1.jpg?7424",
       },
 
       {
         id: "12",
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
     ],
@@ -103,41 +103,41 @@ export const collectionData = [
     products: [
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/4243011/1.jpg?5748",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/59/114556/1.jpg?8547",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/74/523389/1.jpg?7424",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
     ],
@@ -149,41 +149,41 @@ export const collectionData = [
     products: [
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/4243011/1.jpg?5748",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/59/114556/1.jpg?8547",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/74/523389/1.jpg?7424",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
     ],
@@ -195,129 +195,129 @@ export const collectionData = [
     textColor: "white",
     groups: [
       {
-        description: "Phones & Tablets",
-        imgUrl:
+        title: "Phones & Tablets",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
 
       {
-        description: "Home & Office",
-        imgUrl:
+        title: "Home & Office",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Health & Beauty",
-        imgUrl:
+        title: "Health & Beauty",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Groceries",
-        imgUrl:
-          "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
-      },
-
-      {
-        description: "Video Games",
-        imgUrl:
+        title: "Groceries",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
 
       {
-        description: "Mobile Accessories",
-        imgUrl:
-          "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
-      },
-      {
-        description: "Half Price Store",
-        imgUrl:
-          "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
-      },
-      {
-        description: "Computing",
-        imgUrl:
-          "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
-      },
-      {
-        description: "Electronics",
-        imgUrl:
-          "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
-      },
-      {
-        description: "Fashion",
-        imgUrl:
-          "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
-      },
-      {
-        description: "Portable Power",
-        imgUrl:
-          "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
-      },
-      {
-        description: "Iphones and IOS Devices",
-        imgUrl:
-          "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
-      },
-      {
-        description: "Phones & Tablets",
-        imgUrl:
+        title: "Video Games",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
 
       {
-        description: "Home & Office",
-        imgUrl:
+        title: "Mobile Accessories",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Health & Beauty",
-        imgUrl:
+        title: "Half Price Store",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Groceries",
-        imgUrl:
+        title: "Computing",
+        image:
+          "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
+      },
+      {
+        title: "Electronics",
+        image:
+          "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
+      },
+      {
+        title: "Fashion",
+        image:
+          "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
+      },
+      {
+        title: "Portable Power",
+        image:
+          "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
+      },
+      {
+        title: "Iphones and IOS Devices",
+        image:
+          "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
+      },
+      {
+        title: "Phones & Tablets",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
 
       {
-        description: "Video Games",
-        imgUrl:
+        title: "Home & Office",
+        image:
+          "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
+      },
+      {
+        title: "Health & Beauty",
+        image:
+          "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
+      },
+      {
+        title: "Groceries",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
 
       {
-        description: "Mobile Accessories",
-        imgUrl:
+        title: "Video Games",
+        image:
+          "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
+      },
+
+      {
+        title: "Mobile Accessories",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Half Price Store",
-        imgUrl:
+        title: "Half Price Store",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Computing",
-        imgUrl:
+        title: "Computing",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Electronics",
-        imgUrl:
+        title: "Electronics",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Fashion",
-        imgUrl:
+        title: "Fashion",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Portable Power",
-        imgUrl:
+        title: "Portable Power",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Iphones and IOS Devices",
-        imgUrl:
+        title: "Iphones and IOS Devices",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
     ],
@@ -329,41 +329,41 @@ export const collectionData = [
     products: [
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/4243011/1.jpg?5748",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/59/114556/1.jpg?8547",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/74/523389/1.jpg?7424",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
     ],
@@ -376,41 +376,41 @@ export const collectionData = [
     products: [
       {
         slug: "Below 20000",
-        description: "Below ₦20,000",
-        imgUrl:
+        title: "Below ₦20,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/4243011/1.jpg?5748",
       },
 
       {
         slug: "Below 250000",
-        description: "Below ₦250,000",
-        imgUrl:
+        title: "Below ₦250,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
         slug: "Below 10000",
-        description: "Below ₦10,000",
-        imgUrl:
+        title: "Below ₦10,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
         slug: "Below 150000",
-        description: "Below ₦150,000",
-        imgUrl:
+        title: "Below ₦150,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/59/114556/1.jpg?8547",
       },
 
       {
         slug: "Below 400000",
-        description: "Below ₦400,000",
-        imgUrl:
+        title: "Below ₦400,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/74/523389/1.jpg?7424",
       },
 
       {
         slug: "Below 20000",
-        description: "Below ₦20,000",
-        imgUrl:
+        title: "Below ₦20,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
     ],
@@ -422,41 +422,41 @@ export const collectionData = [
     products: [
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/4243011/1.jpg?5748",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/59/114556/1.jpg?8547",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/74/523389/1.jpg?7424",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
     ],
@@ -468,36 +468,36 @@ export const collectionData = [
     textColor: "white",
     products: [
       {
-        description: "Below ₦20,000",
-        imgUrl:
+        title: "Below ₦20,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/4243011/1.jpg?5748",
       },
 
       {
-        description: "Below ₦250,000",
-        imgUrl:
+        title: "Below ₦250,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        description: "Below ₦10,000",
-        imgUrl:
+        title: "Below ₦10,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        description: "Below ₦150,000",
-        imgUrl:
+        title: "Below ₦150,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/59/114556/1.jpg?8547",
       },
 
       {
-        description: "Below ₦400,000",
-        imgUrl:
+        title: "Below ₦400,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/74/523389/1.jpg?7424",
       },
 
       {
-        description: "Below ₦20,000",
-        imgUrl:
+        title: "Below ₦20,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
     ],
@@ -509,41 +509,41 @@ export const collectionData = [
     products: [
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/4243011/1.jpg?5748",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/59/114556/1.jpg?8547",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(w1200hite)/product/74/523389/1.jpg?7424",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
     ],
@@ -555,17 +555,17 @@ export const collectionData = [
     textColor: "white",
     slideImages: [
       {
-        ImgUrl:
+        image:
           "https://ng.jumia.is/cms/0-1-initiatives/jbps/updated-jbp-2022/adidas/mlp.jpg",
       },
 
       {
-        ImgUrl:
+        image:
           "https://ng.jumia.is/cms/0-1-initiatives/jbps/updated-jbp-2022/Diageo/Desktop-MLP-slider_-1168x384-(Show-Now).jpg",
       },
 
       {
-        ImgUrl:
+        image:
           "https://ng.jumia.is/cms/0-1-initiatives/jbps/updated-jbp-2022/samsung/Desktop_MLP_slider__1168x384_(Show_Now).jpg",
       },
     ],
@@ -578,66 +578,66 @@ export const collectionData = [
     textColor: "white",
     groups: [
       {
-        description: "Phones & Tablets",
-        imgUrl:
+        title: "Phones & Tablets",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
 
       {
-        description: "Home & Office",
-        imgUrl:
+        title: "Home & Office",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Health & Beauty",
-        imgUrl:
+        title: "Health & Beauty",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Groceries",
-        imgUrl:
-          "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
-      },
-
-      {
-        description: "Video Games",
-        imgUrl:
+        title: "Groceries",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
 
       {
-        description: "Mobile Accessories",
-        imgUrl:
+        title: "Video Games",
+        image:
+          "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
+      },
+
+      {
+        title: "Mobile Accessories",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Half Price Store",
-        imgUrl:
+        title: "Half Price Store",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Computing",
-        imgUrl:
+        title: "Computing",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Electronics",
-        imgUrl:
+        title: "Electronics",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Fashion",
-        imgUrl:
+        title: "Fashion",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Portable Power",
-        imgUrl:
+        title: "Portable Power",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Iphones and IOS Devices",
-        imgUrl:
+        title: "Iphones and IOS Devices",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
     ],
@@ -650,66 +650,66 @@ export const collectionData = [
     textColor: "white",
     groups: [
       {
-        description: "Phones & Tablets",
-        imgUrl:
+        title: "Phones & Tablets",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
 
       {
-        description: "Home & Office",
-        imgUrl:
+        title: "Home & Office",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Health & Beauty",
-        imgUrl:
+        title: "Health & Beauty",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Groceries",
-        imgUrl:
-          "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
-      },
-
-      {
-        description: "Video Games",
-        imgUrl:
+        title: "Groceries",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
 
       {
-        description: "Mobile Accessories",
-        imgUrl:
+        title: "Video Games",
+        image:
+          "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
+      },
+
+      {
+        title: "Mobile Accessories",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Half Price Store",
-        imgUrl:
+        title: "Half Price Store",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Computing",
-        imgUrl:
+        title: "Computing",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Electronics",
-        imgUrl:
+        title: "Electronics",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Fashion",
-        imgUrl:
+        title: "Fashion",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Portable Power",
-        imgUrl:
+        title: "Portable Power",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
       {
-        description: "Iphones and IOS Devices",
-        imgUrl:
+        title: "Iphones and IOS Devices",
+        image:
           "https://ng.jumia.is/cms/0-0-black-friday/2021/userneeds/un/home-appliances_260x144v2.png",
       },
     ],
@@ -722,41 +722,41 @@ export const collectionData = [
     products: [
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/4243011/1.jpg?5748",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/59/114556/1.jpg?8547",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/74/523389/1.jpg?7424",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
     ],
@@ -768,41 +768,41 @@ export const collectionData = [
     products: [
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/4243011/1.jpg?5748",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/59/114556/1.jpg?8547",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/74/523389/1.jpg?7424",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
     ],
@@ -815,36 +815,36 @@ export const collectionData = [
     textColor: "white",
     products: [
       {
-        description: "Below ₦20,000",
-        imgUrl:
+        title: "Below ₦20,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/4243011/1.jpg?5748",
       },
 
       {
-        description: "Below ₦250,000",
-        imgUrl:
+        title: "Below ₦250,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        description: "Below ₦10,000",
-        imgUrl:
+        title: "Below ₦10,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        description: "Below ₦150,000",
-        imgUrl:
+        title: "Below ₦150,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/59/114556/1.jpg?8547",
       },
 
       {
-        description: "Below ₦400,000",
-        imgUrl:
+        title: "Below ₦400,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/74/523389/1.jpg?7424",
       },
 
       {
-        description: "Below ₦20,000",
-        imgUrl:
+        title: "Below ₦20,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
     ],
@@ -857,36 +857,36 @@ export const collectionData = [
     textColor: "white",
     products: [
       {
-        description: "Below ₦20,000",
-        imgUrl:
+        title: "Below ₦20,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/4243011/1.jpg?5748",
       },
 
       {
-        description: "Below ₦250,000",
-        imgUrl:
+        title: "Below ₦250,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        description: "Below ₦10,000",
-        imgUrl:
+        title: "Below ₦10,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        description: "Below ₦150,000",
-        imgUrl:
+        title: "Below ₦150,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/59/114556/1.jpg?8547",
       },
 
       {
-        description: "Below ₦400,000",
-        imgUrl:
+        title: "Below ₦400,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/74/523389/1.jpg?7424",
       },
 
       {
-        description: "Below ₦20,000",
-        imgUrl:
+        title: "Below ₦20,000",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
     ],
@@ -899,41 +899,41 @@ export const collectionData = [
     products: [
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/4243011/1.jpg?5748",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/59/114556/1.jpg?8547",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/74/523389/1.jpg?7424",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
     ],
@@ -945,41 +945,41 @@ export const collectionData = [
     products: [
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/4243011/1.jpg?5748",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/59/114556/1.jpg?8547",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/74/523389/1.jpg?7424",
       },
 
       {
         price: "4000",
-        description: "Design & Development",
-        imgUrl:
+        title: "Design & Development",
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
     ],

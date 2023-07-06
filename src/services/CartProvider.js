@@ -7,7 +7,7 @@ const CartProvider = ({ children }) => {
 
   const total = cartItems.length
   const totalPrice = cartItems.reduce((total, item) => {
-    const itemPrice = parseFloat(item.price.replace('₦', ''));
+    const itemPrice = item.price;
     return total + itemPrice * item.quantity;
   }, 0);
   

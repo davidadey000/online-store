@@ -47,7 +47,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="px-4 flex flex-col gap-4 bg-white min-h-screen">
+    <div className="px-4 flex flex-col gap-4">
       <div>
         <div className="pt-5 flex justify-center text-6xl">
           <HiStar />

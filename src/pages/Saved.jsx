@@ -53,7 +53,7 @@ const Saved = () => {
   };
 
   return (
-    <div className="flex-grow">
+    <div>
       <div className="px-4 py-2 text-xl">Saved Items ({total})</div>
       <div className="p-2">
         {savedItems.map((item) => (

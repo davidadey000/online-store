@@ -7,21 +7,24 @@ const SlideShow = ({ slideImages }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const loadImage = async (imgUrl) => {
-      const image = new Image();
-      image.src = imgUrl;
-      await image.decode();
+    const loadImage = async (image) => {
+      const img = new Image();
+      img.src = image;
+      await img.decode();
       setIsLoading(false);
     };
 
     slideImages.forEach((item) => {
-      loadImage(item.ImgUrl);
+      loadImage(item.image);
     });
   }, [slideImages]);
 
   return (
     <div className="carousel-block">
-      <div className="carousel__header">
+      <div
+        className="rounded-t-md bg-gray-800 text-white
+      flex justify-center w-full px-3 py-2"
+      >
         <h4 className="carousel__text">Our Official Store</h4>
       </div>
       <div className="carousel__body">
@@ -45,7 +48,7 @@ const SlideShow = ({ slideImages }) => {
             ) : (
               <img
                 key={index}
-                src={item.ImgUrl}
+                src={item.image}
                 alt={item.caption}
                 className="carousel__image"
               />

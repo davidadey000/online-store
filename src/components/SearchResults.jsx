@@ -10,7 +10,7 @@ const SearchResults = ({ searchResults,  handleProductClick }) => {
       {searchResults && searchResults.map((product) => (
         <Link key={product.id} 
         id="search-result-link" className="flex items-center gap-2" to={`/product/${product.id}`} onClick={handleProductClick} >
-          <img src={product.imgUrl} alt={product.title} className="w-12 text-xs"/>
+          <img src={product.image} alt={product.title} className="w-12 text-xs"/>
           <div className="flex flex-col">
             <h3 className="text-sm">{product.title || product.description}</h3>
             <p className="font-semibold">₦{product.price}</p>

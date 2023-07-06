@@ -23,7 +23,7 @@ const Item = ({
       }  bg-white p-2 rounded-sm`}
     >
       <div className="rounded-sm flex gap-2">
-        <div className={`max-w-[31%] relative w-full  h-100`}>
+        <div className={`max-w-[31%] max-h-20 relative`}>
           <small className="absolute right-0 bg-red-50 text-red-400 px-2">
             -70%
           </small>

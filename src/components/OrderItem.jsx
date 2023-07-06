@@ -2,7 +2,7 @@ import React from "react";
 
 const OrderItem = ({ image, title, id, size, status, date }) => (
   <div className="bg-white p-2 rounded-sm flex gap-2">
-    <div className={`max-w-[27%] relative w-full  h-100`}>
+    <div className={`max-w-[27%] relative max-h-22`}>
       <img src={image} alt="Product Image" className="h-full rounded-sm"></img>
     </div>
     <div className="w-70 flex flex-col gap-[1px]">

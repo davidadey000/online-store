@@ -3,16 +3,16 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { TextContentLoader } from "./TextContentLoader";
 
-const ProductCard = ({ id, price, description, imgUrl }) => {
+const ProductCard = ({ id, price, title, image }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const image = new Image();
-    image.src = imgUrl;
-    image.onload = () => {
+    const img = new Image();
+    img.src = image;
+    img.onload = () => {
       setIsLoading(false);
     };
-  }, [imgUrl]);
+  }, [image]);
 
   return (
     <Link className="block" to={`/product/${id}`}>
@@ -20,10 +20,10 @@ const ProductCard = ({ id, price, description, imgUrl }) => {
         {isLoading ? (
           <TextContentLoader width="100%" height="200px"></TextContentLoader>
         ) : (
-          <img src={imgUrl} alt="" className="w-full h-[200px] rounded-sm" />
+          <img src={image} alt="" className="w-full h-[200px] rounded-sm" />
         )}
         <div className="product__body ">
-          <h6 className="product__text--description  ">{description}</h6>
+          <h6 className="product__text--description">{title}</h6>
           <h4 className="product__text--price font-semibold">
             ₦{price.toLocaleString("en-US")}
           </h4>
