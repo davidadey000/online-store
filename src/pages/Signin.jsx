@@ -19,7 +19,7 @@ const SignIn = () => {
       title: "Log in with Google",
       bgColor: "bg-black",
       icon: <HiUserCircle className="absolute top-[35%] left-3" />,
-      classes: "mt-12",
+      classes: "mt-16",
     },
   ];
 
@@ -47,15 +47,15 @@ const SignIn = () => {
   };
 
   return (
-    <div className="px-4 flex flex-col  flex-grow bg-white items-center">
-        <div className="sm:max-w-lg flex-grow gap-4 flex flex-col">
+    <div className="px-5 flex flex-col  flex-grow bg-white items-center">
+        <div className="sm:max-w-md flex-grow gap-4 flex flex-col">
       <div>      
           <div className="pt-5 flex justify-center text-6xl">
             <HiStar />
           </div>
           <h1 className="text-center font-semibold text-xl">Welcome to Jumia</h1>
         </div>
-        <p className="text-center px-1 text-gray-600 sm:text-xl">
+        <p className="text-center px-1 mb-2 text-gray-600 sm:text-md">
           Type your e-mail or phone number to log in or create a Jumia account.
         </p>
         <div>
@@ -69,14 +69,14 @@ const SignIn = () => {
               <input
                 type="email"
                 className={`w-full text-md p-3 border-[1px] rounded-[4px] ${
-                  !isValidEmail ? "border-red-500" : "border-gray-500 "
+                  !isValidEmail ? "border-red-700 placeholder-red-700" : "border-gray-500 "
                 }`}
                 placeholder="Email or Mobile Number"
                 value={email}
                 onChange={handleEmailChange}
               />
               {!isValidEmail && (
-                <small className="text-red-600 block font-medium p-2 leading-tight">
+                <small className="text-red-700 block font-medium p-2 leading-tight">
                   Either the email or the phone number entered is not valid
                 </small>
               )}
@@ -89,7 +89,7 @@ const SignIn = () => {
               <input
                 type={showPassword ? "text" : "password"}
                 className={`w-full text-md p-3 border-[1px] rounded-[4px] ${
-                  !isValidPassword ? "border-red-500" : "border-gray-500 "
+                  !isValidPassword ? "border-red-700" : "border-gray-500 "
                 }`}
                 placeholder="Password"
                 value={password}
@@ -124,11 +124,11 @@ const SignIn = () => {
           <Button {...buttonData[1]} />
         )}
         <div className="mb-4 m-auto">
-          <p className="text-center text-sm font-semibold text-gray-600 mb-2 sm:text-lg">
+          <p className="text-center text-sm font-semibold text-gray-600 mb-2 sm:text-md">
             For further support, you may visit the Help Center or contact our
             customer service team.
           </p>
-          <p className="uppercase m-3 text-center font-semibold sm:text-2xl">Jumia</p>
+          <p className="uppercase m-3 text-center font-semibold text-xl sm:text-2xl">Jumia</p>
         </div>
     </div>  </div>
   );
