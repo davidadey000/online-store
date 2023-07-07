@@ -10,6 +10,7 @@ const Home = () => {
       <CollectionList />
       <div style={{ height: "30vh", backgroundColor: "tomato" }}></div>
       <About />
+      
     </div>
   );
 };

@@ -8,32 +8,27 @@ const Footer = () => {
   return (
     <>
       {isMobile ? (
-        <div className="footer--mobile">
-          <div className="footer__top--mobile">
-            <a href="#categories" className="footer__back-to-top">
-              BACK TO TOP
-            </a>
-          </div>
-          <div className="footer__bottom--mobile">
-            <a href="" className="footer__main-link">
+        <div className="footer--mobile p-3 bg-gray-800">
+          <div className="footer__bottom--mobile gap-x-2">
+            <a href="" className="footer__main-link text-[0.65rem] p-2 ">
               HELP CENTER
             </a>
-            <a href="" className="footer__main-link">
+            <a href="" className="footer__main-link text-[0.65rem] p-2 ">
               CONTACT US
             </a>
-            <a href="" className="footer__main-link">
+            <a href="" className="footer__main-link text-[0.65rem] p-2 ">
               TERMS & CONDITIONS
             </a>
-            <a href="" className="footer__main-link">
+            <a href="" className="footer__main-link text-[0.65rem] p-2 ">
               PRIVACY NOTICE
             </a>
-            <a href="" className="footer__main-link">
+            <a href="" className="footer__main-link text-[0.65rem] p-2 ">
               COOKIE NOTICE
             </a>
-            <a href="" className="footer__main-link">
+            <a href="" className="footer__main-link text-[0.65rem] p-2 ">
               BECOME A SELLER
             </a>
-            <a href="" className="footer__main-link">
+            <a href="" className="footer__main-link text-[0.65rem] p-2 ">
               REPORT A PRODUCT
             </a>
           </div>
@@ -68,14 +63,20 @@ const Footer = () => {
                 Get access to exclusive offers.
               </p>
               <div className="lg-footer__top-middle-form">
-                <button className="lg-footer__top-right__btn text-white">Male</button>
-                <button className="lg-footer__top-right__btn text-white">female</button>
+                <button className="lg-footer__top-right__btn text-white">
+                  Male
+                </button>
+                <button className="lg-footer__top-right__btn text-white">
+                  female
+                </button>
               </div>
             </div>
           </div>
           <div className="lg-footer__bottom">
             <div className="lg-footer__bottom__card">
-              <h5 className="lg-footer__bottom__title text-sm font-semibold">LET US HELP YOU</h5>
+              <h5 className="lg-footer__bottom__title text-sm font-semibold">
+                LET US HELP YOU
+              </h5>
               <a href="" className="lg-footer__bottom__link">
                 Help Center
               </a>
@@ -109,7 +110,9 @@ const Footer = () => {
             </div>
 
             <div className="lg-footer__bottom__card">
-              <h5 className="lg-footer__bottom__title text-sm font-semibold">ABOUT STORE</h5>
+              <h5 className="lg-footer__bottom__title text-sm font-semibold">
+                ABOUT STORE
+              </h5>
               <a href="" className="lg-footer__bottom__link">
                 About us
               </a>
@@ -161,7 +164,9 @@ const Footer = () => {
             </div>
 
             <div className="lg-footer__bottom__card">
-              <h5 className="lg-footer__bottom__title text-sm font-semibold">STORE INTERNATIONAL</h5>
+              <h5 className="lg-footer__bottom__title text-sm font-semibold">
+                STORE INTERNATIONAL
+              </h5>
               <a
                 href="https://www.store.dz/"
                 className="lg-footer__bottom__link"
@@ -225,7 +230,9 @@ const Footer = () => {
             </div>
 
             <div className="lg-footer__bottom__card">
-              <h5 className="lg-footer__bottom__title text-sm font-semibold">JOIN US ON</h5>
+              <h5 className="lg-footer__bottom__title text-sm font-semibold">
+                JOIN US ON
+              </h5>
               {/* <a href="" className="lg-footer__bottom__link">
                 item link
               </a>

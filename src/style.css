@@ -485,10 +485,10 @@ nav a:hover {
 .footer__bottom--mobile {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem 0;
+  /* gap: 0.75rem 0; */
   justify-content: space-evenly;
-  padding: 5%;
-  background-color: rgb(40, 40, 40);
+  /* padding: 5%; */
+  /* background-color: rgb(40, 40, 40); */
 }
 
 .footer__back-to-top {
@@ -497,7 +497,7 @@ nav a:hover {
 }
 
 .footer__main-link {
-  font-size: 0.75rem;
+  /* font-size: 0.75rem; */
   text-decoration: none;
   color: white;
 }
