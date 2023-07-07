@@ -47,86 +47,90 @@ const SignIn = () => {
   };
 
   return (
-    <div className="px-4 flex flex-col gap-4 flex-grow bg-white">
-      <div>
-        <div className="pt-5 flex justify-center text-6xl">
-          <HiStar />
+    <div className="px-4 flex flex-col  flex-grow bg-white items-center">
+        <div className="sm:max-w-lg flex-grow gap-4 flex flex-col">
+      <div>      
+          <div className="pt-5 flex justify-center text-6xl">
+            <HiStar />
+          </div>
+          <h1 className="text-center font-semibold text-xl">Welcome to Jumia</h1>
         </div>
-        <h1 className="text-center font-semibold text-xl">Welcome to Jumia</h1>
-      </div>
-      <p className="text-center px-1 text-gray-600">
-        Type your e-mail or phone number to log in or create a Jumia account.
-      </p>
-      <div>
-        {isValid ? (
-          <div className="flex items-center p-3 rounded-[4px] bg-gray-500 justify-between text-white">
-            <p>{email}</p>
-            <button onClick={() => setIsValid(false)}>Edit</button>
-          </div>
-        ) : (
-          <>
-            <input
-              type="email"
-              className={`w-full text-md p-3 border-[1px] rounded-[4px] ${
-                !isValidEmail ? "border-red-500" : "border-gray-500 "
-              }`}
-              placeholder="Email or Mobile Number"
-              value={email}
-              onChange={handleEmailChange}
-            />
-            {!isValidEmail && (
-              <small className="text-red-600 block font-medium p-2 leading-tight">
-                Either the email or the phone number entered is not valid
-              </small>
-            )}
-          </>
-        )}
-      </div>
-      {isValid && (
+        <p className="text-center px-1 text-gray-600 sm:text-xl">
+          Type your e-mail or phone number to log in or create a Jumia account.
+        </p>
         <div>
-          <div className="relative">
-            <input
-              type={showPassword ? "text" : "password"}
-              className={`w-full text-md p-3 border-[1px] rounded-[4px] ${
-                !isValidPassword ? "border-red-500" : "border-gray-500 "
-              }`}
-              placeholder="Password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-            <span
-              className="absolute top-[35%] right-2 cursor-pointer"
-              onClick={toggleShowPassword}
-            >
-              {showPassword ? (
-                <HiEyeOff className="text-gray-500" />
-              ) : (
-                <HiEye className="text-gray-500" />
+          {isValid ? (
+            <div className="flex items-center p-3 rounded-[4px] bg-gray-500 justify-between text-white">
+              <p>{email}</p>
+              <button onClick={() => setIsValid(false)}>Edit</button>
+            </div>
+          ) : (
+            <>
+              <input
+                type="email"
+                className={`w-full text-md p-3 border-[1px] rounded-[4px] ${
+                  !isValidEmail ? "border-red-500" : "border-gray-500 "
+                }`}
+                placeholder="Email or Mobile Number"
+                value={email}
+                onChange={handleEmailChange}
+              />
+              {!isValidEmail && (
+                <small className="text-red-600 block font-medium p-2 leading-tight">
+                  Either the email or the phone number entered is not valid
+                </small>
               )}
-            </span>
-          </div>
-          {!isValidPassword && (
-            <small className="text-red-600 block font-medium p-2 leading-tight">
-              The password is incorrect!
-            </small>
+            </>
           )}
         </div>
-      )}
-      <Button onClick={handleContinueClick} {...buttonData[0]} />
-      {isValid ? (
-        <div className="text-center">
-          <a href="/forgot-password" className=" block text-red-300 underline">
-            Forgot Password?
-          </a>
+        {isValid && (
+          <div>
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                className={`w-full text-md p-3 border-[1px] rounded-[4px] ${
+                  !isValidPassword ? "border-red-500" : "border-gray-500 "
+                }`}
+                placeholder="Password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+              <span
+                className="absolute top-[35%] right-2 cursor-pointer"
+                onClick={toggleShowPassword}
+              >
+                {showPassword ? (
+                  <HiEyeOff className="text-gray-500" />
+                ) : (
+                  <HiEye className="text-gray-500" />
+                )}
+              </span>
+            </div>
+            {!isValidPassword && (
+              <small className="text-red-600 block font-medium p-2 leading-tight">
+                The password is incorrect!
+              </small>
+            )}
+          </div>
+        )}
+        <Button onClick={handleContinueClick} {...buttonData[0]} />
+        {isValid ? (
+          <div className="text-center">
+            <a href="/forgot-password" className=" block text-red-300 underline">
+              Forgot Password?
+            </a>
+          </div>
+        ) : (
+          <Button {...buttonData[1]} />
+        )}
+        <div className="mb-4 m-auto">
+          <p className="text-center text-sm font-semibold text-gray-600 mb-2 sm:text-lg">
+            For further support, you may visit the Help Center or contact our
+            customer service team.
+          </p>
+          <p className="uppercase m-3 text-center font-semibold sm:text-2xl">Jumia</p>
         </div>
-      ) : (
-        <Button {...buttonData[1]} />
-      )}
-      <p className="text-center text-sm font-semibold text-gray-600 mb-4">
-        For further support, you may visit the Help Center or contact our
-        customer service team.
-      </p>
-    </div>
+    </div>  </div>
   );
 };
 
@@ -135,7 +139,7 @@ export default SignIn;
 const Button = ({ title, icon, bgColor, classes, onClick }) => {
   return (
     <button
-      className={`${bgColor} ${classes} relative w-full py-3 text-[17px] text-white font-semibold rounded-[4px]`}
+      className={`${bgColor} ${classes} relative w-full py-3 text-[17px] text-white font-semibold rounded-[4px] shadow-md`}
       onClick={onClick}
     >
       {icon}
