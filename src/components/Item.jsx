@@ -20,37 +20,54 @@ const Item = ({
     <div
       className={`${
         type === "cart" ? "mx-2 mb-1" : "mx-1 mb-2 shadow-sm"
-      }  bg-white p-2 rounded-sm`}
+      }  bg-white p-2 rounded-sm lg:m-0`}
     >
-      <div className="rounded-sm flex gap-2">
-        <div className={`max-w-[31%] max-h-20 relative`}>
-          <small className="absolute right-0 bg-red-50 text-red-400 px-2">
-            -70%
-          </small>
-          <img src={image} alt="Product Image" className="h-full rounded-sm"></img>
+      <div className="rounded-sm flex gap-2 justify-between">
+        <div className="flex gap-2">
+          <div className={`max-w-[31%] sm:w-[100px] sm:h-28 max-h-20 relative`}>
+            <small className="absolute right-0 bg-red-50 text-red-400 px-2">
+              -70%
+            </small>
+            <img src={image} alt="Product Image" className="w-full h-full rounded-sm"></img>
+          </div>
+          <div className="w-70 lg:w-[70%] flex flex-col gap-[1px]">
+            <p
+              className={`${type === "cart" ? "text-xs" : "text-sm"}  leading-4 lg:text-[16px] lg:w-80 lg:leading-snug`}
+            >
+              {title}
+            </p>
+            <div
+              className={`${
+                type === "cart" ? "gap-1 items-center" : "flex-col"
+              } flex lg:hidden`}
+            >
+              <p className="text-lg">₦{price}</p>
+              <p
+                className={`${
+                  type === "cart" ? "text-xs" : "text-md"
+                } text-gray-600 line-through`}
+              >
+                ₦{prevPrice}
+              </p>
+            </div>
+            <p className="text-xs text-gray-600">{status}</p>
+          </div>
         </div>
-        <div className="w-70 flex flex-col gap-[1px]">
-          <p
-            className={`${type === "cart" ? "text-xs" : "text-sm"}  leading-4`}
-          >
-            {title}
-          </p>
-          <div
+        <div
             className={`${
-              type === "cart" ? "gap-1 items-center" : "flex-col"
-            } flex`}
+              type === "cart" ? "gap-1 items-center lg:flex-col" : "flex-col"
+            } hidden lg:flex lg:items-start`}
           >
             <p className="text-lg">₦{price}</p>
             <p
               className={`${
                 type === "cart" ? "text-xs" : "text-md"
-              } text-gray-600 line-through`}
+              } text-gray-600 line-through`} 
             >
               ₦{prevPrice}
             </p>
           </div>
-          <p className="text-xs text-gray-600">{status}</p>
-        </div>
+
       </div>
 
       <div className="flex justify-between mt-3">
@@ -61,21 +78,21 @@ const Item = ({
           <FaTrash className="text-red-400" />
           <p className="ml-3 text-red-400">REMOVE</p>
         </button>
-        <div className="flex items-center">
+        <div className="flex items-center w-[50%] lg:w-32">
           {type === "cart" ? (
             <>
               <button
                 onClick={() => handleDecrement(id)}
-                className={`p-2 rounded-md text-white ${
+                className={`p-2 shadow-xl rounded-md text-white ${
                   quantity ? "bg-red-400" : "bg-red-300"
                 }`}
               >
                 <FaMinus />
               </button>
-              <p className="w-20 flex justify-center">{quantity}</p>
+              <p className="flex justify-center w-full">{quantity}</p>
               <button
                 onClick={() => handleIncrement(id)}
-                className="p-2 rounded-md text-white bg-red-400"
+                className="p-2 shadow-xl rounded-md text-white bg-red-400"
               >
                 <FaPlus />
               </button>
@@ -95,3 +112,4 @@ const Item = ({
 };
 
 export default Item;
+

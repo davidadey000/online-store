@@ -44,29 +44,37 @@ const Cart = () => {
   };
 
   return (
-    <div>
-      <Title title="cart summary" />
-      <div className="px-3 py-2 flex justify-between bg-white">
-        <p>Subtotal</p> <p className="font-bold">₦{totalPrice}</p>
+    <div className="lg:mx-8 lg:my-4">
+      <div className="lg:hidden">
+        <Subtotal totalPrice={totalPrice} />
       </div>
-      <Title title={`cart(${total})`} />
-      {cartItems.map((item) => (
-        <Item
-          key={item.id}
-          {...item}
-          type="cart"
-          handleIncrement={handleIncrement}
-          handleDecrement={handleDecrement}
-          handleRemoveFromCart={handleRemoveFromCart}
-        />
-      ))}
-      <div className="px-4 py-2 flex gap-2 bg-white my-4">
-        <button className="p-4 rounded-md border-[1px] border-red-500 text-red-400">
-          <FaPhone className="transform -scale-x-100" />
-        </button>
-        <button className="w-80 bg-red-400 text-white rounded-sm py-3">
-          CHECKOUT (₦{totalPrice})
-        </button>
+      <div className="lg:flex lg:flex-row gap-3">
+        <div className="lg:w-3/4 lg:shadow-lg lg:rounded-sm lg:bg-white lg:pb-2">
+          
+      <Title title={`cart(${total})`} extraClass="lg:bg-white lg:ml-0 lg:p-2 lg:rounded-t-md"/>
+          {cartItems.map((item) => (
+            <Item
+              key={item.id}
+              {...item}
+              type="cart"
+              handleIncrement={handleIncrement}
+              handleDecrement={handleDecrement}
+              handleRemoveFromCart={handleRemoveFromCart}
+            />
+          ))}
+        </div>
+        <div className="px-4 py-2 flex gap-2 bg-white my-4 lg:w-1/4 lg:flex-col h-min lg:shadow-lg">
+          <div className="hidden lg:block">
+            <Subtotal totalPrice={totalPrice} />
+          </div>
+
+          <button className="p-4 rounded-md border-[1px] border-red-500 text-red-400 lg:hidden">
+            <FaPhone className="transform -scale-x-100 " />
+          </button>
+          <button className="w-full shadow-md bg-red-400 text-white rounded-sm lg:rounded-md py-3">
+            CHECKOUT (₦{totalPrice})
+          </button>
+        </div>
       </div>
 
       <ProductCollection
@@ -91,3 +99,14 @@ const Cart = () => {
 };
 
 export default Cart;
+
+export const Subtotal = ({ totalPrice }) => {
+  return (
+    <div>
+      <Title title="cart summary" extraClass="lg:ml-0"/>
+      <div className="px-3 py-2 flex justify-between bg-white lg:p-0">
+        <p>Subtotal</p> <p className="font-bold lg:text-xl">₦{totalPrice}</p>
+      </div>
+    </div>
+  );
+};

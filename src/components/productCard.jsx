@@ -27,7 +27,6 @@ const ProductCard = ({ id, price, title, image }) => {
           <h4 className="product__text--price font-semibold">
             ₦{price.toLocaleString("en-US")}
           </h4>
-
           <small className="product__text--prev-price">#7,000</small>
         </div>
       </div>
