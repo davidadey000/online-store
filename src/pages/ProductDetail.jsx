@@ -68,7 +68,7 @@ const Product = ({ match }) => {
         id: "1",
         price: "4000",
         description: "Design & Development",
-        imgUrl:
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/4243011/1.jpg?5748",
       },
 
@@ -76,21 +76,21 @@ const Product = ({ match }) => {
         id: "2",
         price: "4000",
         description: "Design & Development",
-        imgUrl:
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
         id: "3",
         price: "4000",
         description: "Design & Development",
-        imgUrl:
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
         id: "4",
         price: "4000",
         description: "Design & Development",
-        imgUrl:
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/59/114556/1.jpg?8547",
       },
 
@@ -98,7 +98,7 @@ const Product = ({ match }) => {
         id: "5",
         price: "4000",
         description: "Design & Development",
-        imgUrl:
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/74/523389/1.jpg?7424",
       },
 
@@ -106,14 +106,14 @@ const Product = ({ match }) => {
         id: "6",
         price: "4000",
         description: "Design & Development",
-        imgUrl:
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
       {
         id: "7",
         price: "4000",
         description: "Design & Development",
-        imgUrl:
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/4243011/1.jpg?5748",
       },
 
@@ -121,21 +121,21 @@ const Product = ({ match }) => {
         id: "8",
         price: "4000",
         description: "Design & Development",
-        imgUrl:
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
         id: "9",
         price: "4000",
         description: "Design & Development",
-        imgUrl:
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
         id: "10",
         price: "4000",
         description: "Design & Development",
-        imgUrl:
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/59/114556/1.jpg?8547",
       },
 
@@ -143,7 +143,7 @@ const Product = ({ match }) => {
         id: "11",
         price: "4000",
         description: "Design & Development",
-        imgUrl:
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/74/523389/1.jpg?7424",
       },
 
@@ -151,7 +151,7 @@ const Product = ({ match }) => {
         id: "12",
         price: "4000",
         description: "Design & Development",
-        imgUrl:
+        image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
     ],

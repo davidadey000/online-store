@@ -151,7 +151,7 @@ return () => {
             {searchResultComponent}
           </div>
           <nav
-            className={`fixed top-0 left-0 h-screen w-[80%] pt-20 flex flex-col z-50 gap-6 bg-white transition duration-200 transform ${
+            className={`fixed top-0 left-0 h-screen w-[80%] sm:w-[65%] pt-20 flex flex-col z-50 gap-6 bg-white transition duration-200 transform ${
               isMenuOpen ? "translate-x-0" : "-translate-x-full"
             }`}
             ref={navRef}
@@ -160,7 +160,7 @@ return () => {
               className="visible flex opacity-100 cursor-pointer bg-transparent border-none outline-none text-black text-3xl lg:hidden absolute top-3 left-2"
               onClick={handleMenuToggle}
             >
-              <HiX className="absolute text-gray-500 top-[0.2rem] left-1" />
+              <HiX className="absolute text-gray-500 top-[0.2rem] left-1 sm:left-3 sm:top-[0.5rem]" />
             </button>
 
             <div className="relative text-black">
@@ -174,7 +174,7 @@ return () => {
                 <Link
                   onClick={handleMenuToggle}
                   to="/account"
-                  className=" mx-4 flex items-center gap-1"
+                  className=" mx-4 sm:text-2xl flex items-center gap-1"
                 >
                   {" "}
                   <HiUserCircle />
@@ -183,7 +183,7 @@ return () => {
                 <Link
                   onClick={handleMenuToggle}
                   to="/orders"
-                  className=" mx-4 flex items-center gap-1"
+                  className=" sm:text-2xl mx-4 flex items-center gap-1"
                 >
                   <HiCollection />
                   Orders
@@ -191,21 +191,21 @@ return () => {
                 <Link
                   onClick={handleMenuToggle}
                   to="/saved"
-                  className=" mx-4  flex items-center gap-1"
+                  className=" mx-4  sm:text-2xl flex items-center gap-1"
                 >
                   <HiHeart /> Saved Items
                 </Link>
                 <Link
                   onClick={handleMenuToggle}
                   to="/signin"
-                  className=" mx-4  flex items-center gap-1"
+                  className=" mx-4  flex items-center gap-1  sm:text-2xl"
                 >
                   <HiKey /> Sign In
                 </Link>
                 <Link
                   onClick={handleMenuToggle}
                   to="/cart"
-                  className=" mx-4  flex items-center gap-1"
+                  className=" mx-4  flex items-center gap-1  sm:text-2xl"
                 >
                   <HiShoppingCart /> Cart
                 </Link>
@@ -222,14 +222,14 @@ return () => {
                 <Link
                   onClick={handleMenuToggle}
                   to="/chat"
-                  className="mx-4  flex items-center gap-1"
+                  className="mx-4  sm:text-2xl flex items-center gap-1"
                 >
                   <HiChat /> FAQ
                 </Link>
                 <Link
                   onClick={handleMenuToggle}
                   to="/contact"
-                  className=" mx-4  flex items-center gap-1"
+                  className=" mx-4  sm:text-2xl flex items-center gap-1"
                 >
                   <HiPhone /> Contact Us
                 </Link>
