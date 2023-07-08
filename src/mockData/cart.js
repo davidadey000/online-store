@@ -3,7 +3,7 @@ import image2 from "../assets/img/project-img2.png";
 
 export const cartData = [
   {
-    id: 1,
+    id: 3,
     image: image1,
     title: "EILIFINTE B05 Casual Crossbody Shoulder Chest Bag-Grey",
     price: "10",
@@ -12,7 +12,7 @@ export const cartData = [
     quantity: 1,
   },
   {
-    id: 2,
+    id: 4,
     image: image2,
     title: "EILIFINTE B05 Casual Crossbody Shoulder Chest Bag-Grey",
     price: "20",

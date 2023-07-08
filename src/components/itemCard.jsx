@@ -31,4 +31,5 @@ const ItemCard = ({ id, price, title, image, handleAddToCart }) => {
   );
 };
 
+
 export default ItemCard;

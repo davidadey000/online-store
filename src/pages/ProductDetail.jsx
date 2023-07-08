@@ -11,6 +11,7 @@ import Dropdown from "../components/Dropdown";
 import { useParams } from "react-router-dom";
 import CartContext from "../services/CartContext";
 import SavedContext from "../services/SavedContext";
+import { useNavigate } from "react-router-dom";
 
 import {
   FaHeart,
@@ -64,28 +65,52 @@ const Product = ({ match }) => {
     setSelectedNumber(value);
   }
 
-  const { toggleCart } = useContext(CartContext);
+  const { toggleCart, cartItems, addToCart } = useContext(CartContext);
   const { toggleSaved, savedItems } = useContext(SavedContext);
 
-  const handleAddToCart = () => {
+  const navigate = useNavigate();
+
+  const handleBuyNow = () => {
+    const isAlreadyInCart = cartItems.some((item) => item.id === product.id);
+
+    const reconciledProduct = {
+      ...product,
+      quantity: 1,
+      status: "In Stock", // Set the status based on your business logic
+    };
+
+    if (!isAlreadyInCart) {
+      addToCart(reconciledProduct);
+      toast.success("Item has been added to Cart.");
+      // navigate("/cart");
+    } 
+      navigate("/cart");
+    // Move to the cart page
+  };
+
+  const handleToggleCart = () => {
     const reconciledProduct = {
       ...product,
       quantity,
       status: "In Stock", // Set the status based on your business logic
     };
 
-    toggleCart(reconciledProduct);
+    addToCart(reconciledProduct);
     toast.success("Item has been added to Cart.");
   };
 
   const handleToggleSaved = () => {
+    const isAlreadyInSaved = savedItems.some((item) => item.id === product.id);
+
     const reconciledProduct = {
       ...product,
       status: "In Stock", // Set the status based on your business logic
     };
 
     toggleSaved(reconciledProduct);
-    toast.success("Added to Saved Items.");
+    isAlreadyInSaved
+      ? toast.success("Removed from Saved Items.")
+      : toast.success("Added to Saved Items.");
   };
 
   const similarProducts = {
@@ -293,23 +318,26 @@ const Product = ({ match }) => {
               <h4 className="product-det__stock-state">In Stock</h4>
             </div>
             <div className="product-det__right-div--mobile">
-              <div className="product-det__btn-div">
-                <button
-                  className="product-det__cart-btn rounded-full font-medium"
-                  onClick={handleAddToCart}
-                >
-                  Add to Cart
-                </button>
-                <button className="product-det__buy-btn  rounded-full font-medium">
-                  Buy Now
-                </button>
-
-                <button
-                  className="product-det__save-btn--tablet rounded-full"
-                  onClick={handleToggleSaved}
-                >
-                  Save Item
-                </button>
+              <div className="p-2 flex flex-col gap-3 sm:flex-row sm:justify-between sm:p-5">
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <CartButton
+                    handleToggleCart={handleToggleCart}
+                    productId={product.id}
+                    cartItems={cartItems}
+                  />
+                  <BuyButton
+                    handleBuyNow={handleBuyNow}
+                    productId={product.id}
+                    cartItems={cartItems}
+                  />
+                </div>
+                <div className="hidden sm:block">
+                  <SaveButton
+                    handleToggleSaved={handleToggleSaved}
+                    productId={product.id}
+                    savedItems={savedItems}
+                  />
+                </div>
               </div>
               <div className="product-det__transaction-details">
                 <div className="product-det__transaction-details-grid w-[70%]">
@@ -335,12 +363,11 @@ const Product = ({ match }) => {
                 </div>
 
                 <div className="product-det__transaction-details-flex">
-                  <button
-                    className="product-det__save-btn rounded-full"
-                    onClick={handleToggleSaved}
-                  >
-                    Save Item
-                  </button>
+                  <SaveButton
+                    handleToggleSaved={handleToggleSaved}
+                    productId={product.id}
+                    savedItems={savedItems}
+                  />
                 </div>
               </div>
             </div>
@@ -441,15 +468,16 @@ const Product = ({ match }) => {
                   handleOptionSelect={handleOptionSelect}
                 />
               </div>
-              <button
-                className="product-det__cart-btn  rounded-full font-medium"
-                onClick={handleAddToCart}
-              >
-                Add to Cart
-              </button>
-              <button className="product-det__buy-btn rounded-full font-medium">
-                Buy Now
-              </button>
+              <CartButton
+                handleToggleCart={handleToggleCart}
+                productId={product.id}
+                cartItems={cartItems}
+              />
+              <BuyButton
+                handleBuyNow={handleBuyNow}
+                productId={product.id}
+                cartItems={cartItems}
+              />
             </div>
             <div className="product-det__transaction-details">
               <div className="product-det__transaction-details-grid">
@@ -479,14 +507,11 @@ const Product = ({ match }) => {
               </div>
 
               <div className="product-det__transaction-details-flex">
-                <button
-                  className="product-det__save-btn rounded-full font-medium"
-                  onClick={handleToggleSaved}
-                >
-                  {savedItems.some((savedItem) => savedItem.id === product.id)
-                    ? "Remove from Saved"
-                    : "Add to Saved"}
-                </button>
+                <SaveButton
+                  handleToggleSaved={handleToggleSaved}
+                  productId={product.id}
+                  savedItems={savedItems}
+                />
               </div>
             </div>
           </div>
@@ -503,3 +528,32 @@ const Product = ({ match }) => {
 };
 
 export default Product;
+
+const SaveButton = ({ handleToggleSaved, productId, savedItems }) => (
+  <button
+    className=" py-3  font-semibold  w-full bg-black sm:text-sm text-white rounded-full sm:w-auto sm:px-7 sm:py-[6px] lg:ml-0 lg:text-[12px] lg:w-full"
+    onClick={handleToggleSaved}
+  >
+    {savedItems.some((savedItem) => savedItem.id === productId)
+      ? "Remove from Saved"
+      : "Add to Saved"}
+  </button>
+);
+
+const CartButton = ({ handleToggleCart, productId, cartItems }) => (
+  <button
+    className="py-3  sm:text-sm border-black border-[1px] font-semibold  w-full  text-black rounded-full sm:w-auto sm:px-7 sm:py-[6px] lg:ml-0 lg:text-[12px]  lg:w-full"
+    onClick={handleToggleCart}
+  >
+    Add to Cart
+  </button>
+);
+
+const BuyButton = ({ handleBuyNow, productId, cartItems }) => (
+  <button
+    className="py-3 font-semibold  w-full sm:text-sm bg-red-400 text-white rounded-full sm:w-auto sm:px-7 sm:py-[6px] lg:ml-0 lg:text-[12px]  lg:w-full"
+    onClick={handleBuyNow}
+  >
+    Buy Now
+  </button>
+);
