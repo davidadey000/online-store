@@ -6,7 +6,7 @@ const CategoriesBanner = ({ category }) => {
       title: "Supermarket",
       subcategories: [
         {
-          title: "FOOD CUPBOARD",
+          title: "Food Cupboard",
           items: [
             "Grains & Rice",
             "Pasta & Noodles",
@@ -25,11 +25,11 @@ const CategoriesBanner = ({ category }) => {
           ],
         },
         {
-          title: "BABY PRODUCTS",
+          title: "Baby Products",
           items: ["Disposable Diapers", "Bottle Feeding", "Wipes & Refills"],
         },
         {
-          title: "HOUSEHOLD CLEANING",
+          title: "Household Cleaning",
           items: [
             "Laundry",
             "Air Fresheners",
@@ -40,7 +40,7 @@ const CategoriesBanner = ({ category }) => {
           ],
         },
         {
-          title: "BEER, WINE & SPIRITS",
+          title: "Beer, Wine & Spirits",
           items: [
             "Beers",
             "Vodka",
@@ -58,7 +58,7 @@ const CategoriesBanner = ({ category }) => {
       title: "Health & Beauty",
       subcategories: [
         {
-          title: "MAKE UP",
+          title: "Make Up",
           items: [
             "Concealers & Color Correctors",
             "Foundation",
@@ -72,11 +72,11 @@ const CategoriesBanner = ({ category }) => {
           ],
         },
         {
-          title: "FRAGRANCES",
+          title: "Fragrances",
           items: ["Women's", "Men's"],
         },
         {
-          title: "HAIR CARE",
+          title: "Hair Care",
           items: [
             "Hair & Scalp Care",
             "Hair Accessories",
@@ -86,11 +86,11 @@ const CategoriesBanner = ({ category }) => {
           ],
         },
         {
-          title: "PERSONAL CARE",
+          title: "Personal Care",
           items: ["Feminine Care", "Contraceptives & Lubricants", "Body"],
         },
         {
-          title: "ORAL CARE",
+          title: "Oral Care",
           items: [
             "Dental Care kits",
             "Dental Floss & Picks",
@@ -101,7 +101,7 @@ const CategoriesBanner = ({ category }) => {
           ],
         },
         {
-          title: "HEALTH CARE",
+          title: "Health Care",
           items: [
             "Face Protection",
             "Thermometers",
@@ -115,7 +115,7 @@ const CategoriesBanner = ({ category }) => {
       title: "Home & Office",
       subcategories: [
         {
-          title: "HOME & KITCHEN",
+          title: "Home & Kitchen",
           items: [
             "Bath",
             "Bedding",
@@ -130,7 +130,7 @@ const CategoriesBanner = ({ category }) => {
           ],
         },
         {
-          title: "HOME & OFFICE FURNITURE",
+          title: "Home & Office Furniture",
           items: [
             "Kitchen & Dining",
             "Lighting",
@@ -139,7 +139,7 @@ const CategoriesBanner = ({ category }) => {
           ],
         },
         {
-          title: "OFFICE PRODUCTS",
+          title: "Office Products",
           items: [
             "Office & School Supplies",
             "Office Furniture & Lighting",
@@ -147,7 +147,7 @@ const CategoriesBanner = ({ category }) => {
           ],
         },
         {
-          title: "SMALL APPLIANCES",
+          title: "Small Applicances",
           items: [
             "Ironing & Laundry",
             "Kettles",
@@ -158,7 +158,7 @@ const CategoriesBanner = ({ category }) => {
           ],
         },
         {
-          title: "LARGE APPLIANCES",
+          title: "Large Appliances",
           items: [
             "Air Conditioners",
             "Cookers",
@@ -175,11 +175,11 @@ const CategoriesBanner = ({ category }) => {
       title: "Phones & Tablets",
       subcategories: [
         {
-          title: "MOBILE PHONES",
+          title: "Mobile Phones",
           items: ["Smartphones", "Basic Phones", "Refurbished Phones"],
         },
         {
-          title: "TABLETS",
+          title: "Tablets",
           items: [
             "iPads",
             "Android Tablets",
@@ -188,7 +188,7 @@ const CategoriesBanner = ({ category }) => {
           ],
         },
         {
-          title: "MOBILE ACCESSORIES",
+          title: "Mobile Accessories",
           items: [
             "Accessory Kits",
             "Adapters",
@@ -206,7 +206,7 @@ const CategoriesBanner = ({ category }) => {
           ],
         },
         {
-          title: "TOP SMARTPHONES",
+          title: "Top Smartphone",
           items: [
             "iPhone 11 Pro Max",
             "Samsung Galaxy S10",
@@ -218,7 +218,7 @@ const CategoriesBanner = ({ category }) => {
           ],
         },
         {
-          title: "TOP PHONE BRANDS",
+          title: "Top Phone Brands",
           items: ["Samsung", "Apple", "Huawei", "Nokia", "Xiaomi", "Tecno"],
         },
       ],
@@ -227,15 +227,15 @@ const CategoriesBanner = ({ category }) => {
       title: "Computing",
       subcategories: [
         {
-          title: "DESKTOPS",
+          title: "Desktops",
           items: [],
         },
         {
-          title: "LAPTOPS",
+          title: "Laptops",
           items: [],
         },
         {
-          title: "DATA STORAGE",
+          title: "Data Storage",
           items: [
             "External Hard Drives",
             "USB Flash Drives",
@@ -243,15 +243,15 @@ const CategoriesBanner = ({ category }) => {
           ],
         },
         {
-          title: "ANTIVIRUS & SECURITY",
+          title: "Antivirus & Security",
           items: ["Antivirus", "Internet Security"],
         },
         {
-          title: "PRINTERS",
+          title: "Printers",
           items: ["Inkjet Printers", "Laser Printers", "Printer Ink & Toner"],
         },
         {
-          title: "COMPUTER ACCESSORIES",
+          title: "Computer Accessories",
           items: [
             "Keyboards & Mice",
             "Uninterrupted Power Supply",
@@ -262,7 +262,7 @@ const CategoriesBanner = ({ category }) => {
           ],
         },
         {
-          title: "TOP BRANDS",
+          title: "Top Brands",
           items: [
             "HP",
             "Logitech",
@@ -285,7 +285,7 @@ const CategoriesBanner = ({ category }) => {
       title: "Electronics",
       subcategories: [
         {
-          title: "TELEVISION & VIDEO",
+          title: "Television & Video",
           items: [
             "Televisions",
             "Smart TVs",
@@ -295,7 +295,7 @@ const CategoriesBanner = ({ category }) => {
           ],
         },
         {
-          title: "HOME AUDIO",
+          title: "Home Audio",
           items: [
             "Home Theatre Systems",
             "Receivers & Amplifiers",
@@ -303,7 +303,7 @@ const CategoriesBanner = ({ category }) => {
           ],
         },
         {
-          title: "CAMERAS & PHOTOS",
+          title: "Cameras & Photos",
           items: [
             "Digital Cameras",
             "Projectors",
@@ -312,7 +312,7 @@ const CategoriesBanner = ({ category }) => {
           ],
         },
         {
-          title: "GENERATORS & PORTABLE POWER",
+          title: "Generators & Portable Power",
           items: [
             "Generators",
             "Power Inverters",
@@ -321,7 +321,7 @@ const CategoriesBanner = ({ category }) => {
           ],
         },
         {
-          title: "TOP ELECTRONICS BRANDS",
+          title: "Top Electronics Brands",
           items: ["LG", "Samsung", "Sony", "TCL", "Hisense", "Nexus"],
         },
       ],

@@ -1,13 +1,19 @@
+import { Link } from "react-router-dom";
+
 const CategoriesBannerdiv = ({ title, items }) => {
   return (
     <div className="banner-card" border="light">
-      <h5 className="banner-card__header font-bold text-sm">{title}</h5>
+      <Link to={`products/${title}`}>
+        <h5 className="banner-card__header  uppercase font-bold text-sm">{title}</h5>
+      </Link>
       <hr />
       <div className="banner-card__body">
         {items.map((item, index) => (
-          <a className="banner-card__link hover:font-semibold" key={index} href={`/${item}`}>
-            {item}
-          </a>
+          <Link to={`products/${item}`}>
+            <p className="banner-card__link hover:font-semibold" key={index}>
+              {item}
+            </p>
+          </Link>
         ))}
       </div>
     </div>

@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
-import { useRef } from 'react';
-import { FaChevronLeft } from 'react-icons/fa';
-import { FaChevronRight } from 'react-icons/fa';
+import { useRef } from "react";
+import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 const Categories = ({ onCategoryHover }) => {
   const [categories, setCategories] = useState([
@@ -31,17 +33,31 @@ const Categories = ({ onCategoryHover }) => {
     containerRef.current.scrollLeft += 600;
   };
 
+  const isSmallScreen = useMediaQuery({ maxWidth: 767 });
+
+  const handleClickCategory = (event) => {
+    if (isSmallScreen) {
+      event.preventDefault();
+    }
+  };
+
   return (
     <div className="categories relative" id="categories">
-      <ul className="scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-300 scroll-smooth" ref={containerRef}>
+      <ul
+        className="scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-300 scroll-smooth"
+        ref={containerRef}
+      >
         {categories.map((category, index) => (
-          <li
-            key={index}
-            className="bg-gray-400 font-semibold text-white lg:text-[13px] text-sm mr-1 px-5 py-2 rounded-full"
-            onMouseEnter={() => handleCategoryHover(category)}
-          >
-            {category}
-          </li>
+         
+            <Link to={`products/${category}`} key={index} onClick={handleClickCategory}>
+              <li
+                className="bg-gray-400 font-semibold text-white lg:text-[13px] text-sm mr-1 px-5 py-2 rounded-full"
+                onMouseEnter={() => handleCategoryHover(category)}
+              >
+                {category}
+              </li>
+            </Link>
+          
         ))}
       </ul>
       <div
