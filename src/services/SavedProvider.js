@@ -1,51 +1,30 @@
-import React, { useState } from 'react';
-import SavedContext from './SavedContext';
-import {savedData} from "../mockData/saved";
+import React, { useState } from "react";
+import SavedContext from "./SavedContext";
+import { savedData } from "../mockData/saved";
 
 const SavedProvider = ({ children }) => {
   const [savedItems, setSavedItems] = useState(savedData);
 
-  const total = savedItems.length
-  const totalPrice = savedItems.reduce((total, item) => {
-    const itemPrice = parseFloat(item.price.replace('₦', ''));
-    return total + itemPrice * item.quantity;
-  }, 0);
-  
+  const total = savedItems.length;
 
-  const increment = (itemId) => {
-    const updatedSavedItems = savedItems.map((item) => {
-      if (item.id === itemId) {
-        return {
-          ...item,
-          quantity: item.quantity + 1,
-        };
-      }
-      return item;
-    });
-    setSavedItems(updatedSavedItems);
-  }
+  const toggleSaved = (item) => {
+    const isItemSaved = savedItems.some(
+      (savedItem) => savedItem.id === item.id
+    );
 
-  
-  const decrement = (itemId) => {
-    const updatedSavedItems = savedItems.map((item) => {
-      if (item.id === itemId) {
-        return {
-          ...item,
-          quantity: item.quantity > 0 ? item.quantity - 1 : 0,
-        };
-      }
-      return item;
-    });
-    setSavedItems(updatedSavedItems);
-  };
-  
-
-  const addToSaved = (item) => {
-    setSavedItems((prevItems) => [...prevItems, item]);
+    if (isItemSaved) {
+      removeFromSaved(item.id);
+      console.log("Item removed from saved items.");
+    } else {
+      setSavedItems((prevItems) => [...prevItems, item]);
+      console.log("Item added to saved items.");
+    }
   };
 
   const removeFromSaved = (itemId) => {
-    setSavedItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+    setSavedItems((prevItems) =>
+      prevItems.filter((item) => item.id !== itemId)
+    );
   };
 
   const clearSaved = () => {
@@ -54,7 +33,13 @@ const SavedProvider = ({ children }) => {
 
   return (
     <SavedContext.Provider
-      value={{ savedItems, addToSaved, removeFromSaved, clearSaved , increment, decrement, total, totalPrice}}
+      value={{
+        savedItems,
+        toggleSaved,
+        removeFromSaved,
+        clearSaved,
+        total,
+      }}
     >
       {children}
     </SavedContext.Provider>

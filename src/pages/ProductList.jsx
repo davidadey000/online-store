@@ -4,7 +4,7 @@ import GroupCollection from "../components/groupCollection";
 import { useMediaQuery } from "react-responsive";
 import { categoriesData } from "../mockData/category";
 import { collectionData } from "../mockData/collection";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 import {
   FaAngleDoubleLeft,
@@ -18,8 +18,11 @@ import ProductFilter from "../components/ProductFilter";
 import Category from "../components/Category";
 import { categoryListData } from "../mockData/categoryList";
 import { useParams } from "react-router-dom";
+import NotFound from './NotFound';
 
-const Products = ({ match }) => {
+
+
+const Products = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -39,7 +42,7 @@ const Products = ({ match }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = isMobile | isLaptop ? 12 : 9;
-  const totalPages = Math.ceil(products.products.length / productsPerPage);
+  const totalPages = Math.ceil(products?.products?.length / productsPerPage);
 
   const [filters, setFilters] = useState({
     priceRange: "",
@@ -47,6 +50,12 @@ const Products = ({ match }) => {
     size: "",
     brand: "",
   });
+
+
+  // Check if the collectionName is not found
+  if (!products) {
+    return <NotFound />; // Render the "Not Found" component
+  }
 
   const handleFilterChange = (newFilters) => {
     setCurrentPage(1);
@@ -74,7 +83,7 @@ const Products = ({ match }) => {
   };
 
   const handleClickLast = () => {
-  setCurrentPage(totalPages);
+    setCurrentPage(totalPages);
   };
 
   const startIndex = (currentPage - 1) * productsPerPage;
@@ -85,8 +94,8 @@ const Products = ({ match }) => {
 
   const renderPageNumbers = () => {
     const pageNumbers = [];
-    const maxPageNumbers = 3; // Maximum number of page numbers to display
-    const range = Math.floor(maxPageNumbers / 2); // Number of page numbers on each side of the current page
+    const maxPageNumbers = 3;
+    const range = Math.floor(maxPageNumbers / 2);
 
     let startPage = currentPage - range;
     let endPage = currentPage + range;
@@ -127,7 +136,10 @@ const Products = ({ match }) => {
       <div className="products__collection-list">
         <div className="products__sidebar">
           <div className="products__sidebar-categories sticky top-[60px]">
-            <ProductFilter filters={filters} onFilterChange={handleFilterChange} />
+            <ProductFilter
+              filters={filters}
+              onFilterChange={handleFilterChange}
+            />
             <h5 className="ml-4 font-semibold">CATEGORIES</h5>
             <div>
               {categoryListData.map((title) => (
@@ -175,8 +187,6 @@ const Products = ({ match }) => {
           This website uses cookies. For further information on how we use
           cookies you can read our <a href="">Privacy and Cookie notice.</a>
         </p>
-                  {/* <ProductFilter filters={filters} onFilterChange={handleFilterChange} /> */}
-
       </div>
     </div>
   );

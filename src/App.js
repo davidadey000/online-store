@@ -27,12 +27,13 @@ import Chat from "./pages/Chat";
 import CartProvider from "./services/CartProvider";
 import SavedProvider from "./services/SavedProvider";
 import NotFound from "./pages/NotFound";
+import OrdersProvider from './services/OrdersProvider';
 
 function Layout({ children }) {
   const location = useLocation();
   const hideFooterRoutes = ["/signin", "/404"]; // Add the routes where you want to hide the footer
-  const alternativeNavbarRoutes = [ "/signin"]; // Add the routes where you want to use the alternative Navbar
-  const noNavbarRoutes = ["/orders", "/saved"]
+  const alternativeNavbarRoutes = ["/signin"]; // Add the routes where you want to use the alternative Navbar
+  const noNavbarRoutes = ["/orders", "/saved"];
 
   useEffect(() => {
     // Scroll to the top of the page when the route changes
@@ -41,14 +42,16 @@ function Layout({ children }) {
 
   return (
     <div className="min-h-screen flex flex-col">
-     {!hideFooterRoutes.includes(location.pathname) && <TopBanner />}
+      {!hideFooterRoutes.includes(location.pathname) && <TopBanner />}
       {alternativeNavbarRoutes.includes(location.pathname) ? (
         <AlternativeNavbar currentUrl={location.pathname} />
-      ) : noNavbarRoutes.includes(location.pathname) ?         <Navbar currentUrl={location.pathname} classes="hidden lg:flex"/> : (
+      ) : noNavbarRoutes.includes(location.pathname) ? (
+        <Navbar currentUrl={location.pathname} classes="hidden lg:flex" />
+      ) : (
         <Navbar currentUrl={location.pathname} />
       )}
       <ToastContainer />
- {children}
+      {children}
       {!hideFooterRoutes.includes(location.pathname) && <Footer />}
     </div>
   );
@@ -63,25 +66,30 @@ function App() {
 
   return (
     <Router>
-      <CartProvider>
-        <SavedProvider>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/product/:id" element={<ProductDetail />} />
-              <Route path="/products/:collectionName" element={<Products />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/orders" element={<Orders />} />
-              <Route path="/help" element={<Help />} />
-              <Route path="*" element={<NotFound />} />{" "}
-              <Route path="/saved" element={<Saved />} />
-              <Route path="/signin" element={<Signin />} />
-              <Route path="/account" element={<Account />} />
-              <Route path="/chat" element={<Chat />} />
-            </Routes>
-          </Layout>
-        </SavedProvider>
-      </CartProvider>
+      <OrdersProvider>
+        <CartProvider>
+          <SavedProvider>
+            <Layout>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/product/:id" element={<ProductDetail />} />
+                <Route
+                  path="/products/:collectionName"
+                  element={<Products />}
+                />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/orders" element={<Orders />} />
+                <Route path="/help" element={<Help />} />
+                <Route path="*" element={<NotFound />} />{" "}
+                <Route path="/saved" element={<Saved />} />
+                <Route path="/signin" element={<Signin />} />
+                <Route path="/account" element={<Account />} />
+                <Route path="/chat" element={<Chat />} />
+              </Routes>
+            </Layout>
+          </SavedProvider>
+        </CartProvider>
+      </OrdersProvider>
     </Router>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Dropdown = ({ options }) => {
+const Dropdown = ({ options, handleOptionSelect, quantity }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
 
@@ -8,8 +8,9 @@ const Dropdown = ({ options }) => {
     setIsOpen(!isOpen);
   };
 
-  const handleOptionSelect = (value) => {
+  const handleSelect = (value) => {
     setSelectedOption(value);
+    handleOptionSelect(value);
     setIsOpen(false);
   };
 
@@ -19,7 +20,7 @@ const Dropdown = ({ options }) => {
         className="text-left px-3 border border-gray-300 rounded-xl bg-white focus:outline-none"
         onClick={toggleDropdown}
       >
-         {selectedOption ? selectedOption : options[0].label}
+        {selectedOption ? selectedOption : quantity}
       </button>
       {isOpen && (
         <div className="absolute z-10 px-2 mt-2 bg-white border border-gray-300 rounded-sm shadow-lg">
@@ -27,7 +28,7 @@ const Dropdown = ({ options }) => {
             <div
               key={option.value}
               className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-              onClick={() => handleOptionSelect(option.label)}
+              onClick={() => handleSelect(option.label)}
             >
               {option.label}
             </div>

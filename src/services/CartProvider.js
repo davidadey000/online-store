@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
-import CartContext from './CartContext';
-import {cartData} from "../mockData/cart";
+import React, { useState } from "react";
+import CartContext from "./CartContext";
+import { cartData } from "../mockData/cart";
 
 const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState(cartData);
 
-  const total = cartItems.length
+  const total = cartItems.length;
   const totalPrice = cartItems.reduce((total, item) => {
     const itemPrice = item.price;
     return total + itemPrice * item.quantity;
   }, 0);
-  
 
   const increment = (itemId) => {
     const updatedCartItems = cartItems.map((item) => {
@@ -23,9 +22,8 @@ const CartProvider = ({ children }) => {
       return item;
     });
     setCartItems(updatedCartItems);
-  }
+  };
 
-  
   const decrement = (itemId) => {
     const updatedCartItems = cartItems.map((item) => {
       if (item.id === itemId) {
@@ -38,7 +36,6 @@ const CartProvider = ({ children }) => {
     });
     setCartItems(updatedCartItems);
   };
-  
 
   const addToCart = (item) => {
     setCartItems((prevItems) => [...prevItems, item]);
@@ -54,7 +51,16 @@ const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, clearCart , increment, decrement, total, totalPrice}}
+      value={{
+        cartItems,
+        addToCart,
+        removeFromCart,
+        clearCart,
+        increment,
+        decrement,
+        total,
+        totalPrice,
+      }}
     >
       {children}
     </CartContext.Provider>

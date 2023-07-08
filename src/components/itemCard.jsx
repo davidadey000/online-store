@@ -9,7 +9,7 @@ const ItemCard = ({ id, price, title, image, handleAddToCart }) => {
   };
 
   return (
-    <Link className="block item__link" to={`/product/${id}`}>
+    // <Link className="block item__link" to={`/product/${id}`}>
       <div className="item" onClick={handleAddToCartClick}>
         <img src={image} alt="" className="item__image" />
         <div className="item__body">
@@ -27,7 +27,7 @@ const ItemCard = ({ id, price, title, image, handleAddToCart }) => {
           </div>
         </div>
       </div>
-    </Link>
+    // </Link>
   );
 };
 

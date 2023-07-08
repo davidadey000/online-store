@@ -195,7 +195,7 @@
     width: 24.5%;
     margin: 10px 0;
     background-color: white;
-    padding: 1.5% 0;
+    /* padding: 1.5% 0; */
   }
 
   .products__sidebar-category {

@@ -9,6 +9,8 @@ import Footer from "../components/footer";
 import { useMediaQuery } from "react-responsive";
 import Dropdown from "../components/Dropdown";
 import { useParams } from "react-router-dom";
+import CartContext from "../services/CartContext";
+import SavedContext from "../services/SavedContext";
 
 import {
   FaHeart,
@@ -16,6 +18,8 @@ import {
   FaMapMarker,
   FaUpload,
 } from "react-icons/fa";
+import { useContext } from "react";
+import { toast } from "react-toastify";
 
 // const { Option } = Select;
 const options = [
@@ -54,10 +58,35 @@ const Product = ({ match }) => {
   const toggleShowMore2 = () => setShowMore2(!showMore2);
 
   const [selectedNumber, setSelectedNumber] = useState(1);
+  const [quantity, setQuantity] = useState(1);
 
   function handleChange(value) {
     setSelectedNumber(value);
   }
+
+  const { toggleCart } = useContext(CartContext);
+  const { toggleSaved, savedItems } = useContext(SavedContext);
+
+  const handleAddToCart = () => {
+    const reconciledProduct = {
+      ...product,
+      quantity,
+      status: "In Stock", // Set the status based on your business logic
+    };
+
+    toggleCart(reconciledProduct);
+    toast.success("Item has been added to Cart.");
+  };
+
+  const handleToggleSaved = () => {
+    const reconciledProduct = {
+      ...product,
+      status: "In Stock", // Set the status based on your business logic
+    };
+
+    toggleSaved(reconciledProduct);
+    toast.success("Added to Saved Items.");
+  };
 
   const similarProducts = {
     type: "product",
@@ -160,11 +189,12 @@ const Product = ({ match }) => {
   if (!product) {
     return <div>Product not found.</div>;
   }
+  const handleOptionSelect = (value) => {
+    setQuantity(Number(value)); // Convert the value to a number if needed
+  };
 
   return (
     <div>
-      {/* <div>productId</div> */}
-
       <div className="product-details">
         <div className="product-det__loc">
           <FaMapMarker />
@@ -245,15 +275,15 @@ const Product = ({ match }) => {
               <div className="product-det__price-terms-container">
                 <span className="product-det__price-terms product-det__price-terms--notnes">
                   <p className="product-det__price-label">
-                    Was: {product.prevPrice}
+                    Was: ₦{product.prevPrice}
                   </p>
                 </span>
                 <span className="product-det__price-terms">
                   <p className="product-det__price-label">Price: </p>
-                  <h3 className="product-det__price">{product.price}</h3>
+                  <h3 className="product-det__price">₦{product.price}</h3>
                 </span>
                 <span className="product-det__price-terms product-det__price-terms--notnes">
-                  <p className="product-det__price-label">You save:</p>
+                  <p className="product-det__price-label">You save:</p>₦
                   {parseInt(product.prevPrice) - parseInt(product.price)}
                 </span>
               </div>
@@ -264,14 +294,20 @@ const Product = ({ match }) => {
             </div>
             <div className="product-det__right-div--mobile">
               <div className="product-det__btn-div">
-                <button className="product-det__cart-btn rounded-full font-medium">
+                <button
+                  className="product-det__cart-btn rounded-full font-medium"
+                  onClick={handleAddToCart}
+                >
                   Add to Cart
                 </button>
                 <button className="product-det__buy-btn  rounded-full font-medium">
                   Buy Now
                 </button>
 
-                <button className="product-det__save-btn--tablet rounded-full">
+                <button
+                  className="product-det__save-btn--tablet rounded-full"
+                  onClick={handleToggleSaved}
+                >
                   Save Item
                 </button>
               </div>
@@ -299,7 +335,10 @@ const Product = ({ match }) => {
                 </div>
 
                 <div className="product-det__transaction-details-flex">
-                  <button className="product-det__save-btn rounded-full">
+                  <button
+                    className="product-det__save-btn rounded-full"
+                    onClick={handleToggleSaved}
+                  >
                     Save Item
                   </button>
                 </div>
@@ -388,7 +427,7 @@ const Product = ({ match }) => {
           </div>
           <div className="product-det__right-div--large">
             <div className="product-det__price-details--large">
-              <h3 className="product-det__price">{product.price}</h3>
+              <h3 className="product-det__price">₦{product.price}</h3>
               <p className="product-det__shipping">
                 Shipping & Import Fees deposit to Nigeria.
               </p>
@@ -396,9 +435,16 @@ const Product = ({ match }) => {
             <div className="product-det__btn-div">
               <div className="product-det__quantity">
                 <p className="mr-2">Qty: </p>
-                <Dropdown options={options} />
+                <Dropdown
+                  options={options}
+                  quantity={quantity}
+                  handleOptionSelect={handleOptionSelect}
+                />
               </div>
-              <button className="product-det__cart-btn  rounded-full font-medium">
+              <button
+                className="product-det__cart-btn  rounded-full font-medium"
+                onClick={handleAddToCart}
+              >
                 Add to Cart
               </button>
               <button className="product-det__buy-btn rounded-full font-medium">
@@ -433,8 +479,13 @@ const Product = ({ match }) => {
               </div>
 
               <div className="product-det__transaction-details-flex">
-                <button className="product-det__save-btn rounded-full font-medium">
-                  Save Item
+                <button
+                  className="product-det__save-btn rounded-full font-medium"
+                  onClick={handleToggleSaved}
+                >
+                  {savedItems.some((savedItem) => savedItem.id === product.id)
+                    ? "Remove from Saved"
+                    : "Add to Saved"}
                 </button>
               </div>
             </div>

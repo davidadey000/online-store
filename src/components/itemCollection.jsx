@@ -9,7 +9,7 @@ import SlideShow from "./slideShow";
 import { useState, useRef } from "react";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import CartContext from './../services/CartContext';
+import CartContext from "./../services/CartContext";
 import { useContext } from "react";
 import image3 from "../assets/img/project-img3.png";
 
@@ -70,19 +70,23 @@ const ItemCollection = ({
       return true;
     });
 
-    
   const { addToCart } = useContext(CartContext);
 
   const handleAddToCart = (id) => {
-    console.log("worked!")
+    console.log("worked!");
     const newItem = filteredProducts.find((product) => product.id === id);
     if (newItem) {
-      const itemWithQuantity = { ...newItem, quantity: 1, status: "In Stock", prevPrice: "7000" };
+      const itemWithQuantity = {
+        ...newItem,
+        quantity: 1,
+        status: "In Stock",
+        prevPrice: "7000",
+      };
       addToCart(itemWithQuantity);
       toast.success("Item added to cart");
     }
   };
-  
+
   return (
     <div className="items md:w-[90%] lg:w-full">
       <div className="items__header p-2 ">
@@ -91,7 +95,13 @@ const ItemCollection = ({
       <div className="items__body" ref={containerRef}>
         {filteredProducts.length != 0
           ? filteredProducts.slice(0, 12).map((deal, index) => {
-              return <ItemCard key={index} {...deal} handleAddToCart={handleAddToCart} />;
+              return (
+                <ItemCard
+                  key={index}
+                  {...deal}
+                  handleAddToCart={handleAddToCart}
+                />
+              );
             })
           : toast.error("No Products Found")}
       </div>

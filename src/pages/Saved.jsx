@@ -5,44 +5,31 @@ import SavedContext from "./../services/SavedContext";
 import CartContext from "./../services/CartContext";
 import image3 from "../assets/img/project-img3.png";
 import SideBarTemplate from "../components/SideBarTemplate";
+import NoItemsFound from "./../components/NoItemsFound";
+import { toast } from "react-toastify";
 
 const Saved = () => {
-  const {
-    savedItems,
-    total,
-    totalPrice,
-    addToSaved,
-    removeFromSaved,
-    clearSaved,
-    increment,
-    decrement,
-  } = useContext(SavedContext);
+  const { savedItems, total, removeFromSaved, clearSaved } =
+    useContext(SavedContext);
 
-  const { addToCart } = useContext(CartContext);
+  const { toggleCart } = useContext(CartContext);
+  const handleAddToCart = (id) => {
+    // Find the saved item with the provided id
+    const savedItem = savedItems.find((item) => item.id === id);
 
-  const handleAddToCart = () => {
-    const newItem = {
-      id: 3,
-      image: image3,
-      title: "EILIFINTE B05 Casual Crossbody Shoulder Chest Bag-Grey",
-      price: "10",
-      prevPrice: "15",
-      status: "In Stock",
-      quantity: 1,
-    };
-    addToCart(newItem);
-  };
+    if (savedItem) {
+      // Create a new item object with quantity set to 1
+      const newItem = {
+        ...savedItem,
+        quantity: 1,
+      };
 
-  const handleAddToSaved = () => {
-    const newItem = { id: 1, name: "Product", price: 10 };
-    addToSaved(newItem);
-  };
-  const handleIncrement = (itemId) => {
-    increment(itemId);
-  };
+      // Add the new item to the cart
+      toggleCart(newItem);
 
-  const handleDecrement = (itemId) => {
-    decrement(itemId);
+      // Show a success toast message
+      toast.success("Item has been added to cart.");
+    }
   };
 
   const handleRemoveFromSaved = (itemId) => {
@@ -53,24 +40,27 @@ const Saved = () => {
     clearSaved();
   };
 
-const savedTitle = `Saved Items (${total})`
+  const savedTitle = `Saved Items (${total})`;
+
   return (
     <SideBarTemplate
-     title={savedTitle}
+      title={savedTitle}
       content={
         <div className="flex-grow">
           <div className="p-2">
-            {savedItems.map((item) => (
-              <Item
-                key={item.id}
-                {...item}
-                type="saved"
-                handleIncrement={handleIncrement}
-                handleDecrement={handleDecrement}
-                handleRemoveFromSaved={handleRemoveFromSaved}
-                handleAddToCart={handleAddToCart}
-              />
-            ))}
+            {savedItems.length === 0 ? (
+              <NoItemsFound title="Saved Items List" />
+            ) : (
+              savedItems.map((item) => (
+                <Item
+                  key={item.id}
+                  {...item}
+                  type="saved"
+                  handleRemoveFromSaved={handleRemoveFromSaved}
+                  handleAddToCart={handleAddToCart}
+                />
+              ))
+            )}
           </div>
         </div>
       }

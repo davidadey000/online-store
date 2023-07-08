@@ -28,11 +28,17 @@ const Item = ({
             <small className="lg:hidden absolute right-0 bg-red-50 text-red-400 px-2">
               -70%
             </small>
-            <img src={image} alt="Product Image" className="w-full h-full rounded-sm"></img>
+            <img
+              src={image}
+              alt="Product Image"
+              className="w-full h-full rounded-sm"
+            ></img>
           </div>
           <div className="w-70 lg:w-[70%] flex flex-col gap-[1px]">
             <p
-              className={`${type === "cart" ? "text-xs" : "text-sm"}  leading-4 lg:text-[16px] lg:w-80 lg:leading-snug`}
+              className={`${
+                type === "cart" ? "text-xs" : "text-sm"
+              }  leading-4 lg:text-[16px] lg:w-80 lg:leading-snug`}
             >
               {title}
             </p>
@@ -54,29 +60,30 @@ const Item = ({
           </div>
         </div>
         <div
+          className={`${
+            type === "cart" ? "gap-1 items-center lg:flex-col" : "flex-col"
+          } hidden lg:flex lg:items-end`}
+        >
+          <p className="text-lg">₦{price}</p>
+          <p
             className={`${
-              type === "cart" ? "gap-1 items-center lg:flex-col" : "flex-col"
-            } hidden lg:flex lg:items-end`}
+              type === "cart" ? "text-xs" : "text-md"
+            } text-gray-600 line-through`}
           >
-            <p className="text-lg">₦{price}</p>
-            <p
-              className={`${
-                type === "cart" ? "text-xs" : "text-md"
-              } text-gray-600 line-through`} 
-            >
-              ₦{prevPrice}
-            </p>
-            <small className=" bg-red-50 text-red-400 px-2 mt-2">
-              -70%
-            </small>
-          </div>
-
+            ₦{prevPrice}
+          </p>
+          <small className=" bg-red-50 text-red-400 px-2 mt-2">-70%</small>
+        </div>
       </div>
 
       <div className="flex justify-between mt-3">
         <button
           className="flex items-center"
-          onClick={() => handleRemoveFromCart(id)}
+          onClick={() =>
+            type === "cart"
+              ? handleRemoveFromCart(id)
+              : handleRemoveFromSaved(id)
+          }
         >
           <FaTrash className="text-red-400" />
           <p className="ml-3 text-red-400">REMOVE</p>
@@ -103,7 +110,7 @@ const Item = ({
           ) : (
             <button
               className="bg-red-400 text-white text-xs py-2 px-3 rounded-sm shadow-xl font-semibold"
-              onClick={handleAddToCart}
+              onClick={() => handleAddToCart(id)}
             >
               BUY NOW
             </button>
@@ -115,4 +122,3 @@ const Item = ({
 };
 
 export default Item;
-
