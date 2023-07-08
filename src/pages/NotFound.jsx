@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 
 const NotFound = () => {
   const navigate = useNavigate();
-  
+
   const handleGoBack = () => {
     navigate(-1);
   };
   return (
-    <div className="flex-grow flex flex-col items-center justify-center min-h-full bg-gray-100">
+    <div className="flex-grow flex flex-col items-center justify-center min-h-full bg-gray-100  lg:h-96">
       <h1 className="text-6xl font-bold text-gray-800">404</h1>
       <p className="text-2xl text-gray-600">Page not found</p>
       <p className="text-lg text-gray-600">

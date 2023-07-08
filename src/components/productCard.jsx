@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { TextContentLoader } from "./TextContentLoader";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const ProductCard = ({ id, price, title, image }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,7 +22,13 @@ const ProductCard = ({ id, price, title, image }) => {
         {isLoading ? (
           <TextContentLoader width="100%" height="200px"></TextContentLoader>
         ) : (
-          <img src={image} alt="" className="w-full h-[200px] rounded-sm" />
+          <LazyLoadImage
+            src={image}
+            alt=""
+            threshold={0}
+            effect="blur"
+            className="w-full h-[200px] rounded-sm"
+          />
         )}
         <div className="product__body ">
           <h6 className="product__text--description">{title}</h6>

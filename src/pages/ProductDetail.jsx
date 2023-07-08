@@ -47,7 +47,7 @@ const Product = ({ match }) => {
   const productId = parseInt(params.id);
   const product = productData.find((p) => p.id === productId);
   const attributes = Object.entries(product.attributes);
-  const slideImages = product.imgUrl;
+  const slideImages = product.image;
   const [showMore, setShowMore] = useState(false);
   const [showMore2, setShowMore2] = useState(false);
   const toggleShowMore = () => setShowMore(!showMore);

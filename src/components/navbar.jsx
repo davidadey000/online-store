@@ -20,7 +20,7 @@ import { productData } from "../mockData/product";
 import { categoriesData } from "../mockData/category";
 import { useEffect } from "react";
 
-function Navbar() {
+function Navbar({classes}) {
   const navRef2 = useRef();const location = useLocation();
 
   useEffect(() => {
@@ -122,7 +122,7 @@ return () => {
   );
 
   return (
-    <header ref={navRef2} className="sticky top-0 left-0 flex items-center justify-between px-3 pt-4 py-2 z-10 bg-white text-black md:px-[2.5%] lg:pt-2 lg:px-[4%]">
+    <header ref={navRef2} className={`sticky top-0 left-0 flex items-center justify-between px-3 pt-4 py-2 z-10 bg-white text-black md:px-[2.5%] lg:pt-2 lg:px-[4%] ${classes}`}>
       {isMobile && (
         <div className="flex flex-col w-full gap-2">
           <div className="flex items-center justify-between w-full">
@@ -263,7 +263,7 @@ return () => {
                 {...navbuttonData[0]}
               />
               <div
-                className={`dropdown-menu bg-white z-1 rounded-b-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col absolute top-full left-0 shadow-lg ${
+                className={`dropdown-menu min-w-[150px] bg-white z-1 rounded-b-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col absolute top-full left-0 shadow-lg ${
                   isAccountOpen ? "h-auto" : "h-0"
                 }`}
               >
@@ -293,7 +293,7 @@ return () => {
                 {...navbuttonData[1]}
               />
               <div
-                className={`dropdown-menu bg-white z-1 rounded-b-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col absolute top-full left-0 shadow-lg ${
+                className={`dropdown-menu min-w-[150px] bg-white z-1 rounded-b-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col absolute top-full left-0 shadow-lg ${
                   isHelpOpen ? "h-auto" : "h-0"
                 }`}
               >

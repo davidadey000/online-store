@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { TextContentLoader } from "./TextContentLoader";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const RangeCard = ({ slug, title, image }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,7 +21,9 @@ const RangeCard = ({ slug, title, image }) => {
         {isLoading ? (
           <TextContentLoader width="100%" height="100%"></TextContentLoader>
         ) : (
-          <img src={image} alt="" className="w-full h-full" />
+          <LazyLoadImage 
+          threshold={0}
+          effect="blur" src={image} alt="" className="w-full h-full" />
         )}
       </div>
       <div className="range__footer">

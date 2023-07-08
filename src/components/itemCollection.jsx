@@ -72,28 +72,6 @@ const ItemCollection = ({
 
     
   const { addToCart } = useContext(CartContext);
-  // {
-  //   id: "1",
-  //   price: "4000",
-  //   description: "Design & Development",
-  //   imgUrl:
-  //     "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/4243011/1.jpg?5748",
-  // },
-  
-  // const handleAddToCart = (id) => {
-  //   // const newItem = {
-  //   //   id: 3,
-  //   //   image: image3,
-  //   //   title: "EILIFINTE B05 Casual Crossbody Shoulder Chest Bag-Grey",
-  //   //   price: "10",
-  //   //   prevPrice: "15",
-  //   //   status: "In Stock",
-  //   //   quantity: 1,
-  //   // };
-  //   const newItem = filteredProducts.filter((product) => product.id === id)
-  //   console.log(newItem)
-  //   addToCart(newItem);
-  // };
 
   const handleAddToCart = (id) => {
     console.log("worked!")
@@ -107,7 +85,7 @@ const ItemCollection = ({
   
   return (
     <div className="items md:w-[90%] lg:w-full">
-      <div className="items__header p-2">
+      <div className="items__header p-2 ">
         <h4 className="items__text--title">{collectionName}</h4>
       </div>
       <div className="items__body" ref={containerRef}>

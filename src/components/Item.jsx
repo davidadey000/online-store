@@ -20,12 +20,12 @@ const Item = ({
     <div
       className={`${
         type === "cart" ? "mx-2 mb-1" : "mx-1 mb-2 shadow-sm"
-      }  bg-white p-2 rounded-sm lg:m-0`}
+      }  bg-white p-2 rounded-sm `}
     >
       <div className="rounded-sm flex gap-2 justify-between">
         <div className="flex gap-2">
           <div className={`max-w-[31%] sm:w-[100px] sm:h-28 max-h-20 relative`}>
-            <small className="absolute right-0 bg-red-50 text-red-400 px-2">
+            <small className="lg:hidden absolute right-0 bg-red-50 text-red-400 px-2">
               -70%
             </small>
             <img src={image} alt="Product Image" className="w-full h-full rounded-sm"></img>
@@ -56,7 +56,7 @@ const Item = ({
         <div
             className={`${
               type === "cart" ? "gap-1 items-center lg:flex-col" : "flex-col"
-            } hidden lg:flex lg:items-start`}
+            } hidden lg:flex lg:items-end`}
           >
             <p className="text-lg">₦{price}</p>
             <p
@@ -66,6 +66,9 @@ const Item = ({
             >
               ₦{prevPrice}
             </p>
+            <small className=" bg-red-50 text-red-400 px-2 mt-2">
+              -70%
+            </small>
           </div>
 
       </div>
@@ -78,7 +81,7 @@ const Item = ({
           <FaTrash className="text-red-400" />
           <p className="ml-3 text-red-400">REMOVE</p>
         </button>
-        <div className="flex items-center w-[50%] lg:w-32">
+        <div className="flex justify-end items-center w-[50%] lg:w-32">
           {type === "cart" ? (
             <>
               <button

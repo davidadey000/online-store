@@ -965,7 +965,7 @@ nav a:hover {
   }
 
   .range {
-    flex-basis: calc(100% / 6.25);
+    flex-basis: calc(100% / 5.15);
   }
 
   .groups__header {
@@ -1074,6 +1074,11 @@ nav a:hover {
 
 .navbar .responsive_nav {
   transform: translateY(100vh);
+}
+@media screen and (min-width: 1200px) {
+  .range {
+    flex-basis: calc(100% / 6.25);
+  }
 }
 
 @media only screen and (max-width: 1023px) {

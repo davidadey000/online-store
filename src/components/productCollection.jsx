@@ -31,7 +31,7 @@ const ProductCollection = ({
   };
 
   return (
-    <div className="products lg:shadow-md">
+    <div className="products lg:shadow-sm">
       <div
         className={`products__header ${
           use === "detail"

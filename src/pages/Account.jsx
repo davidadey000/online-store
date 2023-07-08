@@ -12,11 +12,13 @@ import {
   HiEye,
 } from "react-icons/hi";
 
+import ListItemsSection from "./../components/ListItemSection";
+import SideBarTemplate from './../components/SideBarTemplate';
+
 const Account = () => {
   const name = "David";
   const email = "davidadey000@gmail.com";
   const amount = "0.00";
-
 
   const options1 = [
     { icon: <HiShoppingCart />, link: "orders", title: "Orders" },
@@ -37,33 +39,26 @@ const Account = () => {
   ];
   return (
     <>
-      <div className="p-4 bg-red-400">
-        <p className="text-white font-semibold leading-4">Welcome, {name}</p>
-        <p className="text-white text-xs">{email}</p>
-      </div>
-      <div className="px-3 py-2  bg-white text-blue-900 flex items-center">
-        <HiCreditCard />
-        <p className="ml-3 font-semibold">₦{amount}</p>
-      </div>
-      <Title title="my jumia account" />
-      <div className="bg-white rounded-sm m-2">
-        <ul className="w-full h-full  p-2">
-          {options1.map(({ icon, title, link }) => (
-            <ListItem key={title} link={link} icon={icon} title={title} />
-          ))}
-        </ul>
-      </div>
-      <Title title="account settings" />
-      <div className="bg-white rounded-md m-2">
-        <ul className="w-full h-full  p-2">
-          {options2.map(({ title }) => (
-            <ListItem key={title} title={title} />
-          ))}
-        </ul>
-      </div>
-      <Link to="/logout/">
-        <p className="py-3 uppercase text-red-400 text-center">LOGOUT</p>
-      </Link>
+    <SideBarTemplate mobileContent={ <div className="flex-grow lg:hidden">
+        <div className="p-4 bg-red-400 ">
+          <p className="text-white font-semibold leading-4">Welcome, {name}</p>
+          <p className="text-white text-xs">{email}</p>
+        </div>
+        <div className="px-3 py-2  bg-white text-blue-900 flex items-center">
+          <HiCreditCard />
+          <p className="ml-3 font-semibold">₦{amount}</p>
+        </div>
+        <Title title="my jumia account" />
+        <ListItemsSection options={options1} />
+        <Title title="account settings" />
+        <ListItemsSection options={options2} />
+
+        <Link to="/logout/">
+          <p className="py-3 uppercase text-red-400 text-center">LOGOUT</p>
+        </Link>
+      </div>}/>
+     
+    
     </>
   );
 };

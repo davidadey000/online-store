@@ -4,6 +4,7 @@ import Item from "./../components/Item";
 import SavedContext from "./../services/SavedContext";
 import CartContext from "./../services/CartContext";
 import image3 from "../assets/img/project-img3.png";
+import SideBarTemplate from "../components/SideBarTemplate";
 
 const Saved = () => {
   const {
@@ -52,23 +53,28 @@ const Saved = () => {
     clearSaved();
   };
 
+const savedTitle = `Saved Items (${total})`
   return (
-    <div className="flex-grow">
-      <div className="px-4 py-2 text-xl">Saved Items ({total})</div>
-      <div className="p-2">
-        {savedItems.map((item) => (
-          <Item
-            key={item.id}
-            {...item}
-            type="saved"
-            handleIncrement={handleIncrement}
-            handleDecrement={handleDecrement}
-            handleRemoveFromSaved={handleRemoveFromSaved}
-            handleAddToCart={handleAddToCart}
-          />
-        ))}
-      </div>
-    </div>
+    <SideBarTemplate
+     title={savedTitle}
+      content={
+        <div className="flex-grow">
+          <div className="p-2">
+            {savedItems.map((item) => (
+              <Item
+                key={item.id}
+                {...item}
+                type="saved"
+                handleIncrement={handleIncrement}
+                handleDecrement={handleDecrement}
+                handleRemoveFromSaved={handleRemoveFromSaved}
+                handleAddToCart={handleAddToCart}
+              />
+            ))}
+          </div>
+        </div>
+      }
+    />
   );
 };
 

@@ -49,9 +49,11 @@ const Cart = () => {
         <Subtotal totalPrice={totalPrice} />
       </div>
       <div className="lg:flex lg:flex-row gap-3">
-        <div className="lg:w-3/4 lg:shadow-lg lg:rounded-sm lg:bg-white lg:pb-2">
-          
-      <Title title={`cart(${total})`} extraClass="lg:bg-white lg:ml-0 lg:p-2 lg:rounded-t-md"/>
+        <div className="lg:w-3/4 lg:shadow-sm lg:rounded-md lg:bg-white lg:pb-2">
+          <Title
+            title={`cart(${total})`}
+            extraClass="lg:bg-white lg:ml-0 lg:p-2 lg:rounded-t-md"
+          />
           {cartItems.map((item) => (
             <Item
               key={item.id}
@@ -63,7 +65,7 @@ const Cart = () => {
             />
           ))}
         </div>
-        <div className="px-4 py-2 flex gap-2 bg-white my-4 lg:w-1/4 lg:flex-col h-min lg:shadow-lg">
+        <div className="px-4 py-2 flex gap-2 bg-white my-4 lg:w-1/4 lg:flex-col h-min lg:shadow-sm">
           <div className="hidden lg:block">
             <Subtotal totalPrice={totalPrice} />
           </div>
@@ -103,7 +105,7 @@ export default Cart;
 export const Subtotal = ({ totalPrice }) => {
   return (
     <div>
-      <Title title="cart summary" extraClass="lg:ml-0"/>
+      <Title title="cart summary" extraClass="lg:ml-0" />
       <div className="px-3 py-2 flex justify-between bg-white lg:p-0">
         <p>Subtotal</p> <p className="font-bold lg:text-xl">₦{totalPrice}</p>
       </div>

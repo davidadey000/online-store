@@ -31,7 +31,8 @@ import NotFound from "./pages/NotFound";
 function Layout({ children }) {
   const location = useLocation();
   const hideFooterRoutes = ["/signin", "/404"]; // Add the routes where you want to hide the footer
-  const alternativeNavbarRoutes = ["/saved", "/signin", "/cart"]; // Add the routes where you want to use the alternative Navbar
+  const alternativeNavbarRoutes = [ "/signin"]; // Add the routes where you want to use the alternative Navbar
+  const noNavbarRoutes = ["/orders", "/saved"]
 
   useEffect(() => {
     // Scroll to the top of the page when the route changes
@@ -43,7 +44,7 @@ function Layout({ children }) {
      {!hideFooterRoutes.includes(location.pathname) && <TopBanner />}
       {alternativeNavbarRoutes.includes(location.pathname) ? (
         <AlternativeNavbar currentUrl={location.pathname} />
-      ) : (
+      ) : noNavbarRoutes.includes(location.pathname) ?         <Navbar currentUrl={location.pathname} classes="hidden lg:flex"/> : (
         <Navbar currentUrl={location.pathname} />
       )}
       <ToastContainer />
