@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import CartContext from "./../services/CartContext";
 import { useContext } from "react";
 import image3 from "../assets/img/project-img3.png";
+import NoItemsFound from './NoItemsFound';
 
 const ItemCollection = ({
   type,
@@ -88,23 +89,23 @@ const ItemCollection = ({
   };
 
   return (
-    <div className="items md:w-[90%] lg:w-full">
+    <div className="items w-full md:w-[90%] lg:w-full">
       <div className="items__header p-2 ">
         <h4 className="items__text--title">{collectionName}</h4>
       </div>
-      <div className="items__body" ref={containerRef}>
-        {filteredProducts.length != 0
-          ? filteredProducts.slice(0, 12).map((deal, index) => {
-              return (
-                <ItemCard
-                  key={index}
-                  {...deal}
-                  handleAddToCart={handleAddToCart}
-                />
-              );
-            })
-          : toast.error("No Products Found")}
-      </div>
+      {filteredProducts.length !== 0 ? (
+        <div className="items__body" ref={containerRef}>
+          {filteredProducts.slice(0, 12).map((deal, index) => (
+            <ItemCard
+              key={index}
+              {...deal}
+              handleAddToCart={handleAddToCart}
+            />
+          ))}
+        </div>
+      ) : (
+       <NoItemsFound  title="Filtered Product List" />
+      )}
 
       <div
         className="scroll-arrow scroll-arrow-left"

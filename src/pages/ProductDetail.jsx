@@ -82,10 +82,8 @@ const Product = ({ match }) => {
     if (!isAlreadyInCart) {
       addToCart(reconciledProduct);
       toast.success("Item has been added to Cart.");
-      // navigate("/cart");
     } 
       navigate("/cart");
-    // Move to the cart page
   };
 
   const handleToggleCart = () => {

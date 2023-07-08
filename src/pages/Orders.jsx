@@ -12,7 +12,7 @@ const {orderItems} = useContext(OrdersContext)
     <SideBarTemplate
       title="Orders"
       content={
-        <div className="flex-grow px-2 flex flex-col gap-2">
+        <div className="flex-grow p-2 flex flex-col gap-2">
           {orderItems.length === 0 ? (
             <NoItemsFound title="Orders List" />
           ) : (

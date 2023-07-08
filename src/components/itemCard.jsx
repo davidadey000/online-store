@@ -4,13 +4,13 @@ import { Button } from "react-bootstrap";
 
 const ItemCard = ({ id, price, title, image, handleAddToCart }) => {
   const handleAddToCartClick = (event) => {
-    event.stopPropagation();
+    event.preventDefault();
     handleAddToCart(id);
   };
 
   return (
-    // <Link className="block item__link" to={`/product/${id}`}>
-      <div className="item" onClick={handleAddToCartClick}>
+    <Link className="block item__link" to={`/product/${id}`}>
+      <div className="item">
         <img src={image} alt="" className="item__image" />
         <div className="item__body">
           <h6 className="item__text--description">{title}</h6>
@@ -21,15 +21,15 @@ const ItemCard = ({ id, price, title, image, handleAddToCart }) => {
           <div
             className="item__footer"
             style={{ backgroundColor: "white" }}
-            onClick={handleAddToCartClick}
           >
-            <Button className="item__footer-btn">ADD TO CART</Button>
+            <Button className="item__footer-btn" onClick={handleAddToCartClick}>
+              ADD TO CART
+            </Button>
           </div>
         </div>
       </div>
-    // </Link>
+    </Link>
   );
 };
-
 
 export default ItemCard;

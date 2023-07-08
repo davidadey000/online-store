@@ -92,27 +92,29 @@ const Products = () => {
     startIndex + productsPerPage
   );
 
-  const renderPageNumbers = () => {
-    const pageNumbers = [];
-    const maxPageNumbers = 3;
-    const range = Math.floor(maxPageNumbers / 2);
+  
+const renderPageNumbers = () => {
+  const pageNumbers = [];
+  const maxPageNumbers = 3;
+  const range = Math.floor(maxPageNumbers / 2);
 
-    let startPage = currentPage - range;
-    let endPage = currentPage + range;
+  let startPage = currentPage - range;
+  let endPage = currentPage + range;
 
+  if (startPage <= 0) {
+    startPage = 1;
+    endPage = startPage + maxPageNumbers - 1;
+  }
+
+  if (endPage > totalPages) {
+    endPage = totalPages;
+    startPage = endPage - maxPageNumbers + 1;
     if (startPage <= 0) {
       startPage = 1;
-      endPage = startPage + maxPageNumbers - 1;
     }
+  }
 
-    if (endPage > totalPages) {
-      endPage = totalPages;
-      startPage = endPage - maxPageNumbers + 1;
-      if (startPage <= 0) {
-        startPage = 1;
-      }
-    }
-
+  if (totalPages > 1) { // Add this condition to check if totalPages is greater than 1
     for (let i = startPage; i <= endPage; i++) {
       pageNumbers.push(
         <button
@@ -126,9 +128,10 @@ const Products = () => {
         </button>
       );
     }
+  }
 
-    return pageNumbers;
-  };
+  return pageNumbers;
+};
 
   return (
     <div className="x">
@@ -182,11 +185,15 @@ const Products = () => {
           </div>
         </div>
       </div>
-      <div className="sticky bottom-0 left-0 p-3 sm:p-5 sm:h-[5%] lg:hidden bg-gray-300">
-        <p className="text-xs sm:text-[13px] sm:text-leading-sm leading-xs text-black">
+      <div className="sticky bottom-0 left-0 sm:h-[5%] lg:hidden bg-gray-300">
+        {/* <p className="text-xs sm:text-[13px] sm:text-leading-sm leading-xs text-black">
           This website uses cookies. For further information on how we use
           cookies you can read our <a href="">Privacy and Cookie notice.</a>
-        </p>
+        </p> */}
+        <ProductFilter
+              filters={filters}
+              onFilterChange={handleFilterChange}
+            />
       </div>
     </div>
   );
