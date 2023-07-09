@@ -137,7 +137,7 @@ const renderPageNumbers = () => {
     <div className="x">
       <GroupCollection key={categories.collectionName} {...categories} />
       <div className="products__collection-list">
-        <div className="products__sidebar">
+        <div className="products__sidebar pb-2">
           <div className="products__sidebar-categories sticky top-[60px]">
             <ProductFilter
               filters={filters}

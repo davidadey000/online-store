@@ -24,7 +24,7 @@ const GroupCard = ({ price, title, image }) => {
         )}
       </div>
       <div className="group__footer">
-        <small className="group__text">{title}</small>
+        <small className="group__text font-semibold text-gray-600">{title}</small>
       </div>
     </Link>
   );
