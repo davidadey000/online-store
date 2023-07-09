@@ -33,7 +33,7 @@ function Layout({ children }) {
   const location = useLocation();
   const hideFooterRoutes = ["/signin", "/404"]; // Add the routes where you want to hide the footer
   const alternativeNavbarRoutes = ["/signin"]; // Add the routes where you want to use the alternative Navbar
-  const noNavbarRoutes = ["/orders", "/saved"];
+  const noNavbarRoutes = ["/orders", "/saved", '/account'];
 
   useEffect(() => {
     // Scroll to the top of the page when the route changes
