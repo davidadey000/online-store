@@ -1,5 +1,5 @@
 import React from "react";
-import { FaArrowLeft } from 'react-icons/fa';
+import { HiArrowLeft } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 
 const AlternativeNavbar = () => {
@@ -12,7 +12,7 @@ const AlternativeNavbar = () => {
   return (
     <div className="p-3 pt-4 bg-white sticky top-0 w-full  z-40">
       <button className="flex items-center text-black text-xl p-1" onClick={handleGoBack}>
-        <FaArrowLeft className="mr-2" />
+        <HiArrowLeft className="mr-2" />
       
       </button>
     </div>

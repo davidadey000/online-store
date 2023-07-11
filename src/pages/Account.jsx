@@ -37,7 +37,7 @@ const Account = () => {
   const options2 = [
     { title: "Account Management" },
     { title: "Address Book" },
-    { title: "Newsletter" },
+    { title: "Newsletter", link: "newsletter" },
     { title: "Close Account" },
   ];
 

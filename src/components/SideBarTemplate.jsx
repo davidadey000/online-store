@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  HiArrowLeft,
   HiEye,
   HiHeart,
   HiInboxIn,
@@ -9,7 +10,6 @@ import {
   HiUserCircle,
 } from "react-icons/hi";
 import ListItemsSection from "./ListItemSection";
-import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const SideBarTemplate = ({ title, content, mobileContent }) => {
@@ -25,7 +25,7 @@ const SideBarTemplate = ({ title, content, mobileContent }) => {
   ];
   const options2 = [
     { title: "Address Book" },
-    { title: "Newsletter" },
+    { title: "Newsletter" , link: "newsletter"},
     { title: "Close Account" },
   ];
 
@@ -44,7 +44,7 @@ const SideBarTemplate = ({ title, content, mobileContent }) => {
               className="flex items-center text-black text-xl lg:hidden p-1"
               onClick={handleGoBack}
             >
-              <FaArrowLeft className="mr-2" /> {title}
+              <HiArrowLeft className="mr-2" /> {title}
             </button>
           </div>
         )}
@@ -52,8 +52,7 @@ const SideBarTemplate = ({ title, content, mobileContent }) => {
       </div>
       <div className="hidden px-12 lg:flex gap-4 py-4 ">
         <div className="flex flex-col gap-4 min-w-[25%] bg-white max-w-[250px h-min rounded-sm shadow-sm lg:gap-0">
-          <ListItemsSection options={options1} />
-          
+          <ListItemsSection options={options1} />          
           <ListItemsSection options={options2} />
 
           <button className="text-red-400 p-4 text-center font-semibold">LOG OUT</button>
