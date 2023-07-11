@@ -19,6 +19,8 @@ import NavButton from "./navBarComponents/NavButton";
 import { productData } from "../mockData/product";
 import { categoriesData } from "../mockData/category";
 import { useEffect } from "react";
+import Logo from "../assets/img/logo.png"
+
 
 function Navbar({classes}) {
   const navRef2 = useRef();const location = useLocation();
@@ -133,7 +135,7 @@ return () => {
               <HiMenu />
             </button>
             <Link to="/">
-              <button className="text-2xl lg:mr-10 uppercase">jumia</button>
+         <img src={Logo} alt="jumia" className="uppercase h-4 sm:h-5" />
             </Link>
           </div>
           <div className="lg:relative w-full lg:w-[400px]">
@@ -254,8 +256,8 @@ return () => {
       {!isMobile && (
         <>
           <div className="flex gap-10 items-center">
-            <Link to="/">
-              <button className="text-2xl uppercase">jumia</button>
+          <Link to="/">
+         <img src={Logo} alt="jumia" className="uppercase h-5" />
             </Link>
             <div className="relative text-black">
               <NavButton

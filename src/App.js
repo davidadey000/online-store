@@ -23,7 +23,7 @@ import Saved from "./pages/Saved";
 import Signin from "./pages/Signin";
 import Orders from "./pages/Orders";
 import Account from "./pages/Account";
-import Chat from "./pages/Chat";
+import Faq from "./pages/Faq";
 import CartProvider from "./services/CartProvider";
 import SavedProvider from "./services/SavedProvider";
 import NotFound from "./pages/NotFound";
@@ -33,7 +33,7 @@ import Newsletter from "./pages/Newsletter";
 
 function Layout({ children }) {
   const location = useLocation();
-  const hideFooterRoutes = ["/signin", "/404"]; // Add the routes where you want to hide the footer
+  const hideFooterRoutes = ["/signin", ]; // Add the routes where you want to hide the footer
   const alternativeNavbarRoutes = ["/signin"]; // Add the routes where you want to use the alternative Navbar
   const noNavbarRoutes = ["/orders", "/saved", "/account", "/inbox", '/newsletter'];
 
@@ -86,7 +86,7 @@ function App() {
                 <Route path="/saved" element={<Saved />} />
                 <Route path="/signin" element={<Signin />} />
                 <Route path="/account" element={<Account />} />
-                <Route path="/chat" element={<Chat />} />{" "}
+                <Route path="/faq" element={<Faq />} />{" "}
                 <Route path="/inbox" element={<Inbox />} />{" "}
                 <Route path="/newsletter" element={<Newsletter />} />
               </Routes>
