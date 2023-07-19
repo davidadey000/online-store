@@ -32,7 +32,6 @@ const HeroCard = ({ image, onHeroCardEnter }) => {
             onMouseEnter={handleMouseEnter}
           />
         )}
-        {/* <TextContentLoader width="100%" height="100%" /> */}
       </div>
     // </Link>
   );

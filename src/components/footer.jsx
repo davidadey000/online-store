@@ -60,10 +60,10 @@ const DesktopFooter = () => (
         </p>
         <div className="lg-footer__top-middle-form">
           <button className="lg-footer__top-right__btn text-white">
-            Male
+            PLAYSTORE
           </button>
           <button className="lg-footer__top-right__btn text-white">
-            female
+           APP STORE
           </button>
         </div>
       </div>
@@ -91,7 +91,7 @@ const FooterCard = ({ title, links }) => (
 );
 
 const FooterLink = ({ href, children }) => (
-  <Link to={`/${href}`} className="lg-footer__bottom__link">
+  <Link to={`/${href}`} className="my-1 text-xs text-gray-200 font-semibold lg:font-normal">
     {children}
   </Link>
 );

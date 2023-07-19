@@ -537,6 +537,9 @@ nav a:hover {
     width: 22%;
     display: flex;
     flex-wrap: wrap;
+    
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .hero-section__card--second {
@@ -793,13 +796,7 @@ nav a:hover {
     margin: 2% 0%;
   }
 
-  .lg-footer__bottom__link {
-    margin: 0.75%;
-    color: rgb(204, 204, 204);
-    text-decoration: none;
-    font-weight: normal;
-    font-size: 0.85rem;
-  }
+
 
   .lg-footer__hr {
     margin-left: 5%;
@@ -919,7 +916,9 @@ nav a:hover {
 
   .hero-section__card {
     width: 19%;
+    height: inherit;
     display: flex;
+    
   }
 
   .hero-card {}
@@ -1045,9 +1044,7 @@ nav a:hover {
     border: 1.1px solid var(--mainColor);
   }
 
-  .lg-footer__bottom__link {
-    font-size: 0.75rem;
-  }
+
 
   .lg-footer__input:focus {
     outline: none;
