@@ -82,8 +82,8 @@ const Product = ({ match }) => {
     if (!isAlreadyInCart) {
       addToCart(reconciledProduct);
       toast.success("Item has been added to Cart.");
-    } 
-      navigate("/cart");
+    }
+    navigate("/cart");
   };
 
   const handleToggleCart = () => {
@@ -254,7 +254,7 @@ const Product = ({ match }) => {
                 }}
               >
                 {slideImages.map((item, index) => (
-                  <img key={index} src={item} className="carousel__image" />
+                  <img key={index} src={item} alt={`Image ${index + 1}`} className="carousel__image" />
                 ))}
               </Carousel>
             ) : (
@@ -265,7 +265,7 @@ const Product = ({ match }) => {
               </LaptopCarousel>
             )}
 
-            <button className="product-det__upload">
+            <button className="absolute top-[6vh] right[4vw] p-[3%] rounded-full bg-white sm:p-[2%] lg:top-16 lg:right-6">
               <FaUpload />
             </button>
           </div>
@@ -316,13 +316,9 @@ const Product = ({ match }) => {
               <h4 className="product-det__stock-state">In Stock</h4>
             </div>
             <div className="product-det__right-div--mobile">
-              <div className="p-2 flex flex-col gap-3 sm:flex-row sm:justify-between sm:p-5">
+              <div className="p-2 flex flex-col gap-3 sm:flex-row  sm:p-5">
                 <div className="flex flex-col gap-3 sm:flex-row">
-                  <CartButton
-                    handleToggleCart={handleToggleCart}
-                    productId={product.id}
-                    cartItems={cartItems}
-                  />
+                
                   <BuyButton
                     handleBuyNow={handleBuyNow}
                     productId={product.id}
@@ -514,6 +510,17 @@ const Product = ({ match }) => {
             </div>
           </div>
         </div>
+         <div className="sticky bottom-0 left-0 sm:h-[5%] sm:px-5 lg:hidden bg-white p-2">
+        {/* <p className="text-xs sm:text-[13px] sm:text-leading-sm leading-xs text-black">
+          This website uses cookies. For further information on how we use
+          cookies you can read our <a href="">Privacy and Cookie notice.</a>
+        </p> */}
+          <CartButton
+                    handleToggleCart={handleToggleCart}
+                    productId={product.id}
+                    cartItems={cartItems}
+                  />
+      </div>
         <div className="product-det__similar-product-div">
           <ProductCollection
             key={similarProducts.collectionName}
@@ -521,6 +528,7 @@ const Product = ({ match }) => {
           />
         </div>
       </div>
+     
     </div>
   );
 };
@@ -540,7 +548,7 @@ const SaveButton = ({ handleToggleSaved, productId, savedItems }) => (
 
 const CartButton = ({ handleToggleCart, productId, cartItems }) => (
   <button
-    className="py-3  sm:text-sm border-black border-[1px] font-semibold  w-full  text-black rounded-full sm:w-auto sm:px-7 sm:py-[6px] lg:ml-0 lg:text-[12px]  lg:w-full"
+    className="py-3 sm:text-sm  font-semibold  w-full  bg-red-400  rounded-lg  text-white lg:rounded-full sm:px-7 sm:py-[6px] lg:ml-0 lg:text-[12px]  lg:w-full"
     onClick={handleToggleCart}
   >
     Add to Cart
@@ -549,7 +557,7 @@ const CartButton = ({ handleToggleCart, productId, cartItems }) => (
 
 const BuyButton = ({ handleBuyNow, productId, cartItems }) => (
   <button
-    className="py-3 font-semibold  w-full sm:text-sm bg-red-400 text-white rounded-full sm:w-auto sm:px-7 sm:py-[6px] lg:ml-0 lg:text-[12px]  lg:w-full"
+    className="py-3 font-semibold  w-full sm:text-sm border-black border-[1px]  text-black rounded-full sm:w-auto sm:px-7 sm:py-[6px] lg:ml-0 lg:text-[12px]  lg:w-full"
     onClick={handleBuyNow}
   >
     Buy Now

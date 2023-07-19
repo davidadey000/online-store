@@ -39,7 +39,7 @@ const SideBarTemplate = ({ title, content, mobileContent }) => {
     <>
       <div className="flex-grow lg:hidden">
         {title && (
-          <div className="p-3 pt-4 bg-white sticky top-0 w-full  z-40">
+          <div className="px-3 py-2 pt-3 bg-white sticky top-0 w-full  z-40">
             <button
               className="flex items-center text-black text-xl lg:hidden p-1"
               onClick={handleGoBack}

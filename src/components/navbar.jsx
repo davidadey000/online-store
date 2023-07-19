@@ -176,16 +176,15 @@ return () => {
                 <Link
                   onClick={handleMenuToggle}
                   to="/account"
-                  className=" mx-4 sm:text-2xl flex items-center gap-1"
+                  className=" mx-4 sm:text-2xl flex items-center gap-1 font-semibold "
                 >
-                  {" "}
                   <HiUserCircle />
                   My Account
                 </Link>
                 <Link
                   onClick={handleMenuToggle}
                   to="/orders"
-                  className=" sm:text-2xl mx-4 flex items-center gap-1"
+                  className=" sm:text-2xl mx-4 flex items-center gap-1 font-semibold"
                 >
                   <HiCollection />
                   Orders
@@ -193,21 +192,21 @@ return () => {
                 <Link
                   onClick={handleMenuToggle}
                   to="/saved"
-                  className=" mx-4  sm:text-2xl flex items-center gap-1"
+                  className=" mx-4  sm:text-2xl flex items-center gap-1 font-semibold"
                 >
                   <HiHeart /> Saved Items
                 </Link>
                 <Link
                   onClick={handleMenuToggle}
                   to="/signin"
-                  className=" mx-4  flex items-center gap-1  sm:text-2xl"
+                  className=" mx-4  flex items-center gap-1  sm:text-2xl  font-semibold"
                 >
                   <HiKey /> Sign In
                 </Link>
                 <Link
                   onClick={handleMenuToggle}
                   to="/cart"
-                  className=" mx-4  flex items-center gap-1  sm:text-2xl"
+                  className=" mx-4  flex items-center gap-1  sm:text-2xl  font-semibold"
                 >
                   <HiShoppingCart /> Cart
                 </Link>
@@ -224,14 +223,14 @@ return () => {
                 <Link
                   onClick={handleMenuToggle}
                   to="/faq"
-                  className="mx-4  sm:text-2xl flex items-center gap-1"
+                  className="mx-4  sm:text-2xl flex items-center gap-1 font-semibold"
                 >
                   <HiChat /> FAQ
                 </Link>
                 <Link
                   onClick={handleMenuToggle}
                   to="/contact"
-                  className=" mx-4  sm:text-2xl flex items-center gap-1"
+                  className=" mx-4  sm:text-2xl flex items-center gap-1 font-semibold"
                 >
                   <HiPhone /> Contact Us
                 </Link>
