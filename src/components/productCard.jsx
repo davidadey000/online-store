@@ -26,7 +26,7 @@ const ProductCard = ({ id, price, title, image }) => {
             src={image}
             alt=""
             threshold={0}
-            effect="blur"
+            
             className="w-full h-[200px] rounded-sm"
           />
         )}

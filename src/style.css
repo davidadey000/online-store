@@ -539,9 +539,6 @@ nav a:hover {
   .hero-section__card {
     width: 22%;
     display: flex;
-    flex-direction: column;
-    height: inherit;
-    justify-content: space-between;
     flex-wrap: wrap;
   }
 
@@ -925,10 +922,6 @@ nav a:hover {
   .hero-section__card {
     width: 19%;
     display: flex;
-    flex-direction: column;
-    height: inherit;
-    justify-content: space-between;
-    flex-wrap: wrap;
   }
 
   .hero-card {

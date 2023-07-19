@@ -21,9 +21,12 @@ const RangeCard = ({ slug, title, image }) => {
         {isLoading ? (
           <TextContentLoader width="100%" height="100%"></TextContentLoader>
         ) : (
-          <LazyLoadImage 
-          threshold={0}
-          effect="blur" src={image} alt="" className="w-full h-full" />
+          <LazyLoadImage
+            threshold={0}
+            src={image}
+            alt=""
+            className="w-full h-full"
+          />
         )}
       </div>
       <div className="range__footer">
