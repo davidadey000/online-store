@@ -12,7 +12,8 @@ const Saved = () => {
   const { savedItems, total, removeFromSaved, clearSaved } =
     useContext(SavedContext);
 
-  const { toggleCart } = useContext(CartContext);
+  const { addToCart } = useContext(CartContext);
+  
   const handleAddToCart = (id) => {
     // Find the saved item with the provided id
     const savedItem = savedItems.find((item) => item.id === id);
@@ -25,7 +26,7 @@ const Saved = () => {
       };
 
       // Add the new item to the cart
-      toggleCart(newItem);
+      addToCart(newItem);
 
       // Show a success toast message
       toast.success("Item has been added to cart.");

@@ -1,5 +1,8 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { FaMinus, FaPlus, FaTrash } from "react-icons/fa";
+import TextContentLoader from "./TextContentLoader";
 
 const Item = ({
   id,
@@ -16,6 +19,16 @@ const Item = ({
   handleRemoveFromSaved,
   handleAddToCart,
 }) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = image;
+    img.onload = () => {
+      setIsLoading(false);
+    };
+  }, [image]);
+
   return (
     <div
       className={`${
@@ -28,11 +41,18 @@ const Item = ({
             <small className="lg:hidden absolute right-0 bg-red-50 text-red-400 px-2">
               -70%
             </small>
-            <img
-              src={image}
-              alt="Product Image"
-              className="w-full h-full rounded-sm"
-            ></img>
+            {isLoading ? (
+              <TextContentLoader
+                width="100%"
+                height="100%"
+              ></TextContentLoader>
+            ) : (
+              <img
+                src={image}
+                alt="Product Image"
+                className="w-full h-full rounded-sm"
+              ></img>
+            )}
           </div>
           <div className="w-70 lg:w-[70%] flex flex-col gap-[1px]">
             <p
@@ -56,7 +76,7 @@ const Item = ({
                 ₦{prevPrice}
               </p>
             </div>
-            <p className="text-xs text-gray-600">{status}</p>
+            <p className="text-xs text-green-700">{status}</p>
           </div>
         </div>
         <div

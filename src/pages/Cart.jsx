@@ -28,10 +28,7 @@ const Cart = () => {
 
   const { addToOrders, orderItems } = useContext(OrdersContext);
 
-  const handleAddToCart = () => {
-    const newItem = { id: 1, name: "Product", price: 10 };
-    toggleCart(newItem);
-  };
+
   const handleIncrement = (itemId) => {
     increment(itemId);
   };
