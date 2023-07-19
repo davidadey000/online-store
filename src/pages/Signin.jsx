@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { HiStar, HiUserCircle, HiEye, HiEyeOff } from "react-icons/hi";
+import Logo from "../assets/img/logo.png";
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -48,12 +50,14 @@ const SignIn = () => {
 
   return (
     <div className="px-5 flex flex-col  flex-grow bg-white items-center">
-        <div className="sm:max-w-md flex-grow gap-4 flex flex-col">
-      <div>      
+      <div className="sm:max-w-md flex-grow gap-4 flex flex-col">
+        <div>
           <div className="pt-5 flex justify-center text-6xl">
             <HiStar />
           </div>
-          <h1 className="text-center font-semibold text-xl">Welcome to Jumia</h1>
+          <h1 className="text-center font-semibold text-xl">
+            Welcome to Jumia
+          </h1>
         </div>
         <p className="text-center px-1 mb-2 text-gray-600 sm:text-md">
           Type your e-mail or phone number to log in or create a Jumia account.
@@ -69,7 +73,9 @@ const SignIn = () => {
               <input
                 type="email"
                 className={`w-full text-md p-3 border-[1px] rounded-[4px] ${
-                  !isValidEmail ? "border-red-700 placeholder-red-700" : "border-gray-500 "
+                  !isValidEmail
+                    ? "border-red-700 placeholder-red-700"
+                    : "border-gray-500 "
                 }`}
                 placeholder="Email or Mobile Number"
                 value={email}
@@ -116,7 +122,10 @@ const SignIn = () => {
         <Button onClick={handleContinueClick} {...buttonData[0]} />
         {isValid ? (
           <div className="text-center">
-            <a href="/forgot-password" className=" block text-red-300 underline">
+            <a
+              href="/forgot-password"
+              className=" block text-red-300 underline"
+            >
               Forgot Password?
             </a>
           </div>
@@ -128,9 +137,14 @@ const SignIn = () => {
             For further support, you may visit the Help Center or contact our
             customer service team.
           </p>
-          <p className="uppercase m-3 text-center font-semibold text-xl sm:text-2xl">Jumia</p>
+          <img
+            src={Logo}
+            alt="jumia"
+            className="uppercase h-5 mx-auto my-3"
+          />
         </div>
-    </div>  </div>
+      </div>
+    </div>
   );
 };
 

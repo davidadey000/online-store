@@ -15,34 +15,27 @@
   --textColorGrey: rgb(54, 54, 54);
   --textColorLight: #fff;
 }
+
 .top-banner {
   display: none;
   height: 10vh;
   background-color: var(--secondaryColor);
 }
 
-
 .navbar__nav-icon {
- 
   margin: 0 5px;
   margin-bottom: -2px;
 }
 
-
-
 nav a:hover {
   color: var(--secondaryColor);
 }
-
-
 
 .navbar__nav {
   display: flex;
   align-items: center;
   z-index: 2;
 }
-
-
 
 .navbar__search-bar {
   display: flex;
@@ -79,7 +72,6 @@ nav a:hover {
   background-color: #3c3c3c;
   color: var(--mainColor);
 }
-
 
 .navbar__dropdown-caret {
   display: none;
@@ -131,7 +123,7 @@ nav a:hover {
 }
 
 .categories {
- margin: 0 2%;
+  margin: 0 2%;
   /* overflow-x: auto; */
   /* white-space: nowrap;   */
 }
@@ -193,6 +185,7 @@ nav a:hover {
   text-decoration: none;
   color: var(--textColorGrey);
 }
+
 .banner-card__body {
   display: none;
 }
@@ -237,20 +230,22 @@ nav a:hover {
 .products__text--title {
   font-weight: normal;
 }
+
 .products__all-link {
   color: var(--textColorLight);
   text-decoration: none;
 }
+
 .products__all-link:hover {
   text-decoration: underline;
 }
+
 .products__text--option {
   font-weight: normal;
   margin: 3px;
 }
 
-.products__body {
-}
+.products__body {}
 
 .product {
   margin-right: 1.5%;
@@ -350,7 +345,6 @@ nav a:hover {
   width: 100%;
 }
 
-
 .range__footer {
   text-align: center;
   padding: 0.65rem;
@@ -420,6 +414,7 @@ nav a:hover {
 .carousel-block {
   margin: 3.5% 0;
 }
+
 .carousel__header {
   border-radius: 4px 4px 0px 0px;
   padding: 3% 3%;
@@ -503,22 +498,24 @@ nav a:hover {
 }
 
 @media screen and (min-width: 768px) {
- 
   .navbar__nav-btn {
     font-size: 2.15rem;
-}
- 
-  .categories {
-  margin: 5px 2.5%;
   }
+
+  .categories {
+    margin: 5px 2.5%;
+  }
+
   .category {
     font-size: 0.9rem;
   }
+
   .categories-banner {
     width: 72%;
     height: 100%;
     /* overflow: auto; */
   }
+
   .banner-card__body {
     display: block;
   }
@@ -551,7 +548,6 @@ nav a:hover {
     height: 47%;
   }
 
-
   .collection-list {
     padding: 0 2.5%;
   }
@@ -561,8 +557,7 @@ nav a:hover {
     position: relative;
   }
 
-  .products__header {
-  }
+  .products__header {}
 
   .products__body::-webkit-scrollbar {
     display: none;
@@ -572,11 +567,12 @@ nav a:hover {
     /* flex-basis: calc(100% / 5.15); */
     flex: 0 0 22.5%;
   }
+
   .product__image {
     height: 200px;
   }
-  .products__body {
-  }
+
+  .products__body {}
 
   .scroll-arrow {
     display: flex;
@@ -625,6 +621,7 @@ nav a:hover {
     height: 200px;
     width: 100%;
   }
+
   .range {
     flex-basis: calc(100% / 4.15);
   }
@@ -646,6 +643,7 @@ nav a:hover {
   .group {
     flex-basis: calc(100% / 5.15);
   }
+
   .group__image {
     height: 12.5vw;
   }
@@ -657,6 +655,7 @@ nav a:hover {
   .carousel-block {
     margin: 1.5% 0;
   }
+
   .carousel__header {
     border-radius: 4px 4px 0px 0px;
     padding: 1% 2%;
@@ -676,6 +675,7 @@ nav a:hover {
     padding: 3%;
     max-height: none;
   }
+
   .description__body li {
     margin-left: 2.5%;
     font-size: 0.75rem;
@@ -734,6 +734,7 @@ nav a:hover {
   .lg-footer__top-middle-text--small {
     color: rgb(204, 204, 204);
   }
+
   .lg-footer__top-middle-form {
     display: flex;
   }
@@ -749,12 +750,13 @@ nav a:hover {
   .lg-footer__input:focus {
     outline: none;
   }
-  .lg-footer__top-right__btn{
+
+  .lg-footer__top-right__btn {
     padding: 0.25rem 2rem;
     font-size: 1rem;
   }
+
   .lg-footer__btn {
-  
     text-transform: uppercase;
     color: var(--textColorLight);
     background-color: rgb(40, 40, 40);
@@ -786,9 +788,11 @@ nav a:hover {
     display: flex;
     flex-direction: column;
   }
+
   .lg-footer__bottom__title {
     margin: 2% 0%;
   }
+
   .lg-footer__bottom__link {
     margin: 0.75%;
     color: rgb(204, 204, 204);
@@ -796,6 +800,7 @@ nav a:hover {
     font-weight: normal;
     font-size: 0.85rem;
   }
+
   .lg-footer__hr {
     margin-left: 5%;
     width: 90%;
@@ -809,20 +814,18 @@ nav a:hover {
     display: block;
     height: 10vh;
   }
-  
+
   .navbar .navbar__nav-btn {
     display: none;
     opacity: 1;
   }
 
-
-
   .navbar__search-box {
     width: 60%;
   }
 
-
-  .navbar__nav,  .navbar__dropdown-btn {
+  .navbar__nav,
+  .navbar__dropdown-btn {
     background-color: transparent;
     color: var(--secondaryColor);
     font-size: 1rem;
@@ -833,8 +836,6 @@ nav a:hover {
   .navbar__dropdown-caret {
     display: inline;
   }
-
-
 
   .navbar__dropdown:hover .navbar__dropdown-content {
     height: auto;
@@ -862,7 +863,6 @@ nav a:hover {
   }
 
   .navbar__dropdown-link--btn:hover {
-  
     cursor: pointer;
     transform: translateY(1px);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
@@ -882,15 +882,13 @@ nav a:hover {
     background-color: #f2f2f2;
   }
 
-
-
   .navbar__search-box {
     padding-left: 20px;
     width: 50%;
   }
 
   .categories {
-  margin: 5px 4%;
+    margin: 5px 4%;
   }
 
   .category {
@@ -924,9 +922,7 @@ nav a:hover {
     display: flex;
   }
 
-  .hero-card {
-  }
-
+  .hero-card {}
 
   .slide,
   .slider,
@@ -942,11 +938,9 @@ nav a:hover {
     padding: 0 4%;
   }
 
-  .products__header {
-  }
+  .products__header {}
 
-  .products__body {
-  }
+  .products__body {}
 
   .product__link {
     flex-basis: 160px;
@@ -968,6 +962,7 @@ nav a:hover {
   .group {
     flex-basis: calc(100% / 6.25);
   }
+
   .group__image {
     height: 10vw;
   }
@@ -988,6 +983,7 @@ nav a:hover {
   .description__body {
     padding: 2%;
   }
+
   .description__body li {
     margin-left: 1.5%;
     font-size: 0.75rem;
@@ -1007,9 +1003,11 @@ nav a:hover {
     flex-direction: row;
     padding: 2.5% 0;
   }
+
   .lg-footer-top {
     width: 100vw;
   }
+
   .lg-footer__top-left {
     width: 36.3%;
   }
@@ -1046,9 +1044,11 @@ nav a:hover {
     border-radius: 3.3px;
     border: 1.1px solid var(--mainColor);
   }
+
   .lg-footer__bottom__link {
     font-size: 0.75rem;
   }
+
   .lg-footer__input:focus {
     outline: none;
   }
@@ -1068,6 +1068,7 @@ nav a:hover {
 .navbar .responsive_nav {
   transform: translateY(100vh);
 }
+
 @media screen and (min-width: 1200px) {
   .range {
     flex-basis: calc(100% / 6.25);
@@ -1075,12 +1076,10 @@ nav a:hover {
 }
 
 @media only screen and (max-width: 1023px) {
-
   .navbar__dropdown-link {
     display: block;
     font-weight: 500;
     padding: 8px 0;
     text-decoration: none;
   }
-
 }
