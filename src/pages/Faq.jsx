@@ -23,7 +23,7 @@ const Faq = () => {
   ];
 
   return (
-    <div className="flex-grow px-3 md:px-5 lg:px-10 py-4 min-h-screen">
+    <div className="flex-grow px-3 md:px-5 lg:px-10 py-4">
       <h1 className="text-3xl font-bold mb-6">FAQ</h1>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {faqs.map((faq, index) => (

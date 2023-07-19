@@ -223,7 +223,7 @@ return () => {
               >
                 <Link
                   onClick={handleMenuToggle}
-                  to="/faq"
+                  to="/chat"
                   className="mx-4  sm:text-2xl flex items-center gap-1"
                 >
                   <HiChat /> FAQ
@@ -300,7 +300,7 @@ return () => {
                 }`}
               >
                 <Link
-                  to="/faq"
+                  to="/chat"
                   className="py-2 px-5 whitespace-nowrap hover:bg-red-200"
                 >
                   FAQ
