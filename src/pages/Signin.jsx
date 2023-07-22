@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { HiStar, HiUserCircle, HiEye, HiEyeOff } from "react-icons/hi";
 import Logo from "../assets/img/logo.png";
 import { Link } from "react-router-dom";
+import Joi from "joi";
+import apiUrl from "./../utils/config";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -17,31 +21,73 @@ const SignIn = () => {
       bgColor: "bg-red-400",
       icon: null,
     },
+
     {
       title: "Log in with Google",
       bgColor: "bg-black",
       icon: <HiUserCircle className="absolute top-[35%] left-3" />,
       classes: "mt-16",
     },
+    {
+      title: "Login",
+      bgColor: "bg-red-400",
+      icon: null,
+    },
   ];
 
+  const emailSchema = Joi.string().email({
+    minDomainSegments: 2,
+    tlds: { allow: false }, // To disallow the use of top-level domains (e.g., .com, .net)
+  });
+
   const handleContinueClick = () => {
-    if (email.trim() === "") {
+    const validationResult = emailSchema.validate(email);
+    if (validationResult.error) {
       setIsValidEmail(false);
     } else {
       setIsValidEmail(true);
       setIsValid(true);
     }
   };
+  const passwordSchema = Joi.string().min(5).required(); // Define the password schema
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-    setIsValidEmail(true);
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    setIsValidPassword(true);
+  };
+
+  const handleLoginClick = () => {
+    const passwordValidationResult = passwordSchema.validate(password);
+    if (passwordValidationResult.error) {
+      setIsValidPassword(false);
+    } else {
+      setIsValidPassword(true);
+
+      // Perform login action here using the email and password
+      axios
+        .post(apiUrl + "auth", { email, password })
+        .then((response) => {
+          // If login is successful, response.data should contain the token
+          const token = response.data;
+
+          // Store the token in local storage or any appropriate storage
+          localStorage.setItem("x-auth-token", token);
+
+          // Show success toast notification
+          toast.success("Login successful!");
+
+        })
+        .catch((error) => {
+          // If login fails, handle the error here
+          console.error("Login failed:", error);
+
+          // Show error toast notification
+          toast.error("Login failed. Please try again.");
+        });
+    }
   };
 
   const toggleShowPassword = () => {
@@ -119,29 +165,31 @@ const SignIn = () => {
             )}
           </div>
         )}
-        <Button onClick={handleContinueClick} {...buttonData[0]} />
+
         {isValid ? (
-          <div className="text-center">
-            <a
-              href="/forgot-password"
-              className=" block text-red-300 underline"
-            >
-              Forgot Password?
-            </a>
-          </div>
+          <>
+            <Button onClick={handleLoginClick} {...buttonData[2]} />
+            <div className="text-center">
+              <a
+                href="/forgot-password"
+                className=" block text-red-300 underline"
+              >
+                Forgot Password?
+              </a>
+            </div>
+          </>
         ) : (
-          <Button {...buttonData[1]} />
+          <>
+            <Button onClick={handleContinueClick} {...buttonData[0]} />
+            <Button {...buttonData[1]} />
+          </>
         )}
         <div className="mb-4 m-auto">
           <p className="text-center text-sm font-semibold text-gray-600 mb-2 sm:text-md">
             For further support, you may visit the Help Center or contact our
             customer service team.
           </p>
-          <img
-            src={Logo}
-            alt="jumia"
-            className="uppercase h-5 mx-auto my-3"
-          />
+          <img src={Logo} alt="jumia" className="uppercase h-5 mx-auto my-3" />
         </div>
       </div>
     </div>
