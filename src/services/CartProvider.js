@@ -6,14 +6,17 @@ const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState(cartData);
 
   const total = cartItems.length;
-  const totalPrice = cartItems.reduce((total, item) => {
-    const itemPrice = item.price;
-    return total + itemPrice * item.quantity;
+  let totalPrice = cartItems.reduce((total, item) => {
+    const itemPrice = item.discountedPrice * 100; // Convert price to cents (or any other suitable fixed factor)
+    const itemQuantity = item.quantity;
+    return total + (itemPrice * itemQuantity);
   }, 0);
-
+  
+  totalPrice = totalPrice / 100; // Convert back to Naira (or the original currency)
+  
   const increment = (itemId) => {
     const updatedCartItems = cartItems.map((item) => {
-      if (item.id === itemId) {
+      if (item._id === itemId) {
         return {
           ...item,
           quantity: item.quantity + 1,
@@ -26,22 +29,23 @@ const CartProvider = ({ children }) => {
 
   const decrement = (itemId) => {
     const updatedCartItems = cartItems.map((item) => {
-      if (item.id === itemId) {
+      if (item._id === itemId) {
         return {
           ...item,
-          quantity: item.quantity > 0 ? item.quantity - 1 : 0,
+          quantity: item.quantity > 1 ? item.quantity - 1 : 1,
         };
       }
       return item;
     });
     setCartItems(updatedCartItems);
   };
+
   const toggleCart = (item) => {
-    const isItemInCart = cartItems.some((cartItem) => cartItem.id === item.id);
+    const isItemInCart = cartItems.some((cartItem) => cartItem._id === item._id);
   
     if (isItemInCart) {
       setCartItems((prevItems) =>
-        prevItems.filter((cartItem) => cartItem.id !== item.id)
+        prevItems.filter((cartItem) => cartItem._id !== item._id)
       );
       console.log("Item removed from cart.");
     } else {
@@ -53,12 +57,12 @@ const CartProvider = ({ children }) => {
   const addToCart = (item) => {
     setCartItems((prevItems) => {
       // Check if the item already exists in the cart
-      const existingItem = prevItems.find((cartItem) => cartItem.id === item.id);
+      const existingItem = prevItems.find((cartItem) => cartItem._id === item._id);
   
       if (existingItem) {
         // If the item exists, increase the quantity
         return prevItems.map((cartItem) => {
-          if (cartItem.id === item.id) {
+          if (cartItem._id === item._id) {
             return { ...cartItem, quantity: cartItem.quantity + item.quantity };
           }
           return cartItem;
@@ -72,7 +76,7 @@ const CartProvider = ({ children }) => {
   
 
   const removeFromCart = (itemId) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+    setCartItems((prevItems) => prevItems.filter((item) => item._id !== itemId));
   };
 
   const clearCart = () => {

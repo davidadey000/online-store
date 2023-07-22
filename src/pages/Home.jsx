@@ -4,6 +4,7 @@ import About from "../components/about";
 import Footer from "../components/footer";
 
 const Home = () => {
+  console.log("Home component rendered");
   return (
     <div>
       <HeroSection />

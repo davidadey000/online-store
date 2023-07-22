@@ -3,19 +3,19 @@ import image2 from "../assets/img/project-img2.png";
 
 export const savedData = [
   {
-    id: 3,
-    image: image1,
+    _id: 3,
+    mainImageUrl: image1,
     title: "EILIFINTE B05 Casual Crossbody Shoulder Chest Bag-Grey",
-    price: "10",
-    prevPrice: "15",
+    discountedPrice: 10,
+    price: 15,
     status: "In Stock",
   },
   {
-    id: 4,
-    image: image2,
+    _id: 4,
+    mainImageUrl: image2,
     title: "EILIFINTE B05 Casual Crossbody Shoulder Chest Bag-Grey",
-    price: "20",
-    prevPrice: "25",
+    discountedPrice: 20,
+    price: 25,
     status: "In Stock",
   },
 ];

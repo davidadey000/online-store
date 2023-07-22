@@ -8,6 +8,7 @@ import SlideShow from "./slideShow";
 import { useState, useRef } from "react";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import EmptyCollectionBody from "./EmptyCollectionBody";
 
 const ProductCollection = ({
   type,
@@ -51,16 +52,16 @@ const ProductCollection = ({
           </Link>
         )}
       </div>
-
-      <div
-        className="flex overflow-x-auto bg-white p-3 scroll-smooth products__body gap-1"
-        ref={containerRef}
-      >
-        {products.slice(0, 12).map((deal, index) => {
-          return <ProductCard key={index} {...deal} />;
-        })}
+      <div className="flex overflow-x-auto bg-white p-3 scroll-smooth products__body gap-1" ref={containerRef}>
+        {/* Conditionally render the collection body */}
+        {products && products.length > 0 ? (
+          products.slice(0, 12).map((deal, index) => (
+            <ProductCard key={index} {...deal} />
+          ))
+        ) : (
+          <EmptyCollectionBody />
+        )}
       </div>
-
       <div
         className="scroll-arrow scroll-arrow-left"
         onClick={handleScrollLeft}

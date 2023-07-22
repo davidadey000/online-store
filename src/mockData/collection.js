@@ -5,7 +5,7 @@ export const collectionData = [
     headerColor: "rgb(254, 226, 204)",
     products: [
       {
-        id: "1",
+        _id: "1",
         price: "4000",
         title: "Design & Development",
         image:
@@ -13,21 +13,21 @@ export const collectionData = [
       },
 
       {
-        id: "2",
+        _id: "2",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        id: "3",
+        _id: "3",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        id: "4",
+        _id: "4",
         price: "4000",
         title: "Design & Development",
         image:
@@ -35,7 +35,7 @@ export const collectionData = [
       },
 
       {
-        id: "5",
+        _id: "5",
         price: "4000",
         title: "Design & Development",
         image:
@@ -43,14 +43,14 @@ export const collectionData = [
       },
 
       {
-        id: "6",
+        _id: "6",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
       {
-        id: "7",
+        _id: "7",
         price: "4000",
         title: "Design & Development",
         image:
@@ -58,21 +58,21 @@ export const collectionData = [
       },
 
       {
-        id: "8",
+        _id: "8",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        id: "9",
+        _id: "9",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        id: "10",
+        _id: "10",
         price: "4000",
         title: "Design & Development",
         image:
@@ -80,7 +80,7 @@ export const collectionData = [
       },
 
       {
-        id: "11",
+        _id: "11",
         price: "4000",
         title: "Design & Development",
         image:
@@ -88,7 +88,7 @@ export const collectionData = [
       },
 
       {
-        id: "12",
+        _id: "12",
         price: "4000",
         title: "Design & Development",
         image:

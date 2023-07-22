@@ -9,16 +9,13 @@ import Dropdown from "../components/Dropdown";
 import ProductCollection from "../components/productCollection";
 import CartContext from "../services/CartContext";
 import SavedContext from "../services/SavedContext";
-
+import apiUrl from "../utils/config";
+import { useAsync } from "react-async"; // Import useAsync
 import { useContext } from "react";
 import { FaMapMarker, FaUpload } from "react-icons/fa";
 import { toast } from "react-toastify";
-
-const options = [
-  { value: "option1", label: "1" },
-  { value: "option2", label: "2" },
-  { value: "option3", label: "3" },
-];
+import NotFound from "./NotFound";
+import SkeletonLoader from "../components/SkeletonLoader"
 
 const productAttributesDatabase = {
   model: "Model Name",
@@ -30,56 +27,57 @@ const productAttributesDatabase = {
   nutritionalInfo: "Nutritional Information",
   size: "Size",
   coolantType: "Coolant Type",
+  color: "Color",
 };
 
 const Product = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // State to hold the fetched product data
+  const [showMore, setShowMore] = useState(false);
+  const [showMore2, setShowMore2] = useState(false);
+  const [selectedNumber, setSelectedNumber] = useState(1);
+  const [quantity, setQuantity] = useState(1);
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const isMobile = useMediaQuery({ maxWidth: 1024 });
   const isLaptop = useMediaQuery({ minWidth: 1024 });
   const params = useParams();
-  const productId = parseInt(params.id);
+  const productId = parseInt(params._id);
 
-  // State to hold the fetched product data
-  const [product, setProduct] = useState(null);
-
-  // Function to fetch product data using Axios
-  const fetchProductData = async () => {
-    try {
-      const response = await axios.get(
-        `http://localhost:3000/api/products/64b7e5d29624f4db066fa5cd`
-      ); // Replace with your API endpoint URL
-      setProduct(response.data); // Assuming your API returns the product data as an object
-    } catch (error) {
-      console.error("Error fetching product data:", error);
-    }
-  };
-
-  // Fetch the product data when the component mounts
-  useEffect(() => {
-    fetchProductData();
-  }, []);
-
-  console.log(product);
-  const attributes = Object.entries(product.additionalAttributes);
-  const slideImages = product.imageUrls;
-  const [showMore, setShowMore] = useState(false);
-  const [showMore2, setShowMore2] = useState(false);
-  const toggleShowMore = () => setShowMore(!showMore);
-  const toggleShowMore2 = () => setShowMore2(!showMore2);
-
-  const [selectedNumber, setSelectedNumber] = useState(1);
-  const [quantity, setQuantity] = useState(1);
-
+  // Context
   const { cartItems, addToCart } = useContext(CartContext);
   const { toggleSaved, savedItems } = useContext(SavedContext);
 
+  // Navigation
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const fetchProductData = async () => {
+      try {
+        const response = await axios.get(
+          `${apiUrl}products/64bbbd540fe8d0ee3f54e3e5`
+        );
+        setProduct(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error(error.message);
+        setLoading(false);
+        setError("Failed to fetch product data. Please try again later.");
+      }
+    };
+
+    fetchProductData();
+  }, []);
+  
+  const attributes = Object.entries(product?.additionalAttributes || {});
+  const slideImages = product?.imageUrls || [];
+
+  const toggleShowMore = () => setShowMore(!showMore);
+  const toggleShowMore2 = () => setShowMore2(!showMore2);
+
   const handleBuyNow = () => {
-    const isAlreadyInCart = cartItems.some((item) => item.id === product._id);
+    const isAlreadyInCart = cartItems.some((item) => item._id === product?._id);
 
     const reconciledProduct = {
       ...product,
@@ -106,7 +104,9 @@ const Product = () => {
   };
 
   const handleToggleSaved = () => {
-    const isAlreadyInSaved = savedItems.some((item) => item.id === product._id);
+    const isAlreadyInSaved = savedItems.some(
+      (item) => item._id === product?._id
+    );
 
     const reconciledProduct = {
       ...product,
@@ -124,102 +124,24 @@ const Product = () => {
     collectionName: "View Similar Items",
     headerColor: "rgb(254, 226, 204)",
     products: [
-      {
-        id: "1",
-        price: "4000",
-        description: "Design & Development",
-        image:
-          "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/4243011/1.jpg?5748",
-      },
-
-      {
-        id: "2",
-        price: "4000",
-        description: "Design & Development",
-        image:
-          "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
-      },
-      {
-        id: "3",
-        price: "4000",
-        description: "Design & Development",
-        image:
-          "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
-      },
-      {
-        id: "4",
-        price: "4000",
-        description: "Design & Development",
-        image:
-          "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/59/114556/1.jpg?8547",
-      },
-
-      {
-        id: "5",
-        price: "4000",
-        description: "Design & Development",
-        image:
-          "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/74/523389/1.jpg?7424",
-      },
-
-      {
-        id: "6",
-        price: "4000",
-        description: "Design & Development",
-        image:
-          "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
-      },
-      {
-        id: "7",
-        price: "4000",
-        description: "Design & Development",
-        image:
-          "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/4243011/1.jpg?5748",
-      },
-
-      {
-        id: "8",
-        price: "4000",
-        description: "Design & Development",
-        image:
-          "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
-      },
-      {
-        id: "9",
-        price: "4000",
-        description: "Design & Development",
-        image:
-          "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
-      },
-      {
-        id: "10",
-        price: "4000",
-        description: "Design & Development",
-        image:
-          "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/59/114556/1.jpg?8547",
-      },
-
-      {
-        id: "11",
-        price: "4000",
-        description: "Design & Development",
-        image:
-          "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/74/523389/1.jpg?7424",
-      },
-
-      {
-        id: "12",
-        price: "4000",
-        description: "Design & Development",
-        image:
-          "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
-      },
+      // ... (similar products data)
     ],
   };
 
-  if (!product) {
-    return <div>Product not found.</div>;
+  if (loading) {
+    return <SkeletonLoader />;
   }
+
+  if (error) {
+    // Display error message to the user using react-toastify or any other library
+    toast.error(error);
+    return null;
+  }
+
+  if (!product) {
+    return <NotFound />;
+  }
+
   const handleOptionSelect = (value) => {
     setQuantity(Number(value)); // Convert the value to a number if needed
   };
@@ -231,7 +153,6 @@ const Product = () => {
           <FaMapMarker />
           <p className="product-det__loc-text">Deliver to Nigeria</p>
         </div>
-
         <div className="product-det__top-content">
           <hr className="product-det__line" />
           <p className="product-det__importlink">Visit the Renewed Store</p>
@@ -311,22 +232,22 @@ const Product = () => {
               <div className="product-det__price-terms-container">
                 <span className="product-det__price-terms product-det__price-terms--notnes">
                   <p className="product-det__price-label">
-                    Was: ₦{product.Price}
+                    Was: ₦{product.price}
                   </p>
                 </span>
                 <span className="product-det__price-terms">
                   <p className="product-det__price-label">Price: </p>
-                  <h3 className="product-det__price">₦{product.price}</h3>
+                  <h3 className="product-det__price">₦{product.discountedPrice}</h3>
                 </span>
                 <span className="product-det__price-terms product-det__price-terms--notnes">
                   <p className="product-det__price-label">You save:</p> ₦
-                  {parseInt(product.Price) - parseInt(product.price)}
+                  {product.savedAmount}
                 </span>
               </div>
               <p className="product-det__shipping">
                 Shipping & Import Fees deposit to Nigeria.
               </p>
-              <h4 className="product-det__stock-state">In Stock</h4>
+              <h4 className={`font-semibold ${product.numberInStock > 0 ? "text-green-700": "text-red-700"}`}>{product.numberInStock > 0 ? "In Stock": "Out of Stock"}</h4>
             </div>
             <div className="product-det__right-div--mobile">
               <div className="p-2 flex flex-col gap-3 sm:flex-row  sm:p-5">
@@ -388,32 +309,7 @@ const Product = () => {
                   About this Item
                 </h3>
                 <p className="product-det__about-content">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Laborum necessitatibus neque eaque, distinctio quas eveniet
-                  temporibus quae doloribus aspernatur illum ratione, impedit
-                  modi voluptates optio ipsam fugit. Rerum incidunt
-                  exercitationem ab provident esse ullam nostrum repudiandae
-                  deleniti, vel deserunt rem modi est atque inventore nesciunt
-                  unde, blanditiis veniam nobis? Commodi aliquam incidunt
-                  dignissimos fugit illo labore id minus illum culpa asperiores
-                  animi quos deleniti necessitatibus porro expedita doloribus
-                  veniam, harum eaque cupiditate? Temporibus tenetur quo saepe.
-                  Velit recusandae natus rerum, ipsum obcaecati veritatis nobis
-                  quod possimus ad officiis exercitationem architecto ea fugiat?
-                  Neque non expedita quos labore dolore, dicta aliquam eos natus
-                  consequuntur corporis porro reiciendis at, unde assumenda
-                  incidunt sapiente veritatis ullam sed error. Molestias maxime
-                  laboriosam sapiente esse similique alias iure eos ipsa sit
-                  rerum. Eius eaque ullam illo magnam commodi culpa voluptate
-                  cupiditate, eos vel nemo maxime autem, suscipit earum tempore
-                  dolor consequuntur facere possimus aliquid aperiam. Aspernatur
-                  facere modi commodi, ipsam esse corporis velit delectus
-                  dolorem tempore id! Accusantium eligendi quam, est eius
-                  distinctio asperiores quas, laboriosam excepturi assumenda,
-                  illum voluptate quae sit temporibus necessitatibus ad eos
-                  aspernatur id! Quas laudantium impedit, necessitatibus ex
-                  saepe eligendi nisi obcaecati, cupiditate enim reiciendis
-                  autem accusamus voluptate dicta eum!
+                  {product.description}{" "}
                 </p>
               </div>
               <button
@@ -436,14 +332,16 @@ const Product = () => {
                     Details
                   </h3>
                   <hr className="product-det__detail-line" />
-                  {attributes.map(([key, value]) => (
-                    <div className="product-det__detail sm:w-[70%]" key={key}>
-                      <h4 className="product-det__detail-name">
-                        {productAttributesDatabase[key]}
-                      </h4>
-                      <p className="product-det__detail-value">{value}</p>
-                    </div>
-                  ))}
+                  {attributes.map(([key, value]) =>
+                    productAttributesDatabase[key] ? (
+                      <div className="product-det__detail sm:w-[70%]" key={key}>
+                        <h4 className="product-det__detail-name capitalize">
+                          {productAttributesDatabase[key]}
+                        </h4>
+                        <p className="product-det__detail-value capitalize">{value}</p>
+                      </div>
+                    ) : null
+                  )}
                 </div>
                 <button
                   className={`product-det__details-toggle-button ${
@@ -469,8 +367,8 @@ const Product = () => {
               <div className="product-det__quantity">
                 <p className="mr-2">Qty: </p>
                 <Dropdown
-                  options={options}
                   quantity={quantity}
+                  numberInStock={product.numberInStock}
                   handleOptionSelect={handleOptionSelect}
                 />
               </div>
@@ -551,7 +449,7 @@ const SaveButton = ({ handleToggleSaved, productId, savedItems }) => (
     className=" py-3  font-semibold  w-full bg-black sm:text-sm text-white rounded-full sm:w-auto sm:px-7 sm:py-[6px] lg:ml-0 lg:text-[12px] lg:w-full"
     onClick={handleToggleSaved}
   >
-    {savedItems.some((savedItem) => savedItem.id === productId)
+    {savedItems.some((savedItem) => savedItem._id === productId)
       ? "Remove from Saved"
       : "Add to Saved"}
   </button>

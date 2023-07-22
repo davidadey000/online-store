@@ -5,11 +5,11 @@ import { FaMinus, FaPlus, FaTrash } from "react-icons/fa";
 import TextContentLoader from "./TextContentLoader";
 
 const Item = ({
-  id,
-  image,
+  _id,
+  mainImageUrl,
   title,
+  discountedPrice,
   price,
-  prevPrice,
   status,
   type,
   quantity,
@@ -23,11 +23,11 @@ const Item = ({
 
   useEffect(() => {
     const img = new Image();
-    img.src = image;
+    img.src = mainImageUrl;
     img.onload = () => {
       setIsLoading(false);
     };
-  }, [image]);
+  }, [mainImageUrl]);
 
   return (
     <div
@@ -42,13 +42,10 @@ const Item = ({
               -70%
             </small>
             {isLoading ? (
-              <TextContentLoader
-                width="100%"
-                height="100%"
-              ></TextContentLoader>
+              <TextContentLoader width="100%" height="100%"></TextContentLoader>
             ) : (
               <img
-                src={image}
+                src={mainImageUrl}
                 alt="Product Image"
                 className="w-full h-full rounded-sm"
               ></img>
@@ -67,13 +64,13 @@ const Item = ({
                 type === "cart" ? "gap-1 items-center" : "flex-col"
               } flex lg:hidden`}
             >
-              <p className="text-lg">₦{price}</p>
+              <p className="text-lg">₦{discountedPrice}</p>
               <p
                 className={`${
                   type === "cart" ? "text-xs" : "text-md"
                 } text-gray-600 line-through`}
               >
-                ₦{prevPrice}
+                ₦{price}
               </p>
             </div>
             <p className="text-xs text-green-700">{status}</p>
@@ -84,13 +81,13 @@ const Item = ({
             type === "cart" ? "gap-1 items-center lg:flex-col" : "flex-col"
           } hidden lg:flex lg:items-end`}
         >
-          <p className="text-lg">₦{price}</p>
+          <p className="text-lg">₦{discountedPrice}</p>
           <p
             className={`${
               type === "cart" ? "text-xs" : "text-md"
             } text-gray-600 line-through`}
           >
-            ₦{prevPrice}
+            ₦{price}
           </p>
           <small className=" bg-red-50 text-red-400 px-2 mt-2">-70%</small>
         </div>
@@ -101,8 +98,8 @@ const Item = ({
           className="flex items-center"
           onClick={() =>
             type === "cart"
-              ? handleRemoveFromCart(id)
-              : handleRemoveFromSaved(id)
+              ? handleRemoveFromCart(_id)
+              : handleRemoveFromSaved(_id)
           }
         >
           <FaTrash className="text-red-400" />
@@ -112,16 +109,16 @@ const Item = ({
           {type === "cart" ? (
             <>
               <button
-                onClick={() => handleDecrement(id)}
+                onClick={() => handleDecrement(_id)}
                 className={`p-2 shadow-xl rounded-md text-white ${
-                  quantity ? "bg-red-400" : "bg-red-300"
+                  quantity > 1 ? "bg-red-400" : "bg-red-300"
                 }`}
               >
                 <FaMinus />
               </button>
               <p className="flex justify-center w-full">{quantity}</p>
               <button
-                onClick={() => handleIncrement(id)}
+                onClick={() => handleIncrement(_id)}
                 className="p-2 shadow-xl rounded-md text-white bg-red-400"
               >
                 <FaPlus />
@@ -130,7 +127,7 @@ const Item = ({
           ) : (
             <button
               className="bg-red-400 text-white text-xs py-2 px-3 rounded-sm shadow-xl font-semibold"
-              onClick={() => handleAddToCart(id)}
+              onClick={() => handleAddToCart(_id)}
             >
               BUY NOW
             </button>

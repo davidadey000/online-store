@@ -9,11 +9,11 @@ const SavedProvider = ({ children }) => {
 
   const toggleSaved = (item) => {
     const isItemSaved = savedItems.some(
-      (savedItem) => savedItem.id === item.id
+      (savedItem) => savedItem._id === item._id
     );
 
     if (isItemSaved) {
-      removeFromSaved(item.id);
+      removeFromSaved(item._id);
       console.log("Item removed from saved items.");
     } else {
       setSavedItems((prevItems) => [...prevItems, item]);
@@ -23,7 +23,7 @@ const SavedProvider = ({ children }) => {
 
   const removeFromSaved = (itemId) => {
     setSavedItems((prevItems) =>
-      prevItems.filter((item) => item.id !== itemId)
+      prevItems.filter((item) => item._id !== itemId)
     );
   };
 
