@@ -1,28 +1,19 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
-import { Carousel as LaptopCarousel } from "react-responsive-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { productData } from "../mockData/product";
-import ProductCollection from "../components/productCollection";
-import Footer from "../components/footer";
 import { useMediaQuery } from "react-responsive";
+import { Carousel as LaptopCarousel } from "react-responsive-carousel";
+import { useNavigate, useParams } from "react-router-dom";
 import Dropdown from "../components/Dropdown";
-import { useParams } from "react-router-dom";
+import ProductCollection from "../components/productCollection";
 import CartContext from "../services/CartContext";
 import SavedContext from "../services/SavedContext";
-import { useNavigate } from "react-router-dom";
 
-import {
-  FaHeart,
-  FaLocationArrow,
-  FaMapMarker,
-  FaUpload,
-} from "react-icons/fa";
 import { useContext } from "react";
+import { FaMapMarker, FaUpload } from "react-icons/fa";
 import { toast } from "react-toastify";
 
-// const { Option } = Select;
 const options = [
   { value: "option1", label: "1" },
   { value: "option2", label: "2" },
@@ -41,7 +32,7 @@ const productAttributesDatabase = {
   coolantType: "Coolant Type",
 };
 
-const Product = ({ match }) => {
+const Product = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -50,9 +41,30 @@ const Product = ({ match }) => {
   const isLaptop = useMediaQuery({ minWidth: 1024 });
   const params = useParams();
   const productId = parseInt(params.id);
-  const product = productData.find((p) => p.id === productId);
-  const attributes = Object.entries(product.attributes);
-  const slideImages = product.image;
+
+  // State to hold the fetched product data
+  const [product, setProduct] = useState(null);
+
+  // Function to fetch product data using Axios
+  const fetchProductData = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3000/api/products/64b7e5d29624f4db066fa5cd`
+      ); // Replace with your API endpoint URL
+      setProduct(response.data); // Assuming your API returns the product data as an object
+    } catch (error) {
+      console.error("Error fetching product data:", error);
+    }
+  };
+
+  // Fetch the product data when the component mounts
+  useEffect(() => {
+    fetchProductData();
+  }, []);
+
+  console.log(product);
+  const attributes = Object.entries(product.additionalAttributes);
+  const slideImages = product.imageUrls;
   const [showMore, setShowMore] = useState(false);
   const [showMore2, setShowMore2] = useState(false);
   const toggleShowMore = () => setShowMore(!showMore);
@@ -61,17 +73,13 @@ const Product = ({ match }) => {
   const [selectedNumber, setSelectedNumber] = useState(1);
   const [quantity, setQuantity] = useState(1);
 
-  function handleChange(value) {
-    setSelectedNumber(value);
-  }
-
-  const { toggleCart, cartItems, addToCart } = useContext(CartContext);
+  const { cartItems, addToCart } = useContext(CartContext);
   const { toggleSaved, savedItems } = useContext(SavedContext);
 
   const navigate = useNavigate();
 
   const handleBuyNow = () => {
-    const isAlreadyInCart = cartItems.some((item) => item.id === product.id);
+    const isAlreadyInCart = cartItems.some((item) => item.id === product._id);
 
     const reconciledProduct = {
       ...product,
@@ -98,7 +106,7 @@ const Product = ({ match }) => {
   };
 
   const handleToggleSaved = () => {
-    const isAlreadyInSaved = savedItems.some((item) => item.id === product.id);
+    const isAlreadyInSaved = savedItems.some((item) => item.id === product._id);
 
     const reconciledProduct = {
       ...product,
@@ -254,7 +262,12 @@ const Product = ({ match }) => {
                 }}
               >
                 {slideImages.map((item, index) => (
-                  <img key={index} src={item} alt={`Image ${index + 1}`} className="carousel__image" />
+                  <img
+                    key={index}
+                    src={item}
+                    alt={`Image ${index + 1}`}
+                    className="carousel__image"
+                  />
                 ))}
               </Carousel>
             ) : (
@@ -298,7 +311,7 @@ const Product = ({ match }) => {
               <div className="product-det__price-terms-container">
                 <span className="product-det__price-terms product-det__price-terms--notnes">
                   <p className="product-det__price-label">
-                    Was: ₦{product.prevPrice}
+                    Was: ₦{product.Price}
                   </p>
                 </span>
                 <span className="product-det__price-terms">
@@ -306,8 +319,8 @@ const Product = ({ match }) => {
                   <h3 className="product-det__price">₦{product.price}</h3>
                 </span>
                 <span className="product-det__price-terms product-det__price-terms--notnes">
-                  <p className="product-det__price-label">You save:</p>₦
-                  {parseInt(product.prevPrice) - parseInt(product.price)}
+                  <p className="product-det__price-label">You save:</p> ₦
+                  {parseInt(product.Price) - parseInt(product.price)}
                 </span>
               </div>
               <p className="product-det__shipping">
@@ -318,17 +331,16 @@ const Product = ({ match }) => {
             <div className="product-det__right-div--mobile">
               <div className="p-2 flex flex-col gap-3 sm:flex-row  sm:p-5">
                 <div className="flex flex-col gap-3 sm:flex-row">
-                
                   <BuyButton
                     handleBuyNow={handleBuyNow}
-                    productId={product.id}
+                    productId={product._id}
                     cartItems={cartItems}
                   />
                 </div>
                 <div className="hidden sm:block">
                   <SaveButton
                     handleToggleSaved={handleToggleSaved}
-                    productId={product.id}
+                    productId={product._id}
                     savedItems={savedItems}
                   />
                 </div>
@@ -359,7 +371,7 @@ const Product = ({ match }) => {
                 <div className="product-det__transaction-details-flex">
                   <SaveButton
                     handleToggleSaved={handleToggleSaved}
-                    productId={product.id}
+                    productId={product._id}
                     savedItems={savedItems}
                   />
                 </div>
@@ -464,12 +476,12 @@ const Product = ({ match }) => {
               </div>
               <CartButton
                 handleToggleCart={handleToggleCart}
-                productId={product.id}
+                productId={product._id}
                 cartItems={cartItems}
               />
               <BuyButton
                 handleBuyNow={handleBuyNow}
-                productId={product.id}
+                productId={product._id}
                 cartItems={cartItems}
               />
             </div>
@@ -503,24 +515,24 @@ const Product = ({ match }) => {
               <div className="product-det__transaction-details-flex">
                 <SaveButton
                   handleToggleSaved={handleToggleSaved}
-                  productId={product.id}
+                  productId={product._id}
                   savedItems={savedItems}
                 />
               </div>
             </div>
           </div>
         </div>
-         <div className="sticky bottom-0 left-0 sm:h-[5%] sm:px-5 lg:hidden bg-white p-2">
-        {/* <p className="text-xs sm:text-[13px] sm:text-leading-sm leading-xs text-black">
+        <div className="sticky bottom-0 left-0 sm:h-[5%] sm:px-5 lg:hidden bg-white p-2">
+          {/* <p className="text-xs sm:text-[13px] sm:text-leading-sm leading-xs text-black">
           This website uses cookies. For further information on how we use
           cookies you can read our <a href="">Privacy and Cookie notice.</a>
         </p> */}
           <CartButton
-                    handleToggleCart={handleToggleCart}
-                    productId={product.id}
-                    cartItems={cartItems}
-                  />
-      </div>
+            handleToggleCart={handleToggleCart}
+            productId={product._id}
+            cartItems={cartItems}
+          />
+        </div>
         <div className="product-det__similar-product-div">
           <ProductCollection
             key={similarProducts.collectionName}
@@ -528,7 +540,6 @@ const Product = ({ match }) => {
           />
         </div>
       </div>
-     
     </div>
   );
 };
@@ -546,7 +557,7 @@ const SaveButton = ({ handleToggleSaved, productId, savedItems }) => (
   </button>
 );
 
-const CartButton = ({ handleToggleCart, productId, cartItems }) => (
+const CartButton = ({ handleToggleCart }) => (
   <button
     className="py-3 sm:text-sm  font-semibold  w-full  bg-red-400  rounded-lg  text-white lg:rounded-full sm:px-7 sm:py-[6px] lg:ml-0 lg:text-[12px]  lg:w-full"
     onClick={handleToggleCart}
@@ -555,7 +566,7 @@ const CartButton = ({ handleToggleCart, productId, cartItems }) => (
   </button>
 );
 
-const BuyButton = ({ handleBuyNow, productId, cartItems }) => (
+const BuyButton = ({ handleBuyNow }) => (
   <button
     className="py-3 font-semibold  w-full sm:text-sm border-black border-[1px]  text-black rounded-full sm:w-auto sm:px-7 sm:py-[6px] lg:ml-0 lg:text-[12px]  lg:w-full"
     onClick={handleBuyNow}
