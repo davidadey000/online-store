@@ -10,7 +10,8 @@ const Item = ({
   title,
   discountedPrice,
   price,
-  status,
+  numberInStock,
+  discount,
   type,
   quantity,
   handleIncrement,
@@ -39,7 +40,7 @@ const Item = ({
         <div className="flex gap-2">
           <div className={`max-w-[31%] sm:w-[100px] sm:h-28 max-h-20 relative`}>
             <small className="lg:hidden absolute right-0 bg-red-50 text-red-400 px-2">
-              -70%
+              -{discount}%
             </small>
             {isLoading ? (
               <TextContentLoader width="100%" height="100%"></TextContentLoader>
@@ -64,16 +65,21 @@ const Item = ({
                 type === "cart" ? "gap-1 items-center" : "flex-col"
               } flex lg:hidden`}
             >
-              <p className="text-lg">₦{discountedPrice}</p>
+              <p className="text-lg">₦{discountedPrice.toLocaleString("en-US")}</p>
               <p
                 className={`${
                   type === "cart" ? "text-xs" : "text-md"
                 } text-gray-600 line-through`}
               >
-                ₦{price}
-              </p>
+ {price !== discountedPrice ?  `₦${price.toLocaleString("en-US")}`: null}              </p>
             </div>
-            <p className="text-xs text-green-700">{status}</p>
+            <p
+              className={`text-xs ${
+                numberInStock > 0 ? "text-green-700" : "text-red-700"
+              }`}
+            >
+              {numberInStock > 0 ? "In Stock" : "Out of Stock"}
+            </p>
           </div>
         </div>
         <div
@@ -81,15 +87,15 @@ const Item = ({
             type === "cart" ? "gap-1 items-center lg:flex-col" : "flex-col"
           } hidden lg:flex lg:items-end`}
         >
-          <p className="text-lg">₦{discountedPrice}</p>
+          <p className="text-lg">₦{discountedPrice.toLocaleString("en-US")}</p>
           <p
             className={`${
               type === "cart" ? "text-xs" : "text-md"
             } text-gray-600 line-through`}
           >
-            ₦{price}
+        {price !== discountedPrice ?  `₦${price.toLocaleString("en-US")}`: null}
           </p>
-          <small className=" bg-red-50 text-red-400 px-2 mt-2">-70%</small>
+          <small className=" bg-red-50 text-red-400 px-2 mt-2">-{discount}%</small>
         </div>
       </div>
 

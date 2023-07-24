@@ -3,7 +3,7 @@ export const categoriesData = [
     collectionName: "Limited Store Deals",
     products: [
       {
-        id: "1",
+        _id: "1",
         price: 400,
         title: "Design & Development",
         image:
@@ -11,21 +11,21 @@ export const categoriesData = [
       },
 
       {
-        id: "2",
+        _id: "2",
         price: 4000,
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        id: "3",
+        _id: "3",
         price: 1000,
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        id: "4",
+        _id: "4",
         price: 2000,
         title: "Design & Development",
         image:
@@ -33,7 +33,7 @@ export const categoriesData = [
       },
 
       {
-        id: "5",
+        _id: "5",
         price: 3000,
         title: "Design & Development",
         image:
@@ -41,14 +41,14 @@ export const categoriesData = [
       },
 
       {
-        id: "6",
+        _id: "6",
         price: 2500,
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
       {
-        id: "7",
+        _id: "7",
         price: 5000,
         title: "Design & Development",
         image:
@@ -56,21 +56,21 @@ export const categoriesData = [
       },
 
       {
-        id: "8",
+        _id: "8",
         price: 3000,
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        id: "9",
+        _id: "9",
         price: 500,
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        id: "10",
+        _id: "10",
         price: 200,
         title: "Design & Development",
         image:
@@ -78,7 +78,7 @@ export const categoriesData = [
       },
 
       {
-        id: "11",
+        _id: "11",
         price: 10000,
         title: "Deluxe & Development",
         image:
@@ -86,7 +86,7 @@ export const categoriesData = [
       },
 
       {
-        id: "12",
+        _id: "12",
         price: 3000,
         title: "Design & Development",
         image:
@@ -99,7 +99,7 @@ export const categoriesData = [
     collectionName: "Below 10000",
     products: [
       {
-        id: "1",
+        _id: "1",
         price: "4000",
         title: "Design & Development",
         image:
@@ -107,21 +107,21 @@ export const categoriesData = [
       },
 
       {
-        id: "2",
+        _id: "2",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        id: "3",
+        _id: "3",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        id: "4",
+        _id: "4",
         price: "4000",
         title: "Design & Development",
         image:
@@ -129,7 +129,7 @@ export const categoriesData = [
       },
 
       {
-        id: "5",
+        _id: "5",
         price: "4000",
         title: "Design & Development",
         image:
@@ -137,14 +137,14 @@ export const categoriesData = [
       },
 
       {
-        id: "6",
+        _id: "6",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
       {
-        id: "7",
+        _id: "7",
         price: "4000",
         title: "Design & Development",
         image:
@@ -152,21 +152,21 @@ export const categoriesData = [
       },
 
       {
-        id: "8",
+        _id: "8",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        id: "9",
+        _id: "9",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        id: "10",
+        _id: "10",
         price: "4000",
         title: "Design & Development",
         image:
@@ -174,7 +174,7 @@ export const categoriesData = [
       },
 
       {
-        id: "11",
+        _id: "11",
         price: "4000",
         title: "Design & Development",
         image:
@@ -182,7 +182,7 @@ export const categoriesData = [
       },
 
       {
-        id: "12",
+        _id: "12",
         price: "4000",
         title: "Design & Development",
         image:
@@ -195,7 +195,7 @@ export const categoriesData = [
     collectionName: "Below 150000",
     products: [
       {
-        id: "1",
+        _id: "1",
         price: "4000",
         title: "Design & Development",
         image:
@@ -203,21 +203,21 @@ export const categoriesData = [
       },
 
       {
-        id: "2",
+        _id: "2",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        id: "3",
+        _id: "3",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        id: "4",
+        _id: "4",
         price: "4000",
         title: "Design & Development",
         image:
@@ -225,7 +225,7 @@ export const categoriesData = [
       },
 
       {
-        id: "5",
+        _id: "5",
         price: "4000",
         title: "Design & Development",
         image:
@@ -233,14 +233,14 @@ export const categoriesData = [
       },
 
       {
-        id: "6",
+        _id: "6",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
       {
-        id: "7",
+        _id: "7",
         price: "4000",
         title: "Design & Development",
         image:
@@ -248,21 +248,21 @@ export const categoriesData = [
       },
 
       {
-        id: "8",
+        _id: "8",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        id: "9",
+        _id: "9",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        id: "10",
+        _id: "10",
         price: "4000",
         title: "Design & Development",
         image:
@@ -270,7 +270,7 @@ export const categoriesData = [
       },
 
       {
-        id: "11",
+        _id: "11",
         price: "4000",
         title: "Design & Development",
         image:
@@ -278,7 +278,7 @@ export const categoriesData = [
       },
 
       {
-        id: "12",
+        _id: "12",
         price: "4000",
         title: "Design & Development",
         image:
@@ -291,7 +291,7 @@ export const categoriesData = [
     collectionName: "Below 400000",
     products: [
       {
-        id: "1",
+        _id: "1",
         price: "4000",
         title: "Design & Development",
         image:
@@ -299,21 +299,21 @@ export const categoriesData = [
       },
 
       {
-        id: "2",
+        _id: "2",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        id: "3",
+        _id: "3",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        id: "4",
+        _id: "4",
         price: "4000",
         title: "Design & Development",
         image:
@@ -321,7 +321,7 @@ export const categoriesData = [
       },
 
       {
-        id: "5",
+        _id: "5",
         price: "4000",
         title: "Design & Development",
         image:
@@ -329,14 +329,14 @@ export const categoriesData = [
       },
 
       {
-        id: "6",
+        _id: "6",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
       {
-        id: "7",
+        _id: "7",
         price: "4000",
         title: "Design & Development",
         image:
@@ -344,21 +344,21 @@ export const categoriesData = [
       },
 
       {
-        id: "8",
+        _id: "8",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        id: "9",
+        _id: "9",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        id: "10",
+        _id: "10",
         price: "4000",
         title: "Design & Development",
         image:
@@ -366,7 +366,7 @@ export const categoriesData = [
       },
 
       {
-        id: "11",
+        _id: "11",
         price: "4000",
         title: "Design & Development",
         image:
@@ -374,7 +374,7 @@ export const categoriesData = [
       },
 
       {
-        id: "12",
+        _id: "12",
         price: "4000",
         title: "Design & Development",
         image:
@@ -387,7 +387,7 @@ export const categoriesData = [
     collectionName: "Below 250000",
     products: [
       {
-        id: "1",
+        _id: "1",
         price: "4000",
         title: "Design & Development",
         image:
@@ -395,21 +395,21 @@ export const categoriesData = [
       },
 
       {
-        id: "2",
+        _id: "2",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        id: "3",
+        _id: "3",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        id: "4",
+        _id: "4",
         price: "4000",
         title: "Design & Development",
         image:
@@ -417,7 +417,7 @@ export const categoriesData = [
       },
 
       {
-        id: "5",
+        _id: "5",
         price: "4000",
         title: "Design & Development",
         image:
@@ -425,14 +425,14 @@ export const categoriesData = [
       },
 
       {
-        id: "6",
+        _id: "6",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
       {
-        id: "7",
+        _id: "7",
         price: "4000",
         title: "Design & Development",
         image:
@@ -440,21 +440,21 @@ export const categoriesData = [
       },
 
       {
-        id: "8",
+        _id: "8",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        id: "9",
+        _id: "9",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        id: "10",
+        _id: "10",
         price: "4000",
         title: "Design & Development",
         image:
@@ -462,7 +462,7 @@ export const categoriesData = [
       },
 
       {
-        id: "11",
+        _id: "11",
         price: "4000",
         title: "Design & Development",
         image:
@@ -470,7 +470,7 @@ export const categoriesData = [
       },
 
       {
-        id: "12",
+        _id: "12",
         price: "4000",
         title: "Design & Development",
         image:
@@ -482,7 +482,7 @@ export const categoriesData = [
     collectionName: "Below 20000",
     products: [
       {
-        id: "1",
+        _id: "1",
         price: "4000",
         title: "Design & Development",
         image:
@@ -490,21 +490,21 @@ export const categoriesData = [
       },
 
       {
-        id: "2",
+        _id: "2",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        id: "3",
+        _id: "3",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        id: "4",
+        _id: "4",
         price: "4000",
         title: "Design & Development",
         image:
@@ -512,7 +512,7 @@ export const categoriesData = [
       },
 
       {
-        id: "5",
+        _id: "5",
         price: "4000",
         title: "Design & Development",
         image:
@@ -520,14 +520,14 @@ export const categoriesData = [
       },
 
       {
-        id: "6",
+        _id: "6",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
       {
-        id: "7",
+        _id: "7",
         price: "4000",
         title: "Design & Development",
         image:
@@ -535,21 +535,21 @@ export const categoriesData = [
       },
 
       {
-        id: "8",
+        _id: "8",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        id: "9",
+        _id: "9",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        id: "10",
+        _id: "10",
         price: "4000",
         title: "Design & Development",
         image:
@@ -557,7 +557,7 @@ export const categoriesData = [
       },
 
       {
-        id: "11",
+        _id: "11",
         price: "4000",
         title: "Design & Development",
         image:
@@ -565,7 +565,7 @@ export const categoriesData = [
       },
 
       {
-        id: "12",
+        _id: "12",
         price: "4000",
         title: "Design & Development",
         image:
@@ -577,7 +577,7 @@ export const categoriesData = [
     collectionName: "Health & Beauty",
     products: [
       {
-        id: "1",
+        _id: "1",
         price: "4000",
         title: "Design & Development",
         image:
@@ -585,21 +585,21 @@ export const categoriesData = [
       },
 
       {
-        id: "2",
+        _id: "2",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        id: "3",
+        _id: "3",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        id: "4",
+        _id: "4",
         price: "4000",
         title: "Design & Development",
         image:
@@ -607,7 +607,7 @@ export const categoriesData = [
       },
 
       {
-        id: "5",
+        _id: "5",
         price: "4000",
         title: "Design & Development",
         image:
@@ -615,14 +615,14 @@ export const categoriesData = [
       },
 
       {
-        id: "6",
+        _id: "6",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
       {
-        id: "7",
+        _id: "7",
         price: "4000",
         title: "Design & Development",
         image:
@@ -630,21 +630,21 @@ export const categoriesData = [
       },
 
       {
-        id: "8",
+        _id: "8",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        id: "9",
+        _id: "9",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        id: "10",
+        _id: "10",
         price: "4000",
         title: "Design & Development",
         image:
@@ -652,7 +652,7 @@ export const categoriesData = [
       },
 
       {
-        id: "11",
+        _id: "11",
         price: "4000",
         title: "Design & Development",
         image:
@@ -660,7 +660,7 @@ export const categoriesData = [
       },
 
       {
-        id: "12",
+        _id: "12",
         price: "4000",
         title: "Design & Development",
         image:
@@ -673,7 +673,7 @@ export const categoriesData = [
     collectionName: "View Similar Items",
     products: [
       {
-        id: "1",
+        _id: "1",
         price: "4000",
         title: "Design & Development",
         image:
@@ -681,21 +681,21 @@ export const categoriesData = [
       },
 
       {
-        id: "2",
+        _id: "2",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        id: "3",
+        _id: "3",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        id: "4",
+        _id: "4",
         price: "4000",
         title: "Design & Development",
         image:
@@ -703,7 +703,7 @@ export const categoriesData = [
       },
 
       {
-        id: "5",
+        _id: "5",
         price: "4000",
         title: "Design & Development",
         image:
@@ -711,14 +711,14 @@ export const categoriesData = [
       },
 
       {
-        id: "6",
+        _id: "6",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
       {
-        id: "7",
+        _id: "7",
         price: "4000",
         title: "Design & Development",
         image:
@@ -726,21 +726,21 @@ export const categoriesData = [
       },
 
       {
-        id: "8",
+        _id: "8",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        id: "9",
+        _id: "9",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        id: "10",
+        _id: "10",
         price: "4000",
         title: "Design & Development",
         image:
@@ -748,7 +748,7 @@ export const categoriesData = [
       },
 
       {
-        id: "11",
+        _id: "11",
         price: "4000",
         title: "Design & Development",
         image:
@@ -756,7 +756,7 @@ export const categoriesData = [
       },
 
       {
-        id: "12",
+        _id: "12",
         price: "4000",
         title: "Design & Development",
         image:
@@ -768,7 +768,7 @@ export const categoriesData = [
     collectionName: "You may also like",
     products: [
       {
-        id: "1",
+        _id: "1",
         price: "4000",
         title: "Design & Development",
         image:
@@ -776,21 +776,21 @@ export const categoriesData = [
       },
 
       {
-        id: "2",
+        _id: "2",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        id: "3",
+        _id: "3",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        id: "4",
+        _id: "4",
         price: "4000",
         title: "Design & Development",
         image:
@@ -798,7 +798,7 @@ export const categoriesData = [
       },
 
       {
-        id: "5",
+        _id: "5",
         price: "4000",
         title: "Design & Development",
         image:
@@ -806,14 +806,14 @@ export const categoriesData = [
       },
 
       {
-        id: "6",
+        _id: "6",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
       {
-        id: "7",
+        _id: "7",
         price: "4000",
         title: "Design & Development",
         image:
@@ -821,21 +821,21 @@ export const categoriesData = [
       },
 
       {
-        id: "8",
+        _id: "8",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        id: "9",
+        _id: "9",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        id: "10",
+        _id: "10",
         price: "4000",
         title: "Design & Development",
         image:
@@ -843,7 +843,7 @@ export const categoriesData = [
       },
 
       {
-        id: "11",
+        _id: "11",
         price: "4000",
         title: "Design & Development",
         image:
@@ -851,7 +851,7 @@ export const categoriesData = [
       },
 
       {
-        id: "12",
+        _id: "12",
         price: "4000",
         title: "Design & Development",
         image:
@@ -863,7 +863,7 @@ export const categoriesData = [
     collectionName: "Customers also viewed",
     products: [
       {
-        id: "1",
+        _id: "1",
         price: "4000",
         title: "Design & Development",
         image:
@@ -871,21 +871,21 @@ export const categoriesData = [
       },
 
       {
-        id: "2",
+        _id: "2",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        id: "3",
+        _id: "3",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        id: "4",
+        _id: "4",
         price: "4000",
         title: "Design & Development",
         image:
@@ -893,7 +893,7 @@ export const categoriesData = [
       },
 
       {
-        id: "5",
+        _id: "5",
         price: "4000",
         title: "Design & Development",
         image:
@@ -901,14 +901,14 @@ export const categoriesData = [
       },
 
       {
-        id: "6",
+        _id: "6",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
       },
       {
-        id: "7",
+        _id: "7",
         price: "4000",
         title: "Design & Development",
         image:
@@ -916,21 +916,21 @@ export const categoriesData = [
       },
 
       {
-        id: "8",
+        _id: "8",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        id: "9",
+        _id: "9",
         price: "4000",
         title: "Design & Development",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        id: "10",
+        _id: "10",
         price: "4000",
         title: "Design & Development",
         image:
@@ -938,7 +938,7 @@ export const categoriesData = [
       },
 
       {
-        id: "11",
+        _id: "11",
         price: "4000",
         title: "Design & Development",
         image:
@@ -946,7 +946,7 @@ export const categoriesData = [
       },
 
       {
-        id: "12",
+        _id: "12",
         price: "4000",
         title: "Design & Development",
         image:

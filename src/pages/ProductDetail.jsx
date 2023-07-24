@@ -15,7 +15,8 @@ import { useContext } from "react";
 import { FaMapMarker, FaUpload } from "react-icons/fa";
 import { toast } from "react-toastify";
 import NotFound from "./NotFound";
-import SkeletonLoader from "../components/SkeletonLoader"
+import SkeletonLoader from "../components/SkeletonLoader";
+import ObjectNotFound from "../components/ObjectNotFound";
 
 const productAttributesDatabase = {
   model: "Model Name",
@@ -43,8 +44,7 @@ const Product = () => {
   const isMobile = useMediaQuery({ maxWidth: 1024 });
   const isLaptop = useMediaQuery({ minWidth: 1024 });
   const params = useParams();
-  const productId = parseInt(params._id);
-
+  const productId = params.id;
   // Context
   const { cartItems, addToCart } = useContext(CartContext);
   const { toggleSaved, savedItems } = useContext(SavedContext);
@@ -55,9 +55,7 @@ const Product = () => {
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const response = await axios.get(
-          `${apiUrl}products/64bbbd540fe8d0ee3f54e3e5`
-        );
+        const response = await axios.get(`${apiUrl}products/${productId}`);
         setProduct(response.data);
         setLoading(false);
       } catch (error) {
@@ -69,7 +67,7 @@ const Product = () => {
 
     fetchProductData();
   }, []);
-  
+
   const attributes = Object.entries(product?.additionalAttributes || {});
   const slideImages = product?.imageUrls || [];
 
@@ -80,27 +78,25 @@ const Product = () => {
     const isAlreadyInCart = cartItems.some((item) => item._id === product?._id);
 
     const reconciledProduct = {
-      ...product,
-      quantity: 1,
-      status: "In Stock", // Set the status based on your business logic
+      productId: product._id,
+      quantity: 1, // Set the status based on your business logic
     };
 
     if (!isAlreadyInCart) {
       addToCart(reconciledProduct);
-      toast.success("Item has been added to Cart.");
+      // toast.success("Item has been added to Cart.");
     }
     navigate("/cart");
   };
 
-  const handleToggleCart = () => {
+  const handleAddToCart = () => {
     const reconciledProduct = {
-      ...product,
-      quantity,
-      status: "In Stock", // Set the status based on your business logic
+      productId: product._id,
+      quantity, // Set the status based on your business logic
     };
 
     addToCart(reconciledProduct);
-    toast.success("Item has been added to Cart.");
+    // toast.success("Item has been added to Cart.");
   };
 
   const handleToggleSaved = () => {
@@ -135,11 +131,12 @@ const Product = () => {
   if (error) {
     // Display error message to the user using react-toastify or any other library
     toast.error(error);
-    return null;
+
+    return <ObjectNotFound title="product" />;
   }
 
   if (!product) {
-    return <NotFound />;
+    return <ObjectNotFound title="product" />;
   }
 
   const handleOptionSelect = (value) => {
@@ -232,22 +229,30 @@ const Product = () => {
               <div className="product-det__price-terms-container">
                 <span className="product-det__price-terms product-det__price-terms--notnes">
                   <p className="product-det__price-label">
-                    Was: ₦{product.price}
+                    Was: ₦{product.price.toLocaleString("en-US")}
                   </p>
                 </span>
                 <span className="product-det__price-terms">
                   <p className="product-det__price-label">Price: </p>
-                  <h3 className="product-det__price">₦{product.discountedPrice}</h3>
+                  <h3 className="product-det__price">
+                    ₦{product.discountedPrice.toLocaleString("en-US")}
+                  </h3>
                 </span>
                 <span className="product-det__price-terms product-det__price-terms--notnes">
                   <p className="product-det__price-label">You save:</p> ₦
-                  {product.savedAmount}
+                  {product.savedAmount.toLocaleString("en-US")}
                 </span>
               </div>
               <p className="product-det__shipping">
                 Shipping & Import Fees deposit to Nigeria.
               </p>
-              <h4 className={`font-semibold ${product.numberInStock > 0 ? "text-green-700": "text-red-700"}`}>{product.numberInStock > 0 ? "In Stock": "Out of Stock"}</h4>
+              <h4
+                className={`font-semibold ${
+                  product.numberInStock > 0 ? "text-green-700" : "text-red-700"
+                }`}
+              >
+                {product.numberInStock > 0 ? "In Stock" : "Out of Stock"}
+              </h4>
             </div>
             <div className="product-det__right-div--mobile">
               <div className="p-2 flex flex-col gap-3 sm:flex-row  sm:p-5">
@@ -338,7 +343,9 @@ const Product = () => {
                         <h4 className="product-det__detail-name capitalize">
                           {productAttributesDatabase[key]}
                         </h4>
-                        <p className="product-det__detail-value capitalize">{value}</p>
+                        <p className="product-det__detail-value capitalize">
+                          {value}
+                        </p>
                       </div>
                     ) : null
                   )}
@@ -358,7 +365,9 @@ const Product = () => {
           </div>
           <div className="product-det__right-div--large">
             <div className="product-det__price-details--large">
-              <h3 className="product-det__price">₦{product.price}</h3>
+              <h3 className="product-det__price">
+                ₦{product.price.toLocaleString("en-US")}
+              </h3>
               <p className="product-det__shipping">
                 Shipping & Import Fees deposit to Nigeria.
               </p>
@@ -373,7 +382,7 @@ const Product = () => {
                 />
               </div>
               <CartButton
-                handleToggleCart={handleToggleCart}
+                handleAddToCart={handleAddToCart}
                 productId={product._id}
                 cartItems={cartItems}
               />
@@ -426,7 +435,7 @@ const Product = () => {
           cookies you can read our <a href="">Privacy and Cookie notice.</a>
         </p> */}
           <CartButton
-            handleToggleCart={handleToggleCart}
+            handleAddToCart={handleAddToCart}
             productId={product._id}
             cartItems={cartItems}
           />
@@ -455,10 +464,10 @@ const SaveButton = ({ handleToggleSaved, productId, savedItems }) => (
   </button>
 );
 
-const CartButton = ({ handleToggleCart }) => (
+const CartButton = ({ handleAddToCart }) => (
   <button
     className="py-3 sm:text-sm  font-semibold  w-full  bg-red-400  rounded-lg  text-white lg:rounded-full sm:px-7 sm:py-[6px] lg:ml-0 lg:text-[12px]  lg:w-full"
-    onClick={handleToggleCart}
+    onClick={handleAddToCart}
   >
     Add to Cart
   </button>

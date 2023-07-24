@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import ProductCollection from "./../components/productCollection";
 import { categoriesData } from "./../mockData/category";
 import Title from "./../components/Title";
@@ -9,25 +10,28 @@ import CartContext from "../services/CartContext";
 import NoItemsFound from "./../components/NoItemsFound";
 import OrdersContext from "../services/OrdersContext";
 import { toast } from "react-toastify";
+import ObjectNotFound from "./../components/ObjectNotFound";
+import SkeletonLoader from "../components/SkeletonLoader";
+import apiUrl from "../utils/config";
 
 const Cart = () => {
   const similarItems = categoriesData[categoriesData.length - 3];
-  const recommended = categoriesData[categoriesData.length - 2];
+  const [recommended, setRecommended] = useState([]);
   const customerViewed = categoriesData[categoriesData.length - 1];
 
   const {
     cartItems,
     total,
     totalPrice,
-    toggleCart,
     removeFromCart,
     clearCart,
     increment,
     decrement,
+    cartNotFound,
+    isLoading,
   } = useContext(CartContext);
 
   const { addToOrders, orderItems } = useContext(OrdersContext);
-
 
   const handleIncrement = (itemId) => {
     increment(itemId);
@@ -59,7 +63,17 @@ const Cart = () => {
     toast.success("Your Order was successful.");
   };
 
-  console.log(orderItems);
+  useEffect(() => {
+    // Fetch the random products from the server when the component mounts
+    axios
+      .get(`${apiUrl}products/random`)
+      .then((response) => setRecommended(response.data))
+      .catch((error) =>
+        console.error("Error fetching recommended products:", error)
+      );
+  }, []);
+
+
   return (
     <div className="lg:mx-8 lg:my-4">
       <div className="lg:hidden">
@@ -71,7 +85,11 @@ const Cart = () => {
             title={`cart(${total})`}
             extraClass="lg:bg-white lg:ml-0 lg:p-2 lg:rounded-t-md"
           />
-          {cartItems.length === 0 ? (
+          {isLoading ? (
+            <SkeletonLoader />
+          ) : cartNotFound ? (
+            <ObjectNotFound title="cart" />
+          ) : cartItems.length === 0 ? (
             <NoItemsFound title="cart" />
           ) : (
             cartItems.map((item) => (
@@ -98,10 +116,17 @@ const Cart = () => {
             className="w-full shadow-md bg-red-400 text-white rounded-sm lg:rounded-md py-3"
             onClick={handleCheckout}
           >
-            CHECKOUT (₦{totalPrice})
+            CHECKOUT (₦{parseInt(totalPrice).toLocaleString("en-US")})
           </button>
         </div>
       </div>
+
+      <ProductCollection
+        use="detail"
+        key="You may also like"
+        collectionName="You may also like"
+        products={recommended}
+      />
 
       <ProductCollection
         use="detail"
@@ -109,11 +134,7 @@ const Cart = () => {
         {...similarItems}
       />
 
-      <ProductCollection
-        use="detail"
-        key={recommended.collectionName}
-        {...recommended}
-      />
+  
 
       <ProductCollection
         use="detail"
@@ -131,7 +152,10 @@ export const Subtotal = ({ totalPrice }) => {
     <div>
       <Title title="cart summary" extraClass="lg:ml-0" />
       <div className="px-3 py-2 flex justify-between bg-white lg:p-0">
-        <p>Subtotal</p> <p className="font-bold lg:text-xl">₦{totalPrice}</p>
+        <p>Subtotal</p>{" "}
+        <p className="font-bold lg:text-xl">
+          ₦{parseInt(totalPrice).toLocaleString("en-US")}
+        </p>
       </div>
     </div>
   );
