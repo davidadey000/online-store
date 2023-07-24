@@ -24,7 +24,6 @@ const Cart = () => {
     total,
     totalPrice,
     removeFromCart,
-    clearCart,
     increment,
     decrement,
     cartNotFound,
@@ -45,9 +44,7 @@ const Cart = () => {
     removeFromCart(itemId);
   };
 
-  const handleClearCart = () => {
-    clearCart();
-  };
+ 
 
   const handleCheckout = () => {
     cartItems.forEach((item) => {
@@ -62,6 +59,7 @@ const Cart = () => {
 
     toast.success("Your Order was successful.");
   };
+
 
   useEffect(() => {
     // Fetch the random products from the server when the component mounts

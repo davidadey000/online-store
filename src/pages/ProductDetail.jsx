@@ -104,15 +104,8 @@ const Product = () => {
       (item) => item._id === product?._id
     );
 
-    const reconciledProduct = {
-      ...product,
-      status: "In Stock", // Set the status based on your business logic
-    };
-
-    toggleSaved(reconciledProduct);
-    isAlreadyInSaved
-      ? toast.success("Removed from Saved Items.")
-      : toast.success("Added to Saved Items.");
+    toggleSaved(product);
+   
   };
 
   const similarProducts = {

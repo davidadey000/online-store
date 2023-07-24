@@ -94,7 +94,7 @@ const CartProvider = ({ children }) => {
         }
       );
       setCartItems(response.data.products);
-      
+
       toast.success("Quantity decremented.");
     } catch (error) {
       console.error("Error decrementing item quantity:", error);
@@ -133,7 +133,7 @@ const CartProvider = ({ children }) => {
 
       toast.success("Item added to cart.");
 
-      setCartNotFound(false)
+      setCartNotFound(false);
     } catch (error) {
       console.error("Error adding item to cart:", error);
       toast.error("Error adding item to cart.");
@@ -167,9 +167,6 @@ const CartProvider = ({ children }) => {
     }
   };
 
-  const clearCart = () => {
-    setCartItems([]);
-  };
 
   return (
     <CartContext.Provider
@@ -177,7 +174,7 @@ const CartProvider = ({ children }) => {
         cartItems,
         addToCart,
         removeFromCart,
-        clearCart,
+        
         increment,
         decrement,
         toggleCart,

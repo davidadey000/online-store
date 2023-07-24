@@ -65,13 +65,18 @@ const Item = ({
                 type === "cart" ? "gap-1 items-center" : "flex-col"
               } flex lg:hidden`}
             >
-              <p className="text-lg">₦{discountedPrice.toLocaleString("en-US")}</p>
+              <p className="text-lg">
+                ₦{discountedPrice.toLocaleString("en-US")}
+              </p>
               <p
                 className={`${
                   type === "cart" ? "text-xs" : "text-md"
                 } text-gray-600 line-through`}
               >
- {price !== discountedPrice ?  `₦${price.toLocaleString("en-US")}`: null}              </p>
+                {price !== discountedPrice
+                  ? `₦${price.toLocaleString("en-US")}`
+                  : null}{" "}
+              </p>
             </div>
             <p
               className={`text-xs ${
@@ -93,9 +98,13 @@ const Item = ({
               type === "cart" ? "text-xs" : "text-md"
             } text-gray-600 line-through`}
           >
-        {price !== discountedPrice ?  `₦${price.toLocaleString("en-US")}`: null}
+            {price !== discountedPrice
+              ? `₦${price.toLocaleString("en-US")}`
+              : null}
           </p>
-          <small className=" bg-red-50 text-red-400 px-2 mt-2">-{discount}%</small>
+          <small className=" bg-red-50 text-red-400 px-2 mt-2">
+            -{discount}%
+          </small>
         </div>
       </div>
 

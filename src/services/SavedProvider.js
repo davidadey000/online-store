@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import SavedContext from "./SavedContext";
 import axios from "axios";
 import apiUrl from "../utils/config";
-import NoItemsFound from "./../components/NoItemsFound";
-import ObjectNotFound from "../components/ObjectNotFound";
+
 import { toast } from "react-toastify";
 
 const SavedProvider = ({ children }) => {
@@ -46,7 +45,7 @@ const SavedProvider = ({ children }) => {
 
   const total = savedItems.length;
 
-  const toggleSaved = (item) => {
+  const toggleSaved = async (item) => {
     const isItemSaved = savedItems.some(
       (savedItem) => savedItem._id === item._id
     );
@@ -55,15 +54,51 @@ const SavedProvider = ({ children }) => {
       removeFromSaved(item._id);
       console.log("Item removed from saved items.");
     } else {
-      setSavedItems((prevItems) => [...prevItems, item]);
-      console.log("Item added to saved items.");
+      try {
+        // Send the API request to add the item to the saved list
+        const token = localStorage.getItem("x-auth-token");
+        const response = await axios.post(
+          apiUrl + "wishlists/wishlist",
+          { productId: item._id },
+          {
+            headers: {
+              "x-auth-token": token,
+            },
+          }
+        );
+
+        // Update the savedItems state with the new data
+        setSavedItems(response.data.products);
+        setWishlistNotFound(false);
+        toast.success("Item added to saved items.");
+      } catch (error) {
+        console.error("Error adding item to saved items:", error);
+        toast.error("Error adding item to saved items.");
+      }
     }
   };
 
-  const removeFromSaved = (itemId) => {
-    setSavedItems((prevItems) =>
-      prevItems.filter((item) => item._id !== itemId)
-    );
+  const removeFromSaved = async (itemId) => {
+    try {
+      // Send the API request to remove the item from the saved list
+      const token = localStorage.getItem("x-auth-token");
+      const response = await axios.delete(
+        apiUrl + `wishlists/wishlist/${itemId}`,
+        {
+          headers: {
+            "x-auth-token": token,
+          },
+        }
+      );
+
+      // Update the savedItems state with the new data
+      setSavedItems(response.data.products);
+
+      toast.success("Item removed from saved items.");
+    } catch (error) {
+      console.error("Error removing item from saved items:", error);
+      toast.error("Error removing item from saved items.");
+    }
   };
 
   const clearSaved = () => {
