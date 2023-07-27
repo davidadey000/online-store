@@ -45,6 +45,7 @@ const Product = () => {
   const isLaptop = useMediaQuery({ minWidth: 1024 });
   const params = useParams();
   const productId = params.id;
+  
   // Context
   const { cartItems, addToCart } = useContext(CartContext);
   const { toggleSaved, savedItems } = useContext(SavedContext);
