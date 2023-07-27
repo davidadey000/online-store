@@ -32,7 +32,25 @@ const Item = ({
     };
   }, [mainImageUrl]);
 
-  console.log(slug, _id)
+  const handleRemoveButtonClick = (e) => {
+    e.preventDefault();
+    type === "cart" ? handleRemoveFromCart(_id) : handleRemoveFromSaved(_id);
+  };
+
+  const handleDecrementButtonClick = (e) => {
+    e.preventDefault();
+    handleDecrement(_id);
+  };
+
+  const handleIncrementButtonClick = (e) => {
+    e.preventDefault();
+    handleIncrement(_id);
+  };
+
+  const handleBuyNowButtonClick = (e) => {
+    e.preventDefault();
+    handleAddToCart(_id);
+  };
 
   return (
     <Link to={`/product/${slug}`}>
@@ -122,11 +140,7 @@ const Item = ({
         <div className="flex justify-between mt-3">
           <button
             className="flex items-center"
-            onClick={() =>
-              type === "cart"
-                ? handleRemoveFromCart(_id)
-                : handleRemoveFromSaved(_id)
-            }
+            onClick={handleRemoveButtonClick }
           >
             <FaTrash className="text-red-400" />
             <p className="ml-3 text-red-400">REMOVE</p>
@@ -135,7 +149,7 @@ const Item = ({
             {type === "cart" ? (
               <>
                 <button
-                  onClick={() => handleDecrement(_id)}
+                  onClick={handleDecrementButtonClick}
                   className={`p-2 shadow-xl rounded-md text-white ${
                     quantity > 1 ? "bg-red-400" : "bg-red-300"
                   }`}
@@ -144,7 +158,7 @@ const Item = ({
                 </button>
                 <p className="flex justify-center w-full">{quantity}</p>
                 <button
-                  onClick={() => handleIncrement(_id)}
+                  onClick={handleIncrementButtonClick}
                   className="p-2 shadow-xl rounded-md text-white bg-red-400"
                 >
                   <FaPlus />
@@ -153,7 +167,7 @@ const Item = ({
             ) : (
               <button
                 className="bg-red-400 text-white text-xs py-2 px-3 rounded-sm shadow-xl font-semibold"
-                onClick={() => handleAddToCart(_id)}
+                onClick={handleBuyNowButtonClick}
               >
                 BUY NOW
               </button>

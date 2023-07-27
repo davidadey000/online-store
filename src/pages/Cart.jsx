@@ -27,10 +27,11 @@ const Cart = () => {
     increment,
     decrement,
     cartNotFound,
+    fetchCartData,
     isLoading,
   } = useContext(CartContext);
 
-  const { addToOrders, orderItems } = useContext(OrdersContext);
+  const { addToOrders } = useContext(OrdersContext);
 
   const handleIncrement = (itemId) => {
     increment(itemId);
@@ -43,23 +44,13 @@ const Cart = () => {
   const handleRemoveFromCart = (itemId) => {
     removeFromCart(itemId);
   };
-
+  const handleCheckout = async () => {
  
-
-  const handleCheckout = () => {
-    cartItems.forEach((item) => {
-      const reconciledItem = {
-        ...item,
-        status: "Delivered",
-        date: new Date().toISOString(),
-      };
-
-      addToOrders(reconciledItem);
-    });
-
-    toast.success("Your Order was successful.");
+      await addToOrders();
+      fetchCartData();
+  
   };
-
+  
 
   useEffect(() => {
     // Fetch the random products from the server when the component mounts
@@ -70,7 +61,6 @@ const Cart = () => {
         console.error("Error fetching recommended products:", error)
       );
   }, []);
-
 
   return (
     <div className="lg:mx-8 lg:my-4">
@@ -131,8 +121,6 @@ const Cart = () => {
         key={similarItems.collectionName}
         {...similarItems}
       />
-
-  
 
       <ProductCollection
         use="detail"

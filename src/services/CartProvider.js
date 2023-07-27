@@ -11,35 +11,35 @@ const CartProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [cartNotFound, setCartNotFound] = useState(false); // State to track cart not found
 
-  // Fetch cart data from the API and set the cartItems state
-  useEffect(() => {
-    const fetchCartData = async () => {
-      try {
-        // Get the token from local storage
-        const token = localStorage.getItem("x-auth-token");
+  // Function to fetch cart data from the API and set the cartItems state
+  const fetchCartData = async () => {
+    try {
+      // Get the token from local storage
+      const token = localStorage.getItem("x-auth-token");
 
-        // Make a GET request to fetch cart data from the API
-        const response = await axios.get(apiUrl + "carts/cart", {
-          headers: {
-            "x-auth-token": token,
-          },
-        });
+      // Make a GET request to fetch cart data from the API
+      const response = await axios.get(apiUrl + "carts/cart", {
+        headers: {
+          "x-auth-token": token,
+        },
+      });
 
-        // Set the cartItems state with the fetched data
-        setCartItems(response.data.products);
-        setIsLoading(false);
-      } catch (error) {
-        setIsLoading(false);
-        if (error.response && error.response.status === 404) {
-          // Cart not found
-          setCartNotFound(true);
-        } else {
-          // Other error occurred
-          console.error("Error fetching cart data:", error);
-        }
+      // Set the cartItems state with the fetched data
+      setCartItems(response.data.products);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      if (error.response && error.response.status === 404) {
+        // Cart not found
+        setCartNotFound(true);
+      } else {
+        // Other error occurred
+        console.error("Error fetching cart data:", error);
       }
-    };
+    }
+  };
 
+  useEffect(() => {
     fetchCartData();
   }, []); // Empty dependency array to fetch cart data only once on component mount
 
@@ -174,7 +174,6 @@ const CartProvider = ({ children }) => {
         cartItems,
         addToCart,
         removeFromCart,
-        
         increment,
         decrement,
         toggleCart,
@@ -182,6 +181,7 @@ const CartProvider = ({ children }) => {
         totalPrice,
         cartNotFound,
         isLoading,
+        fetchCartData, // Make the fetchCartData function available for use outside the component
       }}
     >
       {children}

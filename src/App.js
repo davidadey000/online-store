@@ -33,9 +33,15 @@ import Newsletter from "./pages/Newsletter";
 
 function Layout({ children }) {
   const location = useLocation();
-  const hideFooterRoutes = ["/signin", ]; // Add the routes where you want to hide the footer
+  const hideFooterRoutes = ["/signin"]; // Add the routes where you want to hide the footer
   const alternativeNavbarRoutes = ["/signin"]; // Add the routes where you want to use the alternative Navbar
-  const noNavbarRoutes = ["/orders", "/saved", "/account", "/inbox", '/newsletter'];
+  const noNavbarRoutes = [
+    "/orders",
+    "/saved",
+    "/account",
+    "/inbox",
+    "/newsletter",
+  ];
 
   useEffect(() => {
     // Scroll to the top of the page when the route changes
@@ -68,8 +74,8 @@ function App() {
 
   return (
     <Router>
-      <OrdersProvider>
-        <CartProvider>
+      <CartProvider>
+        <OrdersProvider>
           <SavedProvider>
             <Layout>
               <Routes>
@@ -92,8 +98,8 @@ function App() {
               </Routes>
             </Layout>
           </SavedProvider>
-        </CartProvider>
-      </OrdersProvider>
+        </OrdersProvider>
+      </CartProvider>
     </Router>
   );
 }

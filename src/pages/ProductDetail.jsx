@@ -46,7 +46,6 @@ const Product = () => {
   // const params = useParams();
   // const productId = params.id;
   const { slug } = useParams();
-  console.log(slug)
 
   
   // Context

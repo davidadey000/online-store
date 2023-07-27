@@ -74,7 +74,6 @@ const ItemCollection = ({
   const { addToCart } = useContext(CartContext);
 
   const handleAddToCart = (id) => {
-    console.log("worked!");
     const newItem = filteredProducts.find((product) => product.id === id);
     if (newItem) {
       const itemWithQuantity = {

@@ -38,7 +38,6 @@ const Products = () => {
   );
 
   const categories = collectionData[10];
-  console.log(categories);
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = isMobile | isLaptop ? 12 : 9;

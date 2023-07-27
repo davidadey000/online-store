@@ -81,7 +81,6 @@ return () => {
         )
         .flatMap((category) => category.products);
   
-      // console.log(categoryResults);
   
       results = [...results, ...categoryResults];
   

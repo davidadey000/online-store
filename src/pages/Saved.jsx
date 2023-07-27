@@ -35,8 +35,7 @@ const Saved = () => {
       // Add the new item to the cart
       addToCart(newItem);
 
-      // Show a success toast message
-      toast.success("Item has been added to cart.");
+    
     }
   };
 
