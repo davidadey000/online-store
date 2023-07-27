@@ -43,8 +43,11 @@ const Product = () => {
 
   const isMobile = useMediaQuery({ maxWidth: 1024 });
   const isLaptop = useMediaQuery({ minWidth: 1024 });
-  const params = useParams();
-  const productId = params.id;
+  // const params = useParams();
+  // const productId = params.id;
+  const { slug } = useParams();
+  console.log(slug)
+
   
   // Context
   const { cartItems, addToCart } = useContext(CartContext);
@@ -56,7 +59,7 @@ const Product = () => {
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const response = await axios.get(`${apiUrl}products/${productId}`);
+        const response = await axios.get(`${apiUrl}products/${slug}`);
         setProduct(response.data);
         setLoading(false);
       } catch (error) {
@@ -67,7 +70,7 @@ const Product = () => {
     };
 
     fetchProductData();
-  }, []);
+  }, [slug]);
 
   const attributes = Object.entries(product?.additionalAttributes || {});
   const slideImages = product?.imageUrls || [];

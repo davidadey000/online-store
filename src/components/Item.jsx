@@ -3,10 +3,11 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { FaMinus, FaPlus, FaTrash } from "react-icons/fa";
 import TextContentLoader from "./TextContentLoader";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Item = ({
   _id,
+  slug,
   mainImageUrl,
   title,
   discountedPrice,
@@ -31,8 +32,10 @@ const Item = ({
     };
   }, [mainImageUrl]);
 
-  return (<Link to={`/product/${_id}`}>
-    
+  console.log(slug, _id)
+
+  return (
+    <Link to={`/product/${slug}`}>
       <div
         className={`${
           type === "cart" ? "mx-2 mb-1" : "mx-1 mb-2 shadow-sm"
@@ -40,12 +43,17 @@ const Item = ({
       >
         <div className="rounded-sm flex gap-2 justify-between">
           <div className="flex gap-2">
-            <div className={`max-w-[31%] sm:w-[100px] sm:h-28 max-h-20 relative`}>
+            <div
+              className={`max-w-[31%] sm:w-[100px] sm:h-28 max-h-20 relative`}
+            >
               <small className="lg:hidden absolute right-0 bg-red-50 text-red-400 px-2">
                 -{discount}%
               </small>
               {isLoading ? (
-                <TextContentLoader width="100%" height="100%"></TextContentLoader>
+                <TextContentLoader
+                  width="100%"
+                  height="100%"
+                ></TextContentLoader>
               ) : (
                 <img
                   src={mainImageUrl}
@@ -94,7 +102,9 @@ const Item = ({
               type === "cart" ? "gap-1 items-center lg:flex-col" : "flex-col"
             } hidden lg:flex lg:items-end`}
           >
-            <p className="text-lg">₦{discountedPrice.toLocaleString("en-US")}</p>
+            <p className="text-lg">
+              ₦{discountedPrice.toLocaleString("en-US")}
+            </p>
             <p
               className={`${
                 type === "cart" ? "text-xs" : "text-md"
@@ -151,7 +161,8 @@ const Item = ({
           </div>
         </div>
       </div>
-  </Link> );
+    </Link>
+  );
 };
 
 export default Item;

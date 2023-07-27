@@ -5,7 +5,7 @@ import { TextContentLoader } from "./TextContentLoader";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
-const ProductCard = ({ _id, price, title, mainImageUrl, discountedPrice }) => {
+const ProductCard = ({ _id, slug, price, title, mainImageUrl, discountedPrice }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const ProductCard = ({ _id, price, title, mainImageUrl, discountedPrice }) => {
   }, [mainImageUrl]);
 
   return (
-    <Link className="block" to={`/product/${_id}`}>
+    <Link className="block" to={`/product/${slug}`}>
       <div className="flex-shrink-0 flex-grow-0 flex-basis-[200px] w-[200px] h-full rounded-md hover:shadow-lg hover:translate-y-1 transition-all duration-300">
         {isLoading ? (
           <TextContentLoader width="100%" height="200px"></TextContentLoader>

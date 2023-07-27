@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const OrderItem = ({ productId, title,slug, _id, size, status, createdAt }) => (
-  <Link to={`/product/${productId._id}`}>
+const OrderItem = ({ productId, title, _id, size, status, createdAt }) => (
+  <Link to={`/product/${productId.slug}`}>
     <div className="bg-white p-2 rounded-sm flex gap-2">
       <div className={`max-w-[27%] relative max-h-[90px] sm:w-[100px]`}>
         <img
