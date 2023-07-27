@@ -5,7 +5,14 @@ import { TextContentLoader } from "./TextContentLoader";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
-const ProductCard = ({ _id, slug, price, title, mainImageUrl, discountedPrice }) => {
+const ProductCard = ({
+  _id,
+  slug,
+  price,
+  title,
+  mainImageUrl,
+  discountedPrice,
+}) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -32,9 +39,7 @@ const ProductCard = ({ _id, slug, price, title, mainImageUrl, discountedPrice })
         <div className="product__body ">
           <h6 className="product__text--description">{title}</h6>
           <h4 className="product__text--price font-semibold">
-            {/* ₦{discountedPrice} */}
-            ₦{discountedPrice}
-
+            {discountedPrice ? `₦${discountedPrice.toLocaleString("en-US")}` : <br />}
           </h4>
           <small className="product__text--prev-price">
             {price !== discountedPrice

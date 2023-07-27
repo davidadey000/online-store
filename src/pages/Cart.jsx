@@ -82,7 +82,7 @@ const Cart = () => {
           ) : (
             cartItems.map((item) => (
               <Item
-                key={item._id}
+                key={item.cartId}
                 {...item}
                 type="cart"
                 handleIncrement={handleIncrement}

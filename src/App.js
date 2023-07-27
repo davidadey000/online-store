@@ -33,7 +33,7 @@ import Newsletter from "./pages/Newsletter";
 
 function Layout({ children }) {
   const location = useLocation();
-  const hideFooterRoutes = ["/signin"]; // Add the routes where you want to hide the footer
+  const hideFooterRoutes = ["/signin",  '/orders','/saved']; // Add the routes where you want to hide the footer
   const alternativeNavbarRoutes = ["/signin"]; // Add the routes where you want to use the alternative Navbar
   const noNavbarRoutes = [
     "/orders",

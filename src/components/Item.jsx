@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const Item = ({
   _id,
+  productId,
   slug,
   mainImageUrl,
   title,

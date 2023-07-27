@@ -22,21 +22,13 @@ const Saved = () => {
   const { addToCart } = useContext(CartContext);
 
   const handleAddToCart = (id) => {
-    // Find the saved item with the provided id
-    const savedItem = savedItems.find((item) => item._id === id);
+    console.log(id)
+    const reconciledProduct = {
+      productId: id,
+      quantity:1, // Set the status based on your business logic
+    };
 
-    if (savedItem) {
-      // Create a new item object with quantity set to 1
-      const newItem = {
-        ...savedItem,
-        quantity: 1,
-      };
-
-      // Add the new item to the cart
-      addToCart(newItem);
-
-    
-    }
+    addToCart(reconciledProduct);
   };
 
   const handleRemoveFromSaved = (itemId) => {
@@ -64,7 +56,7 @@ const Saved = () => {
             ) : (
               savedItems.map((item) => (
                 <Item
-                  key={item._id}
+                  key={item.cartId}
                   {...item}
                   type="saved"
                   handleRemoveFromSaved={handleRemoveFromSaved}
