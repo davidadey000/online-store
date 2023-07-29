@@ -23,11 +23,12 @@ const SavedProvider = ({ children }) => {
       });
 
       // Set the savedItems state with the fetched data
+      setWishlistNotFound(false)
       setSavedItems(response.data.products);
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      if (error.response && error.response.status === 404) {
+      if (error.response && error.response.status ===  404 || error.response.status ===  401) {
         // Wishlist not found
         setWishlistNotFound(true);
       } else {
@@ -38,9 +39,9 @@ const SavedProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    fetchWishlistData();
-  }, []); // Empty dependency array to fetch wishlist data only once on component mount
+  // useEffect(() => {
+  //   fetchWishlistData();
+  // }, []); // Empty dependency array to fetch wishlist data only once on component mount
 
   const total = savedItems.length;
 

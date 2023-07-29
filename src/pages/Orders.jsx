@@ -6,10 +6,13 @@ import NoItemsFound from './../components/NoItemsFound';
 import OrdersContext from './../services/OrdersContext';
 import SkeletonLoader from "../components/SkeletonLoader";
 import ObjectNotFound from './../components/ObjectNotFound';
+import { useEffect } from "react";
 
 const Orders = () => {
-  const { orderItems, isLoading, ordersNotFound } = useContext(OrdersContext);
-
+  const { orderItems, isLoading, ordersNotFound,  fetchOrdersData } = useContext(OrdersContext);
+  useEffect(() => {
+    fetchOrdersData();
+  }, []);
   return (
     <SideBarTemplate
       title="Orders"

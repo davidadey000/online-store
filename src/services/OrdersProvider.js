@@ -28,10 +28,11 @@ const OrdersProvider = ({ children }) => {
       });
 
       setOrderItems(response.data);
+      setOrdersNotFound(false)
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      if (error.response && error.response.status === 404) {
+      if (error.response && error.response.status ===  404 || error.response.status ===  401) {
         // Wishlist not found
         setOrdersNotFound(true);
       } else {
@@ -42,9 +43,9 @@ const OrdersProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    fetchOrdersData();
-  }, []);
+  // useEffect(() => {
+  //   fetchOrdersData();
+  // }, []);
 
   const addToOrders = async () => {
     try {
@@ -72,6 +73,7 @@ const OrdersProvider = ({ children }) => {
         total,
         isLoading,
         ordersNotFound,
+        fetchOrdersData
       }}
     >
       {children}

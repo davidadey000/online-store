@@ -19,9 +19,13 @@ import { useState } from "react";
 import apiUrl from "../utils/config";
 import axios from "axios";
 import { useEffect } from "react";
+import { object } from "joi";
+import ObjectNotFound from "./../components/ObjectNotFound";
 
 const Account = () => {
   const [userData, setUserData] = useState("");
+  const [userNotFound, setUserNotFound] = useState(false);
+
   useEffect(() => {
     const token = localStorage.getItem("x-auth-token");
     // Fetch user data from the API endpoint
@@ -34,10 +38,16 @@ const Account = () => {
       .then((response) => {
         // Update the state with the fetched data
         setUserData(response.data);
+        setUserNotFound(false);
       })
       .catch((error) => {
-        // Handle errors if necessary
-        console.error("Error fetching user data:", error);
+        if (error.response && error.response.status === 401) {
+          // Cart not found
+          setUserNotFound(true);
+        } else {
+          // Handle errors if necessary
+          console.error("Error fetching user data:", error);
+        }
       });
   }, []);
 
@@ -47,8 +57,6 @@ const Account = () => {
   const amount = "0.00";
   const address =
     "Opposite Hilltop Hotel, Lugbe, Abuja Abuja-Lugbe Sector F, Federal Capital Territory";
-
-  
 
   const shippingAddress = `${userData.name} \n ${address} +234 7065093454 / +234 7065093454`;
 
@@ -94,15 +102,19 @@ const Account = () => {
       <SideBarTemplate
         title="Account Overview"
         content={
-          <div className="flex-grow">
-            <div className="p-4">
-              <div className="grid grid-cols-2 grid-rows-2 gap-4">
-                {accountData.map((item, index) => (
-                  <AccountCard {...item} key="index"/>
-                ))}
+          userNotFound ? (
+            <ObjectNotFound title="User Details" />
+          ) : (
+            <div className="flex-grow">
+              <div className="p-4">
+                <div className="grid grid-cols-2 grid-rows-2 gap-4">
+                  {accountData.map((item, index) => (
+                    <AccountCard {...item} key={index} />
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
+          )
         }
         mobileContent={
           <div className="flex-grow lg:hidden">
@@ -121,9 +133,12 @@ const Account = () => {
             <Title title="account settings" />
             <ListItemsSection options={options2} />
 
-            <Link to="/logout/">
-              <p className="py-3 uppercase text-red-400 text-center">LOGOUT</p>
-            </Link>
+            <button
+              className="py-3 w-full uppercase text-red-400 text-center"
+              onClick={() => localStorage.clear()}
+            >
+              LOGOUT
+            </button>
           </div>
         }
       />

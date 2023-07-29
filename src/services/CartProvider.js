@@ -23,13 +23,16 @@ const CartProvider = ({ children }) => {
           "x-auth-token": token,
         },
       });
-
+      setCartNotFound(false);
       // Set the cartItems state with the fetched data
       setCartItems(response.data.products);
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      if (error.response && error.response.status === 404) {
+      if (
+        (error.response && error.response.status === 404) ||
+        error.response.status === 401
+      ) {
         // Cart not found
         setCartNotFound(true);
       } else {
@@ -39,9 +42,9 @@ const CartProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    fetchCartData();
-  }, []); // Empty dependency array to fetch cart data only once on component mount
+  // useEffect(() => {
+  //   fetchCartData();
+  // }, []); // Empty dependency array to fetch cart data only once on component mount
 
   // Calculate total and total price based on cart items
   useEffect(() => {
@@ -166,7 +169,6 @@ const CartProvider = ({ children }) => {
       toast.error("Error removing item from cart.");
     }
   };
-
 
   return (
     <CartContext.Provider

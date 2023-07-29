@@ -19,7 +19,7 @@ const NewsletterItem = ({ image, title, description, link }) => {
 
   return (
     <a href={`${link}`}>
-      <div className="bg-white rounded-lg shadow-md overflow-hidden">
+      <div className="bg-white rounded-lg h-full shadow-md overflow-hidden">
         <div className="w-full h-48">
           {isLoading ? (
             <TextContentLoader width="100%" height="100%"></TextContentLoader>

@@ -8,9 +8,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const SignIn = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("davidtadediji@gmail.com");
   const [isValidEmail, setIsValidEmail] = useState(true);
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("12345");
   const [showPassword, setShowPassword] = useState(false);
   const [isValidPassword, setIsValidPassword] = useState(true);
   const [isValid, setIsValid] = useState(false);
@@ -118,6 +118,7 @@ const SignIn = () => {
             <>
               <input
                 type="email"
+
                 className={`w-full text-md p-3 border-[1px] rounded-[4px] ${
                   !isValidEmail
                     ? "border-red-700 placeholder-red-700"

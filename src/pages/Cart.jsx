@@ -50,7 +50,9 @@ const Cart = () => {
       fetchCartData();
   
   };
-  
+  useEffect(() => {
+    fetchCartData();
+  }, []);
 
   useEffect(() => {
     // Fetch the random products from the server when the component mounts

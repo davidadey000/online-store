@@ -8,6 +8,7 @@ import NoItemsFound from "./../components/NoItemsFound";
 import { toast } from "react-toastify";
 import ObjectNotFound from "../components/ObjectNotFound";
 import SkeletonLoader from "./../components/SkeletonLoader";
+import { useEffect } from "react";
 
 const Saved = () => {
   const {
@@ -16,6 +17,7 @@ const Saved = () => {
     removeFromSaved,
     clearSaved,
     isLoading,
+    fetchWishlistData,
     wishlistNotFound,
   } = useContext(SavedContext);
 
@@ -39,8 +41,13 @@ const Saved = () => {
     clearSaved();
   };
 
+  useEffect(() => {
+    fetchWishlistData();
+  }, []);
+
   const savedTitle = `Saved Items (${total})`;
 
+  
   return (
     <SideBarTemplate
       title={savedTitle}
