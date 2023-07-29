@@ -14,7 +14,7 @@ const RangeCollection = ({
 
   useEffect(() => {
     const handleResize = () => {
-      setNumCols(window.innerWidth >= 768 && window.innerWidth < 1024 ? 4 : window.innerWidth > 1024 && window.innerWidth < 1200 ? 5: 6);
+      setNumCols(window.innerWidth >= 768 && window.innerWidth < 1023 ? 4 : window.innerWidth > 1023 && window.innerWidth < 1200 ? 5: 6);
     };
     handleResize();
     window.addEventListener("resize", handleResize);

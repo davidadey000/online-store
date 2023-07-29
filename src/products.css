@@ -43,7 +43,6 @@
 }
 
 .item {
-  height: auto;
   border-radius: 4px;
   transition: 0.5s;
 }

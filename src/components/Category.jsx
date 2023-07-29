@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Category = ({ title }) => {
+const Category = ({name, slug }) => {
   return (
-    <Link className="block" to={`/products/${title}`}>
-      <p className="products__sidebar-category">{title}</p>
+    <Link className="block" to={`/products/${slug}/`}>
+      <p className="products__sidebar-category">{name}</p>
     </Link>
   );
 };

@@ -22,7 +22,7 @@ const CollectionList = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          `${apiUrl}products/category/64b2f489905f0071fee2e8ce`
+          `${apiUrl}products/category/limited-store-deals`
         );
         setLimitedStoreProducts(response.data);
       } catch (error) {
@@ -71,6 +71,7 @@ const CollectionList = () => {
         key={collectionData[0].collectionName}
         type="products"
         collectionName="Limited Store Deals"
+        slug="limited-store-deals"
         headerColor="rgb(254, 226, 204)"
         products={limitedStoreDeals}
       />

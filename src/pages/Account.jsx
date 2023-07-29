@@ -15,13 +15,42 @@ import {
 import ListItemsSection from "./../components/ListItemSection";
 import SideBarTemplate from "./../components/SideBarTemplate";
 import AccountCard from "../components/AccountCard";
+import { useState } from "react";
+import apiUrl from "../utils/config";
+import axios from "axios";
+import { useEffect } from "react";
 
 const Account = () => {
-  const name = "David Adediji";
-  const email = "davidadey000@gmail.com";
+  const [userData, setUserData] = useState("");
+  useEffect(() => {
+    const token = localStorage.getItem("x-auth-token");
+    // Fetch user data from the API endpoint
+    axios
+      .get(`${apiUrl}users/me`, {
+        headers: {
+          "x-auth-token": token, // Replace "YOUR_AUTH_TOKEN_HERE" with the actual auth token
+        },
+      })
+      .then((response) => {
+        // Update the state with the fetched data
+        setUserData(response.data);
+      })
+      .catch((error) => {
+        // Handle errors if necessary
+        console.error("Error fetching user data:", error);
+      });
+  }, []);
+
+  // const name = "David Adediji";
+  const name = userData.name;
+  const email = userData.email;
   const amount = "0.00";
   const address =
-    "David Adediji \n Opposite Hilltop Hotel, Lugbe, Abuja Abuja-Lugbe Sector F, Federal Capital Territory +234 7065093454 / +234 7065093454";
+    "Opposite Hilltop Hotel, Lugbe, Abuja Abuja-Lugbe Sector F, Federal Capital Territory";
+
+  
+
+  const shippingAddress = `${userData.name} \n ${address} +234 7065093454 / +234 7065093454`;
 
   const options1 = [
     { icon: <HiShoppingCart />, link: "orders", title: "Orders" },
@@ -46,7 +75,7 @@ const Account = () => {
     {
       title: "Address Book",
       heading: "Your default Shipping Address:",
-      address: address,
+      address: shippingAddress,
     },
     {
       title: "Jumia Store Credit",
@@ -68,8 +97,8 @@ const Account = () => {
           <div className="flex-grow">
             <div className="p-4">
               <div className="grid grid-cols-2 grid-rows-2 gap-4">
-                {accountData.map((item) => (
-                  <AccountCard {...item} />
+                {accountData.map((item, index) => (
+                  <AccountCard {...item} key="index"/>
                 ))}
               </div>
             </div>

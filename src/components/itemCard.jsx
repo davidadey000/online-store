@@ -5,16 +5,16 @@ import TextContentLoader from "./TextContentLoader";
 import { useEffect } from "react";
 import { useState } from "react";
 
-const ItemCard = ({ id, price, title, image, handleAddToCart }) => {
+const ItemCard = ({ id, slug, discountedPrice, discount, price, title, mainImageUrl, handleAddToCart }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const img = new Image();
-    img.src = image;
+    img.src = mainImageUrl;
     img.onload = () => {
       setIsLoading(false);
     };
-  }, [image]);
+  }, [mainImageUrl]);
 
   const handleAddToCartClick = (event) => {
     event.preventDefault();
@@ -22,22 +22,22 @@ const ItemCard = ({ id, price, title, image, handleAddToCart }) => {
   };
 
   return (
-    <Link className="block item__link" to={`/product/${id}`}>
-      <div className="item">
+    <Link className="block item__link" to={`/product/${slug}`}>
+      <div className="item h-full flex flex-col">
         <div className="h-[150px] sm:h-[200px]">
           {isLoading ? (
             <TextContentLoader width="100%" height="100%"></TextContentLoader>
           ) : (
-            <img src={image} alt="" className="item__image" />
+            <img src={mainImageUrl} alt="" className="item__image" />
           )}
         </div>
-        <div className="item__body">
+        <div className="item__body  flex-grow flex flex-col">
           <h6 className="item__text--description">{title}</h6>
-          <h4 className="item__text--price font-semibold">₦{price}</h4>
-          <small className="item__text--prev-price">#7,000</small>
+          <h4 className="item__text--price font-semibold">₦{discountedPrice.toLocaleString("en-US")}</h4>
+          <small className="item__text--prev-price">₦{price.toLocaleString("en-US")}</small>
 
-          <small className="">-50%</small>
-          <div className="item__footer" style={{ backgroundColor: "white" }}>
+          <small className="">-{discount}%</small>
+          <div className="item__footer mt-auto" style={{ backgroundColor: "white" }}>
             <Button className="item__footer-btn" onClick={handleAddToCartClick}>
               ADD TO CART
             </Button>

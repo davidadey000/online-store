@@ -28,9 +28,17 @@ const OrdersProvider = ({ children }) => {
       });
 
       setOrderItems(response.data);
+      setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
+      if (error.response && error.response.status === 404) {
+        // Wishlist not found
+        setOrdersNotFound(true);
+      } else {
+        // Other error occurred
+        toast.error("Error fetching wishlist data. Please try again later.");
+      }
       console.error("Error fetching orders:", error);
-      toast.error("Error fetching orders");
     }
   };
 
@@ -48,6 +56,7 @@ const OrdersProvider = ({ children }) => {
       });
       // After adding the order, fetch the updated orders data
       fetchOrdersData();
+      setOrdersNotFound(false);
       toast.success("Order was placed successfully!");
     } catch (error) {
       console.error("Error occurred while ordering", error);
@@ -61,6 +70,8 @@ const OrdersProvider = ({ children }) => {
         orderItems,
         addToOrders,
         total,
+        isLoading,
+        ordersNotFound,
       }}
     >
       {children}

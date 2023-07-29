@@ -111,7 +111,7 @@ const SignIn = () => {
         <div>
           {isValid ? (
             <div className="flex items-center p-3 rounded-[4px] bg-gray-500 justify-between text-white">
-              <p>{email}</p>
+              <p className="font-semibold">{email}</p>
               <button onClick={() => setIsValid(false)}>Edit</button>
             </div>
           ) : (

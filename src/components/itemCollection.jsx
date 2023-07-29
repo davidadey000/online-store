@@ -88,12 +88,12 @@ const ItemCollection = ({
   };
 
   return (
-    <div className="items w-full md:w-[90%] lg:w-full">
+    <div className="items w-full md:w-[90%] lg:w-full flex-grow">
       <div className="items__header p-2 ">
         <h4 className="items__text--title">{collectionName}</h4>
       </div>
       {filteredProducts.length !== 0 ? (
-        <div className="items__body" ref={containerRef}>
+        <div className="grid grid-cols-2 p-2 bg-white md:grid-cols-3 lg:grid-cols-4 gap-2">
           {filteredProducts.slice(0, 12).map((deal, index) => (
             <ItemCard
               key={index}
@@ -103,9 +103,8 @@ const ItemCollection = ({
           ))}
         </div>
       ) : (
-       <NoItemsFound  title="Filtered Product List" />
+        <NoItemsFound title="Filtered Product List" />
       )}
-
       <div
         className="scroll-arrow scroll-arrow-left"
         onClick={handleScrollLeft}

@@ -82,7 +82,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/product/:slug" element={<ProductDetail />} />
                 <Route
-                  path="/products/:collectionName"
+                  path="/products/:slug"
                   element={<Products />}
                 />
                 <Route path="/cart" element={<Cart />} />

@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import OrderItem from "../components/OrderItem";
 import SideBarTemplate from "../components/SideBarTemplate";
 import { FaArrowLeft } from 'react-icons/fa';
 import NoItemsFound from './../components/NoItemsFound';
 import OrdersContext from './../services/OrdersContext';
-import { useContext } from "react";
+import SkeletonLoader from "../components/SkeletonLoader";
+import ObjectNotFound from './../components/ObjectNotFound';
 
 const Orders = () => {
-const {orderItems} = useContext(OrdersContext)
+  const { orderItems, isLoading, ordersNotFound } = useContext(OrdersContext);
+
   return (
     <SideBarTemplate
       title="Orders"
       content={
         <div className="flex-grow p-2 flex flex-col gap-2">
-          {orderItems.length === 0 ? (
+          {isLoading ? (
+            <SkeletonLoader /> // Use a skeleton loader or loading indicator here
+          ) : ordersNotFound ? (
+            <ObjectNotFound title="Orders List" />
+          ) : orderItems.length === 0 ? (
             <NoItemsFound title="Orders List" />
           ) : (
             orderItems.map((item) => <OrderItem key={item._id} {...item} />)
