@@ -4,21 +4,47 @@ import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
+import apiUrl from "../utils/config";
+import axios from "axios";
 
 const Categories = ({ onCategoryHover }) => {
-  const [categories, setCategories] = useState([
-    "Supermarket",
-    "Health & Beauty",
-    "Home & Office",
-    "Phones & Tablets",
-    "Computing",
-    "Electronics",
-    "Baby Products",
-    "Gaming",
-    "Sporting Goods",
-    "Automobile",
-  ]);
+  // const [categories, setCategories] = useState([
+  //   "Supermarket",
+  //   "Health & Beauty",
+  //   "Home & Office",
+  //   "Phones & Tablets",
+  //   "Computing",
+  //   "Electronics",
+  //   "Baby Products",
+  //   "Gaming",
+  //   "Sporting Goods",
+  //   "Automobile",
+  // ]);
 
+  const [categoriesData, setCategoriesData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [categoriesNotFound, setCategoriesNotFound] = useState(false);
+
+  const fetchCategoriesData = () => {
+    axios
+      .get(`${apiUrl}categories/`)
+      .then((response) => {
+        setCategoriesData(response.data); 
+        setIsLoading(false)
+        setCategoriesNotFound(false)
+      })
+      .catch((error) => {
+        if (error.response.status === "404") {
+          setCategoriesNotFound(true);
+        } else {
+          console.error(error);
+        }
+      });
+  };
+  useEffect(() => {
+    fetchCategoriesData();
+  }, []);
+  
   const handleCategoryHover = (category) => {
     onCategoryHover(category);
   };
@@ -47,17 +73,17 @@ const Categories = ({ onCategoryHover }) => {
         className="scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-300 scroll-smooth"
         ref={containerRef}
       >
-        {categories.map((category, index) => (
+        {categoriesData.map((category, index) => (
           <Link
-            to={`products/${category}`}
+            to={`products/${category.slug}`}
             key={index}
             onClick={handleClickCategory}
           >
             <li
               className="bg-gray-400 font-semibold text-white lg:text-[13px] text-sm mr-1 px-5 py-2 rounded-full"
-              onMouseEnter={() => handleCategoryHover(category)}
+              onMouseEnter={() => handleCategoryHover(category.name)}
             >
-              {category}
+              {category.name}
             </li>
           </Link>
         ))}

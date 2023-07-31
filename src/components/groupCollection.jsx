@@ -50,7 +50,6 @@ const CategoryCollection = ({
   useEffect(() => {
     fetchCategoriesData();
   }, []);
-  console.log(categoriesData)
 
   useEffect(() => {
     function handleResize() {
