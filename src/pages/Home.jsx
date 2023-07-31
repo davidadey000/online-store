@@ -5,7 +5,7 @@ import Footer from "../components/footer";
 
 const Home = () => {
   return (
-    <div classNam>
+    <div>
       <HeroSection />
       <CollectionList />
       <div style={{ height: "30vh", backgroundColor: "tomato" }}></div>

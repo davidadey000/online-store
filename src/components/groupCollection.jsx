@@ -6,6 +6,10 @@ import RangeCard from "./rangeCard";
 import GroupCard from "./groupCard";
 import SlideShow from "./slideShow";
 import { useState, useEffect } from "react";
+import SkeletonLoader from "./SkeletonLoader";
+import ObjectNotFound from "./ObjectNotFound";
+import apiUrl from "../utils/config";
+import axios from "axios";
 
 const CategoryCollection = ({
   type,
@@ -19,10 +23,34 @@ const CategoryCollection = ({
 }) => {
   const [numCols, setNumCols] = useState(6);
 
-  const groupsCount = Math.ceil(groups.length / groupSize);
-  const groupsArr = Array.from({ length: groupsCount }, (_, i) =>
-    groups.slice(i * groupSize, (i + 1) * groupSize)
-  );
+
+
+  const [categoriesData, setCategoriesData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [categoriesNotFound, setCategoriesNotFound] = useState(false);
+
+  const fetchCategoriesData = () => {
+    axios
+      .get(`${apiUrl}categories/`)
+      .then((response) => {
+        setCategoriesData(response.data); 
+        setIsLoading(false)
+        setCategoriesNotFound(false)
+      })
+      .catch((error) => {
+        if (error.response.status === "404") {
+          setCategoriesNotFound(true);
+        } else {
+          console.error(error);
+        }
+      });
+  };
+
+
+  useEffect(() => {
+    fetchCategoriesData();
+  }, []);
+  console.log(categoriesData)
 
   useEffect(() => {
     function handleResize() {
@@ -37,10 +65,21 @@ const CategoryCollection = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  if(isLoading){
+    return <SkeletonLoader/>
+  }
+
+  if(categoriesNotFound){
+    return <ObjectNotFound title="category"/>
+  }
+
+  const groupsCount = Math.ceil(categoriesData.length / groupSize);
+  const groupsArr = Array.from({ length: groupsCount }, (_, i) =>
+    categoriesData.slice(i * groupSize, (i + 1) * groupSize)
+  );
   return (
     <>
       {groupsArr.map((group, index) => (
-
         <div key={index} className="groups">
           {index === 0 && (
             <div className="groups__header p-2">

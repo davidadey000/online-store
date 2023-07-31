@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { TextContentLoader } from "./TextContentLoader";
 import { useEffect } from "react";
 
-const GroupCard = ({ price, title, image }) => {
+const GroupCard = ({ price, name, slug, image }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const GroupCard = ({ price, title, image }) => {
   }, [image]);
 
   return (
-    <Link className="group" to={`/products/${title}/`}>
+    <Link className="group" to={`/products/${slug}/`}>
       <div className="w-full h-[90px] lg:h-[130px]">
         {isLoading ? (
           <TextContentLoader width="100%" height="100%"></TextContentLoader>
@@ -24,7 +24,7 @@ const GroupCard = ({ price, title, image }) => {
         )}
       </div>
       <div className="group__footer">
-        <small className="group__text font-semibold text-gray-600">{title}</small>
+        <small className="group__text font-semibold text-gray-600">{name}</small>
       </div>
     </Link>
   );

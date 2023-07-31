@@ -379,14 +379,14 @@ nav a:hover {
   overflow: hidden;
   height: auto;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   padding: 1%;
-  gap: 0.5rem 0;
+  gap: 0.5rem 1%;
 }
 
 .group {
   border-radius: 4px;
-  flex-basis: calc(100% / 3.025);
+  flex-basis: calc(97% / 3);
   transition: 0.5s;
   line-height: 0.75rem;
 }
@@ -642,7 +642,7 @@ nav a:hover {
   }
 
   .group {
-    flex-basis: calc(100% / 5.15);
+    flex-basis: calc(95% / 5.0);
   }
 
   .group__image {
@@ -955,7 +955,7 @@ nav a:hover {
   }
 
   .group {
-    flex-basis: calc(100% / 6.25);
+    flex-basis: calc(94% / 6);
   }
 
   .group__image {

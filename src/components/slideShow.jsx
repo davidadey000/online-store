@@ -38,6 +38,7 @@ const SlideShow = ({ slideImages }) => {
           {slideImages.map((item, index) =>
             isLoading ? (
               <TextContentLoader
+              key={index}
                 width="100%"
                 height="100%"
               ></TextContentLoader>

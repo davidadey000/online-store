@@ -112,9 +112,9 @@
   border-radius: 0;
 }
 
-.x .group {
+/* .x .group {
   flex-basis: calc(100% / 4.035);
-}
+} */
 
 .x .group__image {
   height: 15vw;
@@ -131,9 +131,9 @@
 }
 
 @media screen and (min-width: 768px) {
-  .x .group {
+  /* .x .group {
     flex-basis: calc(100% / 5.025);
-  }
+  } */
 
   .x .group__text {
     font-size: 0.8rem;
@@ -240,9 +240,9 @@
     margin: 1%;
   }
 
-  .x .group {
+  /* .x .group {
     flex-basis: calc(100% / 6.25);
-  }
+  } */
   .x .group__image {
     height: 8vw;
   }

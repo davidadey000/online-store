@@ -179,7 +179,7 @@ const Products = () => {
             <h5 className="ml-4 font-semibold">CATEGORIES</h5>
             <div>
               {categoryListData.map((item) => (
-                <Category {...item} key={item.title} />
+                <Category {...item} key={item.name} />
               ))}
             </div>
           </div>
