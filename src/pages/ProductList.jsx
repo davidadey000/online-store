@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ItemCollection from "../components/itemCollection";
 import GroupCollection from "../components/groupCollection";
 import { useMediaQuery } from "react-responsive";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import React from "react";
 import {
   FaAngleDoubleLeft,
@@ -31,10 +31,14 @@ const Products = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const isLaptop = useMediaQuery({ minWidth: 1024 });
 
+  const categories = collectionData[10];
 
- const categories  = collectionData[10]
- 
   const { slug } = useParams();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const isSimilarProducts = queryParams.get("similarProducts") === "true";
+
+  console.log(isSimilarProducts);
   const [categoryData, setCategoryData] = useState(null);
   const [isCategoryDataLoading, setIsCategoryDataLoading] = useState(true);
   const [categoryDataNotFound, setCategoryDataNotFound] = useState(false);
@@ -47,14 +51,31 @@ const Products = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  console.log(slug);
-
   const fetchProductsData = async () => {
     try {
-      const response = await axios.get(apiUrl + `products/category/${slug}`);
-      setCategoryDataNotFound(false);
-      setCategoryData(response.data);
-      setIsCategoryDataLoading(false);
+      if (isSimilarProducts) {
+        // Fetch similar products based on the product slug
+        const productSlug = slug.replace("?similarProducts=true", "");
+        const response = await axios.get(
+          apiUrl + `products/tags/${productSlug}`
+        );
+        setCategoryDataNotFound(false);
+
+        setCategoryData(response.data);
+        setIsCategoryDataLoading(false);
+      } else {
+        // Fetch category products based on the category slug
+        const response = await axios.get(apiUrl + `products/category/${slug}`);
+        setCategoryDataNotFound(false);
+
+        setCategoryData(response.data);
+        setIsCategoryDataLoading(false);
+      }
+      // const response = await axios.get(apiUrl + `products/category/${slug}`);
+      // setCategoryDataNotFound(false);
+
+      // setCategoryData(response.data);
+      // setIsCategoryDataLoading(false);
       // Show success toast message
     } catch (error) {
       setIsCategoryDataLoading(false);

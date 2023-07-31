@@ -40,14 +40,17 @@ const Product = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [similarProducts, setSimilarProducts] = useState(null);
+  const [isSimilarProductsLoading, setIsSimilarProductsLoading] =
+    useState(true);
 
   const isMobile = useMediaQuery({ maxWidth: 1024 });
   const isLaptop = useMediaQuery({ minWidth: 1024 });
   // const params = useParams();
   // const productId = params.id;
   const { slug } = useParams();
+  const limit = 12;
 
-  
   // Context
   const { cartItems, addToCart } = useContext(CartContext);
   const { toggleSaved, savedItems } = useContext(SavedContext);
@@ -103,22 +106,27 @@ const Product = () => {
   };
 
   const handleToggleSaved = () => {
-    const isAlreadyInSaved = savedItems.some(
-      (item) => item._id === product?._id
-    );
-
     toggleSaved(product);
-   
   };
 
-  const similarProducts = {
-    type: "product",
-    collectionName: "View Similar Items",
-    headerColor: "rgb(254, 226, 204)",
-    products: [
-      // ... (similar products data)
-    ],
-  };
+  // Fetch similar products
+  useEffect(() => {
+    const fetchSimilarProducts = async () => {
+      try {
+        const response = await axios.get(
+          `${apiUrl}products/tags/${slug}?limit=${limit}`
+        );
+        setSimilarProducts(response.data);
+        setIsSimilarProductsLoading(false);
+      } catch (error) {
+        console.error(error);
+        setIsSimilarProductsLoading(false);
+      }
+    };
+
+    fetchSimilarProducts();
+  }, [slug]);
+
 
   if (loading) {
     return <SkeletonLoader />;
@@ -437,10 +445,17 @@ const Product = () => {
           />
         </div>
         <div className="product-det__similar-product-div">
-          <ProductCollection
-            key={similarProducts.collectionName}
-            {...similarProducts}
-          />
+          {!isSimilarProductsLoading ? (
+            <ProductCollection
+              key={similarProducts?.name}
+              collectionName={similarProducts?.name || "View Similar Products"}
+              slug={slug}
+              similarProducts={true}
+              {...similarProducts}
+            />
+          ) : (
+            <SkeletonLoader />
+          )}
         </div>
       </div>
     </div>

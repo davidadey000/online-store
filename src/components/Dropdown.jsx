@@ -26,7 +26,7 @@ const Dropdown = ({ handleOptionSelect, quantity, numberInStock }) => {
         {selectedOption ? selectedOption : quantity}
       </button>
       {isOpen && (
-        <div className="absolute z-10 px-2 mt-2 h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300 bg-white border border-gray-300 rounded-sm shadow-lg">
+        <div className="absolute z-10  h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300 bg-white border border-gray-300 rounded-sm shadow-lg">
           {options.map((option) => (
             <div
               key={option}

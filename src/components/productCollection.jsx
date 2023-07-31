@@ -17,10 +17,12 @@ const ProductCollection = ({
   collectionName,
   products,
   groups,
+  similarProducts,
   slug,
   headerColor,
   textColor,
 }) => {
+  // console.log(slug)
   const [value, setValue] = useState(0);
   const containerRef = useRef(null);
 
@@ -47,7 +49,7 @@ const ProductCollection = ({
         ) : (
           <Link
             className="block products__all-link"
-            to={`products/${slug}/`}
+            to={`/products/${slug}${similarProducts ? `?similarProducts=${similarProducts}`: ""}`}
           >
             <h5 className="products__text--option">SEE ALL</h5>
           </Link>

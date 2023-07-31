@@ -44,9 +44,9 @@ const ProductFilter = ({ filters, onFilterChange }) => {
               onChange={handlePriceRangeChange}
             >
               <option value="">All</option>
-              <option value="0-500">$0 - $500</option>
-              <option value="501-3000">$501 - $3000</option>
-              <option value="3001-6000">$3001 - $6000</option>
+              <option value="0-500">₦0 - ₦500</option>
+              <option value="501-3000">₦501 - $3000</option>
+              <option value="3001-6000">₦3001 - $6000</option>
             </select>
           </div>
           <div>
