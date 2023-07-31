@@ -49,7 +49,7 @@ function Layout({ children }) {
   }, [location]);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col ">
       {!hideFooterRoutes.includes(location.pathname) && <TopBanner />}
       {alternativeNavbarRoutes.includes(location.pathname) ? (
         <AlternativeNavbar currentUrl={location.pathname} />
@@ -58,6 +58,7 @@ function Layout({ children }) {
       ) : (
         <Navbar currentUrl={location.pathname} />
       )}
+      
       <ToastContainer />
       {children}
       {!hideFooterRoutes.includes(location.pathname) && <Footer />}

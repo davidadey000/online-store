@@ -1,11 +1,11 @@
 import HeroSection from "../components/heroSection";
-import CollectionList from "../components/CollectionList";
+import CollectionList from "../components/collectionList";
 import About from "../components/about";
 import Footer from "../components/footer";
 
 const Home = () => {
   return (
-    <div>
+    <div classNam>
       <HeroSection />
       <CollectionList />
       <div style={{ height: "30vh", backgroundColor: "tomato" }}></div>

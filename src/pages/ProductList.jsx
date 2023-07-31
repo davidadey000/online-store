@@ -21,6 +21,7 @@ import apiUrl from "../utils/config";
 import { toast } from "react-toastify";
 import SkeletonLoader from "./../components/SkeletonLoader";
 import ObjectNotFound from "../components/ObjectNotFound";
+import { collectionData } from "../mockData/collection";
 
 const Products = () => {
   useEffect(() => {
@@ -30,6 +31,9 @@ const Products = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const isLaptop = useMediaQuery({ minWidth: 1024 });
 
+
+ const categories  = collectionData[10]
+ 
   const { slug } = useParams();
   const [categoryData, setCategoryData] = useState(null);
   const [isCategoryDataLoading, setIsCategoryDataLoading] = useState(true);
@@ -164,8 +168,7 @@ const Products = () => {
 
   return (
     <div className="x flex-grow flex flex-col">
-      {/* Assuming you have categories data from another source */}
-      {/* <GroupCollection key={categories.collectionName} {...categories} /> */}
+      <GroupCollection key={categories.collectionName} {...categories} />
       <div className="products__collection-list flex flex-col lg:flex-row gap-3 flex-grow">
         <div className="products__sidebar pb-2">
           <div className="products__sidebar-categories sticky top-[60px]">
@@ -183,9 +186,9 @@ const Products = () => {
         </div>
         <div className="products__items-col  flex-grow flex flex-col items-center">
           <ItemCollection
-            key={categoryData.collectionName + currentPage}
+            key={categoryData.name + currentPage}
             type={categoryData.type}
-            collectionName={categoryData.collectionName}
+            collectionName={categoryData.name}
             headerColor={categoryData.headerColor}
             products={productsOnPage}
             filters={filters}
