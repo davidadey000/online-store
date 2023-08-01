@@ -20,10 +20,17 @@ import { productData } from "../mockData/product";
 import { categoriesData } from "../mockData/category";
 import { useEffect } from "react";
 import Logo from "../assets/img/logo.png"
+import axios from "axios";
+import apiUrl from "../utils/config";
+import { AuthContext } from "../services/AuthContext";
+import { useContext } from "react";
 
 
 function Navbar({classes}) {
   const navRef2 = useRef();const location = useLocation();
+
+  // Access the isSignedIn state from the AuthContext
+  const { isSignedIn } = useContext(AuthContext);
 
   useEffect(() => {
     setIsAccountOpen(false);
@@ -195,13 +202,13 @@ return () => {
                 >
                   <HiHeart /> Saved Items
                 </Link>
-                <Link
+               {isSignedIn ? "" : <Link
                   onClick={handleMenuToggle}
                   to="/signin"
                   className=" mx-4  flex items-center gap-1  sm:text-2xl  font-semibold"
                 >
                   <HiKey /> Sign In
-                </Link>
+                </Link>}
                 <Link
                   onClick={handleMenuToggle}
                   to="/cart"
@@ -282,9 +289,9 @@ return () => {
                 >
                   Saved Items
                 </Link>
-                <Link to="/signin" className="py-2 px-5 hover:bg-red-200">
+                {isSignedIn ? "" :<Link to="/signin" className="py-2 px-5 hover:bg-red-200">
                   Sign In
-                </Link>
+                </Link>}
               </div>
             </div>
             <div className="relative text-black">

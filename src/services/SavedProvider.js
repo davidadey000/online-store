@@ -23,18 +23,24 @@ const SavedProvider = ({ children }) => {
       });
 
       // Set the savedItems state with the fetched data
-      setWishlistNotFound(false)
+      setWishlistNotFound(false);
       setSavedItems(response.data.products);
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      if (error.response && error.response.status ===  404 || error.response.status ===  401) {
-        // Wishlist not found
-        setWishlistNotFound(true);
-      } else {
-        // Other error occurred
-        toast.error("Error fetching wishlist data. Please try again later.");
+      // Check the error response status code and handle it accordingly
+      if (error.response) {
+        const statusCode = error.response.status;
+
+        if (statusCode === 404 || statusCode === 401) {
+          // Wishlist not found
+          setWishlistNotFound(true);
+        } else {
+          // Other error occurred
+          toast.error("Error fetching wishlist data. Please try again later.");
+        }
       }
+
       console.error("Error fetching wishlist data:", error);
     }
   };

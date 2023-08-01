@@ -11,7 +11,6 @@ import "./style.css";
 import "./App.css";
 import "./product.css";
 import Navbar from "./components/navbar";
-import AlternativeNavbar from "./components/AlternativeNavbar"; // Import the alternative Navbar component
 import TopBanner from "./components/topBanner";
 import Footer from "./components/footer";
 import Home from "./pages/Home";
@@ -30,18 +29,11 @@ import NotFound from "./pages/NotFound";
 import OrdersProvider from "./services/OrdersProvider";
 import Inbox from "./pages/Inbox";
 import Newsletter from "./pages/Newsletter";
+import { AuthProvider } from "./services/AuthContext";
 
 function Layout({ children }) {
   const location = useLocation();
-  const hideFooterRoutes = ["/signin",  '/orders','/saved']; // Add the routes where you want to hide the footer
-  const alternativeNavbarRoutes = ["/signin"]; // Add the routes where you want to use the alternative Navbar
-  const noNavbarRoutes = [
-    "/orders",
-    "/saved",
-    "/account",
-    "/inbox",
-    "/newsletter",
-  ];
+  const hideFooterRoutes = ["/signin", "/orders", "/saved"]; // Add the routes where you want to hide the footer
 
   useEffect(() => {
     // Scroll to the top of the page when the route changes
@@ -51,14 +43,7 @@ function Layout({ children }) {
   return (
     <div className="min-h-screen flex flex-col ">
       {!hideFooterRoutes.includes(location.pathname) && <TopBanner />}
-      {alternativeNavbarRoutes.includes(location.pathname) ? (
-        <AlternativeNavbar currentUrl={location.pathname} />
-      ) : noNavbarRoutes.includes(location.pathname) ? (
-        <Navbar currentUrl={location.pathname} classes="hidden lg:flex" />
-      ) : (
-        <Navbar currentUrl={location.pathname} />
-      )}
-      
+      {location.pathname !== "/signin" && <Navbar currentUrl={location.pathname} />} {/* Remove the Navbar from the SignIn page */}
       <ToastContainer />
       {children}
       {!hideFooterRoutes.includes(location.pathname) && <Footer />}
@@ -67,40 +52,33 @@ function Layout({ children }) {
 }
 
 function App() {
-  const [currentUrl, setCurrentUrl] = useState("");
-
-  useEffect(() => {
-    setCurrentUrl(window.location.pathname);
-  }, []);
-
   return (
     <Router>
-      <CartProvider>
-        <OrdersProvider>
-          <SavedProvider>
-            <Layout>
+      <AuthProvider>
+        <CartProvider>
+          <OrdersProvider>
+            <SavedProvider>
+              <Layout>
               <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/product/:slug" element={<ProductDetail />} />
-                <Route
-                  path="/products/:slug"
-                  element={<Products />}
-                />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/orders" element={<Orders />} />
-                <Route path="/help" element={<Help />} />
-                <Route path="*" element={<NotFound />} />{" "}
-                <Route path="/saved" element={<Saved />} />
-                <Route path="/signin" element={<Signin />} />
-                <Route path="/account" element={<Account />} />
-                <Route path="/faq" element={<Faq />} />{" "}
-                <Route path="/inbox" element={<Inbox />} />{" "}
-                <Route path="/newsletter" element={<Newsletter />} />
-              </Routes>
-            </Layout>
-          </SavedProvider>
-        </OrdersProvider>
-      </CartProvider>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/product/:slug" element={<ProductDetail />} />
+                  <Route path="/products/:slug" element={<Products />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/orders" element={<Orders />} />
+                  <Route path="/help" element={<Help />} />
+                  <Route path="*" element={<NotFound />} />{" "}
+                  <Route path="/saved" element={<Saved />} />
+                  <Route path="/signin" element={<Signin />} />
+                  <Route path="/account" element={<Account />} />
+                  <Route path="/faq" element={<Faq />} />{" "}
+                  <Route path="/inbox" element={<Inbox />} />{" "}
+                  <Route path="/newsletter" element={<Newsletter />} />
+                </Routes>
+              </Layout>
+            </SavedProvider>
+          </OrdersProvider>
+        </CartProvider>
+      </AuthProvider>
     </Router>
   );
 }

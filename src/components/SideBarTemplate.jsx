@@ -11,6 +11,8 @@ import {
 } from "react-icons/hi";
 import ListItemsSection from "./ListItemSection";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../services/AuthContext";
 
 const SideBarTemplate = ({ title, content, mobileContent }) => {
   const options1 = [
@@ -33,6 +35,12 @@ const SideBarTemplate = ({ title, content, mobileContent }) => {
   const handleGoBack = () => {
     navigate(-1);
   };
+  
+  const { isSignedIn, handleLogout } = useContext(AuthContext); // Access the isSignedIn and handleLogout functions from the AuthContext
+
+  const handleLogoutClick = () => {
+    handleLogout(); // Call the handleLogout function when the logout button is clicked
+  };
 
   return (
     <>
@@ -54,12 +62,14 @@ const SideBarTemplate = ({ title, content, mobileContent }) => {
           <ListItemsSection options={options1} />
           <ListItemsSection options={options2} />
 
-          <button
-            className="text-red-400 p-4 text-center font-semibold"
-            onClick={() => localStorage.clear()}
-          >
-            LOGOUT
-          </button>
+          {isSignedIn && ( // Conditionally render the logout button if the user is signed in
+            <button
+              className="text-red-400 p-4 text-center font-semibold"
+              onClick={handleLogoutClick} // Call the handleLogoutClick function when the logout button is clicked
+            >
+              LOGOUT
+            </button>
+          )}
         </div>
         <div className="h-min flex-grow bg-white shadow-sm rounded-md">
           <div className="px-4 py-2 text-xl flex items-center gap-2 font-semibold capitalize">

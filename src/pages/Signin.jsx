@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { HiStar, HiUserCircle, HiEye, HiEyeOff } from "react-icons/hi";
 import Logo from "../assets/img/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Joi from "joi";
 import apiUrl from "./../utils/config";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useContext } from "react";
+import { AuthContext } from "../services/AuthContext";
 
 const SignIn = () => {
   const [email, setEmail] = useState("davidtadediji@gmail.com");
@@ -14,6 +16,9 @@ const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isValidPassword, setIsValidPassword] = useState(true);
   const [isValid, setIsValid] = useState(false);
+
+  const navigate = useNavigate(); // Use "useNavigate" instead of "useHistory"
+
 
   const buttonData = [
     {
@@ -59,6 +64,10 @@ const SignIn = () => {
     setPassword(e.target.value);
   };
 
+  
+  const { handleSignIn } = useContext(AuthContext);
+
+
   const handleLoginClick = () => {
     const passwordValidationResult = passwordSchema.validate(password);
     if (passwordValidationResult.error) {
@@ -66,27 +75,33 @@ const SignIn = () => {
     } else {
       setIsValidPassword(true);
 
-      // Perform login action here using the email and password
       axios
-        .post(apiUrl + "auth", { email, password })
-        .then((response) => {
-          // If login is successful, response.data should contain the token
-          const token = response.data;
+      .post(apiUrl + "auth", { email, password })
+      .then((response) => {
+        // If login is successful, response.data should contain the token
+        const token = response.data;
 
-          // Store the token in local storage or any appropriate storage
-          localStorage.setItem("x-auth-token", token);
+        // Call handleSignIn function to set isSignedIn to true
+        handleSignIn(token);
 
-          // Show success toast notification
-          toast.success("Login successful!");
+        // Show success toast notification
+        toast.success("Login successful!");
 
-        })
-        .catch((error) => {
-          // If login fails, handle the error here
-          console.error("Login failed:", error);
+        try {
+          navigate(-1); // Go back one step in the history (previous page)
+        } catch (error) {
+          console.error("Error while navigating back:", error);
+          navigate("/"); // Navigate to the homepage as a fallback
+        }
+   
+      })
+      .catch((error) => {
+        // If login fails, handle the error here
+        console.error("Login failed:", error);
 
-          // Show error toast notification
-          toast.error("Login failed. Please try again.");
-        });
+        // Show error toast notification
+        toast.error("Login failed. Please try again.");
+      });
     }
   };
 
@@ -96,7 +111,7 @@ const SignIn = () => {
 
   return (
     <div className="px-5 flex flex-col  flex-grow bg-white items-center">
-      <div className="sm:max-w-md flex-grow gap-4 flex flex-col">
+      <div className="sm:max-w-md flex-grow gap-4 mt-16 flex flex-col">
         <div>
           <div className="pt-5 flex justify-center text-6xl">
             <HiStar />
@@ -119,7 +134,7 @@ const SignIn = () => {
               <input
                 type="email"
 
-                className={`w-full text-md p-3 border-[1px] rounded-[4px] ${
+                className={`w-full text-md p-3 mb-4 border-[1px] rounded-[4px] ${
                   !isValidEmail
                     ? "border-red-700 placeholder-red-700"
                     : "border-gray-500 "
