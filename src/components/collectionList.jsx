@@ -22,7 +22,7 @@ const CollectionList = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          `${apiUrl}products/category/limited-store-deals`
+          `${apiUrl}products/collection/limited-store-deals`
         );
         setLimitedStoreProducts(response.data);
       } catch (error) {
@@ -38,7 +38,7 @@ const CollectionList = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          `${apiUrl}products/category/office-store-deals`
+          `${apiUrl}products/collection/office-store-deals`
         );
         setOfficeStoreProducts(response.data);
       } catch (error) {
@@ -54,7 +54,7 @@ const CollectionList = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          `${apiUrl}products/category/large-applicances-(pay-on-delivery)`
+          `${apiUrl}products/collection/large-applicances-(pay-on-delivery)`
         );
         setLargeApplicances(response.data);
       } catch (error) {
@@ -72,6 +72,7 @@ const CollectionList = () => {
         type="products"
         collectionName={limitedStoreDeals.name}
         slug="limited-store-deals"
+        isCollection={true}
         headerColor="rgb(254, 226, 204)"
         products={limitedStoreDeals.products}
       />
@@ -82,14 +83,18 @@ const CollectionList = () => {
       <ProductCollection
         key="Office Store Deals"
         type="products"
+        isCollection={true}
         collectionName={officeStoreDeals.name}
+        slug="office-store-deals"
         headerColor="rgb(254, 226, 204)"
         products={officeStoreDeals.products}
       />
       <ProductCollection
         key="Large Applicances"
         type="products"
+        isCollection={true}
         collectionName={largeApplicances.name}
+        slug="large-applicances-(pay-on-delivery)"
         headerColor="rgb(254, 226, 204)"
         products={largeApplicances.products}
       />

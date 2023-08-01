@@ -18,6 +18,7 @@ const ProductCollection = ({
   products,
   groups,
   similarProducts,
+  isCollection,
   slug,
   headerColor,
   textColor,
@@ -49,18 +50,27 @@ const ProductCollection = ({
         ) : (
           <Link
             className="block products__all-link"
-            to={`/products/${slug}${similarProducts ? `?similarProducts=${similarProducts}`: ""}`}
+            to={`/products/${slug}${
+              similarProducts
+                ? `?similarProducts=${similarProducts}`
+                : isCollection
+                ? `?collection=${isCollection}`
+                : ""
+            }`}
           >
             <h5 className="products__text--option">SEE ALL</h5>
           </Link>
         )}
       </div>
-      <div className="flex overflow-x-auto bg-white p-3 scroll-smooth products__body gap-1" ref={containerRef}>
+      <div
+        className="flex overflow-x-auto bg-white p-3 scroll-smooth products__body gap-1"
+        ref={containerRef}
+      >
         {/* Conditionally render the collection body */}
         {products && products.length > 0 ? (
-          products.slice(0, 12).map((deal, index) => (
-            <ProductCard key={index} {...deal} />
-          ))
+          products
+            .slice(0, 12)
+            .map((deal, index) => <ProductCard key={index} {...deal} />)
         ) : (
           <EmptyCollectionBody />
         )}
