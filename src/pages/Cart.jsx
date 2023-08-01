@@ -17,6 +17,7 @@ import apiUrl from "../utils/config";
 const Cart = () => {
   const similarItems = categoriesData[categoriesData.length - 3];
   const [recommended, setRecommended] = useState([]);
+  const [alsoViewed, setAlsoViewed] = useState([]);
   const customerViewed = categoriesData[categoriesData.length - 1];
 
   const {
@@ -45,10 +46,8 @@ const Cart = () => {
     removeFromCart(itemId);
   };
   const handleCheckout = async () => {
- 
-      await addToOrders();
-      fetchCartData();
-  
+    await addToOrders();
+    fetchCartData();
   };
   useEffect(() => {
     fetchCartData();
@@ -64,6 +63,15 @@ const Cart = () => {
       );
   }, []);
 
+  useEffect(() => {
+    // Fetch the random products from the server when the component mounts
+    axios
+      .get(`${apiUrl}products/random`)
+      .then((response) => setAlsoViewed(response.data))
+      .catch((error) =>
+        console.error("Error fetching recommended products:", error)
+      );
+  }, []);
   return (
     <div className="lg:mx-8 lg:my-4">
       <div className="lg:hidden">
@@ -82,9 +90,9 @@ const Cart = () => {
           ) : cartItems.length === 0 ? (
             <NoItemsFound title="cart" />
           ) : (
-            cartItems.map((item) => (
+            cartItems.map((item, index) => (
               <Item
-                key={item.cartId}
+                key={index}
                 {...item}
                 type="cart"
                 handleIncrement={handleIncrement}
@@ -123,11 +131,11 @@ const Cart = () => {
         key={similarItems.collectionName}
         {...similarItems}
       />
-
       <ProductCollection
         use="detail"
-        key={customerViewed.collectionName}
-        {...customerViewed}
+        key="Customer Also Viewed"
+        collectionName="Customer Also Viewed"
+        products={alsoViewed}
       />
     </div>
   );
