@@ -2,6 +2,11 @@ import React from "react";
 import { FaArrowUp } from "react-icons/fa";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
+import twitterImg from "../assets/img/twitter.png";
+import facebookImg from "../assets/img/facebook.png";
+import youtubeImg from "../assets/img/youtube.png";
+import playStoreImg from "../assets/img/playstore.png";
+import appStoreImg from "../assets/img/app-store.png";
 
 const Footer = () => {
   const isMobile = useMediaQuery({ maxWidth: 1023 });
@@ -52,31 +57,49 @@ const DesktopFooter = () => (
         </p>
         <div className="lg-footer__top-middle-form">
           <button className="lg-footer__top-right__btn text-white">
-            Play Store
+            <a href="https://www.play.google.com">
+              <img src={playStoreImg} className="w-8 h-8" />
+            </a>
           </button>
           <button className="lg-footer__top-right__btn text-white">
-            App Store
+            <a href="https://www.apple.com/appstore">
+              <img src={appStoreImg} className="w-8 h-8" />
+            </a>
           </button>
         </div>
       </div>
     </div>
     <div className="lg-footer__bottom">
       {footerCards.map((card, index) => (
-        <FooterCard key={index} title={card.title} links={card.links} />
+        <FooterCard
+          key={index}
+          title={card.title}
+          type={card.type}
+          links={card.links}
+        />
       ))}
     </div>
     <hr className="lg-footer__hr" />
   </div>
 );
-
-const FooterCard = ({ title, links }) => (
+const FooterCard = ({ title, type, links }) => (
   <div className="lg-footer__bottom__card">
     <h5 className="lg-footer__bottom__title text-sm font-semibold">{title}</h5>
-    {links.map((link, index) => (
-      <FooterLink key={index} href={link.href}>
-        {link.label}
-      </FooterLink>
-    ))}
+    {type === "image" ? (
+      <div className="flex-row flex gap-4">{
+        links.map((link, index) => (
+        <a key={index} href={link.href}>
+          <img src={link.image} className="w-8 h-8" />
+        </a>
+        ))}
+      </div>
+    ) : (
+      links.map((link, index) => (
+        <FooterLink key={index} href={link.href}>
+          {link.label}
+        </FooterLink>
+      ))
+    )}
   </div>
 );
 
@@ -196,8 +219,11 @@ const footerCards = [
   },
   {
     title: "JOIN US ON",
+    type: "image",
     links: [
-      // Add your social media links here
+      { image: twitterImg, href: "https://www.twitter.com/" },
+      { image: facebookImg, href: "https://www.facebook.com/" },
+      { image: youtubeImg, href: "https://www.youtube.com/" },
     ],
   },
   {
