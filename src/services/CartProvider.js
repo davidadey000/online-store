@@ -39,12 +39,11 @@ const CartProvider = ({ children }) => {
         // Other error occurred
         console.error("Error fetching cart data:", error);
       }
+      setTotal(0)
+      setTotalPrice(0)
     }
   };
 
-  // useEffect(() => {
-  //   fetchCartData();
-  // }, []); // Empty dependency array to fetch cart data only once on component mount
 
   // Calculate total and total price based on cart items
   useEffect(() => {

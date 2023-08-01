@@ -11,6 +11,7 @@ import "./style.css";
 import "./App.css";
 import "./product.css";
 import Navbar from "./components/navbar";
+import AlternativeNavbar from "./components/AlternativeNavbar"; // Import the alternative Navbar component
 import TopBanner from "./components/topBanner";
 import Footer from "./components/footer";
 import Home from "./pages/Home";
@@ -34,6 +35,14 @@ import { AuthProvider } from "./services/AuthContext";
 function Layout({ children }) {
   const location = useLocation();
   const hideFooterRoutes = ["/signin", "/orders", "/saved"]; // Add the routes where you want to hide the footer
+  const alternativeNavbarRoutes = ["/signin"]; // Add the routes where you want to use the alternative Navbar
+  const noNavbarRoutes = [
+    "/orders",
+    "/saved",
+    "/account",
+    "/inbox",
+    "/newsletter",
+  ];
 
   useEffect(() => {
     // Scroll to the top of the page when the route changes
@@ -43,7 +52,14 @@ function Layout({ children }) {
   return (
     <div className="min-h-screen flex flex-col ">
       {!hideFooterRoutes.includes(location.pathname) && <TopBanner />}
-      {location.pathname !== "/signin" && <Navbar currentUrl={location.pathname} />} {/* Remove the Navbar from the SignIn page */}
+      {alternativeNavbarRoutes.includes(location.pathname) ? (
+        <AlternativeNavbar currentUrl={location.pathname} />
+      ) : noNavbarRoutes.includes(location.pathname) ? (
+        <Navbar currentUrl={location.pathname} classes="hidden lg:flex" />
+      ) : (
+        <Navbar currentUrl={location.pathname} />
+      )}
+
       <ToastContainer />
       {children}
       {!hideFooterRoutes.includes(location.pathname) && <Footer />}
@@ -52,6 +68,12 @@ function Layout({ children }) {
 }
 
 function App() {
+  const [currentUrl, setCurrentUrl] = useState("");
+
+  useEffect(() => {
+    setCurrentUrl(window.location.pathname);
+  }, []);
+
   return (
     <Router>
       <AuthProvider>
@@ -59,7 +81,7 @@ function App() {
           <OrdersProvider>
             <SavedProvider>
               <Layout>
-              <Routes>
+                <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/product/:slug" element={<ProductDetail />} />
                   <Route path="/products/:slug" element={<Products />} />

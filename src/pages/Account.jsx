@@ -1,9 +1,6 @@
-import React from "react";
-import { HiCreditCard } from "react-icons/hi";
-import Title from "./../components/Title";
-import ListItem from "./../components/ListItem";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
 import {
+  HiCreditCard,
   HiShoppingCart,
   HiInboxIn,
   HiStar,
@@ -11,20 +8,22 @@ import {
   HiHeart,
   HiEye,
 } from "react-icons/hi";
+import Title from "./../components/Title";
+import ListItem from "./../components/ListItem";
+import { Link } from "react-router-dom";
 
 import ListItemsSection from "./../components/ListItemSection";
 import SideBarTemplate from "./../components/SideBarTemplate";
 import AccountCard from "../components/AccountCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import apiUrl from "../utils/config";
 import axios from "axios";
-import { useEffect } from "react";
-import { object } from "joi";
+import { AuthContext } from "../services/AuthContext"; // Import AuthContext
+
 import ObjectNotFound from "./../components/ObjectNotFound";
 
 const Account = () => {
   const [userData, setUserData] = useState("");
-  const [userNotFound, setUserNotFound] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("x-auth-token");
@@ -32,18 +31,16 @@ const Account = () => {
     axios
       .get(`${apiUrl}users/me`, {
         headers: {
-          "x-auth-token": token, // Replace "YOUR_AUTH_TOKEN_HERE" with the actual auth token
+          "x-auth-token": token,
         },
       })
       .then((response) => {
         // Update the state with the fetched data
         setUserData(response.data);
-        setUserNotFound(false);
       })
       .catch((error) => {
         if (error.response && error.response.status === 401) {
           // Cart not found
-          setUserNotFound(true);
         } else {
           // Handle errors if necessary
           console.error("Error fetching user data:", error);
@@ -51,7 +48,6 @@ const Account = () => {
       });
   }, []);
 
-  // const name = "David Adediji";
   const name = userData.name;
   const email = userData.email;
   const amount = "0.00";
@@ -78,6 +74,12 @@ const Account = () => {
     { title: "Close Account" },
   ];
 
+  const { isSignedIn, handleLogout } = useContext(AuthContext); // Access the isSignedIn and handleLogout functions from the AuthContext
+
+  const handleLogoutClick = () => {
+    handleLogout(); // Call the handleLogout function when the logout button is clicked
+  };
+
   const accountData = [
     { title: "Account Details", heading: name, email: email },
     {
@@ -102,7 +104,7 @@ const Account = () => {
       <SideBarTemplate
         title="Account Overview"
         content={
-          userNotFound ? (
+          !isSignedIn ? (
             <ObjectNotFound title="User Details" />
           ) : (
             <div className="flex-grow">
@@ -133,12 +135,14 @@ const Account = () => {
             <Title title="account settings" />
             <ListItemsSection options={options2} />
 
-            <button
-              className="py-3 w-full uppercase text-red-400 text-center"
-              onClick={() => localStorage.clear()}
-            >
-              LOGOUT
-            </button>
+            {isSignedIn && ( // Conditionally render the logout button if the user is signed in
+              <button
+                className="py-3 w-full uppercase text-red-400 text-center"
+                onClick={handleLogoutClick} // Call the handleLogoutClick function when the logout button is clicked
+              >
+                LOGOUT
+              </button>
+            )}
           </div>
         }
       />
