@@ -1,54 +1,58 @@
-// AuthContext.js
-
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 import apiUrl from "../utils/config";
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  // State to track if the user is signed in
   const [isSignedIn, setIsSignedIn] = useState(false);
+  const [email, setEmail] = useState(""); // Add email state
 
-  // Function to check if the user is signed in
   const checkUserSignIn = async () => {
     const token = localStorage.getItem("x-auth-token");
 
     try {
       if (token) {
-        // Include the token in the request headers
         const headers = { "x-auth-token": token };
         const response = await axios.get(`${apiUrl}users/me`, { headers });
 
-        setIsSignedIn(true); // If the request succeeds, set isSignedIn to true
+        setIsSignedIn(true);
       } else {
-        setIsSignedIn(false); // If there is no token, user is not signed in
+        setIsSignedIn(false);
       }
     } catch (error) {
-      setIsSignedIn(false); // If the request fails (user not signed in or invalid token), set isSignedIn to false
+      setIsSignedIn(false);
     }
   };
 
-  // Function to handle user logout
   const handleLogout = () => {
     localStorage.removeItem("x-auth-token");
-    setIsSignedIn(false); // Set isSignedIn to false after logout
+    setIsSignedIn(false);
   };
 
-  // Function to handle successful sign-in
   const handleSignIn = (token) => {
     localStorage.setItem("x-auth-token", token);
-    setIsSignedIn(true); // Set isSignedIn to true after successful sign-in
+    setIsSignedIn(true);
   };
 
-  // Use useEffect to call checkUserSignIn when the component mounts
   useEffect(() => {
     checkUserSignIn();
   }, []);
 
+  const setEmailValue = (newEmail) => {
+    setEmail(newEmail);
+  };
+
   return (
     <AuthContext.Provider
-      value={{ isSignedIn, setIsSignedIn, handleLogout, handleSignIn }}
+      value={{
+        isSignedIn,
+        setIsSignedIn,
+        email,
+        setEmail: setEmailValue,
+        handleLogout,
+        handleSignIn,
+      }}
     >
       {children}
     </AuthContext.Provider>
@@ -56,3 +60,9 @@ const AuthProvider = ({ children }) => {
 };
 
 export { AuthContext, AuthProvider };
+
+// Custom hook to access email state and setter
+export const useEmail = () => {
+  const { email, setEmail } = useContext(AuthContext);
+  return { email, setEmail };
+};

@@ -31,12 +31,27 @@ import OrdersProvider from "./services/OrdersProvider";
 import Inbox from "./pages/Inbox";
 import Newsletter from "./pages/Newsletter";
 import { AuthProvider } from "./services/AuthContext";
+import Identification from "./pages/Identification";
+import SignUp from "./pages/SignUp";
+import PersonalDetails from "./pages/PersonalDetails";
 
 function Layout({ children }) {
   const location = useLocation();
-  const hideFooterRoutes = ["/signin", "/orders", "/saved"]; // Add the routes where you want to hide the footer
-  const alternativeNavbarRoutes = ["/signin"]; // Add the routes where you want to use the alternative Navbar
+  const hideFooterRoutes = [
+    "/signin",
+    "/orders",
+    "/saved",
+    "/signup",
+    "/identification",
+    "/personal-details"
+  ]; // Add the routes where you want to hide the footer
   const noNavbarRoutes = [
+    "/signin",
+    "/signup",
+    "/identification",
+    "/personal-details",
+  ]; // Add the routes where you want to use the alternative Navbar
+  const noMobileNavbarRoutes = [
     "/orders",
     "/saved",
     "/account",
@@ -52,9 +67,9 @@ function Layout({ children }) {
   return (
     <div className="min-h-screen flex flex-col ">
       {!hideFooterRoutes.includes(location.pathname) && <TopBanner />}
-      {alternativeNavbarRoutes.includes(location.pathname) ? (
-        <AlternativeNavbar currentUrl={location.pathname} />
-      ) : noNavbarRoutes.includes(location.pathname) ? (
+      {noNavbarRoutes.includes(location.pathname) ? (
+        <Navbar currentUrl={location.pathname} classes="hidden" />
+      ) : noMobileNavbarRoutes.includes(location.pathname) ? (
         <Navbar currentUrl={location.pathname} classes="hidden lg:flex" />
       ) : (
         <Navbar currentUrl={location.pathname} />
@@ -88,13 +103,19 @@ function App() {
                   <Route path="/cart" element={<Cart />} />
                   <Route path="/orders" element={<Orders />} />
                   <Route path="/help" element={<Help />} />
-                  <Route path="*" element={<NotFound />} />{" "}
+                  <Route path="*" element={<NotFound />} />
                   <Route path="/saved" element={<Saved />} />
                   <Route path="/signin" element={<Signin />} />
+                  <Route path="/identification" element={<Identification />} />
                   <Route path="/account" element={<Account />} />
-                  <Route path="/faq" element={<Faq />} />{" "}
-                  <Route path="/inbox" element={<Inbox />} />{" "}
+                  <Route path="/faq" element={<Faq />} />
+                  <Route path="/inbox" element={<Inbox />} />
                   <Route path="/newsletter" element={<Newsletter />} />
+                  <Route path="/signup" element={<SignUp />} />{" "}
+                  <Route
+                    path="/personal-details"
+                    element={<PersonalDetails />}
+                  />
                 </Routes>
               </Layout>
             </SavedProvider>

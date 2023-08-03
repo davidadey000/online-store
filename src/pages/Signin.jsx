@@ -1,28 +1,24 @@
-import React, { useState } from "react";
-import { HiStar, HiUserCircle, HiEye, HiEyeOff } from "react-icons/hi";
-import Logo from "../assets/img/logo.png";
-import { Link, useNavigate } from "react-router-dom";
-import Joi from "joi";
-import apiUrl from "./../utils/config";
 import axios from "axios";
+import React, { useContext, useState } from "react";
+import { HiEye, HiEyeOff, HiStar, HiUserCircle } from "react-icons/hi";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useContext } from "react";
-import { AuthContext } from "../services/AuthContext";
+import Logo from "../assets/img/logo.png";
+import { AuthContext, useEmail } from "../services/AuthContext";
+import Identification from "./Identification"; // Import Identification component
+import apiUrl from "./../utils/config";
+import Joi from "joi";
 
 const SignIn = () => {
-  const [email, setEmail] = useState("davidtadediji@gmail.com");
-  const [isValidEmail, setIsValidEmail] = useState(true);
-  const [password, setPassword] = useState("12345");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isValidPassword, setIsValidPassword] = useState(true);
-  const [isValid, setIsValid] = useState(false);
 
-  const navigate = useNavigate(); // Use "useNavigate" instead of "useHistory"
-
+  const { email } = useEmail(); // Use the useEmail hook
 
   const buttonData = [
     {
-      title: isValid ? "Login" : "Continue",
+      title: "Continue",
       bgColor: "bg-red-400",
       icon: null,
     },
@@ -40,35 +36,18 @@ const SignIn = () => {
     },
   ];
 
-  const emailSchema = Joi.string().email({
-    minDomainSegments: 2,
-    tlds: { allow: false }, // To disallow the use of top-level domains (e.g., .com, .net)
-  });
-
-  const handleContinueClick = () => {
-    const validationResult = emailSchema.validate(email);
-    if (validationResult.error) {
-      setIsValidEmail(false);
-    } else {
-      setIsValidEmail(true);
-      setIsValid(true);
-    }
-  };
-  const passwordSchema = Joi.string().min(5).required(); // Define the password schema
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+  const navigate = useNavigate();
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+    setIsValidPassword(true);
   };
 
-  
   const { handleSignIn } = useContext(AuthContext);
 
-
   const handleLoginClick = () => {
+    const passwordSchema = Joi.string().min(5).required(); // Define the password schema
+
     const passwordValidationResult = passwordSchema.validate(password);
     if (passwordValidationResult.error) {
       setIsValidPassword(false);
@@ -76,32 +55,31 @@ const SignIn = () => {
       setIsValidPassword(true);
 
       axios
-      .post(apiUrl + "auth", { email, password })
-      .then((response) => {
-        // If login is successful, response.data should contain the token
-        const token = response.data;
+        .post(apiUrl + "auth", { email, password })
+        .then((response) => {
+          // If login is successful, response.data should contain the token
+          const token = response.data;
 
-        // Call handleSignIn function to set isSignedIn to true
-        handleSignIn(token);
+          // Call handleSignIn function to set isSignedIn to true
+          handleSignIn(token);
 
-        // Show success toast notification
-        toast.success("Login successful!");
+          // Show success toast notification
+          toast.success("Login successful!");
 
-        try {
-          navigate(-1); // Go back one step in the history (previous page)
-        } catch (error) {
-          console.error("Error while navigating back:", error);
-          navigate("/"); // Navigate to the homepage as a fallback
-        }
-   
-      })
-      .catch((error) => {
-        // If login fails, handle the error here
-        console.error("Login failed:", error);
+          try {
+            navigate("/"); // Go back one step in the history (previous page)
+          } catch (error) {
+            console.error("Error while navigating back:", error);
+            navigate("/"); // Navigate to the homepage as a fallback
+          }
+        })
+        .catch((error) => {
+          // If login fails, handle the error here
+          console.error("Login failed:", error);
 
-        // Show error toast notification
-        toast.error("Login failed. Please try again.");
-      });
+          // Show error toast notification
+          toast.error("Login failed. Please try again.");
+        });
     }
   };
 
@@ -109,54 +87,36 @@ const SignIn = () => {
     setShowPassword(!showPassword);
   };
 
+  if(!email){
+    navigate("/identification")
+  }
+
   return (
-    <div className="px-5 flex flex-col  flex-grow bg-white items-center">
-      <div className="sm:max-w-md flex-grow gap-4 mt-16 flex flex-col">
-        <div>
+    <div className="px-5 flex flex-col flex-grow bg-white items-center">
+      <div className="sm:max-w-md flex-grow gap-10 mt-16 flex flex-col">
+        <div className="flex flex-col gap-2 items-center">
           <div className="pt-5 flex justify-center text-6xl">
             <HiStar />
           </div>
-          <h1 className="text-center font-semibold text-xl">
+          <h1 className=" font-semibold text-xl">
             Welcome to Jumia
           </h1>
-        </div>
-        <p className="text-center px-1 mb-2 text-gray-600 sm:text-md">
+          <p className=" text-center px-1 mb-2 text-gray-600 sm:text-md">
           Type your e-mail or phone number to log in or create a Jumia account.
         </p>
-        <div>
-          {isValid ? (
-            <div className="flex items-center p-3 rounded-[4px] bg-gray-500 justify-between text-white">
-              <p className="font-semibold">{email}</p>
-              <button onClick={() => setIsValid(false)}>Edit</button>
-            </div>
-          ) : (
-            <>
-              <input
-                type="email"
-
-                className={`w-full text-md p-3 mb-4 border-[1px] rounded-[4px] ${
-                  !isValidEmail
-                    ? "border-red-700 placeholder-red-700"
-                    : "border-gray-500 "
-                }`}
-                placeholder="Email or Mobile Number"
-                value={email}
-                onChange={handleEmailChange}
-              />
-              {!isValidEmail && (
-                <small className="text-red-700 block font-medium p-2 leading-tight">
-                  Either the email or the phone number entered is not valid
-                </small>
-              )}
-            </>
-          )}
         </div>
-        {isValid && (
-          <div>
+       
+        <div>
+          <div className="flex items-center p-3 rounded-[4px] bg-gray-500 justify-between text-white">
+            <p className="font-semibold">{email}</p>
+            <button onClick={() => navigate(-1)}>Edit</button>
+          </div>
+        </div>
+        <div>
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
-                className={`w-full text-md p-3 border-[1px] rounded-[4px] ${
+                className={`w-full text-md p-3 border-[1px] rounded-[4px] outline-red-400 ${
                   !isValidPassword ? "border-red-700" : "border-gray-500 "
                 }`}
                 placeholder="Password"
@@ -168,23 +128,20 @@ const SignIn = () => {
                 onClick={toggleShowPassword}
               >
                 {showPassword ? (
-                  <HiEyeOff className="text-gray-500" />
-                ) : (
                   <HiEye className="text-gray-500" />
+                ) : (
+                  <HiEyeOff className="text-gray-500" />
                 )}
               </span>
             </div>
             {!isValidPassword && (
               <small className="text-red-600 block font-medium p-2 leading-tight">
-                The password is incorrect!
+                The password is not valid!
               </small>
             )}
+            
           </div>
-        )}
-
-        {isValid ? (
-          <>
-            <Button onClick={handleLoginClick} {...buttonData[2]} />
+          <Button onClick={handleLoginClick} {...buttonData[2]} />
             <div className="text-center">
               <a
                 href="/forgot-password"
@@ -193,14 +150,7 @@ const SignIn = () => {
                 Forgot Password?
               </a>
             </div>
-          </>
-        ) : (
-          <>
-            <Button onClick={handleContinueClick} {...buttonData[0]} />
-            <Button {...buttonData[1]} />
-          </>
-        )}
-        <div className="mb-4 m-auto">
+          <div className="mb-4 m-auto">
           <p className="text-center text-sm font-semibold text-gray-600 mb-2 sm:text-md">
             For further support, you may visit the Help Center or contact our
             customer service team.
@@ -225,3 +175,4 @@ const Button = ({ title, icon, bgColor, classes, onClick }) => {
     </button>
   );
 };
+

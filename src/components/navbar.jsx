@@ -204,7 +204,7 @@ return () => {
                 </Link>
                {isSignedIn ? "" : <Link
                   onClick={handleMenuToggle}
-                  to="/signin"
+                  to="/identification"
                   className=" mx-4  flex items-center gap-1  sm:text-2xl  font-semibold"
                 >
                   <HiKey /> Sign In
@@ -289,7 +289,7 @@ return () => {
                 >
                   Saved Items
                 </Link>
-                {isSignedIn ? "" :<Link to="/signin" className="py-2 px-5 hover:bg-red-200">
+                {isSignedIn ? "" :<Link to="/identification" className="py-2 px-5 hover:bg-red-200">
                   Sign In
                 </Link>}
               </div>

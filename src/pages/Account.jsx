@@ -51,8 +51,9 @@ const Account = () => {
   const name = userData.name;
   const email = userData.email;
   const amount = "0.00";
-  const address =
+  let address =
     "Opposite Hilltop Hotel, Lugbe, Abuja Abuja-Lugbe Sector F, Federal Capital Territory";
+  address = userData.shippingAddress;
 
   const shippingAddress = `${userData.name} \n ${address} +234 7065093454 / +234 7065093454`;
 
@@ -122,7 +123,7 @@ const Account = () => {
           <div className="flex-grow lg:hidden">
             <div className="p-4 bg-red-400 ">
               <p className="text-white font-semibold leading-4">
-                Welcome, {name}
+                Welcome, {name || "User"}
               </p>
               <p className="text-white text-xs">{email}</p>
             </div>

@@ -375,7 +375,7 @@ export const collectionData = [
     textColor: "white",
     products: [
       {
-        slug: "Below 20000",
+        slug: "₦20000",
         title: "Below ₦20,000",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/4243011/1.jpg?5748",

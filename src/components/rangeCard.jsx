@@ -16,7 +16,7 @@ const RangeCard = ({ slug, title, image }) => {
     };
   }, [image]);
   return (
-    <Link className="block range" to={`products/${slug}/`}>
+    <Link className="block range" to={`products/below${slug}?priceRange=${true}`}>
       <div className="w-full h-[110px] sm:h-[170px] lg:h-[200px]">
         {isLoading ? (
           <TextContentLoader width="100%" height="100%"></TextContentLoader>

@@ -38,6 +38,7 @@ const Products = () => {
   const queryParams = new URLSearchParams(location.search);
   const isSimilarProducts = queryParams.get("similarProducts") === "true";
   const isCollection = queryParams.get("collection") === "true";
+  const isPriceRange = queryParams.get("priceRange") === "true";
   const [categoryData, setCategoryData] = useState(null);
   const [isCategoryDataLoading, setIsCategoryDataLoading] = useState(true);
   const [categoryDataNotFound, setCategoryDataNotFound] = useState(false);
@@ -62,6 +63,16 @@ const Products = () => {
 
         setCategoryData(response.data);
         setIsCategoryDataLoading(false);
+      } else if (isPriceRange) {
+        let productSlug = slug.replace("?priceRange=true", "");
+        productSlug = slug.replace("below", "");
+        const response = await axios.get(
+          apiUrl + `products/price/${productSlug}`
+        );
+        setCategoryDataNotFound(false);
+
+        setCategoryData(response.data);
+        setIsCategoryDataLoading(false);
       } else if (isCollection) {
         // Fetch similar products based on the product slug
         const collectionSlug = slug.replace("?collection=true", "");
@@ -72,7 +83,7 @@ const Products = () => {
 
         setCategoryData(response.data);
         setIsCategoryDataLoading(false);
-      }else {
+      } else {
         // Fetch category products based on the category slug
         const response = await axios.get(apiUrl + `products/category/${slug}`);
         setCategoryDataNotFound(false);
@@ -80,7 +91,6 @@ const Products = () => {
         setCategoryData(response.data);
         setIsCategoryDataLoading(false);
       }
-
     } catch (error) {
       setIsCategoryDataLoading(false);
       if (error.response && error.response.status === 404) {
