@@ -4,9 +4,10 @@ import { HiEye, HiEyeOff, HiStar, HiUserCircle } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Logo from "../assets/img/logo.png";
-import { AuthContext, useEmail } from "../services/AuthContext";
+import { AuthContext, useEmail, useSignUpToken } from "../services/AuthContext";
 import apiUrl from "../utils/config";
 import Joi from "joi";
+import { useEffect } from "react";
 
 const SignUp = () => {
   const [password, setPassword] = useState("");
@@ -17,6 +18,7 @@ const SignUp = () => {
   const [passwordsMatch, setPasswordsMatch] = useState(true);
 
   const { email } = useEmail(); // Use the useEmail hook
+  const { setSignUpToken, signUpToken } = useSignUpToken();
 
   const buttonData = [
     {
@@ -31,7 +33,7 @@ const SignUp = () => {
       classes: "mt-16",
     },
     {
-      title: "Sign In",
+      title: "Sign Up",
       bgColor: "bg-red-400",
       icon: null,
     },
@@ -49,9 +51,7 @@ const SignUp = () => {
     setPasswordsMatch(true);
   };
 
-  const { handleSignUp } = useContext(AuthContext);
-
-  const handleSignUpClick = () => {
+  const handleSignUpClick = async () => {
     const passwordSchema = Joi.string().min(5).required();
 
     const passwordValidationResult = passwordSchema.validate(password);
@@ -67,17 +67,34 @@ const SignUp = () => {
 
     setIsValidPassword(true);
     setPasswordsMatch(true);
+    try {
+      const response = await axios.post(`${apiUrl}users/step1`, {
+        email,
+        password,
+      });
 
-    navigate("/personal-details");
+      const { token } = response.data;
+      setSignUpToken(token);
+      console.log(signUpToken);
+
+      // Now, you can navigate to the next step or handle the UI accordingly
+      navigate("/personal-details");
+    } catch (error) {
+      // Handle errors (e.g., display an error message)
+      console.error("Error signing up:", error);
+      toast.error("An error occurred while signing up. Please try again.");
+    }
   };
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
-  if (!email) {
-    navigate("/identification");
-  }
+  useEffect(() => {
+    if (!email) {
+      navigate("/identification");
+    }
+  });
 
   return (
     <div className="px-5 flex flex-col flex-grow bg-white items-center">

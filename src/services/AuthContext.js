@@ -7,6 +7,7 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [email, setEmail] = useState(""); // Add email state
+  const [signUpToken, setSignUpToken] = useState(null)
 
   const checkUserSignIn = async () => {
     const token = localStorage.getItem("x-auth-token");
@@ -35,6 +36,10 @@ const AuthProvider = ({ children }) => {
     setIsSignedIn(true);
   };
 
+  const setSignUpTokenValue = (newToken) => {
+    setSignUpToken(newToken)
+  }
+
   useEffect(() => {
     checkUserSignIn();
   }, []);
@@ -50,6 +55,8 @@ const AuthProvider = ({ children }) => {
         setIsSignedIn,
         email,
         setEmail: setEmailValue,
+        signUpToken,
+        setSignUpToken: setSignUpTokenValue,
         handleLogout,
         handleSignIn,
       }}
@@ -66,3 +73,9 @@ export const useEmail = () => {
   const { email, setEmail } = useContext(AuthContext);
   return { email, setEmail };
 };
+
+
+export const useSignUpToken = () => {
+  const {signUpToken, setSignUpToken} = useContext(AuthContext);
+  return {signUpToken, setSignUpToken}
+}

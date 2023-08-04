@@ -109,7 +109,7 @@ const SignIn = () => {
         <div>
           <div className="flex items-center p-3 rounded-[4px] bg-gray-500 justify-between text-white">
             <p className="font-semibold">{email}</p>
-            <button onClick={() => navigate(-1)}>Edit</button>
+            <button onClick={() => navigate("/identification")}>Edit</button>
           </div>
         </div>
         <div>
