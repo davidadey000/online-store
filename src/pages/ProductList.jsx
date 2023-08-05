@@ -82,6 +82,7 @@ const Products = () => {
         setCategoryDataNotFound(false);
 
         setCategoryData(response.data);
+        console.log(response.data);
         setIsCategoryDataLoading(false);
       } else {
         // Fetch category products based on the category slug
@@ -121,6 +122,7 @@ const Products = () => {
   if (categoryDataNotFound) {
     return <ObjectNotFound title="Products" />;
   }
+
   const totalPages = Math.ceil(categoryData.products.length / productsPerPage);
 
   const handleFilterChange = (newFilters) => {

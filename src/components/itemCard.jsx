@@ -33,8 +33,10 @@ const ItemCard = ({ id, slug, discountedPrice, discount, price, title, mainImage
         </div>
         <div className="item__body  flex-grow flex flex-col">
           <h6 className="item__text--description">{title}</h6>
-          <h4 className="item__text--price font-semibold">₦{discountedPrice.toLocaleString("en-US")}</h4>
-          <small className="item__text--prev-price">₦{price.toLocaleString("en-US")}</small>
+          <h4 className="item__text--price font-semibold">  {discountedPrice ? `₦${discountedPrice.toLocaleString("en-US")}` : <br />}</h4>
+          <small className="item__text--prev-price"> {price !== discountedPrice
+              ? `₦${price?.toLocaleString("en-US")}`
+              : null}</small>
 
           <small className="">-{discount}%</small>
           <div className="item__footer mt-auto" style={{ backgroundColor: "white" }}>

@@ -382,33 +382,33 @@ export const collectionData = [
       },
 
       {
-        slug: "Below 250000",
+        slug: "₦250000",
         title: "Below ₦250,000",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/96/3789291/13.jpg?9430",
       },
       {
-        slug: "Below 10000",
+        slug: "₦10000",
         title: "Below ₦10,000",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/91/3748901/1.jpg?1058",
       },
       {
-        slug: "Below 150000",
+        slug: "₦150000",
         title: "Below ₦150,000",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/59/114556/1.jpg?8547",
       },
 
       {
-        slug: "Below 400000",
+        slug: "₦400000",
         title: "Below ₦400,000",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/74/523389/1.jpg?7424",
       },
 
       {
-        slug: "Below 20000",
+        slug: "₦20000",
         title: "Below ₦20,000",
         image:
           "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/9523401/1.jpg?0847",
