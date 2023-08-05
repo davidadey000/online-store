@@ -55,7 +55,7 @@ const Account = () => {
     "Opposite Hilltop Hotel, Lugbe, Abuja Abuja-Lugbe Sector F, Federal Capital Territory";
   address = userData.shippingAddress;
 
-  const shippingAddress = `${userData.name} \n ${address} +234 7065093454 / +234 7065093454`;
+  const shippingAddress = `${userData.name} \n ${address} ${userData.phoneNumber}`;
 
   const options1 = [
     { icon: <HiShoppingCart />, link: "orders", title: "Orders" },
