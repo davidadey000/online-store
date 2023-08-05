@@ -122,7 +122,7 @@ const Account = () => {
         mobileContent={
           <div className="flex-grow lg:hidden">
             <div className="p-4 bg-red-400 ">
-              <p className="text-white font-semibold leading-4">
+              <p className="text-white font-semibold leading-4 mb-2">
                 Welcome, {name || "User"}
               </p>
               <p className="text-white text-xs">{email}</p>

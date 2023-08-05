@@ -34,6 +34,7 @@ import { AuthProvider } from "./services/AuthContext";
 import Identification from "./pages/Identification";
 import SignUp from "./pages/SignUp";
 import PersonalDetails from "./pages/PersonalDetails";
+import Contact from "./pages/Contact";
 
 function Layout({ children }) {
   const location = useLocation();
@@ -43,7 +44,7 @@ function Layout({ children }) {
     "/saved",
     "/signup",
     "/identification",
-    "/personal-details"
+    "/personal-details",
   ]; // Add the routes where you want to hide the footer
   const noNavbarRoutes = [
     "/signin",
@@ -111,7 +112,8 @@ function App() {
                   <Route path="/faq" element={<Faq />} />
                   <Route path="/inbox" element={<Inbox />} />
                   <Route path="/newsletter" element={<Newsletter />} />
-                  <Route path="/signup" element={<SignUp />} />{" "}
+                  <Route path="/signup" element={<SignUp />} />
+                  <Route path="/contact" element={<Contact />} />
                   <Route
                     path="/personal-details"
                     element={<PersonalDetails />}
