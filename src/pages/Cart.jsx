@@ -46,9 +46,23 @@ const Cart = () => {
     removeFromCart(itemId);
   };
   const handleCheckout = async () => {
-    await addToOrders();
-    fetchCartData();
+    const token = localStorage.getItem("x-auth-token");
+    try {
+      const response = await axios.post(`${apiUrl}orders/payment-link`, null, {
+        headers: {
+          "x-auth-token": token,
+        },
+      });
+      const session_url = response.data.paymentLink;
+
+      // Redirect the user to the Stripe Checkout session URL
+      window.location.href = session_url;
+    } catch (error) {
+      toast.error(error.message);
+      console.error(error);
+    }
   };
+
   useEffect(() => {
     fetchCartData();
   }, []);
@@ -72,6 +86,7 @@ const Cart = () => {
         console.error("Error fetching recommended products:", error)
       );
   }, []);
+  
   return (
     <div className="lg:mx-8 lg:my-4">
       <div className="lg:hidden">
@@ -126,11 +141,7 @@ const Cart = () => {
         products={recommended}
       />
 
-      <ProductCollection
-        use="detail"
-        key={similarItems.collectionName}
-        {...similarItems}
-      />
+
       <ProductCollection
         use="detail"
         key="Customer Also Viewed"

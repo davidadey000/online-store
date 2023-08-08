@@ -177,8 +177,9 @@ return () => {
                 {...navbuttonData[0]}
               />
               <div
-                className={`bg-white z-1 gap-3  flex justify-center flex-col text-gray-500`}
+                className={`bg-white z-1 gap-3 sm:gap-7 flex justify-center flex-col text-gray-500`}
               >
+                <hr />
                 <Link
                   onClick={handleMenuToggle}
                   to="/account"
@@ -224,8 +225,9 @@ return () => {
                 {...navbuttonData[1]}
               />
               <div
-                className={`bg-white z-1 gap-3  flex justify-center flex-col text-gray-500`}
+                className={`bg-white z-1 gap-3 sm:gap-7 flex justify-center flex-col text-gray-500`}
               >
+              <hr />
                 <Link
                   onClick={handleMenuToggle}
                   to="/faq"
