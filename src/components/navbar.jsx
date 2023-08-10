@@ -172,6 +172,7 @@ return () => {
             </button>
 
             <div className="relative text-black">
+              <hr />
               <NavButton
                 handleMenuToggle={handleMenuToggle}
                 {...navbuttonData[0]}
@@ -179,7 +180,6 @@ return () => {
               <div
                 className={`bg-white z-1 gap-3 sm:gap-7 flex justify-center flex-col text-gray-500`}
               >
-                <hr />
                 <Link
                   onClick={handleMenuToggle}
                   to="/account"
@@ -220,6 +220,7 @@ return () => {
               </div>
             </div>
             <div className="relative text-black">
+              <hr />
               <NavButton
                 handleMenuToggle={handleMenuToggle}
                 {...navbuttonData[1]}
@@ -227,7 +228,6 @@ return () => {
               <div
                 className={`bg-white z-1 gap-3 sm:gap-7 flex justify-center flex-col text-gray-500`}
               >
-              <hr />
                 <Link
                   onClick={handleMenuToggle}
                   to="/faq"
