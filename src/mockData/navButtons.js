@@ -8,16 +8,16 @@ export const navbuttonData = [
   {
     link: "",
     name: "account",
-    icon: <HiUserCircle className="hidden lg:block mx-1 mb-[-2px]" />,
+    icon: <HiUserCircle className="hidden cmd:block mx-1 mb-[-2px]" />,
   },
   {
     link: "",
     name: "help",
-    icon: <HiQuestionMarkCircle className="hidden lg:block mx-1 mb-[-2px]" />,
+    icon: <HiQuestionMarkCircle className="hidden cmd:block mx-1 mb-[-2px]" />,
   },
   {
     link: "cart",
     name: "cart",
-    icon: <HiShoppingCart className="hidden lg:block mx-1 mb-[-2px]" />,
+    icon: <HiShoppingCart className="hidden cmd:block mx-1 mb-[-2px]" />,
   },
 ];

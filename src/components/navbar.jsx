@@ -52,7 +52,7 @@ return () => {
   }, []);
 
   const navRef = useRef();
-  const isMobile = useMediaQuery({ query: "(max-width: 1023px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 821px)" });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [isHelpOpen, setIsHelpOpen] = useState(false);
@@ -159,7 +159,7 @@ return () => {
             {searchResultComponent}
           </div>
           <nav
-            className={`fixed top-0 left-0 h-screen w-[80%] sm:w-[65%] pt-20 flex flex-col z-50 gap-6 bg-white transition duration-200 transform ${
+            className={`fixed overflow-y-auto top-0 left-0 h-screen w-[80%] sm:w-[65%] pt-20 flex flex-col z-50 gap-6 bg-white transition duration-200 transform ${
               isMenuOpen ? "translate-x-0" : "-translate-x-full"
             }`}
             ref={navRef}
@@ -171,7 +171,7 @@ return () => {
               <HiX className="absolute text-gray-500 top-[0.2rem] left-1 sm:left-3 sm:top-[0.5rem]" />
             </button>
 
-            <div className="relative text-black">
+            <div className="relative text-black ">
               <hr />
               <NavButton
                 handleMenuToggle={handleMenuToggle}
@@ -219,7 +219,7 @@ return () => {
                 </Link>
               </div>
             </div>
-            <div className="relative text-black">
+            <div className="relative text-black pb-6">
               <hr />
               <NavButton
                 handleMenuToggle={handleMenuToggle}
@@ -327,7 +327,7 @@ return () => {
               />
             </div>
           </div>
-          <div className="relative w-full lg:w-[400px]">
+          <div className="relative w-full md:w-[400px]">
             <div className="relative">
               <input
                 type="text"

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const NavButton = ({ link, icon, name, handleMenuToggle }) => {
-  const className = "flex lg:flex  mx-4 mb-4 sm:mb-7 lg:mb-0  lg:mx-0 flex-row items-center text-gray-500 lg:text-gray-700 border-none capitalize font-semibold text-[18px] sm:text-2xl lg:text-[16px] cursor-pointer"
+  const className = "flex cmd:flex  mx-4 mb-4 sm:mb-7 cmd:mb-0  cmd:mx-0 flex-row items-center text-gray-500 cmd:text-gray-700 border-none capitalize font-semibold text-[18px] sm:text-2xl cmd:text-[16px] cursor-pointer"
   return link ? (
     <Link
       to={`/${link}/`}
@@ -13,7 +13,7 @@ const NavButton = ({ link, icon, name, handleMenuToggle }) => {
       {name}
     </Link>
   ) : (
-    <div    
+    <div
       onClick={handleMenuToggle}
       className={className}
     >

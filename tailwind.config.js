@@ -6,8 +6,11 @@ module.exports = {
     fontFamily: {
       sans: ['Poppins'],
     },
+    
     extend: {
-     
+      screens: {
+        cmd: "821px"
+      },
     },
   },
   variants: {

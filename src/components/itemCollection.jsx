@@ -8,11 +8,12 @@ import GroupCard from "./groupCard";
 import SlideShow from "./slideShow";
 import { useState, useRef } from "react";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CartContext from "./../services/CartContext";
 import { useContext } from "react";
 import image3 from "../assets/img/project-img3.png";
 import NoItemsFound from './NoItemsFound';
+import { AuthContext } from "../services/AuthContext";
 
 const ItemCollection = ({
   type,
@@ -24,6 +25,11 @@ const ItemCollection = ({
   textColor,
   filters,
 }) => {
+
+  
+  // Navigation
+  const navigate = useNavigate();
+
   const [value, setValue] = useState(0);
   const containerRef = useRef(null);
 
@@ -72,18 +78,24 @@ const ItemCollection = ({
     });
 
   const { addToCart } = useContext(CartContext);
+  const { isSignedIn } = useContext(AuthContext);
 
   const handleAddToCart = (id) => {
-    const newItem = filteredProducts.find((product) => product.id === id);
-    if (newItem) {
-      const itemWithQuantity = {
-        ...newItem,
-        quantity: 1,
-        status: "In Stock",
-        prevPrice: "7000",
-      };
-      addToCart(itemWithQuantity);
-      toast.success("Item added to cart");
+    if (isSignedIn) {
+      // If authenticated, proceed with adding the item to the cart
+      const newItem = filteredProducts.find((product) => product.id === id);
+      if (newItem) {
+        const itemWithQuantity = {
+          ...newItem,
+          quantity: 1,
+          status: "In Stock",
+          prevPrice: "7000",
+        };
+        addToCart(itemWithQuantity);
+        // toast.success("Item has been added to Cart.");
+      }
+    } else {
+      navigate("/signin");
     }
   };
 

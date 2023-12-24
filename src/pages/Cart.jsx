@@ -77,11 +77,14 @@ const Cart = () => {
       );
   }, []);
 
+
+    const limit = 12
+    
   useEffect(() => {
     // Fetch the random products from the server when the component mounts
     axios
-      .get(`${apiUrl}products/random`)
-      .then((response) => setAlsoViewed(response.data))
+    .get(`${apiUrl}products/random`)
+    .then((response) => setAlsoViewed(response.data))
       .catch((error) =>
         console.error("Error fetching recommended products:", error)
       );

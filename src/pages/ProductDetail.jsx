@@ -17,6 +17,7 @@ import { toast } from "react-toastify";
 import NotFound from "./NotFound";
 import SkeletonLoader from "../components/SkeletonLoader";
 import ObjectNotFound from "../components/ObjectNotFound";
+import { AuthContext } from "../services/AuthContext";
 
 const productAttributesDatabase = {
   model: "Model Name",
@@ -95,14 +96,24 @@ const Product = () => {
     navigate("/cart");
   };
 
-  const handleAddToCart = () => {
-    const reconciledProduct = {
-      productId: product._id,
-      quantity, // Set the status based on your business logic
-    };
+  const { isSignedIn } = useContext(AuthContext);
 
-    addToCart(reconciledProduct);
-    // toast.success("Item has been added to Cart.");
+  const handleAddToCart = () => {
+    if (isSignedIn) {
+      // If authenticated, proceed with adding the item to the cart
+      const reconciledProduct = {
+        productId: product._id,
+        quantity, // Set the status based on your business logic
+      };
+
+      addToCart(reconciledProduct);
+      // toast.success("Item has been added to Cart.");
+    } else {
+      // If not authenticated, redirect the user to the signup page
+      // You can use the navigation method of your choice (e.g., React Router)
+      // to send the user to the signup page
+      navigate("/signin"); // Replace with the correct path to your signup page
+    }
   };
 
   const handleToggleSaved = () => {
