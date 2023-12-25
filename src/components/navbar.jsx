@@ -1,33 +1,29 @@
-import React, { useRef, useState } from "react";
+import axios from "axios";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import {
-  HiMenu,
-  HiX,
-  HiSearch,
-  HiUserCircle,
+  HiChat,
   HiCollection,
   HiHeart,
-  HiChat,
-  HiPhone,
   HiKey,
+  HiMenu,
+  HiPhone,
+  HiSearch,
   HiShoppingCart,
+  HiUserCircle,
+  HiX,
 } from "react-icons/hi";
 import { useMediaQuery } from "react-responsive";
-import SearchResults from "./SearchResults";
 import { Link, useLocation } from "react-router-dom";
+import Logo from "../assets/img/logo.png";
 import { navbuttonData } from "../mockData/navButtons";
-import NavButton from "./navBarComponents/NavButton";
-import { productData } from "../mockData/product";
-import { categoriesData } from "../mockData/category";
-import { useEffect } from "react";
-import Logo from "../assets/img/logo.png"
-import axios from "axios";
-import apiUrl from "../utils/config";
 import { AuthContext } from "../services/AuthContext";
-import { useContext } from "react";
+import apiUrl from "../utils/config";
+import SearchResults from "./SearchResults";
+import NavButton from "./navBarComponents/NavButton";
 
 
-function Navbar({classes}) {
-  const navRef2 = useRef();const location = useLocation();
+function Navbar({ classes }) {
+  const navRef2 = useRef(); const location = useLocation();
 
   // Access the isSignedIn state from the AuthContext
   const { isSignedIn } = useContext(AuthContext);
@@ -46,8 +42,8 @@ function Navbar({classes}) {
     };
 
     document.addEventListener("mouseover", handleHoverOutside);
-return () => {
-  document.removeEventListener("mouseover", handleHoverOutside);
+    return () => {
+      document.removeEventListener("mouseover", handleHoverOutside);
     };
   }, []);
 
@@ -74,39 +70,31 @@ return () => {
     setIsAccountOpen(false);
   };
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     const value = e.currentTarget.value;
+
     if (value) {
       setIsSearchActive(true);
-      let results = productData.filter((product) =>
-        product.title.toLowerCase().includes(value.toLowerCase())
-      );
-  
-      const categoryResults = categoriesData
-        .filter((category) =>
-          category.collectionName.toLowerCase().includes(value.toLowerCase())
-        )
-        .flatMap((category) => category.products);
-  
-  
-      results = [...results, ...categoryResults];
-  
-      // Remove duplicates based on the "id" property
-      const uniqueResults = Object.values(
-        results.reduce((acc, obj) => {
-          acc[obj.id] = obj;
-          return acc;
-        }, {})
-      );
-  
-      setSearchResults(uniqueResults);
+
+      try {
+        const response = await axios.get(`${apiUrl}products/search?query=${value}`);
+        const results = response.data;
+
+        setSearchResults(results.products);
+
+
+      } catch (error) {
+        console.error("Error fetching search results:", error);
+        // Handle error (show an error message, etc.)
+      }
     } else {
       setIsSearchActive(false);
       setSearchResults([]);
     }
   };
-  
-  
+
+
+
 
   const handleProductClick = () => {
     setIsSearchActive(false);
@@ -120,7 +108,7 @@ return () => {
       setSearchResults([]);
     }
   };
-  
+
 
   const searchResultComponent = isSearchActive && (
     <SearchResults
@@ -128,7 +116,7 @@ return () => {
       handleProductClick={handleProductClick}
     />
   );
-
+  
   return (
     <header ref={navRef2} className={`sticky top-0 left-0 flex items-center justify-between px-3 pt-4 py-2 z-10 bg-white text-black md:px-[2.5%] lg:pt-2 lg:px-[4%] ${classes}`}>
       {isMobile && (
@@ -141,7 +129,7 @@ return () => {
               <HiMenu />
             </button>
             <Link to="/">
-         <img src={Logo} alt="jumia" className="uppercase h-4 sm:h-5" />
+              <img src={Logo} alt="jumia" className="uppercase h-4 sm:h-5" />
             </Link>
           </div>
           <div className="lg:relative w-full lg:w-[400px]">
@@ -159,9 +147,8 @@ return () => {
             {searchResultComponent}
           </div>
           <nav
-            className={`fixed overflow-y-auto top-0 left-0 h-screen w-[80%] sm:w-[65%] pt-20 flex flex-col z-50 gap-6 bg-white transition duration-200 transform ${
-              isMenuOpen ? "translate-x-0" : "-translate-x-full"
-            }`}
+            className={`fixed overflow-y-auto top-0 left-0 h-screen w-[80%] sm:w-[65%] pt-20 flex flex-col z-50 gap-6 bg-white transition duration-200 transform ${isMenuOpen ? "translate-x-0" : "-translate-x-full"
+              }`}
             ref={navRef}
           >
             <button
@@ -203,7 +190,7 @@ return () => {
                 >
                   <HiHeart /> Saved Items
                 </Link>
-               {isSignedIn ? "" : <Link
+                {isSignedIn ? "" : <Link
                   onClick={handleMenuToggle}
                   to="/identification"
                   className=" mx-4  flex items-center gap-1  sm:text-2xl  font-semibold"
@@ -263,8 +250,8 @@ return () => {
       {!isMobile && (
         <>
           <div className="flex gap-10 items-center">
-          <Link to="/">
-         <img src={Logo} alt="jumia" className="uppercase h-5" />
+            <Link to="/">
+              <img src={Logo} alt="jumia" className="uppercase h-5" />
             </Link>
             <div className="relative text-black">
               <NavButton
@@ -272,9 +259,8 @@ return () => {
                 {...navbuttonData[0]}
               />
               <div
-                className={`dropdown-menu min-w-[150px] bg-white z-1 rounded-b-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col absolute top-full left-0 shadow-lg ${
-                  isAccountOpen ? "h-auto" : "h-0"
-                }`}
+                className={`dropdown-menu min-w-[150px] bg-white z-1 rounded-b-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col absolute top-full left-0 shadow-lg ${isAccountOpen ? "h-auto" : "h-0"
+                  }`}
               >
                 <Link
                   to="/account"
@@ -291,7 +277,7 @@ return () => {
                 >
                   Saved Items
                 </Link>
-                {isSignedIn ? "" :<Link to="/identification" className="py-2 px-5 hover:bg-red-200">
+                {isSignedIn ? "" : <Link to="/identification" className="py-2 px-5 hover:bg-red-200">
                   Sign In
                 </Link>}
               </div>
@@ -302,9 +288,8 @@ return () => {
                 {...navbuttonData[1]}
               />
               <div
-                className={`dropdown-menu min-w-[150px] bg-white z-1 rounded-b-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col absolute top-full left-0 shadow-lg ${
-                  isHelpOpen ? "h-auto" : "h-0"
-                }`}
+                className={`dropdown-menu min-w-[150px] bg-white z-1 rounded-b-md overflow-hidden transition-height duration-300 ease-out flex justify-center flex-col absolute top-full left-0 shadow-lg ${isHelpOpen ? "h-auto" : "h-0"
+                  }`}
               >
                 <Link
                   to="/faq"

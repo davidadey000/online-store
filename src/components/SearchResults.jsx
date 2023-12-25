@@ -5,6 +5,7 @@ import TextContentLoader from "./TextContentLoader";
 const SearchResults = ({ searchResults, handleProductClick }) => {
   const [isLoading, setIsLoading] = useState(true);
   const contentRef = useRef(null);
+  console.log("In search results:", searchResults)
 
   useEffect(() => {
     const loadImage = async (image) => {
@@ -26,7 +27,10 @@ const SearchResults = ({ searchResults, handleProductClick }) => {
       contentRef.current.style.height = `${contentHeight + 2}px`;
     }
   }, [searchResults]);
-
+// Check if searchResults is empty
+if (!searchResults || searchResults.length === 0) {
+  return null; // Render nothing if searchResults is empty
+}
   return (
     <div
       ref={contentRef} // Assign the ref to the content wrapper element
